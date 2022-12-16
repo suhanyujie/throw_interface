@@ -1,9 +1,10 @@
 syntax = "proto3";
 
-option go_package = "github.com/suhanyujie/throw_interface/proto/throw/v1;v1";
-
 import "google/protobuf/descriptor.proto";
-//import "google/protobuf/any.proto";
+import "room_model.proto";
+
+package project.v1;
+option go_package = "github.com/suhanyujie/throw_interface/proto/throw/v1;v1";
 
 message IRequestProtocol {
   string action = 1; // 类似于 controller
@@ -23,11 +24,6 @@ message IResponseProtocol {
 
 // A very simple protobuf message.
 message Person {
-  string name = 1;
-  uint64 id = 2;
-}
-
-message DataOfJoin {
   string name = 1;
   uint64 id = 2;
 }

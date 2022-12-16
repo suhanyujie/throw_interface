@@ -1,0 +1,5 @@
+syntax = "proto3";
+
+package throw.v1;
+option go_package = "github.com/suhanyujie/throw_interface/proto/throw/v1;v1";
+
