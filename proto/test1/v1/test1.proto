@@ -5,6 +5,15 @@ option go_package = "github.com/suhanyujie/throw_interface/proto/test1/v1;v1";
 //import "google/protobuf/descriptor.proto";
 //import "google/protobuf/struct.proto";
 
+message IRequestProtocol {
+  string action = 1; // 类似于 controller
+  string method = 2;
+  bool isCompress = 3;
+  // google.protobuf.Struct data = 3;
+  Person data = 4;
+  string callback = 5;
+}
+
 message IResponseProtocol {
   int32 code = 1;
   bool isCompress = 2;
