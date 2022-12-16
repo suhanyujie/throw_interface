@@ -26,3 +26,8 @@ message Person {
   string name = 1;
   uint64 id = 2;
 }
+
+message DataOfJoin {
+  string name = 1;
+  uint64 id = 2;
+}
