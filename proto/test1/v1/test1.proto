@@ -2,23 +2,21 @@ syntax = "proto3";
 
 option go_package = "github.com/suhanyujie/throw_interface/proto/test1/v1;v1";
 
-//import "google/protobuf/descriptor.proto";
-//import "google/protobuf/struct.proto";
+import "google/protobuf/descriptor.proto";
+import "google/protobuf/any.proto";
 
 message IRequestProtocol {
   string action = 1; // 类似于 controller
   string method = 2;
-  bool isCompress = 3;
-  // google.protobuf.Struct data = 3;
-  Person data = 4;
+  bool isCompress = 3; // true 表示 data 为 proto 编码的字节数组
+  google.protobuf.Any data = 4;
   string callback = 5;
 }
 
 message IResponseProtocol {
   int32 code = 1;
-  bool isCompress = 2;
-  // google.protobuf.Struct data = 3;
-  Person data = 3;
+  bool isCompress = 2; // true 表示 data 为 proto 编码的字节数组
+  google.protobuf.Any data = 3;
   string callback = 4;
 }
 
