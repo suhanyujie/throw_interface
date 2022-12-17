@@ -27,12 +27,12 @@ type IRequestProtocol struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Action     string `protobuf:"bytes,1,opt,name=action,proto3" json:"action,omitempty"` // 类似于 controller
+	Action     string `protobuf:"bytes,1,opt,name=action,proto3" json:"action,omitempty"`
 	Method     string `protobuf:"bytes,2,opt,name=method,proto3" json:"method,omitempty"`
 	Callback   string `protobuf:"bytes,3,opt,name=callback,proto3" json:"callback,omitempty"`
 	IsCompress bool   `protobuf:"varint,4,opt,name=isCompress,proto3" json:"isCompress,omitempty"` // true 表示 data 为 proto 编码的字节数组
 	ChannelId  int32  `protobuf:"varint,5,opt,name=channelId,proto3" json:"channelId,omitempty"`
-	Data       []byte `protobuf:"bytes,6,opt,name=data,proto3" json:"data,omitempty"`
+	Data       []byte `protobuf:"bytes,6,opt,name=data,proto3" json:"data,omitempty"` // data 是 proto 编码的字节
 }
 
 func (x *IRequestProtocol) Reset() {
@@ -116,7 +116,7 @@ type IResponseProtocol struct {
 
 	Code       int32  `protobuf:"varint,1,opt,name=code,proto3" json:"code,omitempty"`
 	IsCompress bool   `protobuf:"varint,2,opt,name=isCompress,proto3" json:"isCompress,omitempty"` // true 表示 data 为 proto 编码的字节数组
-	Data       []byte `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`
+	Data       []byte `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`              // data 是 proto 编码的字节
 	Callback   string `protobuf:"bytes,4,opt,name=callback,proto3" json:"callback,omitempty"`
 }
 

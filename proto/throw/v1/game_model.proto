@@ -7,6 +7,10 @@ message GameStart {
   string msg = 2;// 游戏即将开始 倒计时 3 s
 }
 
+message AttachOnceInfo {
+  int64 uid = 1;  // 发起攻击的用户 id
+}
+
 message ThrowResult {
     repeated PlayerStatus players = 1;
 }

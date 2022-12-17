@@ -23,11 +23,13 @@ message IResponseProtocol {
   string callback = 4;
 }
 
+// 该结构序列化后，放在 IRequestProtocol.data 中
 message ReqData {
   string route = 1;
   google.protobuf.Struct data = 3;
 }
 
+// 该结构序列化后，放在 IResponseProtocol.data 中
 message RespData {
   int32 code = 1;
   string msg = 2;
