@@ -8,18 +8,18 @@ package throw.v1;
 option go_package = "github.com/suhanyujie/throw_interface/proto/throw/v1;v1";
 
 message IRequestProtocol {
-  string action = 1; // 类似于 controller
+  string action = 1;
   string method = 2;
   string callback = 3;
   bool isCompress = 4; // true 表示 data 为 proto 编码的字节数组
   int32 channelId = 5;
-  bytes data = 6;
+  bytes data = 6;     // data 是 proto 编码的字节
 }
 
 message IResponseProtocol {
   int32 code = 1;
   bool isCompress = 2; // true 表示 data 为 proto 编码的字节数组
-  bytes data = 3;
+  bytes data = 3;    // data 是 proto 编码的字节
   string callback = 4;
 }
 
