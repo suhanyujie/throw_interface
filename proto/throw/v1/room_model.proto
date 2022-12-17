@@ -3,7 +3,9 @@ syntax = "proto3";
 package throw.v1;
 option go_package = "github.com/suhanyujie/throw_interface/proto/throw/v1;v1";
 
+// 加入游戏时对应的游戏 id
+// 一场游戏的 id；全局唯一；不能有两场游戏 id 一样。
 message DataOfJoin {
-  string name = 1;
   uint64 id = 2;
 }
+

@@ -1,9 +1,10 @@
 syntax = "proto3";
 
 import "google/protobuf/descriptor.proto";
-import "room_model.proto";
+import "google/protobuf/struct.proto";
+import "game_model.proto";
 
-package project.v1;
+package throw.v1;
 option go_package = "github.com/suhanyujie/throw_interface/proto/throw/v1;v1";
 
 message IRequestProtocol {
@@ -22,8 +23,20 @@ message IResponseProtocol {
   string callback = 4;
 }
 
-// A very simple protobuf message.
-message Person {
-  string name = 1;
-  uint64 id = 2;
+message ReqData {
+  string route = 1;
+  google.protobuf.Struct data = 3;
 }
+
+message RespData {
+  int32 code = 1;
+  string msg = 2;
+  google.protobuf.Struct data = 3;
+}
+
+// for test
+message DataInfoResp {
+  int32 code = 1;
+  string msg = 2;
+}
+

@@ -3,3 +3,16 @@ syntax = "proto3";
 package throw.v1;
 option go_package = "github.com/suhanyujie/throw_interface/proto/throw/v1;v1";
 
+message GameStart {
+  string msg = 2;// 游戏即将开始 倒计时 3 s
+}
+
+message ThrowResult {
+    repeated PlayerStatus players = 1;
+}
+
+message PlayerStatus {
+  int32 uid = 1;
+  int32 hp = 2;
+  int32 name = 3;
+}
