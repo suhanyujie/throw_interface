@@ -20,3 +20,8 @@ message PlayerStatus {
   int32 hp = 2;
   int32 name = 3;
 }
+
+// 退出游戏房间 todo
+message QuitRoom {
+
+}
