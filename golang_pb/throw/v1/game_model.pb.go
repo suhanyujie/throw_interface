@@ -67,7 +67,7 @@ func (x *GameStart) GetMsg() string {
 	return ""
 }
 
-type AttachOnceInfo struct {
+type AttackOnceInfo struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -75,8 +75,8 @@ type AttachOnceInfo struct {
 	Uid int64 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"` // 发起攻击的用户 id
 }
 
-func (x *AttachOnceInfo) Reset() {
-	*x = AttachOnceInfo{}
+func (x *AttackOnceInfo) Reset() {
+	*x = AttackOnceInfo{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_game_model_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -84,13 +84,13 @@ func (x *AttachOnceInfo) Reset() {
 	}
 }
 
-func (x *AttachOnceInfo) String() string {
+func (x *AttackOnceInfo) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*AttachOnceInfo) ProtoMessage() {}
+func (*AttackOnceInfo) ProtoMessage() {}
 
-func (x *AttachOnceInfo) ProtoReflect() protoreflect.Message {
+func (x *AttackOnceInfo) ProtoReflect() protoreflect.Message {
 	mi := &file_game_model_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -102,12 +102,12 @@ func (x *AttachOnceInfo) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use AttachOnceInfo.ProtoReflect.Descriptor instead.
-func (*AttachOnceInfo) Descriptor() ([]byte, []int) {
+// Deprecated: Use AttackOnceInfo.ProtoReflect.Descriptor instead.
+func (*AttackOnceInfo) Descriptor() ([]byte, []int) {
 	return file_game_model_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *AttachOnceInfo) GetUid() int64 {
+func (x *AttackOnceInfo) GetUid() int64 {
 	if x != nil {
 		return x.Uid
 	}
@@ -231,7 +231,7 @@ var file_game_model_proto_rawDesc = []byte{
 	0x74, 0x6f, 0x12, 0x08, 0x74, 0x68, 0x72, 0x6f, 0x77, 0x2e, 0x76, 0x31, 0x22, 0x1d, 0x0a, 0x09,
 	0x47, 0x61, 0x6d, 0x65, 0x53, 0x74, 0x61, 0x72, 0x74, 0x12, 0x10, 0x0a, 0x03, 0x6d, 0x73, 0x67,
 	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6d, 0x73, 0x67, 0x22, 0x22, 0x0a, 0x0e, 0x41,
-	0x74, 0x74, 0x61, 0x63, 0x68, 0x4f, 0x6e, 0x63, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x10, 0x0a,
+	0x74, 0x74, 0x61, 0x63, 0x6b, 0x4f, 0x6e, 0x63, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x10, 0x0a,
 	0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x75, 0x69, 0x64, 0x22,
 	0x3f, 0x0a, 0x0b, 0x54, 0x68, 0x72, 0x6f, 0x77, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x12, 0x30,
 	0x0a, 0x07, 0x70, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32,
@@ -263,7 +263,7 @@ func file_game_model_proto_rawDescGZIP() []byte {
 var file_game_model_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_game_model_proto_goTypes = []interface{}{
 	(*GameStart)(nil),      // 0: throw.v1.GameStart
-	(*AttachOnceInfo)(nil), // 1: throw.v1.AttachOnceInfo
+	(*AttackOnceInfo)(nil), // 1: throw.v1.AttackOnceInfo
 	(*ThrowResult)(nil),    // 2: throw.v1.ThrowResult
 	(*PlayerStatus)(nil),   // 3: throw.v1.PlayerStatus
 }
@@ -295,7 +295,7 @@ func file_game_model_proto_init() {
 			}
 		}
 		file_game_model_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AttachOnceInfo); i {
+			switch v := v.(*AttackOnceInfo); i {
 			case 0:
 				return &v.state
 			case 1:
