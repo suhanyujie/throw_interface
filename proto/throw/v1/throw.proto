@@ -23,17 +23,17 @@ message IResponseProtocol {
 }
 
 // 该结构序列化后，放在 IRequestProtocol.data 中
-//message ReqData {
-//  string route = 1;
-//  google.protobuf.Struct data = 3;
-//}
+message ReqData {
+  string route = 1;
+  // google.protobuf.Struct data = 3;
+}
 
 // 该结构序列化后，放在 IResponseProtocol.data 中
-//message RespData {
-//  int32 code = 1;
-//  string msg = 2;
-//  google.protobuf.Struct data = 3;
-//}
+message RespData {
+  int32 code = 1;
+  string msg = 2;
+  // google.protobuf.Struct data = 3;
+}
 
 // for test
 message DataInfoResp {
