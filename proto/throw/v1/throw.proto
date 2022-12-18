@@ -1,7 +1,5 @@
 syntax = "proto3";
 
-import "google/protobuf/descriptor.proto";
-import "google/protobuf/struct.proto";
 import "game_model.proto";
 
 package throw.v1;
@@ -21,21 +19,21 @@ message IResponseProtocol {
   bool isCompress = 2; // true 表示 data 为 proto 编码的字节数组
   bytes data = 3;    // data 是 proto 编码的字节
   string callback = 4;
-  string msg = 5; // 异常时的详细信息
+//  string msg = 5; // 异常时的详细信息
 }
 
 // 该结构序列化后，放在 IRequestProtocol.data 中
-message ReqData {
-  string route = 1;
-  google.protobuf.Struct data = 3;
-}
+//message ReqData {
+//  string route = 1;
+//  google.protobuf.Struct data = 3;
+//}
 
 // 该结构序列化后，放在 IResponseProtocol.data 中
-message RespData {
-  int32 code = 1;
-  string msg = 2;
-  google.protobuf.Struct data = 3;
-}
+//message RespData {
+//  int32 code = 1;
+//  string msg = 2;
+//  google.protobuf.Struct data = 3;
+//}
 
 // for test
 message DataInfoResp {
