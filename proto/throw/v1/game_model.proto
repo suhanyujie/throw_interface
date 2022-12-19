@@ -30,7 +30,7 @@ message PlayerStatus {
 
 // 退出游戏房间
 // 考虑一下，游戏中途时，用户退出房间，如何处理？
-message QuitRoom {
+message UserQuit {
   int32 uid = 1;
 }
 
