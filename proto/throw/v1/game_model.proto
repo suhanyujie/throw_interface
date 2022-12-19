@@ -18,14 +18,25 @@ message AttackOnceInfo {
 message AttackOnceResult {
   string event = 1;
   string msg = 2;
-  string attackType = 3;
+  string attackType = 3; // 攻击类型，目前先普通攻击
   repeated PlayerStatus players = 4;
+  int64 from = 5;  // 攻击方
+  int64 to = 6; // 受到攻击的一方
+  HitInfo hitInfo = 7; // 命中信息
+}
+
+// 一次攻击的命中信息
+message HitInfo {
+  bool isHit = 1;
+  // 命中部位
+  string posi = 2;
 }
 
 message PlayerStatus {
-  int32 uid = 1;
-  int32 hp = 2;
-  int32 name = 3;
+  int64 uid = 1;
+  int32 heroId = 2;
+  int32 hp = 3;
+  string name = 4;
 }
 
 // 退出游戏房间
