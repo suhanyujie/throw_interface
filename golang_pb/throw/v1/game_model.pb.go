@@ -254,7 +254,7 @@ func (x *PlayerStatus) GetName() int32 {
 
 // 退出游戏房间
 // 考虑一下，游戏中途时，用户退出房间，如何处理？
-type QuitRoom struct {
+type UserQuit struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -262,8 +262,8 @@ type QuitRoom struct {
 	Uid int32 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
 }
 
-func (x *QuitRoom) Reset() {
-	*x = QuitRoom{}
+func (x *UserQuit) Reset() {
+	*x = UserQuit{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_game_model_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -271,13 +271,13 @@ func (x *QuitRoom) Reset() {
 	}
 }
 
-func (x *QuitRoom) String() string {
+func (x *UserQuit) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*QuitRoom) ProtoMessage() {}
+func (*UserQuit) ProtoMessage() {}
 
-func (x *QuitRoom) ProtoReflect() protoreflect.Message {
+func (x *UserQuit) ProtoReflect() protoreflect.Message {
 	mi := &file_game_model_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -289,12 +289,12 @@ func (x *QuitRoom) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use QuitRoom.ProtoReflect.Descriptor instead.
-func (*QuitRoom) Descriptor() ([]byte, []int) {
+// Deprecated: Use UserQuit.ProtoReflect.Descriptor instead.
+func (*UserQuit) Descriptor() ([]byte, []int) {
 	return file_game_model_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *QuitRoom) GetUid() int32 {
+func (x *UserQuit) GetUid() int32 {
 	if x != nil {
 		return x.Uid
 	}
@@ -396,7 +396,7 @@ var file_game_model_proto_rawDesc = []byte{
 	0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x03, 0x75, 0x69, 0x64,
 	0x12, 0x0e, 0x0a, 0x02, 0x68, 0x70, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x68, 0x70,
 	0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04,
-	0x6e, 0x61, 0x6d, 0x65, 0x22, 0x1c, 0x0a, 0x08, 0x51, 0x75, 0x69, 0x74, 0x52, 0x6f, 0x6f, 0x6d,
+	0x6e, 0x61, 0x6d, 0x65, 0x22, 0x1c, 0x0a, 0x08, 0x55, 0x73, 0x65, 0x72, 0x51, 0x75, 0x69, 0x74,
 	0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x03, 0x75,
 	0x69, 0x64, 0x22, 0xa0, 0x01, 0x0a, 0x08, 0x47, 0x61, 0x6d, 0x65, 0x4f, 0x76, 0x65, 0x72, 0x12,
 	0x34, 0x0a, 0x09, 0x77, 0x69, 0x6e, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01,
@@ -433,7 +433,7 @@ var file_game_model_proto_goTypes = []interface{}{
 	(*AttackOnceInfo)(nil),   // 1: throw.v1.AttackOnceInfo
 	(*AttackOnceResult)(nil), // 2: throw.v1.AttackOnceResult
 	(*PlayerStatus)(nil),     // 3: throw.v1.PlayerStatus
-	(*QuitRoom)(nil),         // 4: throw.v1.QuitRoom
+	(*UserQuit)(nil),         // 4: throw.v1.UserQuit
 	(*GameOver)(nil),         // 5: throw.v1.GameOver
 }
 var file_game_model_proto_depIdxs = []int32{
@@ -502,7 +502,7 @@ func file_game_model_proto_init() {
 			}
 		}
 		file_game_model_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*QuitRoom); i {
+			switch v := v.(*UserQuit); i {
 			case 0:
 				return &v.state
 			case 1:
