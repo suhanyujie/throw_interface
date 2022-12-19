@@ -37,7 +37,11 @@ message RespData {
   // google.protobuf.Struct data = 3;
 }
 
-// for test
+// 前端指定 method 为 HeartBeat，就视为是心跳
+message HeartBeat {
+  string msg = 1;
+}
+
 message DataInfoResp {
   int32 code = 1;
   string msg = 2;

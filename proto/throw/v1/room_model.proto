@@ -8,4 +8,3 @@ option go_package = "github.com/suhanyujie/throw_interface/proto/throw/v1;v1";
 message DataOfJoin {
   uint64 id = 2;
 }
-
