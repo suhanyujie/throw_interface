@@ -3,16 +3,23 @@ syntax = "proto3";
 package throw.v1;
 option go_package = "github.com/suhanyujie/throw_interface/proto/throw/v1;v1";
 
+// 游戏开始，服务端推送给客户端
 message GameStart {
   string msg = 2;// 游戏即将开始 倒计时 3 s
 }
 
+// 客户端玩家发起一次攻击
 message AttackOnceInfo {
   int64 uid = 1;  // 发起攻击的用户 id
 }
 
-message ThrowResult {
-    repeated PlayerStatus players = 1;
+// 攻击结果
+// 服务端推送给客户端
+message AttackOnceResult {
+  string event = 1;
+  string msg = 2;
+  string attackType = 3;
+  repeated PlayerStatus players = 4;
 }
 
 message PlayerStatus {
@@ -21,7 +28,17 @@ message PlayerStatus {
   int32 name = 3;
 }
 
-// 退出游戏房间 todo
+// 退出游戏房间
+// 考虑一下，游戏中途时，用户退出房间，如何处理？
 message QuitRoom {
+  int32 uid = 1;
+}
 
+// 游戏结束时，服务端推送消息给客户端
+// `event` 表示游戏结束标识，用于前端识别，该推送是什么事件/消息
+message GameOver {
+  PlayerStatus winPlayer = 1;
+  PlayerStatus losePlayer = 2;
+  string event = 3;
+  string msg = 4;
 }
