@@ -8,3 +8,31 @@ option go_package = "github.com/suhanyujie/throw_interface/proto/throw/v1;v1";
 message DataOfJoin {
   uint64 id = 2;
 }
+
+message RoomState {
+  int32 id = 1;
+  string name = 2;
+  int32 amount = 3;
+  int32 max = 4; // 房间最大用户数量
+  int32 timeUpdate = 5;
+}
+
+message RoomDetail {
+  string id = 1;
+  string name = 2;
+  uint32 amount = 3;// 房间当前用户数量
+  uint32 max = 4; // 房间最大用户数量
+  uint32 timeUpdate = 5;// 房间信息的最后更新时间
+  repeated RoleDetailed roles = 6;// 房间内的用户
+  repeated RoleDetailed npcs = 7;// 房间内非玩家角色
+  repeated RoomMsgRecord messages = 8;// 房间历史聊天记录
+}
+
+message RoleDetailed {
+
+}
+
+//
+message RoomMsgRecord {
+
+}
