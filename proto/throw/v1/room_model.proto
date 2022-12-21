@@ -28,11 +28,34 @@ message RoomDetail {
   repeated RoomMsgRecord messages = 8;// 房间历史聊天记录
 }
 
-message RoleDetailed {
-
-}
-
-//
+// 房间内聊天记录信息
 message RoomMsgRecord {
-
+  string time = 1;
+  RoleInfo role = 2;
+  string content = 3;
 }
+
+message RoleInfo {
+  int32 id = 1;
+  string nickname = 2;
+}
+
+// 角色/英雄信息
+message RoleDetailed {
+  RoleInfo roleInfo = 1;
+  RoleState state = 2;
+  map<string, int32> attributes = 3;
+}
+
+message RoleState {
+  string id  = 1;
+  RolePosition pos = 2;
+}
+
+// 玩家位置信息
+message RolePosition {
+  int32 x = 1;// x 轴坐标
+  int32 y = 2;// y 轴坐标
+  int32 z = 3;// z 轴坐标
+}
+
