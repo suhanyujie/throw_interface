@@ -27,6 +27,7 @@ message AttackOnceResult {
 
 // 一次攻击的命中信息
 message HitInfo {
+  // 是否命中 | @inject_tag: json:"isHit"
   bool isHit = 1;
   // 命中部位
   string posi = 2;

@@ -219,7 +219,8 @@ type HitInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	IsHit bool `protobuf:"varint,1,opt,name=isHit,proto3" json:"isHit,omitempty"`
+	// 是否命中 | @inject_tag: json:"isHit"
+	IsHit bool `protobuf:"varint,1,opt,name=isHit,proto3" json:"isHit"`
 	// 命中部位
 	Posi string `protobuf:"bytes,2,opt,name=posi,proto3" json:"posi,omitempty"`
 }
