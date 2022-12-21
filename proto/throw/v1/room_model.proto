@@ -12,7 +12,7 @@ message DataOfJoin {
 message RoomState {
   int32 id = 1;
   string name = 2;
-  int32 amount = 3;
+  int32 amount = 3;//房间当前用户数
   int32 max = 4; // 房间最大用户数量
   int32 timeUpdate = 5;
 }
@@ -56,6 +56,5 @@ message RoleState {
 message RolePosition {
   int32 x = 1;// x 轴坐标
   int32 y = 2;// y 轴坐标
-  int32 z = 3;// z 轴坐标
 }
 
