@@ -6,4 +6,4 @@ throw 接口定义。
 
 ### golang 重写 jsontag
 * https://github.com/favadi/protoc-go-inject-tag
-    * go get -d github.com/favadi/protoc-go-inject-tag
+    * go install github.com/favadi/protoc-go-inject-tag

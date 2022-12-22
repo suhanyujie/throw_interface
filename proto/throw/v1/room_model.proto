@@ -58,3 +58,8 @@ message RolePosition {
   int32 y = 2;// y 轴坐标
 }
 
+// 游戏即将开始时，广播房间内玩家的状态
+message GameStartInfo{
+  string msg = 1;
+  repeated RoleDetailed roles = 2;
+}
