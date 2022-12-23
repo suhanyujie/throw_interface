@@ -107,10 +107,16 @@ message SInputData {
 }
 
 message HitRoleInfo {
-  int32 fromUid = 1;
-  int32 toUid = 2;
-  HitPos pos = 3;
-  int32 skillId = 4;// 命中的技能 id
+  // 玩家编号
+  int32 uid = 1;
+  int32 skillId = 2;
+  // 技能状态
+  SkillState state = 3;
+  // 目标玩家编号（uid）
+  int32 targetId = 4;
+  RolePosition rolePos = 5; // 攻击方坐标
+  HitPos hitPos = 6;
+  SInputData atkInput = 7; // 攻击参数
 }
 
 
