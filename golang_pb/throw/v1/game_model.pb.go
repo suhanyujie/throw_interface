@@ -20,6 +20,115 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type SkillState int32
+
+const (
+	// 前摇状态
+	SkillState_Front SkillState = 0
+	// 施放状态
+	SkillState_Casting SkillState = 1
+	// 后摇状态
+	SkillState_Back SkillState = 2
+	// 冷却
+	SkillState_Cooling SkillState = 3
+	// 就绪
+	SkillState_Ready SkillState = 4
+)
+
+// Enum value maps for SkillState.
+var (
+	SkillState_name = map[int32]string{
+		0: "Front",
+		1: "Casting",
+		2: "Back",
+		3: "Cooling",
+		4: "Ready",
+	}
+	SkillState_value = map[string]int32{
+		"Front":   0,
+		"Casting": 1,
+		"Back":    2,
+		"Cooling": 3,
+		"Ready":   4,
+	}
+)
+
+func (x SkillState) Enum() *SkillState {
+	p := new(SkillState)
+	*p = x
+	return p
+}
+
+func (x SkillState) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (SkillState) Descriptor() protoreflect.EnumDescriptor {
+	return file_game_model_proto_enumTypes[0].Descriptor()
+}
+
+func (SkillState) Type() protoreflect.EnumType {
+	return &file_game_model_proto_enumTypes[0]
+}
+
+func (x SkillState) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use SkillState.Descriptor instead.
+func (SkillState) EnumDescriptor() ([]byte, []int) {
+	return file_game_model_proto_rawDescGZIP(), []int{0}
+}
+
+type HitPos int32
+
+const (
+	HitPos_Normal    HitPos = 0 // 普通：四肢，躯干
+	HitPos_Fatal     HitPos = 1 // 致命：头部
+	HitPos_Secondary HitPos = 2 // 次要：膝盖
+)
+
+// Enum value maps for HitPos.
+var (
+	HitPos_name = map[int32]string{
+		0: "Normal",
+		1: "Fatal",
+		2: "Secondary",
+	}
+	HitPos_value = map[string]int32{
+		"Normal":    0,
+		"Fatal":     1,
+		"Secondary": 2,
+	}
+)
+
+func (x HitPos) Enum() *HitPos {
+	p := new(HitPos)
+	*p = x
+	return p
+}
+
+func (x HitPos) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (HitPos) Descriptor() protoreflect.EnumDescriptor {
+	return file_game_model_proto_enumTypes[1].Descriptor()
+}
+
+func (HitPos) Type() protoreflect.EnumType {
+	return &file_game_model_proto_enumTypes[1]
+}
+
+func (x HitPos) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use HitPos.Descriptor instead.
+func (HitPos) EnumDescriptor() ([]byte, []int) {
+	return file_game_model_proto_rawDescGZIP(), []int{1}
+}
+
 // 游戏开始，服务端推送给客户端
 type GameStart struct {
 	state         protoimpl.MessageState
@@ -127,8 +236,8 @@ type AttackOnceResult struct {
 	Msg        string          `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
 	AttackType string          `protobuf:"bytes,3,opt,name=attackType,proto3" json:"attackType,omitempty"` // 攻击类型，目前先普通攻击
 	Players    []*PlayerStatus `protobuf:"bytes,4,rep,name=players,proto3" json:"players,omitempty"`
-	From       int64           `protobuf:"varint,5,opt,name=from,proto3" json:"from,omitempty"`      // 攻击方
-	To         int64           `protobuf:"varint,6,opt,name=to,proto3" json:"to,omitempty"`          // 受到攻击的一方
+	From       int32           `protobuf:"varint,5,opt,name=from,proto3" json:"from,omitempty"`      // 攻击方
+	To         int32           `protobuf:"varint,6,opt,name=to,proto3" json:"to,omitempty"`          // 受到攻击的一方
 	HitInfo    *HitInfo        `protobuf:"bytes,7,opt,name=hitInfo,proto3" json:"hitInfo,omitempty"` // 命中信息
 }
 
@@ -192,14 +301,14 @@ func (x *AttackOnceResult) GetPlayers() []*PlayerStatus {
 	return nil
 }
 
-func (x *AttackOnceResult) GetFrom() int64 {
+func (x *AttackOnceResult) GetFrom() int32 {
 	if x != nil {
 		return x.From
 	}
 	return 0
 }
 
-func (x *AttackOnceResult) GetTo() int64 {
+func (x *AttackOnceResult) GetTo() int32 {
 	if x != nil {
 		return x.To
 	}
@@ -221,8 +330,8 @@ type HitInfo struct {
 
 	// 是否命中 | @inject_tag: json:"isHit"
 	IsHit bool `protobuf:"varint,1,opt,name=isHit,proto3" json:"isHit"`
-	// 命中部位
-	Posi string `protobuf:"bytes,2,opt,name=posi,proto3" json:"posi,omitempty"`
+	// 命中部位 | @inject_tag: json:"hitPos"
+	Pos HitPos `protobuf:"varint,2,opt,name=pos,proto3,enum=throw.v1.HitPos" json:"hitPos"`
 }
 
 func (x *HitInfo) Reset() {
@@ -264,11 +373,11 @@ func (x *HitInfo) GetIsHit() bool {
 	return false
 }
 
-func (x *HitInfo) GetPosi() string {
+func (x *HitInfo) GetPos() HitPos {
 	if x != nil {
-		return x.Posi
+		return x.Pos
 	}
-	return ""
+	return HitPos_Normal
 }
 
 type PlayerStatus struct {
@@ -276,7 +385,7 @@ type PlayerStatus struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uid    int64  `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Uid    int32  `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
 	HeroId int32  `protobuf:"varint,2,opt,name=heroId,proto3" json:"heroId,omitempty"`
 	Hp     int32  `protobuf:"varint,3,opt,name=hp,proto3" json:"hp,omitempty"`
 	Name   string `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
@@ -314,7 +423,7 @@ func (*PlayerStatus) Descriptor() ([]byte, []int) {
 	return file_game_model_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *PlayerStatus) GetUid() int64 {
+func (x *PlayerStatus) GetUid() int32 {
 	if x != nil {
 		return x.Uid
 	}
@@ -464,6 +573,548 @@ func (x *GameOver) GetMsg() string {
 	return ""
 }
 
+// 玩家移动
+type RoleMove struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Uid      string        `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Target   *RolePosition `protobuf:"bytes,2,opt,name=target,proto3" json:"target,omitempty"`
+	Vector   *RolePosition `protobuf:"bytes,3,opt,name=vector,proto3" json:"vector,omitempty"`
+	Angle    int32         `protobuf:"varint,4,opt,name=angle,proto3" json:"angle,omitempty"`
+	Joystick bool          `protobuf:"varint,5,opt,name=joystick,proto3" json:"joystick,omitempty"`
+	SkillId  int32         `protobuf:"varint,6,opt,name=skillId,proto3" json:"skillId,omitempty"`
+	TargetId string        `protobuf:"bytes,7,opt,name=targetId,proto3" json:"targetId,omitempty"`
+}
+
+func (x *RoleMove) Reset() {
+	*x = RoleMove{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_game_model_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *RoleMove) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RoleMove) ProtoMessage() {}
+
+func (x *RoleMove) ProtoReflect() protoreflect.Message {
+	mi := &file_game_model_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RoleMove.ProtoReflect.Descriptor instead.
+func (*RoleMove) Descriptor() ([]byte, []int) {
+	return file_game_model_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *RoleMove) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *RoleMove) GetTarget() *RolePosition {
+	if x != nil {
+		return x.Target
+	}
+	return nil
+}
+
+func (x *RoleMove) GetVector() *RolePosition {
+	if x != nil {
+		return x.Vector
+	}
+	return nil
+}
+
+func (x *RoleMove) GetAngle() int32 {
+	if x != nil {
+		return x.Angle
+	}
+	return 0
+}
+
+func (x *RoleMove) GetJoystick() bool {
+	if x != nil {
+		return x.Joystick
+	}
+	return false
+}
+
+func (x *RoleMove) GetSkillId() int32 {
+	if x != nil {
+		return x.SkillId
+	}
+	return 0
+}
+
+func (x *RoleMove) GetTargetId() string {
+	if x != nil {
+		return x.TargetId
+	}
+	return ""
+}
+
+// 广播攻击行为
+type MsgRoleAttack struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// 玩家编号
+	Uid     int32 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	SkillId int32 `protobuf:"varint,2,opt,name=skillId,proto3" json:"skillId,omitempty"`
+	// 技能状态
+	State SkillState `protobuf:"varint,3,opt,name=state,proto3,enum=throw.v1.SkillState" json:"state,omitempty"`
+	// 目标玩家编号（uid）
+	TargetId int32         `protobuf:"varint,4,opt,name=targetId,proto3" json:"targetId,omitempty"`
+	Pos      *RolePosition `protobuf:"bytes,5,opt,name=pos,proto3" json:"pos,omitempty"`           // 攻击方坐标
+	AtkInput *SInputData   `protobuf:"bytes,6,opt,name=atkInput,proto3" json:"atkInput,omitempty"` // 攻击参数
+}
+
+func (x *MsgRoleAttack) Reset() {
+	*x = MsgRoleAttack{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_game_model_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MsgRoleAttack) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MsgRoleAttack) ProtoMessage() {}
+
+func (x *MsgRoleAttack) ProtoReflect() protoreflect.Message {
+	mi := &file_game_model_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MsgRoleAttack.ProtoReflect.Descriptor instead.
+func (*MsgRoleAttack) Descriptor() ([]byte, []int) {
+	return file_game_model_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *MsgRoleAttack) GetUid() int32 {
+	if x != nil {
+		return x.Uid
+	}
+	return 0
+}
+
+func (x *MsgRoleAttack) GetSkillId() int32 {
+	if x != nil {
+		return x.SkillId
+	}
+	return 0
+}
+
+func (x *MsgRoleAttack) GetState() SkillState {
+	if x != nil {
+		return x.State
+	}
+	return SkillState_Front
+}
+
+func (x *MsgRoleAttack) GetTargetId() int32 {
+	if x != nil {
+		return x.TargetId
+	}
+	return 0
+}
+
+func (x *MsgRoleAttack) GetPos() *RolePosition {
+	if x != nil {
+		return x.Pos
+	}
+	return nil
+}
+
+func (x *MsgRoleAttack) GetAtkInput() *SInputData {
+	if x != nil {
+		return x.AtkInput
+	}
+	return nil
+}
+
+type SInputData struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// 发射起点x
+	Sx int32 `protobuf:"varint,1,opt,name=sx,proto3" json:"sx,omitempty"`
+	// 发射起点y
+	Sy int32 `protobuf:"varint,2,opt,name=sy,proto3" json:"sy,omitempty"`
+	// 速度
+	Vx int32 `protobuf:"varint,3,opt,name=vx,proto3" json:"vx,omitempty"`
+	Vy int32 `protobuf:"varint,4,opt,name=vy,proto3" json:"vy,omitempty"`
+	// 重力刻度
+	Gs int32 `protobuf:"varint,5,opt,name=gs,proto3" json:"gs,omitempty"`
+	// 重力系数
+	G int32 `protobuf:"varint,6,opt,name=g,proto3" json:"g,omitempty"`
+}
+
+func (x *SInputData) Reset() {
+	*x = SInputData{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_game_model_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SInputData) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SInputData) ProtoMessage() {}
+
+func (x *SInputData) ProtoReflect() protoreflect.Message {
+	mi := &file_game_model_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SInputData.ProtoReflect.Descriptor instead.
+func (*SInputData) Descriptor() ([]byte, []int) {
+	return file_game_model_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *SInputData) GetSx() int32 {
+	if x != nil {
+		return x.Sx
+	}
+	return 0
+}
+
+func (x *SInputData) GetSy() int32 {
+	if x != nil {
+		return x.Sy
+	}
+	return 0
+}
+
+func (x *SInputData) GetVx() int32 {
+	if x != nil {
+		return x.Vx
+	}
+	return 0
+}
+
+func (x *SInputData) GetVy() int32 {
+	if x != nil {
+		return x.Vy
+	}
+	return 0
+}
+
+func (x *SInputData) GetGs() int32 {
+	if x != nil {
+		return x.Gs
+	}
+	return 0
+}
+
+func (x *SInputData) GetG() int32 {
+	if x != nil {
+		return x.G
+	}
+	return 0
+}
+
+type HitRoleInfo struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	FromUid int32  `protobuf:"varint,1,opt,name=fromUid,proto3" json:"fromUid,omitempty"`
+	ToUid   int32  `protobuf:"varint,2,opt,name=toUid,proto3" json:"toUid,omitempty"`
+	Pos     HitPos `protobuf:"varint,3,opt,name=pos,proto3,enum=throw.v1.HitPos" json:"pos,omitempty"`
+	SkillId int32  `protobuf:"varint,4,opt,name=skillId,proto3" json:"skillId,omitempty"` // 命中的技能 id
+}
+
+func (x *HitRoleInfo) Reset() {
+	*x = HitRoleInfo{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_game_model_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *HitRoleInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HitRoleInfo) ProtoMessage() {}
+
+func (x *HitRoleInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_game_model_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HitRoleInfo.ProtoReflect.Descriptor instead.
+func (*HitRoleInfo) Descriptor() ([]byte, []int) {
+	return file_game_model_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *HitRoleInfo) GetFromUid() int32 {
+	if x != nil {
+		return x.FromUid
+	}
+	return 0
+}
+
+func (x *HitRoleInfo) GetToUid() int32 {
+	if x != nil {
+		return x.ToUid
+	}
+	return 0
+}
+
+func (x *HitRoleInfo) GetPos() HitPos {
+	if x != nil {
+		return x.Pos
+	}
+	return HitPos_Normal
+}
+
+func (x *HitRoleInfo) GetSkillId() int32 {
+	if x != nil {
+		return x.SkillId
+	}
+	return 0
+}
+
+// 角色状态
+type RoleState struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id     string        `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"` // 角色 id/英雄 id
+	Pos    *RolePosition `protobuf:"bytes,2,opt,name=pos,proto3" json:"pos,omitempty"`
+	Skills []*RoleSkill  `protobuf:"bytes,3,rep,name=skills,proto3" json:"skills,omitempty"`
+}
+
+func (x *RoleState) Reset() {
+	*x = RoleState{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_game_model_proto_msgTypes[11]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *RoleState) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RoleState) ProtoMessage() {}
+
+func (x *RoleState) ProtoReflect() protoreflect.Message {
+	mi := &file_game_model_proto_msgTypes[11]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RoleState.ProtoReflect.Descriptor instead.
+func (*RoleState) Descriptor() ([]byte, []int) {
+	return file_game_model_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *RoleState) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *RoleState) GetPos() *RolePosition {
+	if x != nil {
+		return x.Pos
+	}
+	return nil
+}
+
+func (x *RoleState) GetSkills() []*RoleSkill {
+	if x != nil {
+		return x.Skills
+	}
+	return nil
+}
+
+// 玩家位置信息
+type RolePosition struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	X int32 `protobuf:"varint,1,opt,name=x,proto3" json:"x,omitempty"` // x 轴坐标
+	Y int32 `protobuf:"varint,2,opt,name=y,proto3" json:"y,omitempty"` // y 轴坐标
+}
+
+func (x *RolePosition) Reset() {
+	*x = RolePosition{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_game_model_proto_msgTypes[12]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *RolePosition) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RolePosition) ProtoMessage() {}
+
+func (x *RolePosition) ProtoReflect() protoreflect.Message {
+	mi := &file_game_model_proto_msgTypes[12]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RolePosition.ProtoReflect.Descriptor instead.
+func (*RolePosition) Descriptor() ([]byte, []int) {
+	return file_game_model_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *RolePosition) GetX() int32 {
+	if x != nil {
+		return x.X
+	}
+	return 0
+}
+
+func (x *RolePosition) GetY() int32 {
+	if x != nil {
+		return x.Y
+	}
+	return 0
+}
+
+// 角色技能
+type RoleSkill struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id      int32             `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	ForSelf bool              `protobuf:"varint,2,opt,name=forSelf,proto3" json:"forSelf,omitempty"` // 技能的增益对象
+	State   SkillState        `protobuf:"varint,3,opt,name=state,proto3,enum=throw.v1.SkillState" json:"state,omitempty"`
+	Attr    map[string]string `protobuf:"bytes,4,rep,name=attr,proto3" json:"attr,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"` // 技能相关的属性
+}
+
+func (x *RoleSkill) Reset() {
+	*x = RoleSkill{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_game_model_proto_msgTypes[13]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *RoleSkill) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RoleSkill) ProtoMessage() {}
+
+func (x *RoleSkill) ProtoReflect() protoreflect.Message {
+	mi := &file_game_model_proto_msgTypes[13]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RoleSkill.ProtoReflect.Descriptor instead.
+func (*RoleSkill) Descriptor() ([]byte, []int) {
+	return file_game_model_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *RoleSkill) GetId() int32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *RoleSkill) GetForSelf() bool {
+	if x != nil {
+		return x.ForSelf
+	}
+	return false
+}
+
+func (x *RoleSkill) GetState() SkillState {
+	if x != nil {
+		return x.State
+	}
+	return SkillState_Front
+}
+
+func (x *RoleSkill) GetAttr() map[string]string {
+	if x != nil {
+		return x.Attr
+	}
+	return nil
+}
+
 var File_game_model_proto protoreflect.FileDescriptor
 
 var file_game_model_proto_rawDesc = []byte{
@@ -482,17 +1133,18 @@ var file_game_model_proto_rawDesc = []byte{
 	0x70, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x73, 0x18, 0x04, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x16, 0x2e,
 	0x74, 0x68, 0x72, 0x6f, 0x77, 0x2e, 0x76, 0x31, 0x2e, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x53,
 	0x74, 0x61, 0x74, 0x75, 0x73, 0x52, 0x07, 0x70, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x73, 0x12, 0x12,
-	0x0a, 0x04, 0x66, 0x72, 0x6f, 0x6d, 0x18, 0x05, 0x20, 0x01, 0x28, 0x03, 0x52, 0x04, 0x66, 0x72,
-	0x6f, 0x6d, 0x12, 0x0e, 0x0a, 0x02, 0x74, 0x6f, 0x18, 0x06, 0x20, 0x01, 0x28, 0x03, 0x52, 0x02,
+	0x0a, 0x04, 0x66, 0x72, 0x6f, 0x6d, 0x18, 0x05, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x66, 0x72,
+	0x6f, 0x6d, 0x12, 0x0e, 0x0a, 0x02, 0x74, 0x6f, 0x18, 0x06, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02,
 	0x74, 0x6f, 0x12, 0x2b, 0x0a, 0x07, 0x68, 0x69, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x18, 0x07, 0x20,
 	0x01, 0x28, 0x0b, 0x32, 0x11, 0x2e, 0x74, 0x68, 0x72, 0x6f, 0x77, 0x2e, 0x76, 0x31, 0x2e, 0x48,
 	0x69, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x07, 0x68, 0x69, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x22,
-	0x33, 0x0a, 0x07, 0x48, 0x69, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x14, 0x0a, 0x05, 0x69, 0x73,
+	0x43, 0x0a, 0x07, 0x48, 0x69, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x14, 0x0a, 0x05, 0x69, 0x73,
 	0x48, 0x69, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x05, 0x69, 0x73, 0x48, 0x69, 0x74,
-	0x12, 0x12, 0x0a, 0x04, 0x70, 0x6f, 0x73, 0x69, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04,
-	0x70, 0x6f, 0x73, 0x69, 0x22, 0x5c, 0x0a, 0x0c, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x53, 0x74,
+	0x12, 0x22, 0x0a, 0x03, 0x70, 0x6f, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x10, 0x2e,
+	0x74, 0x68, 0x72, 0x6f, 0x77, 0x2e, 0x76, 0x31, 0x2e, 0x48, 0x69, 0x74, 0x50, 0x6f, 0x73, 0x52,
+	0x03, 0x70, 0x6f, 0x73, 0x22, 0x5c, 0x0a, 0x0c, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x53, 0x74,
 	0x61, 0x74, 0x75, 0x73, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x03, 0x52, 0x03, 0x75, 0x69, 0x64, 0x12, 0x16, 0x0a, 0x06, 0x68, 0x65, 0x72, 0x6f, 0x49, 0x64,
+	0x05, 0x52, 0x03, 0x75, 0x69, 0x64, 0x12, 0x16, 0x0a, 0x06, 0x68, 0x65, 0x72, 0x6f, 0x49, 0x64,
 	0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x68, 0x65, 0x72, 0x6f, 0x49, 0x64, 0x12, 0x0e,
 	0x0a, 0x02, 0x68, 0x70, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x68, 0x70, 0x12, 0x12,
 	0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61,
@@ -508,11 +1160,84 @@ var file_game_model_proto_rawDesc = []byte{
 	0x0a, 0x6c, 0x6f, 0x73, 0x65, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x12, 0x14, 0x0a, 0x05, 0x65,
 	0x76, 0x65, 0x6e, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x65, 0x76, 0x65, 0x6e,
 	0x74, 0x12, 0x10, 0x0a, 0x03, 0x6d, 0x73, 0x67, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03,
-	0x6d, 0x73, 0x67, 0x42, 0x39, 0x5a, 0x37, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f,
-	0x6d, 0x2f, 0x73, 0x75, 0x68, 0x61, 0x6e, 0x79, 0x75, 0x6a, 0x69, 0x65, 0x2f, 0x74, 0x68, 0x72,
-	0x6f, 0x77, 0x5f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x2f, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x2f, 0x74, 0x68, 0x72, 0x6f, 0x77, 0x2f, 0x76, 0x31, 0x3b, 0x76, 0x31, 0x62, 0x06,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6d, 0x73, 0x67, 0x22, 0xe4, 0x01, 0x0a, 0x08, 0x52, 0x6f, 0x6c, 0x65, 0x4d, 0x6f, 0x76, 0x65,
+	0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x75,
+	0x69, 0x64, 0x12, 0x2e, 0x0a, 0x06, 0x74, 0x61, 0x72, 0x67, 0x65, 0x74, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x16, 0x2e, 0x74, 0x68, 0x72, 0x6f, 0x77, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x6f,
+	0x6c, 0x65, 0x50, 0x6f, 0x73, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x06, 0x74, 0x61, 0x72, 0x67,
+	0x65, 0x74, 0x12, 0x2e, 0x0a, 0x06, 0x76, 0x65, 0x63, 0x74, 0x6f, 0x72, 0x18, 0x03, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x16, 0x2e, 0x74, 0x68, 0x72, 0x6f, 0x77, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x6f,
+	0x6c, 0x65, 0x50, 0x6f, 0x73, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x06, 0x76, 0x65, 0x63, 0x74,
+	0x6f, 0x72, 0x12, 0x14, 0x0a, 0x05, 0x61, 0x6e, 0x67, 0x6c, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28,
+	0x05, 0x52, 0x05, 0x61, 0x6e, 0x67, 0x6c, 0x65, 0x12, 0x1a, 0x0a, 0x08, 0x6a, 0x6f, 0x79, 0x73,
+	0x74, 0x69, 0x63, 0x6b, 0x18, 0x05, 0x20, 0x01, 0x28, 0x08, 0x52, 0x08, 0x6a, 0x6f, 0x79, 0x73,
+	0x74, 0x69, 0x63, 0x6b, 0x12, 0x18, 0x0a, 0x07, 0x73, 0x6b, 0x69, 0x6c, 0x6c, 0x49, 0x64, 0x18,
+	0x06, 0x20, 0x01, 0x28, 0x05, 0x52, 0x07, 0x73, 0x6b, 0x69, 0x6c, 0x6c, 0x49, 0x64, 0x12, 0x1a,
+	0x0a, 0x08, 0x74, 0x61, 0x72, 0x67, 0x65, 0x74, 0x49, 0x64, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x08, 0x74, 0x61, 0x72, 0x67, 0x65, 0x74, 0x49, 0x64, 0x22, 0xdf, 0x01, 0x0a, 0x0d, 0x4d,
+	0x73, 0x67, 0x52, 0x6f, 0x6c, 0x65, 0x41, 0x74, 0x74, 0x61, 0x63, 0x6b, 0x12, 0x10, 0x0a, 0x03,
+	0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x03, 0x75, 0x69, 0x64, 0x12, 0x18,
+	0x0a, 0x07, 0x73, 0x6b, 0x69, 0x6c, 0x6c, 0x49, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52,
+	0x07, 0x73, 0x6b, 0x69, 0x6c, 0x6c, 0x49, 0x64, 0x12, 0x2a, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x74,
+	0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x14, 0x2e, 0x74, 0x68, 0x72, 0x6f, 0x77, 0x2e,
+	0x76, 0x31, 0x2e, 0x53, 0x6b, 0x69, 0x6c, 0x6c, 0x53, 0x74, 0x61, 0x74, 0x65, 0x52, 0x05, 0x73,
+	0x74, 0x61, 0x74, 0x65, 0x12, 0x1a, 0x0a, 0x08, 0x74, 0x61, 0x72, 0x67, 0x65, 0x74, 0x49, 0x64,
+	0x18, 0x04, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x74, 0x61, 0x72, 0x67, 0x65, 0x74, 0x49, 0x64,
+	0x12, 0x28, 0x0a, 0x03, 0x70, 0x6f, 0x73, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e,
+	0x74, 0x68, 0x72, 0x6f, 0x77, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x6f, 0x6c, 0x65, 0x50, 0x6f, 0x73,
+	0x69, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x03, 0x70, 0x6f, 0x73, 0x12, 0x30, 0x0a, 0x08, 0x61, 0x74,
+	0x6b, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x18, 0x06, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x74,
+	0x68, 0x72, 0x6f, 0x77, 0x2e, 0x76, 0x31, 0x2e, 0x53, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x44, 0x61,
+	0x74, 0x61, 0x52, 0x08, 0x61, 0x74, 0x6b, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x22, 0x6a, 0x0a, 0x0a,
+	0x53, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x44, 0x61, 0x74, 0x61, 0x12, 0x0e, 0x0a, 0x02, 0x73, 0x78,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x73, 0x78, 0x12, 0x0e, 0x0a, 0x02, 0x73, 0x79,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x73, 0x79, 0x12, 0x0e, 0x0a, 0x02, 0x76, 0x78,
+	0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x76, 0x78, 0x12, 0x0e, 0x0a, 0x02, 0x76, 0x79,
+	0x18, 0x04, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x76, 0x79, 0x12, 0x0e, 0x0a, 0x02, 0x67, 0x73,
+	0x18, 0x05, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x67, 0x73, 0x12, 0x0c, 0x0a, 0x01, 0x67, 0x18,
+	0x06, 0x20, 0x01, 0x28, 0x05, 0x52, 0x01, 0x67, 0x22, 0x7b, 0x0a, 0x0b, 0x48, 0x69, 0x74, 0x52,
+	0x6f, 0x6c, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x18, 0x0a, 0x07, 0x66, 0x72, 0x6f, 0x6d, 0x55,
+	0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x07, 0x66, 0x72, 0x6f, 0x6d, 0x55, 0x69,
+	0x64, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x6f, 0x55, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05,
+	0x52, 0x05, 0x74, 0x6f, 0x55, 0x69, 0x64, 0x12, 0x22, 0x0a, 0x03, 0x70, 0x6f, 0x73, 0x18, 0x03,
+	0x20, 0x01, 0x28, 0x0e, 0x32, 0x10, 0x2e, 0x74, 0x68, 0x72, 0x6f, 0x77, 0x2e, 0x76, 0x31, 0x2e,
+	0x48, 0x69, 0x74, 0x50, 0x6f, 0x73, 0x52, 0x03, 0x70, 0x6f, 0x73, 0x12, 0x18, 0x0a, 0x07, 0x73,
+	0x6b, 0x69, 0x6c, 0x6c, 0x49, 0x64, 0x18, 0x04, 0x20, 0x01, 0x28, 0x05, 0x52, 0x07, 0x73, 0x6b,
+	0x69, 0x6c, 0x6c, 0x49, 0x64, 0x22, 0x72, 0x0a, 0x09, 0x52, 0x6f, 0x6c, 0x65, 0x53, 0x74, 0x61,
+	0x74, 0x65, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02,
+	0x69, 0x64, 0x12, 0x28, 0x0a, 0x03, 0x70, 0x6f, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32,
+	0x16, 0x2e, 0x74, 0x68, 0x72, 0x6f, 0x77, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x6f, 0x6c, 0x65, 0x50,
+	0x6f, 0x73, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x03, 0x70, 0x6f, 0x73, 0x12, 0x2b, 0x0a, 0x06,
+	0x73, 0x6b, 0x69, 0x6c, 0x6c, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x13, 0x2e, 0x74,
+	0x68, 0x72, 0x6f, 0x77, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x6f, 0x6c, 0x65, 0x53, 0x6b, 0x69, 0x6c,
+	0x6c, 0x52, 0x06, 0x73, 0x6b, 0x69, 0x6c, 0x6c, 0x73, 0x22, 0x2a, 0x0a, 0x0c, 0x52, 0x6f, 0x6c,
+	0x65, 0x50, 0x6f, 0x73, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x0c, 0x0a, 0x01, 0x78, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x01, 0x78, 0x12, 0x0c, 0x0a, 0x01, 0x79, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x05, 0x52, 0x01, 0x79, 0x22, 0xcd, 0x01, 0x0a, 0x09, 0x52, 0x6f, 0x6c, 0x65, 0x53, 0x6b,
+	0x69, 0x6c, 0x6c, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52,
+	0x02, 0x69, 0x64, 0x12, 0x18, 0x0a, 0x07, 0x66, 0x6f, 0x72, 0x53, 0x65, 0x6c, 0x66, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x08, 0x52, 0x07, 0x66, 0x6f, 0x72, 0x53, 0x65, 0x6c, 0x66, 0x12, 0x2a, 0x0a,
+	0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x14, 0x2e, 0x74,
+	0x68, 0x72, 0x6f, 0x77, 0x2e, 0x76, 0x31, 0x2e, 0x53, 0x6b, 0x69, 0x6c, 0x6c, 0x53, 0x74, 0x61,
+	0x74, 0x65, 0x52, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x12, 0x31, 0x0a, 0x04, 0x61, 0x74, 0x74,
+	0x72, 0x18, 0x04, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1d, 0x2e, 0x74, 0x68, 0x72, 0x6f, 0x77, 0x2e,
+	0x76, 0x31, 0x2e, 0x52, 0x6f, 0x6c, 0x65, 0x53, 0x6b, 0x69, 0x6c, 0x6c, 0x2e, 0x41, 0x74, 0x74,
+	0x72, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x04, 0x61, 0x74, 0x74, 0x72, 0x1a, 0x37, 0x0a, 0x09,
+	0x41, 0x74, 0x74, 0x72, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76,
+	0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75,
+	0x65, 0x3a, 0x02, 0x38, 0x01, 0x2a, 0x46, 0x0a, 0x0a, 0x53, 0x6b, 0x69, 0x6c, 0x6c, 0x53, 0x74,
+	0x61, 0x74, 0x65, 0x12, 0x09, 0x0a, 0x05, 0x46, 0x72, 0x6f, 0x6e, 0x74, 0x10, 0x00, 0x12, 0x0b,
+	0x0a, 0x07, 0x43, 0x61, 0x73, 0x74, 0x69, 0x6e, 0x67, 0x10, 0x01, 0x12, 0x08, 0x0a, 0x04, 0x42,
+	0x61, 0x63, 0x6b, 0x10, 0x02, 0x12, 0x0b, 0x0a, 0x07, 0x43, 0x6f, 0x6f, 0x6c, 0x69, 0x6e, 0x67,
+	0x10, 0x03, 0x12, 0x09, 0x0a, 0x05, 0x52, 0x65, 0x61, 0x64, 0x79, 0x10, 0x04, 0x2a, 0x2e, 0x0a,
+	0x06, 0x48, 0x69, 0x74, 0x50, 0x6f, 0x73, 0x12, 0x0a, 0x0a, 0x06, 0x4e, 0x6f, 0x72, 0x6d, 0x61,
+	0x6c, 0x10, 0x00, 0x12, 0x09, 0x0a, 0x05, 0x46, 0x61, 0x74, 0x61, 0x6c, 0x10, 0x01, 0x12, 0x0d,
+	0x0a, 0x09, 0x53, 0x65, 0x63, 0x6f, 0x6e, 0x64, 0x61, 0x72, 0x79, 0x10, 0x02, 0x42, 0x39, 0x5a,
+	0x37, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x75, 0x68, 0x61,
+	0x6e, 0x79, 0x75, 0x6a, 0x69, 0x65, 0x2f, 0x74, 0x68, 0x72, 0x6f, 0x77, 0x5f, 0x69, 0x6e, 0x74,
+	0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x74, 0x68, 0x72,
+	0x6f, 0x77, 0x2f, 0x76, 0x31, 0x3b, 0x76, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -527,26 +1252,48 @@ func file_game_model_proto_rawDescGZIP() []byte {
 	return file_game_model_proto_rawDescData
 }
 
-var file_game_model_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_game_model_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
+var file_game_model_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
 var file_game_model_proto_goTypes = []interface{}{
-	(*GameStart)(nil),        // 0: throw.v1.GameStart
-	(*AttackOnceInfo)(nil),   // 1: throw.v1.AttackOnceInfo
-	(*AttackOnceResult)(nil), // 2: throw.v1.AttackOnceResult
-	(*HitInfo)(nil),          // 3: throw.v1.HitInfo
-	(*PlayerStatus)(nil),     // 4: throw.v1.PlayerStatus
-	(*UserQuit)(nil),         // 5: throw.v1.UserQuit
-	(*GameOver)(nil),         // 6: throw.v1.GameOver
+	(SkillState)(0),          // 0: throw.v1.SkillState
+	(HitPos)(0),              // 1: throw.v1.HitPos
+	(*GameStart)(nil),        // 2: throw.v1.GameStart
+	(*AttackOnceInfo)(nil),   // 3: throw.v1.AttackOnceInfo
+	(*AttackOnceResult)(nil), // 4: throw.v1.AttackOnceResult
+	(*HitInfo)(nil),          // 5: throw.v1.HitInfo
+	(*PlayerStatus)(nil),     // 6: throw.v1.PlayerStatus
+	(*UserQuit)(nil),         // 7: throw.v1.UserQuit
+	(*GameOver)(nil),         // 8: throw.v1.GameOver
+	(*RoleMove)(nil),         // 9: throw.v1.RoleMove
+	(*MsgRoleAttack)(nil),    // 10: throw.v1.MsgRoleAttack
+	(*SInputData)(nil),       // 11: throw.v1.SInputData
+	(*HitRoleInfo)(nil),      // 12: throw.v1.HitRoleInfo
+	(*RoleState)(nil),        // 13: throw.v1.RoleState
+	(*RolePosition)(nil),     // 14: throw.v1.RolePosition
+	(*RoleSkill)(nil),        // 15: throw.v1.RoleSkill
+	nil,                      // 16: throw.v1.RoleSkill.AttrEntry
 }
 var file_game_model_proto_depIdxs = []int32{
-	4, // 0: throw.v1.AttackOnceResult.players:type_name -> throw.v1.PlayerStatus
-	3, // 1: throw.v1.AttackOnceResult.hitInfo:type_name -> throw.v1.HitInfo
-	4, // 2: throw.v1.GameOver.winPlayer:type_name -> throw.v1.PlayerStatus
-	4, // 3: throw.v1.GameOver.losePlayer:type_name -> throw.v1.PlayerStatus
-	4, // [4:4] is the sub-list for method output_type
-	4, // [4:4] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	6,  // 0: throw.v1.AttackOnceResult.players:type_name -> throw.v1.PlayerStatus
+	5,  // 1: throw.v1.AttackOnceResult.hitInfo:type_name -> throw.v1.HitInfo
+	1,  // 2: throw.v1.HitInfo.pos:type_name -> throw.v1.HitPos
+	6,  // 3: throw.v1.GameOver.winPlayer:type_name -> throw.v1.PlayerStatus
+	6,  // 4: throw.v1.GameOver.losePlayer:type_name -> throw.v1.PlayerStatus
+	14, // 5: throw.v1.RoleMove.target:type_name -> throw.v1.RolePosition
+	14, // 6: throw.v1.RoleMove.vector:type_name -> throw.v1.RolePosition
+	0,  // 7: throw.v1.MsgRoleAttack.state:type_name -> throw.v1.SkillState
+	14, // 8: throw.v1.MsgRoleAttack.pos:type_name -> throw.v1.RolePosition
+	11, // 9: throw.v1.MsgRoleAttack.atkInput:type_name -> throw.v1.SInputData
+	1,  // 10: throw.v1.HitRoleInfo.pos:type_name -> throw.v1.HitPos
+	14, // 11: throw.v1.RoleState.pos:type_name -> throw.v1.RolePosition
+	15, // 12: throw.v1.RoleState.skills:type_name -> throw.v1.RoleSkill
+	0,  // 13: throw.v1.RoleSkill.state:type_name -> throw.v1.SkillState
+	16, // 14: throw.v1.RoleSkill.attr:type_name -> throw.v1.RoleSkill.AttrEntry
+	15, // [15:15] is the sub-list for method output_type
+	15, // [15:15] is the sub-list for method input_type
+	15, // [15:15] is the sub-list for extension type_name
+	15, // [15:15] is the sub-list for extension extendee
+	0,  // [0:15] is the sub-list for field type_name
 }
 
 func init() { file_game_model_proto_init() }
@@ -639,19 +1386,104 @@ func file_game_model_proto_init() {
 				return nil
 			}
 		}
+		file_game_model_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*RoleMove); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_game_model_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MsgRoleAttack); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_game_model_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SInputData); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_game_model_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*HitRoleInfo); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_game_model_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*RoleState); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_game_model_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*RolePosition); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_game_model_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*RoleSkill); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_game_model_proto_rawDesc,
-			NumEnums:      0,
-			NumMessages:   7,
+			NumEnums:      2,
+			NumMessages:   15,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
 		GoTypes:           file_game_model_proto_goTypes,
 		DependencyIndexes: file_game_model_proto_depIdxs,
+		EnumInfos:         file_game_model_proto_enumTypes,
 		MessageInfos:      file_game_model_proto_msgTypes,
 	}.Build()
 	File_game_model_proto = out.File

@@ -20,8 +20,8 @@ message AttackOnceResult {
   string msg = 2;
   string attackType = 3; // 攻击类型，目前先普通攻击
   repeated PlayerStatus players = 4;
-  int64 from = 5;  // 攻击方
-  int64 to = 6; // 受到攻击的一方
+  int32 from = 5;  // 攻击方
+  int32 to = 6; // 受到攻击的一方
   HitInfo hitInfo = 7; // 命中信息
 }
 
@@ -29,12 +29,12 @@ message AttackOnceResult {
 message HitInfo {
   // 是否命中 | @inject_tag: json:"isHit"
   bool isHit = 1;
-  // 命中部位
-  string posi = 2;
+  // 命中部位 | @inject_tag: json:"hitPos"
+  HitPos pos = 2;
 }
 
 message PlayerStatus {
-  int64 uid = 1;
+  int32 uid = 1;
   int32 heroId = 2;
   int32 hp = 3;
   string name = 4;
@@ -53,4 +53,90 @@ message GameOver {
   PlayerStatus losePlayer = 2;
   string event = 3;
   string msg = 4;
+}
+
+// 玩家移动
+message RoleMove {
+  string uid = 1;
+  RolePosition target = 2;
+  RolePosition vector = 3;
+  int32 angle = 4;
+  bool joystick = 5;
+  int32 skillId = 6;
+  string targetId = 7;
+}
+
+enum SkillState {
+  // 前摇状态
+  Front = 0;
+  // 施放状态
+  Casting = 1;
+  // 后摇状态
+  Back = 2;
+  // 冷却
+  Cooling = 3;
+  // 就绪
+  Ready = 4;
+}
+
+// 广播攻击行为
+message MsgRoleAttack {
+  // 玩家编号
+  int32 uid = 1;
+  int32 skillId = 2;
+  // 技能状态
+  SkillState state = 3;
+  // 目标玩家编号（uid）
+  int32 targetId = 4;
+  RolePosition pos = 5; // 攻击方坐标
+  SInputData atkInput = 6; // 攻击参数
+}
+
+message SInputData {
+  // 发射起点x
+  int32 sx = 1;
+  // 发射起点y
+  int32 sy = 2;
+  // 速度
+  int32 vx = 3;
+  int32 vy = 4;
+  // 重力刻度
+  int32 gs = 5;
+  // 重力系数
+  int32 g = 6;
+}
+
+message HitRoleInfo {
+  int32 fromUid = 1;
+  int32 toUid = 2;
+  HitPos pos = 3;
+  int32 skillId = 4;// 命中的技能 id
+}
+
+
+enum HitPos {
+  Normal = 0;// 普通：四肢，躯干
+  Fatal = 1;// 致命：头部
+  Secondary = 2;// 次要：膝盖
+}
+
+// 角色状态
+message RoleState {
+  string id  = 1;// 角色 id/英雄 id
+  RolePosition pos = 2;
+  repeated RoleSkill skills = 3;
+}
+
+// 玩家位置信息
+message RolePosition {
+  int32 x = 1;// x 轴坐标
+  int32 y = 2;// y 轴坐标
+}
+
+// 角色技能
+message RoleSkill {
+  int32 id = 1;
+  bool forSelf = 2;// 技能的增益对象
+  SkillState state = 3;
+  map<string, string> attr = 4; // 技能相关的属性
 }

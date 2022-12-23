@@ -3,6 +3,8 @@ syntax = "proto3";
 package throw.v1;
 option go_package = "github.com/suhanyujie/throw_interface/proto/throw/v1;v1";
 
+import "game_model.proto";
+
 // 加入游戏时对应的游戏 id
 // 一场游戏的 id；全局唯一；不能有两场游戏 id 一样。
 message DataOfJoin {
@@ -45,17 +47,6 @@ message RoleDetailed {
   RoleInfo roleInfo = 1;
   RoleState state = 2;
   map<string, int32> attributes = 3;
-}
-
-message RoleState {
-  string id  = 1;
-  RolePosition pos = 2;
-}
-
-// 玩家位置信息
-message RolePosition {
-  int32 x = 1;// x 轴坐标
-  int32 y = 2;// y 轴坐标
 }
 
 // 游戏即将开始时，广播房间内玩家的状态

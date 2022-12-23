@@ -10,7 +10,7 @@ message UserLogin {
 
 // 返回给客户端的用户信息
 message UserInfo {
-  int64 id = 1;
+  int32 id = 1;
   string name = 2;
   int32 heroId = 3;
 }
