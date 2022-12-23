@@ -3,54 +3,8 @@ syntax = "proto3";
 package throw.v1;
 option go_package = "github.com/suhanyujie/throw_interface/proto/throw/v1;v1";
 
-import "game_model.proto";
-
 // 加入游戏时对应的游戏 id
 // 一场游戏的 id；全局唯一；不能有两场游戏 id 一样。
 message DataOfJoin {
   uint64 id = 2;
-}
-
-message RoomState {
-  int32 id = 1;
-  string name = 2;
-  int32 amount = 3;//房间当前用户数
-  int32 max = 4; // 房间最大用户数量
-  int32 timeUpdate = 5;
-}
-
-message RoomDetail {
-  string id = 1;
-  string name = 2;
-  uint32 amount = 3;// 房间当前用户数量
-  uint32 max = 4; // 房间最大用户数量
-  uint32 timeUpdate = 5;// 房间信息的最后更新时间
-  repeated RoleDetailed roles = 6;// 房间内的用户
-  repeated RoleDetailed npcs = 7;// 房间内非玩家角色
-  repeated RoomMsgRecord messages = 8;// 房间历史聊天记录
-}
-
-// 房间内聊天记录信息
-message RoomMsgRecord {
-  string time = 1;
-  RoleInfo role = 2;
-  string content = 3;
-}
-
-message RoleInfo {
-  int32 id = 1;
-  string nickname = 2;
-}
-
-// 角色/英雄信息
-message RoleDetailed {
-  RoleInfo roleInfo = 1;
-  RoleState state = 2;
-  map<string, int32> attributes = 3;
-}
-
-// 游戏即将开始时，广播房间内玩家的状态
-message GameStartInfo{
-  string msg = 1;
-  repeated RoleDetailed roles = 2;
 }
