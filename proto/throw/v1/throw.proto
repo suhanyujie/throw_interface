@@ -4,44 +4,62 @@ package throw.v1;
 option go_package = "github.com/suhanyujie/throw_interface/proto/throw/v1;v1";
 
 message IRequestProtocol {
+  // @inject_tag: msg:"action"
   string action = 1;
+  // @inject_tag: msg:"method"
   string method = 2;
+  // @inject_tag: msg:"callback"
   string callback = 3;
+  // @inject_tag: msg:"isCompress"
   bool isCompress = 4; // true 表示 data 为 proto 编码的字节数组
+  // @inject_tag: msg:"channelId"
   int32 channelId = 5;
+  // @inject_tag: msg:"data"
   bytes data = 6;     // data 是 proto 编码的字节
 }
 
 message IResponseProtocol {
+  // @inject_tag: msg:"code"
   int32 code = 1;
+  // @inject_tag: msg:"isCompress"
   bool isCompress = 2; // true 表示 data 为 proto 编码的字节数组
+  // @inject_tag: msg:"data"
   bytes data = 3;    // data 是 proto 编码的字节
+  // @inject_tag: msg:"callback"
   string callback = 4;
 //  string msg = 5; // 异常时的详细信息
 }
 
 // 该结构序列化后，放在 IRequestProtocol.data 中
 message ReqData {
+  // @inject_tag: msg:"route"
   string route = 1;
+  // @inject_tag: msg:"data"
   bytes data = 3;
   // google.protobuf.Struct data = 3;
 }
 
 // 该结构序列化后，放在 IResponseProtocol.data 中
 message RespData {
+  // @inject_tag: msg:"code"
   int32 code = 1;
+  // @inject_tag: msg:"msg"
   string msg = 2;
+  // @inject_tag: msg:"data"
   bytes data = 3;
   // google.protobuf.Struct data = 3;
 }
 
 // 前端指定 method 为 HeartBeat，就视为是心跳
 message HeartBeat {
+  // @inject_tag: msg:"msg"
   string msg = 1;
 }
 
 message DataInfoResp {
+  // @inject_tag: msg:"code"
   int32 code = 1;
+  // @inject_tag: msg:"msg"
   string msg = 2;
 }
 
