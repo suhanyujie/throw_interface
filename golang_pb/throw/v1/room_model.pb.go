@@ -27,8 +27,8 @@ type DataOfJoin struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: msg:"id"
-	Id uint64 `protobuf:"varint,2,opt,name=id,proto3" json:"id,omitempty" msg:"id"`
+	// @inject_tag: msgpack:"id"
+	Id uint64 `protobuf:"varint,2,opt,name=id,proto3" json:"id,omitempty" msgpack:"id"`
 }
 
 func (x *DataOfJoin) Reset() {

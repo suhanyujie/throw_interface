@@ -25,18 +25,18 @@ type IRequestProtocol struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: msg:"action"
-	Action string `protobuf:"bytes,1,opt,name=action,proto3" json:"action,omitempty" msg:"action"`
-	// @inject_tag: msg:"method"
-	Method string `protobuf:"bytes,2,opt,name=method,proto3" json:"method,omitempty" msg:"method"`
-	// @inject_tag: msg:"callback"
-	Callback string `protobuf:"bytes,3,opt,name=callback,proto3" json:"callback,omitempty" msg:"callback"`
-	// @inject_tag: msg:"isCompress"
-	IsCompress bool `protobuf:"varint,4,opt,name=isCompress,proto3" json:"isCompress,omitempty" msg:"isCompress"` // true 表示 data 为 proto 编码的字节数组
-	// @inject_tag: msg:"channelId"
-	ChannelId int32 `protobuf:"varint,5,opt,name=channelId,proto3" json:"channelId,omitempty" msg:"channelId"`
-	// @inject_tag: msg:"data"
-	Data []byte `protobuf:"bytes,6,opt,name=data,proto3" json:"data,omitempty" msg:"data"` // data 是 proto 编码的字节
+	// @inject_tag: msgpack:"action"
+	Action string `protobuf:"bytes,1,opt,name=action,proto3" json:"action,omitempty" msgpack:"action"`
+	// @inject_tag: msgpack:"method"
+	Method string `protobuf:"bytes,2,opt,name=method,proto3" json:"method,omitempty" msgpack:"method"`
+	// @inject_tag: msgpack:"callback"
+	Callback string `protobuf:"bytes,3,opt,name=callback,proto3" json:"callback,omitempty" msgpack:"callback"`
+	// @inject_tag: msgpack:"isCompress"
+	IsCompress bool `protobuf:"varint,4,opt,name=isCompress,proto3" json:"isCompress,omitempty" msgpack:"isCompress"` // true 表示 data 为 proto 编码的字节数组
+	// @inject_tag: msgpack:"channelId"
+	ChannelId int32 `protobuf:"varint,5,opt,name=channelId,proto3" json:"channelId,omitempty" msgpack:"channelId"`
+	// @inject_tag: msgpack:"data"
+	Data []byte `protobuf:"bytes,6,opt,name=data,proto3" json:"data,omitempty" msgpack:"data"` // data 是 proto 编码的字节
 }
 
 func (x *IRequestProtocol) Reset() {
@@ -118,14 +118,14 @@ type IResponseProtocol struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: msg:"code"
-	Code int32 `protobuf:"varint,1,opt,name=code,proto3" json:"code,omitempty" msg:"code"`
-	// @inject_tag: msg:"isCompress"
-	IsCompress bool `protobuf:"varint,2,opt,name=isCompress,proto3" json:"isCompress,omitempty" msg:"isCompress"` // true 表示 data 为 proto 编码的字节数组
-	// @inject_tag: msg:"data"
-	Data []byte `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty" msg:"data"` // data 是 proto 编码的字节
-	// @inject_tag: msg:"callback"
-	Callback string `protobuf:"bytes,4,opt,name=callback,proto3" json:"callback,omitempty" msg:"callback"` //  string msg = 5; // 异常时的详细信息
+	// @inject_tag: msgpack:"code"
+	Code int32 `protobuf:"varint,1,opt,name=code,proto3" json:"code,omitempty" msgpack:"code"`
+	// @inject_tag: msgpack:"isCompress"
+	IsCompress bool `protobuf:"varint,2,opt,name=isCompress,proto3" json:"isCompress,omitempty" msgpack:"isCompress"` // true 表示 data 为 proto 编码的字节数组
+	// @inject_tag: msgpack:"data"
+	Data []byte `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty" msgpack:"data"` // data 是 proto 编码的字节
+	// @inject_tag: msgpack:"callback"
+	Callback string `protobuf:"bytes,4,opt,name=callback,proto3" json:"callback,omitempty" msgpack:"callback"` //  string msg = 5; // 异常时的详细信息
 }
 
 func (x *IResponseProtocol) Reset() {
@@ -194,10 +194,10 @@ type ReqData struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: msg:"route"
-	Route string `protobuf:"bytes,1,opt,name=route,proto3" json:"route,omitempty" msg:"route"`
-	// @inject_tag: msg:"data"
-	Data []byte `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty" msg:"data"` // google.protobuf.Struct data = 3;
+	// @inject_tag: msgpack:"route"
+	Route string `protobuf:"bytes,1,opt,name=route,proto3" json:"route,omitempty" msgpack:"route"`
+	// @inject_tag: msgpack:"data"
+	Data []byte `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty" msgpack:"data"` // google.protobuf.Struct data = 3;
 }
 
 func (x *ReqData) Reset() {
@@ -252,12 +252,12 @@ type RespData struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: msg:"code"
-	Code int32 `protobuf:"varint,1,opt,name=code,proto3" json:"code,omitempty" msg:"code"`
-	// @inject_tag: msg:"msg"
-	Msg string `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty" msg:"msg"`
-	// @inject_tag: msg:"data"
-	Data []byte `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty" msg:"data"` // google.protobuf.Struct data = 3;
+	// @inject_tag: msgpack:"code"
+	Code int32 `protobuf:"varint,1,opt,name=code,proto3" json:"code,omitempty" msgpack:"code"`
+	// @inject_tag: msgpack:"msg"
+	Msg string `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty" msgpack:"msg"`
+	// @inject_tag: msgpack:"data"
+	Data []byte `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty" msgpack:"data"` // google.protobuf.Struct data = 3;
 }
 
 func (x *RespData) Reset() {
@@ -319,8 +319,8 @@ type HeartBeat struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: msg:"msg"
-	Msg string `protobuf:"bytes,1,opt,name=msg,proto3" json:"msg,omitempty" msg:"msg"`
+	// @inject_tag: msgpack:"msg"
+	Msg string `protobuf:"bytes,1,opt,name=msg,proto3" json:"msg,omitempty" msgpack:"msg"`
 }
 
 func (x *HeartBeat) Reset() {
@@ -367,10 +367,10 @@ type DataInfoResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: msg:"code"
-	Code int32 `protobuf:"varint,1,opt,name=code,proto3" json:"code,omitempty" msg:"code"`
-	// @inject_tag: msg:"msg"
-	Msg string `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty" msg:"msg"`
+	// @inject_tag: msgpack:"code"
+	Code int32 `protobuf:"varint,1,opt,name=code,proto3" json:"code,omitempty" msgpack:"code"`
+	// @inject_tag: msgpack:"msg"
+	Msg string `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty" msgpack:"msg"`
 }
 
 func (x *DataInfoResp) Reset() {

@@ -26,8 +26,8 @@ type UserLogin struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: msg:"token"
-	Token string `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty" msg:"token"`
+	// @inject_tag: msgpack:"token"
+	Token string `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty" msgpack:"token"`
 }
 
 func (x *UserLogin) Reset() {
@@ -75,12 +75,12 @@ type UserInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: msg:"id"
-	Id int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty" msg:"id"`
-	// @inject_tag: msg:"name"
-	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty" msg:"name"`
-	// @inject_tag: msg:"heroId"
-	HeroId int32 `protobuf:"varint,3,opt,name=heroId,proto3" json:"heroId,omitempty" msg:"heroId"`
+	// @inject_tag: msgpack:"id"
+	Id int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty" msgpack:"id"`
+	// @inject_tag: msgpack:"name"
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty" msgpack:"name"`
+	// @inject_tag: msgpack:"heroId"
+	HeroId int32 `protobuf:"varint,3,opt,name=heroId,proto3" json:"heroId,omitempty" msgpack:"heroId"`
 }
 
 func (x *UserInfo) Reset() {

@@ -232,20 +232,20 @@ type AttackOnceResult struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: json:"event" msg:"event"
-	Event string `protobuf:"bytes,1,opt,name=event,proto3" json:"event" msg:"event"`
-	// @inject_tag: msg:"msg"
-	Msg string `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty" msg:"msg"`
-	// @inject_tag: msg:"attackType"
-	AttackType string `protobuf:"bytes,3,opt,name=attackType,proto3" json:"attackType,omitempty" msg:"attackType"` // 攻击类型，目前先普通攻击
-	// @inject_tag: msg:"players"
-	Players []*PlayerStatus `protobuf:"bytes,4,rep,name=players,proto3" json:"players,omitempty" msg:"players"`
-	// @inject_tag: msg:"from"
-	From int32 `protobuf:"varint,5,opt,name=from,proto3" json:"from,omitempty" msg:"from"` // 攻击方
-	// @inject_tag: msg:"to"
-	To int32 `protobuf:"varint,6,opt,name=to,proto3" json:"to,omitempty" msg:"to"` // 受到攻击的一方
-	// @inject_tag: msg:"hitInfo"
-	HitInfo *HitInfo `protobuf:"bytes,7,opt,name=hitInfo,proto3" json:"hitInfo,omitempty" msg:"hitInfo"` // 命中信息
+	// @inject_tag: json:"event" msgpack:"event"
+	Event string `protobuf:"bytes,1,opt,name=event,proto3" json:"event" msgpack:"event"`
+	// @inject_tag: msgpack:"msg"
+	Msg string `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty" msgpack:"msg"`
+	// @inject_tag: msgpack:"attackType"
+	AttackType string `protobuf:"bytes,3,opt,name=attackType,proto3" json:"attackType,omitempty" msgpack:"attackType"` // 攻击类型，目前先普通攻击
+	// @inject_tag: msgpack:"players"
+	Players []*PlayerStatus `protobuf:"bytes,4,rep,name=players,proto3" json:"players,omitempty" msgpack:"players"`
+	// @inject_tag: msgpack:"from"
+	From int32 `protobuf:"varint,5,opt,name=from,proto3" json:"from,omitempty" msgpack:"from"` // 攻击方
+	// @inject_tag: msgpack:"to"
+	To int32 `protobuf:"varint,6,opt,name=to,proto3" json:"to,omitempty" msgpack:"to"` // 受到攻击的一方
+	// @inject_tag: msgpack:"hitInfo"
+	HitInfo *HitInfo `protobuf:"bytes,7,opt,name=hitInfo,proto3" json:"hitInfo,omitempty" msgpack:"hitInfo"` // 命中信息
 }
 
 func (x *AttackOnceResult) Reset() {
@@ -335,10 +335,10 @@ type HitInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// 是否命中 | @inject_tag: json:"isHit" msg:"isHit"
-	IsHit bool `protobuf:"varint,1,opt,name=isHit,proto3" json:"isHit" msg:"isHit"`
-	// 命中部位 | @inject_tag: json:"pos" msg:"pos"
-	Pos HitPos `protobuf:"varint,2,opt,name=pos,proto3,enum=throw.v1.HitPos" json:"pos" msg:"pos"`
+	// 是否命中 | @inject_tag: json:"isHit" msgpack:"isHit"
+	IsHit bool `protobuf:"varint,1,opt,name=isHit,proto3" json:"isHit" msgpack:"isHit"`
+	// 命中部位 | @inject_tag: json:"pos" msgpack:"pos"
+	Pos HitPos `protobuf:"varint,2,opt,name=pos,proto3,enum=throw.v1.HitPos" json:"pos" msgpack:"pos"`
 }
 
 func (x *HitInfo) Reset() {
@@ -392,14 +392,14 @@ type PlayerStatus struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: msg:"uid"
-	Uid int32 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty" msg:"uid"`
-	// @inject_tag: msg:"heroId"
-	HeroId int32 `protobuf:"varint,2,opt,name=heroId,proto3" json:"heroId,omitempty" msg:"heroId"`
-	// @inject_tag: msg:"hp"
-	Hp int32 `protobuf:"varint,3,opt,name=hp,proto3" json:"hp,omitempty" msg:"hp"`
-	// @inject_tag: msg:"name"
-	Name string `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty" msg:"name"`
+	// @inject_tag: msgpack:"uid"
+	Uid int32 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty" msgpack:"uid"`
+	// @inject_tag: msgpack:"heroId"
+	HeroId int32 `protobuf:"varint,2,opt,name=heroId,proto3" json:"heroId,omitempty" msgpack:"heroId"`
+	// @inject_tag: msgpack:"hp"
+	Hp int32 `protobuf:"varint,3,opt,name=hp,proto3" json:"hp,omitempty" msgpack:"hp"`
+	// @inject_tag: msgpack:"name"
+	Name string `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty" msgpack:"name"`
 }
 
 func (x *PlayerStatus) Reset() {
@@ -469,8 +469,8 @@ type UserQuit struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: msg:"uid"
-	Uid int32 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty" msg:"uid"`
+	// @inject_tag: msgpack:"uid"
+	Uid int32 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty" msgpack:"uid"`
 }
 
 func (x *UserQuit) Reset() {
@@ -519,14 +519,14 @@ type GameOver struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: msg:"winPlayer"
-	WinPlayer *PlayerStatus `protobuf:"bytes,1,opt,name=winPlayer,proto3" json:"winPlayer,omitempty" msg:"winPlayer"`
-	// @inject_tag: msg:"losePlayer"
-	LosePlayer *PlayerStatus `protobuf:"bytes,2,opt,name=losePlayer,proto3" json:"losePlayer,omitempty" msg:"losePlayer"`
-	// @inject_tag: msg:"event"
-	Event string `protobuf:"bytes,3,opt,name=event,proto3" json:"event,omitempty" msg:"event"`
-	// @inject_tag: msg:"msg"
-	Msg string `protobuf:"bytes,4,opt,name=msg,proto3" json:"msg,omitempty" msg:"msg"`
+	// @inject_tag: msgpack:"winPlayer"
+	WinPlayer *PlayerStatus `protobuf:"bytes,1,opt,name=winPlayer,proto3" json:"winPlayer,omitempty" msgpack:"winPlayer"`
+	// @inject_tag: msgpack:"losePlayer"
+	LosePlayer *PlayerStatus `protobuf:"bytes,2,opt,name=losePlayer,proto3" json:"losePlayer,omitempty" msgpack:"losePlayer"`
+	// @inject_tag: msgpack:"event"
+	Event string `protobuf:"bytes,3,opt,name=event,proto3" json:"event,omitempty" msgpack:"event"`
+	// @inject_tag: msgpack:"msg"
+	Msg string `protobuf:"bytes,4,opt,name=msg,proto3" json:"msg,omitempty" msgpack:"msg"`
 }
 
 func (x *GameOver) Reset() {
@@ -595,20 +595,20 @@ type RoleMove struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: msg:"uid"
-	Uid string `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty" msg:"uid"`
-	// @inject_tag: msg:"target"
-	Target *RolePosition `protobuf:"bytes,2,opt,name=target,proto3" json:"target,omitempty" msg:"target"`
-	// @inject_tag: msg:"vector"
-	Vector *RolePosition `protobuf:"bytes,3,opt,name=vector,proto3" json:"vector,omitempty" msg:"vector"`
-	// @inject_tag: msg:"angle"
-	Angle int32 `protobuf:"varint,4,opt,name=angle,proto3" json:"angle,omitempty" msg:"angle"`
-	// @inject_tag: msg:"joystick"
-	Joystick bool `protobuf:"varint,5,opt,name=joystick,proto3" json:"joystick,omitempty" msg:"joystick"`
-	// @inject_tag: msg:"skillId"
-	SkillId int32 `protobuf:"varint,6,opt,name=skillId,proto3" json:"skillId,omitempty" msg:"skillId"`
-	// @inject_tag: msg:"targetId"
-	TargetId string `protobuf:"bytes,7,opt,name=targetId,proto3" json:"targetId,omitempty" msg:"targetId"`
+	// @inject_tag: msgpack:"uid"
+	Uid string `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty" msgpack:"uid"`
+	// @inject_tag: msgpack:"target"
+	Target *RolePosition `protobuf:"bytes,2,opt,name=target,proto3" json:"target,omitempty" msgpack:"target"`
+	// @inject_tag: msgpack:"vector"
+	Vector *RolePosition `protobuf:"bytes,3,opt,name=vector,proto3" json:"vector,omitempty" msgpack:"vector"`
+	// @inject_tag: msgpack:"angle"
+	Angle int32 `protobuf:"varint,4,opt,name=angle,proto3" json:"angle,omitempty" msgpack:"angle"`
+	// @inject_tag: msgpack:"joystick"
+	Joystick bool `protobuf:"varint,5,opt,name=joystick,proto3" json:"joystick,omitempty" msgpack:"joystick"`
+	// @inject_tag: msgpack:"skillId"
+	SkillId int32 `protobuf:"varint,6,opt,name=skillId,proto3" json:"skillId,omitempty" msgpack:"skillId"`
+	// @inject_tag: msgpack:"targetId"
+	TargetId string `protobuf:"bytes,7,opt,name=targetId,proto3" json:"targetId,omitempty" msgpack:"targetId"`
 }
 
 func (x *RoleMove) Reset() {
@@ -698,18 +698,18 @@ type MsgRoleAttack struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// 玩家编号 | @inject_tag: msg:"uid"
-	Uid int32 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty" msg:"uid"`
-	// @inject_tag: msg:"skillId"
-	SkillId int32 `protobuf:"varint,2,opt,name=skillId,proto3" json:"skillId,omitempty" msg:"skillId"`
-	// 技能状态 | @inject_tag: msg:"state"
-	State SkillState `protobuf:"varint,3,opt,name=state,proto3,enum=throw.v1.SkillState" json:"state,omitempty" msg:"state"`
-	// 目标玩家编号（uid） | @inject_tag: msg:"targetId"
-	TargetId int32 `protobuf:"varint,4,opt,name=targetId,proto3" json:"targetId,omitempty" msg:"targetId"`
-	// @inject_tag: msg:"pos"
-	Pos *RolePosition `protobuf:"bytes,5,opt,name=pos,proto3" json:"pos,omitempty" msg:"pos"` // 攻击方坐标
-	// @inject_tag: msg:"atkInput"
-	AtkInput *SInputData `protobuf:"bytes,6,opt,name=atkInput,proto3" json:"atkInput,omitempty" msg:"atkInput"` // 攻击参数
+	// 玩家编号 | @inject_tag: msgpack:"uid"
+	Uid int32 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty" msgpack:"uid"`
+	// @inject_tag: msgpack:"skillId"
+	SkillId int32 `protobuf:"varint,2,opt,name=skillId,proto3" json:"skillId,omitempty" msgpack:"skillId"`
+	// 技能状态 | @inject_tag: msgpack:"state"
+	State SkillState `protobuf:"varint,3,opt,name=state,proto3,enum=throw.v1.SkillState" json:"state,omitempty" msgpack:"state"`
+	// 目标玩家编号（uid） | @inject_tag: msgpack:"targetId"
+	TargetId int32 `protobuf:"varint,4,opt,name=targetId,proto3" json:"targetId,omitempty" msgpack:"targetId"`
+	// @inject_tag: msgpack:"pos"
+	Pos *RolePosition `protobuf:"bytes,5,opt,name=pos,proto3" json:"pos,omitempty" msgpack:"pos"` // 攻击方坐标
+	// @inject_tag: msgpack:"atkInput"
+	AtkInput *SInputData `protobuf:"bytes,6,opt,name=atkInput,proto3" json:"atkInput,omitempty" msgpack:"atkInput"` // 攻击参数
 }
 
 func (x *MsgRoleAttack) Reset() {
@@ -791,18 +791,18 @@ type SInputData struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// 发射起点x | @inject_tag: msg:"sx"
-	Sx int32 `protobuf:"varint,1,opt,name=sx,proto3" json:"sx,omitempty" msg:"sx"`
-	// 发射起点y | @inject_tag: msg:"sy"
-	Sy int32 `protobuf:"varint,2,opt,name=sy,proto3" json:"sy,omitempty" msg:"sy"`
-	// 速度 | @inject_tag: msg:"vx"
-	Vx int32 `protobuf:"varint,3,opt,name=vx,proto3" json:"vx,omitempty" msg:"vx"`
-	// @inject_tag: msg:"vy"
-	Vy int32 `protobuf:"varint,4,opt,name=vy,proto3" json:"vy,omitempty" msg:"vy"`
-	// 重力刻度 | @inject_tag: msg:"gs"
-	Gs int32 `protobuf:"varint,5,opt,name=gs,proto3" json:"gs,omitempty" msg:"gs"`
-	// 重力系数 | @inject_tag: msg:"g"
-	G int32 `protobuf:"varint,6,opt,name=g,proto3" json:"g,omitempty" msg:"g"`
+	// 发射起点x | @inject_tag: msgpack:"sx"
+	Sx int32 `protobuf:"varint,1,opt,name=sx,proto3" json:"sx,omitempty" msgpack:"sx"`
+	// 发射起点y | @inject_tag: msgpack:"sy"
+	Sy int32 `protobuf:"varint,2,opt,name=sy,proto3" json:"sy,omitempty" msgpack:"sy"`
+	// 速度 | @inject_tag: msgpack:"vx"
+	Vx int32 `protobuf:"varint,3,opt,name=vx,proto3" json:"vx,omitempty" msgpack:"vx"`
+	// @inject_tag: msgpack:"vy"
+	Vy int32 `protobuf:"varint,4,opt,name=vy,proto3" json:"vy,omitempty" msgpack:"vy"`
+	// 重力刻度 | @inject_tag: msgpack:"gs"
+	Gs int32 `protobuf:"varint,5,opt,name=gs,proto3" json:"gs,omitempty" msgpack:"gs"`
+	// 重力系数 | @inject_tag: msgpack:"g"
+	G int32 `protobuf:"varint,6,opt,name=g,proto3" json:"g,omitempty" msgpack:"g"`
 }
 
 func (x *SInputData) Reset() {
@@ -884,20 +884,20 @@ type HitRoleInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// 玩家编号 | @inject_tag: msg:"uid"
-	Uid int32 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty" msg:"uid"`
-	// @inject_tag: msg:"skillId"
-	SkillId int32 `protobuf:"varint,2,opt,name=skillId,proto3" json:"skillId,omitempty" msg:"skillId"`
-	// 技能状态 | @inject_tag: msg:"state"
-	State SkillState `protobuf:"varint,3,opt,name=state,proto3,enum=throw.v1.SkillState" json:"state,omitempty" msg:"state"`
-	// 目标玩家编号（uid） | @inject_tag: msg:"targetId"
-	TargetId int32 `protobuf:"varint,4,opt,name=targetId,proto3" json:"targetId,omitempty" msg:"targetId"`
-	// @inject_tag: msg:"rolePos"
-	RolePos *RolePosition `protobuf:"bytes,5,opt,name=rolePos,proto3" json:"rolePos,omitempty" msg:"rolePos"` // 攻击方坐标
-	// @inject_tag: msg:"hitPos"
-	HitPos HitPos `protobuf:"varint,6,opt,name=hitPos,proto3,enum=throw.v1.HitPos" json:"hitPos,omitempty" msg:"hitPos"`
-	// @inject_tag: msg:"atkInput"
-	AtkInput *SInputData `protobuf:"bytes,7,opt,name=atkInput,proto3" json:"atkInput,omitempty" msg:"atkInput"` // 攻击参数
+	// 玩家编号 | @inject_tag: msgpack:"uid"
+	Uid int32 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty" msgpack:"uid"`
+	// @inject_tag: msgpack:"skillId"
+	SkillId int32 `protobuf:"varint,2,opt,name=skillId,proto3" json:"skillId,omitempty" msgpack:"skillId"`
+	// 技能状态 | @inject_tag: msgpack:"state"
+	State SkillState `protobuf:"varint,3,opt,name=state,proto3,enum=throw.v1.SkillState" json:"state,omitempty" msgpack:"state"`
+	// 目标玩家编号（uid） | @inject_tag: msgpack:"targetId"
+	TargetId int32 `protobuf:"varint,4,opt,name=targetId,proto3" json:"targetId,omitempty" msgpack:"targetId"`
+	// @inject_tag: msgpack:"rolePos"
+	RolePos *RolePosition `protobuf:"bytes,5,opt,name=rolePos,proto3" json:"rolePos,omitempty" msgpack:"rolePos"` // 攻击方坐标
+	// @inject_tag: msgpack:"hitPos"
+	HitPos HitPos `protobuf:"varint,6,opt,name=hitPos,proto3,enum=throw.v1.HitPos" json:"hitPos,omitempty" msgpack:"hitPos"`
+	// @inject_tag: msgpack:"atkInput"
+	AtkInput *SInputData `protobuf:"bytes,7,opt,name=atkInput,proto3" json:"atkInput,omitempty" msgpack:"atkInput"` // 攻击参数
 }
 
 func (x *HitRoleInfo) Reset() {
@@ -987,12 +987,12 @@ type RoleState struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: msg:"id"
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty" msg:"id"` // 角色 id/英雄 id
-	// @inject_tag: msg:"pos"
-	Pos *RolePosition `protobuf:"bytes,2,opt,name=pos,proto3" json:"pos,omitempty" msg:"pos"`
-	// @inject_tag: msg:"skills"
-	Skills []*RoleSkill `protobuf:"bytes,3,rep,name=skills,proto3" json:"skills,omitempty" msg:"skills"`
+	// @inject_tag: msgpack:"id"
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty" msgpack:"id"` // 角色 id/英雄 id
+	// @inject_tag: msgpack:"pos"
+	Pos *RolePosition `protobuf:"bytes,2,opt,name=pos,proto3" json:"pos,omitempty" msgpack:"pos"`
+	// @inject_tag: msgpack:"skills"
+	Skills []*RoleSkill `protobuf:"bytes,3,rep,name=skills,proto3" json:"skills,omitempty" msgpack:"skills"`
 }
 
 func (x *RoleState) Reset() {
@@ -1054,10 +1054,10 @@ type RolePosition struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: msg:"x"
-	X int32 `protobuf:"varint,1,opt,name=x,proto3" json:"x,omitempty" msg:"x"` // x 轴坐标
-	// @inject_tag: msg:"y"
-	Y int32 `protobuf:"varint,2,opt,name=y,proto3" json:"y,omitempty" msg:"y"` // y 轴坐标
+	// @inject_tag: msgpack:"x"
+	X int32 `protobuf:"varint,1,opt,name=x,proto3" json:"x,omitempty" msgpack:"x"` // x 轴坐标
+	// @inject_tag: msgpack:"y"
+	Y int32 `protobuf:"varint,2,opt,name=y,proto3" json:"y,omitempty" msgpack:"y"` // y 轴坐标
 }
 
 func (x *RolePosition) Reset() {
@@ -1112,14 +1112,14 @@ type RoleSkill struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: msg:"id"
-	Id int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty" msg:"id"`
-	// @inject_tag: msg:"forSelf"
-	ForSelf bool `protobuf:"varint,2,opt,name=forSelf,proto3" json:"forSelf,omitempty" msg:"forSelf"` // 技能的增益对象
-	// @inject_tag: msg:"state"
-	State SkillState `protobuf:"varint,3,opt,name=state,proto3,enum=throw.v1.SkillState" json:"state,omitempty" msg:"state"`
-	// @inject_tag: msg:"attr"
-	Attr map[string]string `protobuf:"bytes,4,rep,name=attr,proto3" json:"attr,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3" msg:"attr"` // 技能相关的属性
+	// @inject_tag: msgpack:"id"
+	Id int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty" msgpack:"id"`
+	// @inject_tag: msgpack:"forSelf"
+	ForSelf bool `protobuf:"varint,2,opt,name=forSelf,proto3" json:"forSelf,omitempty" msgpack:"forSelf"` // 技能的增益对象
+	// @inject_tag: msgpack:"state"
+	State SkillState `protobuf:"varint,3,opt,name=state,proto3,enum=throw.v1.SkillState" json:"state,omitempty" msgpack:"state"`
+	// @inject_tag: msgpack:"attr"
+	Attr map[string]string `protobuf:"bytes,4,rep,name=attr,proto3" json:"attr,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3" msgpack:"attr"` // 技能相关的属性
 }
 
 func (x *RoleSkill) Reset() {
@@ -1187,16 +1187,16 @@ type RoomState struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: msg:"id"
-	Id int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty" msg:"id"`
-	// @inject_tag: msg:"name"
-	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty" msg:"name"`
-	// @inject_tag: msg:"amount"
-	Amount int32 `protobuf:"varint,3,opt,name=amount,proto3" json:"amount,omitempty" msg:"amount"` //房间当前用户数
-	// @inject_tag: msg:"max"
-	Max int32 `protobuf:"varint,4,opt,name=max,proto3" json:"max,omitempty" msg:"max"` // 房间最大用户数量
-	// @inject_tag: msg:"timeUpdate"
-	TimeUpdate int32 `protobuf:"varint,5,opt,name=timeUpdate,proto3" json:"timeUpdate,omitempty" msg:"timeUpdate"`
+	// @inject_tag: msgpack:"id"
+	Id int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty" msgpack:"id"`
+	// @inject_tag: msgpack:"name"
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty" msgpack:"name"`
+	// @inject_tag: msgpack:"amount"
+	Amount int32 `protobuf:"varint,3,opt,name=amount,proto3" json:"amount,omitempty" msgpack:"amount"` //房间当前用户数
+	// @inject_tag: msgpack:"max"
+	Max int32 `protobuf:"varint,4,opt,name=max,proto3" json:"max,omitempty" msgpack:"max"` // 房间最大用户数量
+	// @inject_tag: msgpack:"timeUpdate"
+	TimeUpdate int32 `protobuf:"varint,5,opt,name=timeUpdate,proto3" json:"timeUpdate,omitempty" msgpack:"timeUpdate"`
 }
 
 func (x *RoomState) Reset() {
@@ -1271,22 +1271,22 @@ type RoomDetail struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: msg:"id"
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty" msg:"id"`
-	// @inject_tag: msg:"name"
-	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty" msg:"name"`
-	// @inject_tag: msg:"amount"
-	Amount uint32 `protobuf:"varint,3,opt,name=amount,proto3" json:"amount,omitempty" msg:"amount"` // 房间当前用户数量
-	// @inject_tag: msg:"max"
-	Max uint32 `protobuf:"varint,4,opt,name=max,proto3" json:"max,omitempty" msg:"max"` // 房间最大用户数量
-	// @inject_tag: msg:"timeUpdate"
-	TimeUpdate uint32 `protobuf:"varint,5,opt,name=timeUpdate,proto3" json:"timeUpdate,omitempty" msg:"timeUpdate"` // 房间信息的最后更新时间
-	// @inject_tag: msg:"roles"
-	Roles []*RoleDetailed `protobuf:"bytes,6,rep,name=roles,proto3" json:"roles,omitempty" msg:"roles"` // 房间内的用户
-	// @inject_tag: msg:"npcs"
-	Npcs []*RoleDetailed `protobuf:"bytes,7,rep,name=npcs,proto3" json:"npcs,omitempty" msg:"npcs"` // 房间内非玩家角色
-	// @inject_tag: msg:"messages"
-	Messages []*RoomMsgRecord `protobuf:"bytes,8,rep,name=messages,proto3" json:"messages,omitempty" msg:"messages"` // 房间历史聊天记录
+	// @inject_tag: msgpack:"id"
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty" msgpack:"id"`
+	// @inject_tag: msgpack:"name"
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty" msgpack:"name"`
+	// @inject_tag: msgpack:"amount"
+	Amount uint32 `protobuf:"varint,3,opt,name=amount,proto3" json:"amount,omitempty" msgpack:"amount"` // 房间当前用户数量
+	// @inject_tag: msgpack:"max"
+	Max uint32 `protobuf:"varint,4,opt,name=max,proto3" json:"max,omitempty" msgpack:"max"` // 房间最大用户数量
+	// @inject_tag: msgpack:"timeUpdate"
+	TimeUpdate uint32 `protobuf:"varint,5,opt,name=timeUpdate,proto3" json:"timeUpdate,omitempty" msgpack:"timeUpdate"` // 房间信息的最后更新时间
+	// @inject_tag: msgpack:"roles"
+	Roles []*RoleDetailed `protobuf:"bytes,6,rep,name=roles,proto3" json:"roles,omitempty" msgpack:"roles"` // 房间内的用户
+	// @inject_tag: msgpack:"npcs"
+	Npcs []*RoleDetailed `protobuf:"bytes,7,rep,name=npcs,proto3" json:"npcs,omitempty" msgpack:"npcs"` // 房间内非玩家角色
+	// @inject_tag: msgpack:"messages"
+	Messages []*RoomMsgRecord `protobuf:"bytes,8,rep,name=messages,proto3" json:"messages,omitempty" msgpack:"messages"` // 房间历史聊天记录
 }
 
 func (x *RoomDetail) Reset() {
@@ -1383,12 +1383,12 @@ type RoomMsgRecord struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: msg:"time"
-	Time string `protobuf:"bytes,1,opt,name=time,proto3" json:"time,omitempty" msg:"time"`
-	// @inject_tag: msg:"role"
-	Role *RoleInfo `protobuf:"bytes,2,opt,name=role,proto3" json:"role,omitempty" msg:"role"`
-	// @inject_tag: msg:"content"
-	Content string `protobuf:"bytes,3,opt,name=content,proto3" json:"content,omitempty" msg:"content"`
+	// @inject_tag: msgpack:"time"
+	Time string `protobuf:"bytes,1,opt,name=time,proto3" json:"time,omitempty" msgpack:"time"`
+	// @inject_tag: msgpack:"role"
+	Role *RoleInfo `protobuf:"bytes,2,opt,name=role,proto3" json:"role,omitempty" msgpack:"role"`
+	// @inject_tag: msgpack:"content"
+	Content string `protobuf:"bytes,3,opt,name=content,proto3" json:"content,omitempty" msgpack:"content"`
 }
 
 func (x *RoomMsgRecord) Reset() {
@@ -1449,10 +1449,10 @@ type RoleInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: msg:"id"
-	Id int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty" msg:"id"`
-	// @inject_tag: msg:"nickname"
-	Nickname string `protobuf:"bytes,2,opt,name=nickname,proto3" json:"nickname,omitempty" msg:"nickname"`
+	// @inject_tag: msgpack:"id"
+	Id int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty" msgpack:"id"`
+	// @inject_tag: msgpack:"nickname"
+	Nickname string `protobuf:"bytes,2,opt,name=nickname,proto3" json:"nickname,omitempty" msgpack:"nickname"`
 }
 
 func (x *RoleInfo) Reset() {
@@ -1507,12 +1507,12 @@ type RoleDetailed struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: msg:"roleInfo"
-	RoleInfo *RoleInfo `protobuf:"bytes,1,opt,name=roleInfo,proto3" json:"roleInfo,omitempty" msg:"roleInfo"`
-	// @inject_tag: msg:"state"
-	State *RoleState `protobuf:"bytes,2,opt,name=state,proto3" json:"state,omitempty" msg:"state"`
-	// @inject_tag: msg:"attributes"
-	Attributes map[string]int32 `protobuf:"bytes,3,rep,name=attributes,proto3" json:"attributes,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3" msg:"attributes"`
+	// @inject_tag: msgpack:"roleInfo"
+	RoleInfo *RoleInfo `protobuf:"bytes,1,opt,name=roleInfo,proto3" json:"roleInfo,omitempty" msgpack:"roleInfo"`
+	// @inject_tag: msgpack:"state"
+	State *RoleState `protobuf:"bytes,2,opt,name=state,proto3" json:"state,omitempty" msgpack:"state"`
+	// @inject_tag: msgpack:"attributes"
+	Attributes map[string]int32 `protobuf:"bytes,3,rep,name=attributes,proto3" json:"attributes,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3" msgpack:"attributes"`
 }
 
 func (x *RoleDetailed) Reset() {
@@ -1574,10 +1574,10 @@ type GameStartInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: msg:"msg"
-	Msg string `protobuf:"bytes,1,opt,name=msg,proto3" json:"msg,omitempty" msg:"msg"`
-	// @inject_tag: msg:"roles"
-	Roles []*RoleDetailed `protobuf:"bytes,2,rep,name=roles,proto3" json:"roles,omitempty" msg:"roles"`
+	// @inject_tag: msgpack:"msg"
+	Msg string `protobuf:"bytes,1,opt,name=msg,proto3" json:"msg,omitempty" msgpack:"msg"`
+	// @inject_tag: msgpack:"roles"
+	Roles []*RoleDetailed `protobuf:"bytes,2,rep,name=roles,proto3" json:"roles,omitempty" msgpack:"roles"`
 }
 
 func (x *GameStartInfo) Reset() {

@@ -16,76 +16,76 @@ message AttackOnceInfo {
 // 攻击结果
 // 服务端推送给客户端
 message AttackOnceResult {
-  // @inject_tag: json:"event" msg:"event"
+  // @inject_tag: json:"event" msgpack:"event"
   string event = 1;
-  // @inject_tag: msg:"msg"
+  // @inject_tag: msgpack:"msg"
   string msg = 2;
-  // @inject_tag: msg:"attackType"
+  // @inject_tag: msgpack:"attackType"
   string attackType = 3; // 攻击类型，目前先普通攻击
-  // @inject_tag: msg:"players"
+  // @inject_tag: msgpack:"players"
   repeated PlayerStatus players = 4;
-  // @inject_tag: msg:"from"
+  // @inject_tag: msgpack:"from"
   int32 from = 5;  // 攻击方
-  // @inject_tag: msg:"to"
+  // @inject_tag: msgpack:"to"
   int32 to = 6; // 受到攻击的一方
-  // @inject_tag: msg:"hitInfo"
+  // @inject_tag: msgpack:"hitInfo"
   HitInfo hitInfo = 7; // 命中信息
 }
 
 // 一次攻击的命中信息
 message HitInfo {
-  // 是否命中 | @inject_tag: json:"isHit" msg:"isHit"
+  // 是否命中 | @inject_tag: json:"isHit" msgpack:"isHit"
   bool isHit = 1;
-  // 命中部位 | @inject_tag: json:"pos" msg:"pos"
+  // 命中部位 | @inject_tag: json:"pos" msgpack:"pos"
   HitPos pos = 2;
 }
 
 message PlayerStatus {
-  // @inject_tag: msg:"uid"
+  // @inject_tag: msgpack:"uid"
   int32 uid = 1;
-  // @inject_tag: msg:"heroId"
+  // @inject_tag: msgpack:"heroId"
   int32 heroId = 2;
-  // @inject_tag: msg:"hp"
+  // @inject_tag: msgpack:"hp"
   int32 hp = 3;
-  // @inject_tag: msg:"name"
+  // @inject_tag: msgpack:"name"
   string name = 4;
 }
 
 // 退出游戏房间
 // 考虑一下，游戏中途时，用户退出房间，如何处理？
 message UserQuit {
-  // @inject_tag: msg:"uid"
+  // @inject_tag: msgpack:"uid"
   int32 uid = 1;
 }
 
 // 游戏结束时，服务端推送消息给客户端
 // `event` 表示游戏结束标识，用于前端识别，该推送是什么事件/消息
 message GameOver {
-  // @inject_tag: msg:"winPlayer"
+  // @inject_tag: msgpack:"winPlayer"
   PlayerStatus winPlayer = 1;
-  // @inject_tag: msg:"losePlayer"
+  // @inject_tag: msgpack:"losePlayer"
   PlayerStatus losePlayer = 2;
-  // @inject_tag: msg:"event"
+  // @inject_tag: msgpack:"event"
   string event = 3;
-  // @inject_tag: msg:"msg"
+  // @inject_tag: msgpack:"msg"
   string msg = 4;
 }
 
 // 玩家移动
 message RoleMove {
-  // @inject_tag: msg:"uid"
+  // @inject_tag: msgpack:"uid"
   string uid = 1;
-  // @inject_tag: msg:"target"
+  // @inject_tag: msgpack:"target"
   RolePosition target = 2;
-  // @inject_tag: msg:"vector"
+  // @inject_tag: msgpack:"vector"
   RolePosition vector = 3;
-  // @inject_tag: msg:"angle"
+  // @inject_tag: msgpack:"angle"
   int32 angle = 4;
-  // @inject_tag: msg:"joystick"
+  // @inject_tag: msgpack:"joystick"
   bool joystick = 5;
-  // @inject_tag: msg:"skillId"
+  // @inject_tag: msgpack:"skillId"
   int32 skillId = 6;
-  // @inject_tag: msg:"targetId"
+  // @inject_tag: msgpack:"targetId"
   string targetId = 7;
 }
 
@@ -104,49 +104,49 @@ enum SkillState {
 
 // 广播攻击行为
 message MsgRoleAttack {
-  // 玩家编号 | @inject_tag: msg:"uid"
+  // 玩家编号 | @inject_tag: msgpack:"uid"
   int32 uid = 1;
-  // @inject_tag: msg:"skillId"
+  // @inject_tag: msgpack:"skillId"
   int32 skillId = 2;
-  // 技能状态 | @inject_tag: msg:"state"
+  // 技能状态 | @inject_tag: msgpack:"state"
   SkillState state = 3;
-  // 目标玩家编号（uid） | @inject_tag: msg:"targetId"
+  // 目标玩家编号（uid） | @inject_tag: msgpack:"targetId"
   int32 targetId = 4;
-  // @inject_tag: msg:"pos"
+  // @inject_tag: msgpack:"pos"
   RolePosition pos = 5; // 攻击方坐标
-  // @inject_tag: msg:"atkInput"
+  // @inject_tag: msgpack:"atkInput"
   SInputData atkInput = 6; // 攻击参数
 }
 
 message SInputData {
-  // 发射起点x | @inject_tag: msg:"sx"
+  // 发射起点x | @inject_tag: msgpack:"sx"
   int32 sx = 1;
-  // 发射起点y | @inject_tag: msg:"sy"
+  // 发射起点y | @inject_tag: msgpack:"sy"
   int32 sy = 2;
-  // 速度 | @inject_tag: msg:"vx"
+  // 速度 | @inject_tag: msgpack:"vx"
   int32 vx = 3;
-  // @inject_tag: msg:"vy"
+  // @inject_tag: msgpack:"vy"
   int32 vy = 4;
-  // 重力刻度 | @inject_tag: msg:"gs"
+  // 重力刻度 | @inject_tag: msgpack:"gs"
   int32 gs = 5;
-  // 重力系数 | @inject_tag: msg:"g"
+  // 重力系数 | @inject_tag: msgpack:"g"
   int32 g = 6;
 }
 
 message HitRoleInfo {
-  // 玩家编号 | @inject_tag: msg:"uid"
+  // 玩家编号 | @inject_tag: msgpack:"uid"
   int32 uid = 1;
-  // @inject_tag: msg:"skillId"
+  // @inject_tag: msgpack:"skillId"
   int32 skillId = 2;
-  // 技能状态 | @inject_tag: msg:"state"
+  // 技能状态 | @inject_tag: msgpack:"state"
   SkillState state = 3;
-  // 目标玩家编号（uid） | @inject_tag: msg:"targetId"
+  // 目标玩家编号（uid） | @inject_tag: msgpack:"targetId"
   int32 targetId = 4;
-  // @inject_tag: msg:"rolePos"
+  // @inject_tag: msgpack:"rolePos"
   RolePosition rolePos = 5; // 攻击方坐标
-  // @inject_tag: msg:"hitPos"
+  // @inject_tag: msgpack:"hitPos"
   HitPos hitPos = 6;
-  // @inject_tag: msg:"atkInput"
+  // @inject_tag: msgpack:"atkInput"
   SInputData atkInput = 7; // 攻击参数
 }
 
@@ -159,98 +159,98 @@ enum HitPos {
 
 // 角色状态
 message RoleState {
-  // @inject_tag: msg:"id"
+  // @inject_tag: msgpack:"id"
   string id  = 1;// 角色 id/英雄 id
-  // @inject_tag: msg:"pos"
+  // @inject_tag: msgpack:"pos"
   RolePosition pos = 2;
-  // @inject_tag: msg:"skills"
+  // @inject_tag: msgpack:"skills"
   repeated RoleSkill skills = 3;
 }
 
 // 玩家位置信息
 message RolePosition {
-  // @inject_tag: msg:"x"
+  // @inject_tag: msgpack:"x"
   int32 x = 1;// x 轴坐标
-  // @inject_tag: msg:"y"
+  // @inject_tag: msgpack:"y"
   int32 y = 2;// y 轴坐标
 }
 
 // 角色技能
 message RoleSkill {
-  // @inject_tag: msg:"id"
+  // @inject_tag: msgpack:"id"
   int32 id = 1;
-  // @inject_tag: msg:"forSelf"
+  // @inject_tag: msgpack:"forSelf"
   bool forSelf = 2;// 技能的增益对象
-  // @inject_tag: msg:"state"
+  // @inject_tag: msgpack:"state"
   SkillState state = 3;
-  // @inject_tag: msg:"attr"
+  // @inject_tag: msgpack:"attr"
   map<string, string> attr = 4; // 技能相关的属性
 }
 
 
 message RoomState {
-  // @inject_tag: msg:"id"
+  // @inject_tag: msgpack:"id"
   int32 id = 1;
-  // @inject_tag: msg:"name"
+  // @inject_tag: msgpack:"name"
   string name = 2;
-  // @inject_tag: msg:"amount"
+  // @inject_tag: msgpack:"amount"
   int32 amount = 3;//房间当前用户数
-  // @inject_tag: msg:"max"
+  // @inject_tag: msgpack:"max"
   int32 max = 4; // 房间最大用户数量
-  // @inject_tag: msg:"timeUpdate"
+  // @inject_tag: msgpack:"timeUpdate"
   int32 timeUpdate = 5;
 }
 
 message RoomDetail {
-  // @inject_tag: msg:"id"
+  // @inject_tag: msgpack:"id"
   string id = 1;
-  // @inject_tag: msg:"name"
+  // @inject_tag: msgpack:"name"
   string name = 2;
-  // @inject_tag: msg:"amount"
+  // @inject_tag: msgpack:"amount"
   uint32 amount = 3;// 房间当前用户数量
-  // @inject_tag: msg:"max"
+  // @inject_tag: msgpack:"max"
   uint32 max = 4; // 房间最大用户数量
-  // @inject_tag: msg:"timeUpdate"
+  // @inject_tag: msgpack:"timeUpdate"
   uint32 timeUpdate = 5;// 房间信息的最后更新时间
-  // @inject_tag: msg:"roles"
+  // @inject_tag: msgpack:"roles"
   repeated RoleDetailed roles = 6;// 房间内的用户
-  // @inject_tag: msg:"npcs"
+  // @inject_tag: msgpack:"npcs"
   repeated RoleDetailed npcs = 7;// 房间内非玩家角色
-  // @inject_tag: msg:"messages"
+  // @inject_tag: msgpack:"messages"
   repeated RoomMsgRecord messages = 8;// 房间历史聊天记录
 }
 
 // 房间内聊天记录信息
 message RoomMsgRecord {
-  // @inject_tag: msg:"time"
+  // @inject_tag: msgpack:"time"
   string time = 1;
-  // @inject_tag: msg:"role"
+  // @inject_tag: msgpack:"role"
   RoleInfo role = 2;
-  // @inject_tag: msg:"content"
+  // @inject_tag: msgpack:"content"
   string content = 3;
 }
 
 message RoleInfo {
-  // @inject_tag: msg:"id"
+  // @inject_tag: msgpack:"id"
   int32 id = 1;
-  // @inject_tag: msg:"nickname"
+  // @inject_tag: msgpack:"nickname"
   string nickname = 2;
 }
 
 // 角色/英雄信息
 message RoleDetailed {
-  // @inject_tag: msg:"roleInfo"
+  // @inject_tag: msgpack:"roleInfo"
   RoleInfo roleInfo = 1;
-  // @inject_tag: msg:"state"
+  // @inject_tag: msgpack:"state"
   RoleState state = 2;
-  // @inject_tag: msg:"attributes"
+  // @inject_tag: msgpack:"attributes"
   map<string, int32> attributes = 3;
 }
 
 // 游戏即将开始时，广播房间内玩家的状态
 message GameStartInfo{
-  // @inject_tag: msg:"msg"
+  // @inject_tag: msgpack:"msg"
   string msg = 1;
-  // @inject_tag: msg:"roles"
+  // @inject_tag: msgpack:"roles"
   repeated RoleDetailed roles = 2;
 }

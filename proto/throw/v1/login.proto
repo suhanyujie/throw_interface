@@ -5,16 +5,16 @@ option go_package = "github.com/suhanyujie/throw_interface/proto/throw/v1;v1";
 
 // 玩家进入游戏前请求一次登录，参数是用户的 token
 message UserLogin {
-  // @inject_tag: msg:"token"
+  // @inject_tag: msgpack:"token"
   string token = 1;
 }
 
 // 返回给客户端的用户信息
 message UserInfo {
-  // @inject_tag: msg:"id"
+  // @inject_tag: msgpack:"id"
   int32 id = 1;
-  // @inject_tag: msg:"name"
+  // @inject_tag: msgpack:"name"
   string name = 2;
-  // @inject_tag: msg:"heroId"
+  // @inject_tag: msgpack:"heroId"
   int32 heroId = 3;
 }
