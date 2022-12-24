@@ -7,5 +7,5 @@ option go_package = "github.com/suhanyujie/throw_interface/proto/throw/v1;v1";
 // 一场游戏的 id；全局唯一；不能有两场游戏 id 一样。
 message DataOfJoin {
   // @inject_tag: msgpack:"id"
-  uint64 id = 2;
+  int32 id = 1;
 }

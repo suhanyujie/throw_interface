@@ -10,7 +10,7 @@ message GameStart {
 
 // 客户端玩家发起一次攻击
 message AttackOnceInfo {
-  int64 uid = 1;  // 发起攻击的用户 id
+  int32 uid = 1;  // 发起攻击的用户 id
 }
 
 // 攻击结果
@@ -74,7 +74,7 @@ message GameOver {
 // 玩家移动
 message RoleMove {
   // @inject_tag: msgpack:"uid"
-  string uid = 1;
+  int32 uid = 1;
   // @inject_tag: msgpack:"target"
   RolePosition target = 2;
   // @inject_tag: msgpack:"vector"
@@ -86,7 +86,7 @@ message RoleMove {
   // @inject_tag: msgpack:"skillId"
   int32 skillId = 6;
   // @inject_tag: msgpack:"targetId"
-  string targetId = 7;
+  int32 targetId = 7;
 }
 
 enum SkillState {
@@ -160,7 +160,7 @@ enum HitPos {
 // 角色状态
 message RoleState {
   // @inject_tag: msgpack:"id"
-  string id  = 1;// 角色 id/英雄 id
+  int32 id  = 1;// 角色 id/英雄 id
   // @inject_tag: msgpack:"pos"
   RolePosition pos = 2;
   // @inject_tag: msgpack:"skills"
@@ -203,7 +203,7 @@ message RoomState {
 
 message RoomDetail {
   // @inject_tag: msgpack:"id"
-  string id = 1;
+  int32 id = 1;
   // @inject_tag: msgpack:"name"
   string name = 2;
   // @inject_tag: msgpack:"amount"
