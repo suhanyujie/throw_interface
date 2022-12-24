@@ -220,6 +220,11 @@ message RoomDetail {
   repeated RoomMsgRecord messages = 8;// 房间历史聊天记录
 }
 
+message ResRoomJoin {
+  int32 uid  = 1;
+  RoomDetail room = 2;
+}
+
 // 房间内聊天记录信息
 message RoomMsgRecord {
   // @inject_tag: msgpack:"time"
