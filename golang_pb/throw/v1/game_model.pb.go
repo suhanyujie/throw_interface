@@ -1382,8 +1382,10 @@ type ResRoomJoin struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uid  int32       `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
-	Room *RoomDetail `protobuf:"bytes,2,opt,name=room,proto3" json:"room,omitempty"`
+	// @inject_tag: msgpack:"uid"
+	Uid int32 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty" msgpack:"uid"`
+	// @inject_tag: msgpack:"room"
+	Room *RoomDetail `protobuf:"bytes,2,opt,name=room,proto3" json:"room,omitempty" msgpack:"room"`
 }
 
 func (x *ResRoomJoin) Reset() {

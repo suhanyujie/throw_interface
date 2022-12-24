@@ -221,7 +221,9 @@ message RoomDetail {
 }
 
 message ResRoomJoin {
+  // @inject_tag: msgpack:"uid"
   int32 uid  = 1;
+  // @inject_tag: msgpack:"room"
   RoomDetail room = 2;
 }
 
