@@ -238,10 +238,22 @@ message RoomMsgRecord {
 }
 
 message RoleInfo {
-  // @inject_tag: msgpack:"id"
+  // 角色 id | @inject_tag: msgpack:"id"
   int32 id = 1;
   // @inject_tag: msgpack:"nickname"
   string nickname = 2;
+  // 角色相关资源 | @inject_tag: msgpack:"image"
+  int32 image = 3;
+  // 品质 | @inject_tag: msgpack:"quality"
+  int32 quality = 4;
+  // 生命值 | @inject_tag: msgpack:"hp"
+  int32 hp = 5;
+  // 防御力 | @inject_tag: msgpack:"def"
+  int32 def = 6;
+  // 攻击力 | @inject_tag: msgpack:"atk"
+  int32 atk = 7;
+  // 技能 id | @inject_tag: msgpack:"skillId"
+  int32 skillId = 8;
 }
 
 // 角色/英雄信息
