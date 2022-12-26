@@ -254,6 +254,8 @@ message RoleInfo {
   int32 atk = 7;
   // 技能 id | @inject_tag: msgpack:"skillId"
   int32 skillId = 8;
+  // 是否是怪物，true 怪物，false 角色 | @inject_tag: msgpack:"isMonster"
+  bool isMonster = 9;
 }
 
 // 角色/英雄信息

@@ -27,16 +27,7 @@ message IResponseProtocol {
   bytes data = 3;    // data 是 proto 编码的字节
   // @inject_tag: msgpack:"callback"
   string callback = 4;
-//  string msg = 5; // 异常时的详细信息
-}
-
-// 该结构序列化后，放在 IRequestProtocol.data 中
-message ReqData {
-  // @inject_tag: msgpack:"route"
-  string route = 1;
-  // @inject_tag: msgpack:"data"
-  bytes data = 3;
-  // google.protobuf.Struct data = 3;
+  //  string msg = 5; // 异常时的详细信息
 }
 
 // 该结构序列化后，放在 IResponseProtocol.data 中
@@ -61,5 +52,17 @@ message DataInfoResp {
   int32 code = 1;
   // @inject_tag: msgpack:"msg"
   string msg = 2;
+}
+
+// 游戏中的 desc 信息
+message DescInfo {
+  // @inject_tag: msgpack:"id"
+  int32 id  = 1;
+  // @inject_tag: msgpack:"name"
+  string name = 2;
+  // @inject_tag: msgpack:"desc"
+  string desc = 3;
+  // @inject_tag: msgpack:"title"
+  string title = 4;
 }
 

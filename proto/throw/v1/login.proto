@@ -7,6 +7,8 @@ option go_package = "github.com/suhanyujie/throw_interface/proto/throw/v1;v1";
 message UserLogin {
   // @inject_tag: msgpack:"token"
   string token = 1;
+  // 是否使用传入的token参数 false 不是，true 是 | @inject_tag: msgpack:"forReal"
+  bool forReal = 2;
 }
 
 // 返回给客户端的用户信息
