@@ -116,6 +116,21 @@ message MsgRoleAttack {
   RolePosition pos = 5; // 攻击方坐标
   // @inject_tag: msgpack:"atkInput"
   SInputData atkInput = 6; // 攻击参数
+  // 敌方如果是机器人，则携带此参数。由后端告知前端是否命中
+  BotAtkInfo botAtk = 7;
+}
+
+message BotAtkInfo {
+  // 是否避障。1避障，2不避障  | @inject_tag: msgpack:"avoidance"
+  int32 avoidance  = 1;
+  // 攻击方式，普攻还是技能    1普攻，2技能  | @inject_tag: msgpack:"atkStyle"
+  int32 atkStyle  = 2;
+  // 攻击结果 1命中，2差一点点，3乱扔  | @inject_tag: msgpack:"hitRes"
+  int32 hitRes  = 3;
+  // 命中部位 | @inject_tag: msgpack:"hitPos"
+  HitPos hitPos  = 4;
+  // 是否能被反弹 | @inject_tag: msgpack:"canRebound"
+  // bool canRebound  = 5;
 }
 
 message SInputData {
@@ -131,6 +146,12 @@ message SInputData {
   int32 gs = 5;
   // 重力系数 | @inject_tag: msgpack:"g"
   int32 g = 6;
+  // 部位偏移 x
+  int32 ex = 7;
+  // 部位偏移 y
+  int32 ey = 8;
+  // 部位 1，头，2，中间，3 下面
+  int32 parts = 9;
 }
 
 message HitRoleInfo {
