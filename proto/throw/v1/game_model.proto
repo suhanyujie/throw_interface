@@ -281,12 +281,14 @@ message RoleInfo {
 
 // 角色/英雄信息
 message RoleDetailed {
+  // @inject_tag: msgpack:"uid"
+  int32 uid = 1;
   // @inject_tag: msgpack:"roleInfo"
-  RoleInfo roleInfo = 1;
+  RoleInfo roleInfo = 2;
   // @inject_tag: msgpack:"state"
-  RoleState state = 2;
+  RoleState state = 3;
   // @inject_tag: msgpack:"attributes"
-  map<string, int32> attributes = 3;
+  map<string, int32> attributes = 4;
 }
 
 // 游戏即将开始时，广播房间内玩家的状态
