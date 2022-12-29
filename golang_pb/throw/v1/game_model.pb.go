@@ -887,12 +887,12 @@ type SInputData struct {
 	Gs float32 `protobuf:"fixed32,5,opt,name=gs,proto3" json:"gs,omitempty" msgpack:"gs"`
 	// 重力系数 | @inject_tag: msgpack:"g"
 	G float32 `protobuf:"fixed32,6,opt,name=g,proto3" json:"g,omitempty" msgpack:"g"`
-	// 部位偏移 x
-	Ex float32 `protobuf:"fixed32,7,opt,name=ex,proto3" json:"ex,omitempty"`
-	// 部位偏移 y
-	Ey float32 `protobuf:"fixed32,8,opt,name=ey,proto3" json:"ey,omitempty"`
-	// 部位 1，头，2，中间，3 下面
-	Parts int32 `protobuf:"varint,9,opt,name=parts,proto3" json:"parts,omitempty"`
+	// 部位偏移 x  | @inject_tag: msgpack:"ex"
+	Ex float32 `protobuf:"fixed32,7,opt,name=ex,proto3" json:"ex,omitempty" msgpack:"ex"`
+	// 部位偏移 y  | @inject_tag: msgpack:"ey"
+	Ey float32 `protobuf:"fixed32,8,opt,name=ey,proto3" json:"ey,omitempty" msgpack:"ey"`
+	// 部位 1，头，2，中间，3 下面 | @inject_tag: msgpack:"parts"
+	Parts int32 `protobuf:"varint,9,opt,name=parts,proto3" json:"parts,omitempty" msgpack:"parts"`
 }
 
 func (x *SInputData) Reset() {

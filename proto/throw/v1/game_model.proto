@@ -146,11 +146,11 @@ message SInputData {
   float gs = 5;
   // 重力系数 | @inject_tag: msgpack:"g"
   float g = 6;
-  // 部位偏移 x
+  // 部位偏移 x  | @inject_tag: msgpack:"ex"
   float ex = 7;
-  // 部位偏移 y
+  // 部位偏移 y  | @inject_tag: msgpack:"ey"
   float ey = 8;
-  // 部位 1，头，2，中间，3 下面
+  // 部位 1，头，2，中间，3 下面 | @inject_tag: msgpack:"parts"
   int32 parts = 9;
 }
 
