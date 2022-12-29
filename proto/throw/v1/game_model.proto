@@ -135,21 +135,21 @@ message BotAtkInfo {
 
 message SInputData {
   // 发射起点x | @inject_tag: msgpack:"sx"
-  int32 sx = 1;
+  float sx = 1;
   // 发射起点y | @inject_tag: msgpack:"sy"
-  int32 sy = 2;
+  float sy = 2;
   // 速度 | @inject_tag: msgpack:"vx"
-  int32 vx = 3;
+  float vx = 3;
   // @inject_tag: msgpack:"vy"
-  int32 vy = 4;
+  float vy = 4;
   // 重力刻度 | @inject_tag: msgpack:"gs"
-  int32 gs = 5;
+  float gs = 5;
   // 重力系数 | @inject_tag: msgpack:"g"
-  int32 g = 6;
+  float g = 6;
   // 部位偏移 x
-  int32 ex = 7;
+  float ex = 7;
   // 部位偏移 y
-  int32 ey = 8;
+  float ey = 8;
   // 部位 1，头，2，中间，3 下面
   int32 parts = 9;
 }
