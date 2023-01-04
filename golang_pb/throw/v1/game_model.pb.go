@@ -520,9 +520,9 @@ type GameOver struct {
 	unknownFields protoimpl.UnknownFields
 
 	// @inject_tag: msgpack:"winPlayer"
-	WinPlayer *PlayerStatus `protobuf:"bytes,1,opt,name=winPlayer,proto3" json:"winPlayer,omitempty" msgpack:"winPlayer"`
+	WinPlayer *RoleDetailed `protobuf:"bytes,1,opt,name=winPlayer,proto3" json:"winPlayer,omitempty" msgpack:"winPlayer"`
 	// @inject_tag: msgpack:"losePlayer"
-	LosePlayer *PlayerStatus `protobuf:"bytes,2,opt,name=losePlayer,proto3" json:"losePlayer,omitempty" msgpack:"losePlayer"`
+	LosePlayer *RoleDetailed `protobuf:"bytes,2,opt,name=losePlayer,proto3" json:"losePlayer,omitempty" msgpack:"losePlayer"`
 	// @inject_tag: msgpack:"event"
 	Event string `protobuf:"bytes,3,opt,name=event,proto3" json:"event,omitempty" msgpack:"event"`
 	// @inject_tag: msgpack:"msg"
@@ -561,14 +561,14 @@ func (*GameOver) Descriptor() ([]byte, []int) {
 	return file_game_model_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *GameOver) GetWinPlayer() *PlayerStatus {
+func (x *GameOver) GetWinPlayer() *RoleDetailed {
 	if x != nil {
 		return x.WinPlayer
 	}
 	return nil
 }
 
-func (x *GameOver) GetLosePlayer() *PlayerStatus {
+func (x *GameOver) GetLosePlayer() *RoleDetailed {
 	if x != nil {
 		return x.LosePlayer
 	}
@@ -1134,11 +1134,11 @@ type RoleState struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: msgpack:"id"
-	Id int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty" msgpack:"id"` // 角色 id/英雄 id
-	// @inject_tag: msgpack:"pos"
+	// 角色 id/英雄 id | @inject_tag: msgpack:"id"
+	Id int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty" msgpack:"id"`
+	// 角色的坐标 | @inject_tag: msgpack:"pos"
 	Pos *RolePosition `protobuf:"bytes,2,opt,name=pos,proto3" json:"pos,omitempty" msgpack:"pos"`
-	// @inject_tag: msgpack:"skills"
+	// 角色技能信息 | @inject_tag: msgpack:"skills"
 	Skills []*RoleSkill `protobuf:"bytes,3,rep,name=skills,proto3" json:"skills,omitempty" msgpack:"skills"`
 }
 
@@ -1259,13 +1259,13 @@ type RoleSkill struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: msgpack:"id"
+	// 技能 id | @inject_tag: msgpack:"id"
 	Id int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty" msgpack:"id"`
-	// @inject_tag: msgpack:"forSelf"
+	// 是否对施放者生效 | @inject_tag: msgpack:"forSelf"
 	ForSelf bool `protobuf:"varint,2,opt,name=forSelf,proto3" json:"forSelf,omitempty" msgpack:"forSelf"` // 技能的增益对象
-	// @inject_tag: msgpack:"state"
+	// 技能状态 | @inject_tag: msgpack:"state"
 	State SkillState `protobuf:"varint,3,opt,name=state,proto3,enum=throw.v1.SkillState" json:"state,omitempty" msgpack:"state"`
-	// @inject_tag: msgpack:"attr"
+	// 技能的一些属性 | @inject_tag: msgpack:"attr"
 	Attr map[string]string `protobuf:"bytes,4,rep,name=attr,proto3" json:"attr,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3" msgpack:"attr"` // 技能相关的属性
 }
 
@@ -1774,13 +1774,13 @@ type RoleDetailed struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: msgpack:"uid"
+	// 当前房间中，使用角色的玩家 uid | @inject_tag: msgpack:"uid"
 	Uid int32 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty" msgpack:"uid"`
-	// @inject_tag: msgpack:"roleInfo"
+	// 玩家信息 | @inject_tag: msgpack:"roleInfo"
 	RoleInfo *RoleInfo `protobuf:"bytes,2,opt,name=roleInfo,proto3" json:"roleInfo,omitempty" msgpack:"roleInfo"`
-	// @inject_tag: msgpack:"state"
+	// 角色状态 | @inject_tag: msgpack:"state"
 	State *RoleState `protobuf:"bytes,3,opt,name=state,proto3" json:"state,omitempty" msgpack:"state"`
-	// @inject_tag: msgpack:"attributes"
+	// 角色的一些属性，用于扩展 | @inject_tag: msgpack:"attributes"
 	Attributes map[string]int32 `protobuf:"bytes,4,rep,name=attributes,proto3" json:"attributes,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3" msgpack:"attributes"`
 }
 
@@ -1850,9 +1850,9 @@ type GameStartInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: msgpack:"msg"
+	// 描述 | @inject_tag: msgpack:"msg"
 	Msg string `protobuf:"bytes,1,opt,name=msg,proto3" json:"msg,omitempty" msgpack:"msg"`
-	// @inject_tag: msgpack:"roles"
+	// 当前房间内，角色详情 | @inject_tag: msgpack:"roles"
 	Roles []*RoleDetailed `protobuf:"bytes,2,rep,name=roles,proto3" json:"roles,omitempty" msgpack:"roles"`
 }
 
@@ -1939,11 +1939,11 @@ var file_game_model_proto_rawDesc = []byte{
 	0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x03, 0x75, 0x69, 0x64,
 	0x22, 0xa0, 0x01, 0x0a, 0x08, 0x47, 0x61, 0x6d, 0x65, 0x4f, 0x76, 0x65, 0x72, 0x12, 0x34, 0x0a,
 	0x09, 0x77, 0x69, 0x6e, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
-	0x32, 0x16, 0x2e, 0x74, 0x68, 0x72, 0x6f, 0x77, 0x2e, 0x76, 0x31, 0x2e, 0x50, 0x6c, 0x61, 0x79,
-	0x65, 0x72, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52, 0x09, 0x77, 0x69, 0x6e, 0x50, 0x6c, 0x61,
+	0x32, 0x16, 0x2e, 0x74, 0x68, 0x72, 0x6f, 0x77, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x6f, 0x6c, 0x65,
+	0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x65, 0x64, 0x52, 0x09, 0x77, 0x69, 0x6e, 0x50, 0x6c, 0x61,
 	0x79, 0x65, 0x72, 0x12, 0x36, 0x0a, 0x0a, 0x6c, 0x6f, 0x73, 0x65, 0x50, 0x6c, 0x61, 0x79, 0x65,
 	0x72, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x74, 0x68, 0x72, 0x6f, 0x77, 0x2e,
-	0x76, 0x31, 0x2e, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52,
+	0x76, 0x31, 0x2e, 0x52, 0x6f, 0x6c, 0x65, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x65, 0x64, 0x52,
 	0x0a, 0x6c, 0x6f, 0x73, 0x65, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x12, 0x14, 0x0a, 0x05, 0x65,
 	0x76, 0x65, 0x6e, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x65, 0x76, 0x65, 0x6e,
 	0x74, 0x12, 0x10, 0x0a, 0x03, 0x6d, 0x73, 0x67, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03,
@@ -2173,8 +2173,8 @@ var file_game_model_proto_depIdxs = []int32{
 	6,  // 0: throw.v1.AttackOnceResult.players:type_name -> throw.v1.PlayerStatus
 	5,  // 1: throw.v1.AttackOnceResult.hitInfo:type_name -> throw.v1.HitInfo
 	1,  // 2: throw.v1.HitInfo.pos:type_name -> throw.v1.HitPos
-	6,  // 3: throw.v1.GameOver.winPlayer:type_name -> throw.v1.PlayerStatus
-	6,  // 4: throw.v1.GameOver.losePlayer:type_name -> throw.v1.PlayerStatus
+	22, // 3: throw.v1.GameOver.winPlayer:type_name -> throw.v1.RoleDetailed
+	22, // 4: throw.v1.GameOver.losePlayer:type_name -> throw.v1.RoleDetailed
 	15, // 5: throw.v1.RoleMove.target:type_name -> throw.v1.RolePosition
 	15, // 6: throw.v1.RoleMove.vector:type_name -> throw.v1.RolePosition
 	0,  // 7: throw.v1.MsgRoleAttack.state:type_name -> throw.v1.SkillState

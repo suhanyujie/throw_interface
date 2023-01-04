@@ -62,9 +62,9 @@ message UserQuit {
 // `event` 表示游戏结束标识，用于前端识别，该推送是什么事件/消息
 message GameOver {
   // @inject_tag: msgpack:"winPlayer"
-  PlayerStatus winPlayer = 1;
+  RoleDetailed winPlayer = 1;
   // @inject_tag: msgpack:"losePlayer"
-  PlayerStatus losePlayer = 2;
+  RoleDetailed losePlayer = 2;
   // @inject_tag: msgpack:"event"
   string event = 3;
   // @inject_tag: msgpack:"msg"
@@ -188,11 +188,11 @@ enum HitPos {
 
 // 角色状态
 message RoleState {
-  // @inject_tag: msgpack:"id"
-  int32 id  = 1;// 角色 id/英雄 id
-  // @inject_tag: msgpack:"pos"
+  // 角色 id/英雄 id | @inject_tag: msgpack:"id"
+  int32 id  = 1;
+  // 角色的坐标 | @inject_tag: msgpack:"pos"
   RolePosition pos = 2;
-  // @inject_tag: msgpack:"skills"
+  // 角色技能信息 | @inject_tag: msgpack:"skills"
   repeated RoleSkill skills = 3;
 }
 
@@ -206,13 +206,13 @@ message RolePosition {
 
 // 角色技能
 message RoleSkill {
-  // @inject_tag: msgpack:"id"
+  // 技能 id | @inject_tag: msgpack:"id"
   int32 id = 1;
-  // @inject_tag: msgpack:"forSelf"
+  // 是否对施放者生效 | @inject_tag: msgpack:"forSelf"
   bool forSelf = 2;// 技能的增益对象
-  // @inject_tag: msgpack:"state"
+  // 技能状态 | @inject_tag: msgpack:"state"
   SkillState state = 3;
-  // @inject_tag: msgpack:"attr"
+  // 技能的一些属性 | @inject_tag: msgpack:"attr"
   map<string, string> attr = 4; // 技能相关的属性
 }
 
@@ -289,20 +289,20 @@ message RoleInfo {
 
 // 角色/英雄信息
 message RoleDetailed {
-  // @inject_tag: msgpack:"uid"
+  // 当前房间中，使用角色的玩家 uid | @inject_tag: msgpack:"uid"
   int32 uid = 1;
-  // @inject_tag: msgpack:"roleInfo"
+  // 玩家信息 | @inject_tag: msgpack:"roleInfo"
   RoleInfo roleInfo = 2;
-  // @inject_tag: msgpack:"state"
+  // 角色状态 | @inject_tag: msgpack:"state"
   RoleState state = 3;
-  // @inject_tag: msgpack:"attributes"
+  // 角色的一些属性，用于扩展 | @inject_tag: msgpack:"attributes"
   map<string, int32> attributes = 4;
 }
 
 // 游戏即将开始时，广播房间内玩家的状态
 message GameStartInfo{
-  // @inject_tag: msgpack:"msg"
+  // 描述 | @inject_tag: msgpack:"msg"
   string msg = 1;
-  // @inject_tag: msgpack:"roles"
+  // 当前房间内，角色详情 | @inject_tag: msgpack:"roles"
   repeated RoleDetailed roles = 2;
 }
