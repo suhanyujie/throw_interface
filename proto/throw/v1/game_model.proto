@@ -171,10 +171,12 @@ message HitRoleInfo {
   int32 targetId = 4;
   // @inject_tag: msgpack:"rolePos"
   RolePosition rolePos = 5; // 攻击方坐标
+  // 是否命中 | @inject_tag: msgpack:"isHit"
+  bool isHit = 6;
   // @inject_tag: msgpack:"hitPos"
-  HitPos hitPos = 6;
+  HitPos hitPos = 7;
   // @inject_tag: msgpack:"atkInput"
-  SInputData atkInput = 7; // 攻击参数
+  SInputData atkInput = 8; // 攻击参数
 }
 
 
