@@ -710,7 +710,7 @@ type MsgRoleAttack struct {
 	Pos *RolePosition `protobuf:"bytes,5,opt,name=pos,proto3" json:"pos,omitempty" msgpack:"pos"`
 	// @inject_tag: msgpack:"atkInput"
 	AtkInput *SInputData `protobuf:"bytes,6,opt,name=atkInput,proto3" json:"atkInput,omitempty" msgpack:"atkInput"` // 攻击参数
-	// 敌方如果是机器人，则携带此参数。由后端告知前端是否命中
+	// 敌方如果是机器人，则携带此参数。由后端告知前端是否命中；如果没有，可传 null
 	BotAtk *BotAtkInfo `protobuf:"bytes,7,opt,name=botAtk,proto3" json:"botAtk,omitempty"`
 }
 
