@@ -112,8 +112,8 @@ message MsgRoleAttack {
   SkillState state = 3;
   // 目标玩家编号（uid） | @inject_tag: msgpack:"targetId"
   int32 targetId = 4;
-  // @inject_tag: msgpack:"pos"
-  RolePosition pos = 5; // 攻击方坐标
+  // 攻击方坐标 | @inject_tag: msgpack:"pos"
+  RolePosition pos = 5;
   // @inject_tag: msgpack:"atkInput"
   SInputData atkInput = 6; // 攻击参数
   // 敌方如果是机器人，则携带此参数。由后端告知前端是否命中

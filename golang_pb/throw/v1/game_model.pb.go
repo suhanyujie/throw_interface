@@ -706,8 +706,8 @@ type MsgRoleAttack struct {
 	State SkillState `protobuf:"varint,3,opt,name=state,proto3,enum=throw.v1.SkillState" json:"state,omitempty" msgpack:"state"`
 	// 目标玩家编号（uid） | @inject_tag: msgpack:"targetId"
 	TargetId int32 `protobuf:"varint,4,opt,name=targetId,proto3" json:"targetId,omitempty" msgpack:"targetId"`
-	// @inject_tag: msgpack:"pos"
-	Pos *RolePosition `protobuf:"bytes,5,opt,name=pos,proto3" json:"pos,omitempty" msgpack:"pos"` // 攻击方坐标
+	// 攻击方坐标 | @inject_tag: msgpack:"pos"
+	Pos *RolePosition `protobuf:"bytes,5,opt,name=pos,proto3" json:"pos,omitempty" msgpack:"pos"`
 	// @inject_tag: msgpack:"atkInput"
 	AtkInput *SInputData `protobuf:"bytes,6,opt,name=atkInput,proto3" json:"atkInput,omitempty" msgpack:"atkInput"` // 攻击参数
 	// 敌方如果是机器人，则携带此参数。由后端告知前端是否命中
