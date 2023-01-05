@@ -589,7 +589,7 @@ func (x *GameOver) GetMsg() string {
 	return ""
 }
 
-// 玩家移动
+// 玩家/角色移动
 type RoleMove struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
