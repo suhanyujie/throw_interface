@@ -20,16 +20,16 @@ message AttackOnceResult {
   string event = 1;
   // @inject_tag: msgpack:"msg"
   string msg = 2;
-  // @inject_tag: msgpack:"attackType"
-  string attackType = 3; // 攻击类型，目前先普通攻击
-  // @inject_tag: msgpack:"players"
+  // 攻击类型，目前先普通攻击 1-普攻，2-技能 | @inject_tag: msgpack:"attackType"
+  string attackType = 3;
+  // 玩家操作的角色信息 | @inject_tag: msgpack:"players"
   repeated PlayerStatus players = 4;
-  // @inject_tag: msgpack:"from"
-  int32 from = 5;  // 攻击方
-  // @inject_tag: msgpack:"to"
-  int32 to = 6; // 受到攻击的一方
-  // @inject_tag: msgpack:"hitInfo"
-  HitInfo hitInfo = 7; // 命中信息
+  // 攻击方 | @inject_tag: msgpack:"from"
+  int32 from = 5;
+  // 受到攻击的一方 | @inject_tag: msgpack:"to"
+  int32 to = 6;
+  // 命中信息 | @inject_tag: msgpack:"hitInfo"
+  HitInfo hitInfo = 7;
 }
 
 // 一次攻击的命中信息
@@ -73,20 +73,12 @@ message GameOver {
 
 // 玩家移动
 message RoleMove {
-  // @inject_tag: msgpack:"uid"
+  // 移动的角色对应的玩家 uid | @inject_tag: msgpack:"uid"
   int32 uid = 1;
-  // @inject_tag: msgpack:"target"
-  RolePosition target = 2;
-  // @inject_tag: msgpack:"vector"
-  RolePosition vector = 3;
-  // @inject_tag: msgpack:"angle"
-  int32 angle = 4;
-  // @inject_tag: msgpack:"joystick"
-  bool joystick = 5;
-  // @inject_tag: msgpack:"skillId"
-  int32 skillId = 6;
-  // @inject_tag: msgpack:"targetId"
-  int32 targetId = 7;
+  // 新的位置 | @inject_tag: msgpack:"newPos"
+  RolePosition newPos = 2;
+  // 移动前的位置 | @inject_tag: msgpack:"beforePos"
+  RolePosition beforePos = 3;
 }
 
 enum SkillState {
