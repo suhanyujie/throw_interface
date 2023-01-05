@@ -71,7 +71,7 @@ message GameOver {
   string msg = 4;
 }
 
-// 玩家移动
+// 玩家/角色移动
 message RoleMove {
   // 移动的角色对应的玩家 uid | @inject_tag: msgpack:"uid"
   int32 uid = 1;
