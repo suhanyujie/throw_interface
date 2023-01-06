@@ -115,7 +115,7 @@ message MsgRoleAttack {
   // 攻击编号，服务端分配 | @inject_tag: msgpack:"atkId"
   string atkId = 7;
   // 敌方如果是机器人，则携带此参数。由后端告知前端是否命中；如果没有，可传 null
-  BotAtkInfo botAtk = 8;
+  optional BotAtkInfo botAtk = 8;
 }
 
 message BotAtkInfo {
