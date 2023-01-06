@@ -75,10 +75,12 @@ message GameOver {
 message RoleMove {
   // 移动的角色对应的玩家 uid | @inject_tag: msgpack:"uid"
   int32 uid = 1;
+  // 角色的 id | @inject_tag: msgpack:"roleId"
+  int32 roleId = 2;
   // 新的位置 | @inject_tag: msgpack:"newPos"
-  RolePosition newPos = 2;
+  RolePosition newPos = 3;
   // 移动前的位置 | @inject_tag: msgpack:"beforePos"
-  RolePosition beforePos = 3;
+  RolePosition beforePos = 4;
 }
 
 enum SkillState {
@@ -106,10 +108,12 @@ message MsgRoleAttack {
   int32 targetId = 4;
   // 攻击方坐标 | @inject_tag: msgpack:"pos"
   RolePosition pos = 5;
-  // @inject_tag: msgpack:"atkInput"
-  SInputData atkInput = 6; // 攻击参数
+  // 攻击参数 | @inject_tag: msgpack:"atkInput"
+  SInputData atkInput = 6;
+  // 攻击编号，服务端分配 | @inject_tag: msgpack:"atkId"
+  string atkId = 7;
   // 敌方如果是机器人，则携带此参数。由后端告知前端是否命中；如果没有，可传 null
-  BotAtkInfo botAtk = 7;
+  BotAtkInfo botAtk = 8;
 }
 
 message BotAtkInfo {
@@ -161,14 +165,16 @@ message HitRoleInfo {
   SkillState state = 3;
   // 目标玩家编号（uid） | @inject_tag: msgpack:"targetId"
   int32 targetId = 4;
-  // @inject_tag: msgpack:"rolePos"
-  RolePosition rolePos = 5; // 攻击方坐标
+  // 攻击方坐标 | @inject_tag: msgpack:"rolePos"
+  RolePosition rolePos = 5;
   // 是否命中 | @inject_tag: msgpack:"isHit"
   bool isHit = 6;
   // @inject_tag: msgpack:"hitPos"
   HitPos hitPos = 7;
-  // @inject_tag: msgpack:"atkInput"
-  SInputData atkInput = 8; // 攻击参数
+  // 攻击参数 | @inject_tag: msgpack:"atkInput"
+  SInputData atkInput = 8;
+  // 攻击编号 | @inject_tag: msgpack:"atkId"
+  string atkId = 9;
 }
 
 
