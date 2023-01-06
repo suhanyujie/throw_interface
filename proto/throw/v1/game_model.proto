@@ -158,6 +158,7 @@ message SInputData {
   int32 parts = 12;
 }
 
+// 命中敌方信息
 message HitRoleInfo {
   // 玩家编号 | @inject_tag: msgpack:"uid"
   int32 uid = 1;
