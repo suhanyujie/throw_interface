@@ -38,6 +38,8 @@ message HitInfo {
   bool isHit = 1;
   // 命中部位 | @inject_tag: json:"pos" msgpack:"pos"
   HitPos pos = 2;
+  // 命中的攻击编号 | @inject_tag: json:"atkId" msgpack:"atkId"
+  string atkId = 3;
 }
 
 message PlayerStatus {
