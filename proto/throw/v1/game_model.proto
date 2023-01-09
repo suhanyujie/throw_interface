@@ -257,6 +257,59 @@ message ResRoomJoin {
   RoomDetail room = 2;
 }
 
+message ResRoomForPveJoin {
+  // @inject_tag: msgpack:"uid"
+  int32 uid  = 1;
+  // @inject_tag: msgpack:"room"
+  RoomDetail room = 2;
+  // @inject_tag: msgpack:"room"
+  PveLevel pveLevel = 3;
+}
+
+// pve 关卡信息
+message PveLevel {
+  // 关卡 id | @inject_tag: msgpack:"id"
+  int32 id = 1;
+  // 关卡所属游戏模式  1 pve;2 pvp | @inject_tag: msgpack:"typ"
+  int32 typ = 2;
+  // 关卡资源 | @inject_tag: msgpack:"image"
+  int32 image = 3;
+  // 下一个关卡 id | @inject_tag: msgpack:"next"
+  int32 next = 4;
+  // 游戏模式 0一次击杀，1二次击杀 | @inject_tag: msgpack:"gameMode"
+  int32 gameMode = 5;
+  // 本方角色位置 | @inject_tag: msgpack:"OwnPos"
+  RolePosition OwnPos = 6;
+  // 敌方 a 的位置 | @inject_tag: msgpack:"OtherPosA"
+  RolePosition OtherPosA = 7;
+  // 距离出生距离的移动范围 | @inject_tag: msgpack:"moveRange"
+  int32 moveRange = 8;
+  // 关卡中，怪物 id 列表 | @inject_tag: msgpack:"monsterIds"
+  repeated int32 monsterIds = 9;
+  // 宝箱类型 | @inject_tag: msgpack:"rewardType"
+  int32 rewardType = 10;
+  // 关卡所需体力值 | @inject_tag: msgpack:"ps"
+  int32 ps = 11;
+  // 关卡完成后返还的体力值 | @inject_tag: msgpack:"backPs"
+  int32 backPs  = 12;
+  // 关卡描述信息 | @inject_tag: msgpack:"desc"
+  DescInfo desc = 13;
+  // 进入关卡时，玩家使用的角色信息 | @inject_tag: msgpack:"userRole"
+  RoleInfo userRole = 14;
+}
+
+// 游戏中的 desc 信息
+message DescInfo {
+  // @inject_tag: msgpack:"id"
+  int32 id  = 1;
+  // @inject_tag: msgpack:"name"
+  string name = 2;
+  // @inject_tag: msgpack:"desc"
+  string desc = 3;
+  // @inject_tag: msgpack:"title"
+  string title = 4;
+}
+
 // 房间内聊天记录信息
 message RoomMsgRecord {
   // @inject_tag: msgpack:"time"

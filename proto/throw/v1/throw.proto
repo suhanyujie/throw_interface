@@ -54,15 +54,4 @@ message DataInfoResp {
   string msg = 2;
 }
 
-// 游戏中的 desc 信息
-message DescInfo {
-  // @inject_tag: msgpack:"id"
-  int32 id  = 1;
-  // @inject_tag: msgpack:"name"
-  string name = 2;
-  // @inject_tag: msgpack:"desc"
-  string desc = 3;
-  // @inject_tag: msgpack:"title"
-  string title = 4;
-}
 

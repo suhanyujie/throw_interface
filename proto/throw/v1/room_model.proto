@@ -13,3 +13,10 @@ message DataOfJoin {
   // nft id | @inject_tag: msgpack:"nft"
   int32 nft  = 3;
 }
+
+message PveJoin {
+  // 关卡 id | @inject_tag: msgpack:"levelId"
+  int32 levelId = 1;
+  // nft id | @inject_tag: msgpack:"nft"
+  int32 nft  = 2;
+}
