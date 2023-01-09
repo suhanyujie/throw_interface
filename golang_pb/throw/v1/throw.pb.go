@@ -118,14 +118,14 @@ type IResponseProtocol struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: msgpack:"code"
-	Code int32 `protobuf:"varint,1,opt,name=code,proto3" json:"code,omitempty" msgpack:"code"`
-	// @inject_tag: msgpack:"isCompress"
-	IsCompress bool `protobuf:"varint,2,opt,name=isCompress,proto3" json:"isCompress,omitempty" msgpack:"isCompress"` // true 表示 data 为 proto 编码的字节数组
-	// @inject_tag: msgpack:"data"
-	Data []byte `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty" msgpack:"data"` // data 是 proto 编码的字节
-	// @inject_tag: msgpack:"callback"
-	Callback string `protobuf:"bytes,4,opt,name=callback,proto3" json:"callback,omitempty" msgpack:"callback"` //  string msg = 5; // 异常时的详细信息
+	// @inject_tag: msgpack:"code" json:"code"
+	Code int32 `protobuf:"varint,1,opt,name=code,proto3" json:"code" msgpack:"code"`
+	// @inject_tag: msgpack:"isCompress" json:"isCompress"
+	IsCompress bool `protobuf:"varint,2,opt,name=isCompress,proto3" json:"isCompress" msgpack:"isCompress"` // true 表示 data 为 proto 编码的字节数组
+	// @inject_tag: msgpack:"data" json:"data"
+	Data []byte `protobuf:"bytes,3,opt,name=data,proto3" json:"data" msgpack:"data"` // data 是 proto 编码的字节
+	// @inject_tag: msgpack:"callback" json:"callback"
+	Callback string `protobuf:"bytes,4,opt,name=callback,proto3" json:"callback" msgpack:"callback"` //  string msg = 5; // 异常时的详细信息
 }
 
 func (x *IResponseProtocol) Reset() {

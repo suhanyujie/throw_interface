@@ -19,13 +19,13 @@ message IRequestProtocol {
 }
 
 message IResponseProtocol {
-  // @inject_tag: msgpack:"code"
+  // @inject_tag: msgpack:"code" json:"code"
   int32 code = 1;
-  // @inject_tag: msgpack:"isCompress"
+  // @inject_tag: msgpack:"isCompress" json:"isCompress"
   bool isCompress = 2; // true 表示 data 为 proto 编码的字节数组
-  // @inject_tag: msgpack:"data"
+  // @inject_tag: msgpack:"data" json:"data"
   bytes data = 3;    // data 是 proto 编码的字节
-  // @inject_tag: msgpack:"callback"
+  // @inject_tag: msgpack:"callback" json:"callback"
   string callback = 4;
   //  string msg = 5; // 异常时的详细信息
 }
