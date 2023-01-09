@@ -360,3 +360,11 @@ message GameStartInfo{
   // 当前房间内，角色详情 | @inject_tag: msgpack:"roles"
   repeated RoleDetailed roles = 2;
 }
+
+// pve 对战开始下一轮
+message PveNewRound {
+  // 轮次 | @inject_tag: msgpack:"roundTh"
+  int32 roundTh = 1;
+  // 关卡 id | @inject_tag: msgpack:"levelId"
+  int32 levelId = 2;
+}
