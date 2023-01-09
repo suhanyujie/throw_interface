@@ -69,8 +69,26 @@ message GameOver {
   RoleDetailed losePlayer = 2;
   // @inject_tag: msgpack:"event"
   string event = 3;
-  // @inject_tag: msgpack:"msg"
-  string msg = 4;
+  // 结算信息 | @inject_tag: msgpack:"playerSettles"
+  repeated PlayerSettleInfo playerSettles = 4;
+}
+
+// 游戏结束后，玩家的结算信息
+message PlayerSettleInfo {
+  // 命中率 | @inject_tag: msgpack:"hitRate" json:"hitRate"
+  float hitRate = 1;
+  // 攻击次数 | @inject_tag: msgpack:"atkCount" json:"atkCount"
+  int32 atkCount = 2;
+  // 平均每发伤害 | @inject_tag: msgpack:"damagePerShotAvg" json:"damagePerShotAvg"
+  float damagePerShotAvg = 3;
+  // 最大连击次数 | @inject_tag: msgpack:"maxComboHitTimes" json:"maxComboHitTimes"
+  int32 maxComboHitTimes = 4;
+  // 各部位命中次数 | @inject_tag: msgpack:"hitPosMap" json:"hitPosMap"
+  map<int32, int32> hitPosMap = 5;
+  // 使用道具的次数 | @inject_tag: msgpack:"usingPropCountMap" json:"usingPropCountMap"
+  map<int32, int32> usingPropCountMap = 6;
+  // 攻击被阻挡次数 | @inject_tag: msgpack:"weaponBlockCount" json:"weaponBlockCount"
+  int32 weaponBlockCount = 7;
 }
 
 // 玩家/角色移动
