@@ -89,6 +89,10 @@ message PlayerSettleInfo {
   map<int32, int32> usingPropCountMap = 6;
   // 攻击被阻挡次数 | @inject_tag: msgpack:"weaponBlockCount" json:"weaponBlockCount"
   int32 weaponBlockCount = 7;
+  // 用户 id | @inject_tag: msgpack:"uid" json:"uid"
+  int32 uid = 8;
+  // 角色 id | @inject_tag: msgpack:"roleId" json:"roleId"
+  int32 roleId = 9;
 }
 
 // 玩家/角色移动
