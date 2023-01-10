@@ -71,6 +71,8 @@ message GameOver {
   string event = 3;
   // 结算信息 | @inject_tag: msgpack:"playerSettles"
   repeated PlayerSettleInfo playerSettles = 4;
+  // 战斗时长，秒数 | @inject_tag: msgpack:"usedTimeSec" json:"usedTimeSec"
+  int32 usedTimeSec = 5;
 }
 
 // 游戏结束后，玩家的结算信息
