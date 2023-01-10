@@ -1690,12 +1690,12 @@ type ResRoomForPveJoin struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: msgpack:"uid"
+	// 当前用户 uid | @inject_tag: msgpack:"uid"
 	Uid int32 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty" msgpack:"uid"`
-	// @inject_tag: msgpack:"room"
+	// 房间信息 | @inject_tag: msgpack:"room"
 	Room *RoomDetail `protobuf:"bytes,2,opt,name=room,proto3" json:"room,omitempty" msgpack:"room"`
-	// @inject_tag: msgpack:"room"
-	PveLevel *PveLevel `protobuf:"bytes,3,opt,name=pveLevel,proto3" json:"pveLevel,omitempty" msgpack:"room"`
+	// pve 关卡信息 | @inject_tag: msgpack:"pveLevel"
+	PveLevel *PveLevel `protobuf:"bytes,3,opt,name=pveLevel,proto3" json:"pveLevel,omitempty" msgpack:"pveLevel"`
 }
 
 func (x *ResRoomForPveJoin) Reset() {
