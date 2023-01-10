@@ -73,6 +73,10 @@ message GameOver {
   repeated PlayerSettleInfo playerSettles = 4;
   // 战斗时长，秒数 | @inject_tag: msgpack:"usedTimeSec" json:"usedTimeSec"
   int32 usedTimeSec = 5;
+  // 游戏开始时间。秒时间戳 | @inject_tag: msgpack:"gameStartTime"
+  int32 gameStartTime = 6;
+  // 游戏结束时间 | @inject_tag: msgpack:"gameEndTime"
+  int32 gameEndTime = 7;
 }
 
 // 游戏结束后，玩家的结算信息
