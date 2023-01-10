@@ -200,9 +200,10 @@ message HitRoleInfo {
 
 
 enum HitPos {
-  Normal = 0;// 普通：四肢，躯干
+  Empty0 = 0; // 为保持和前端的枚举值一致，这里占个位
   Fatal = 1;// 致命：头部
-  Secondary = 2;// 次要：膝盖
+  Normal = 2;// 普通：四肢，躯干
+  Secondary = 3;// 次要：膝盖
 }
 
 // 角色状态
