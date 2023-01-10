@@ -73,10 +73,6 @@ message GameOver {
   repeated PlayerSettleInfo playerSettles = 4;
   // 战斗时长，秒数 | @inject_tag: msgpack:"usedTimeSec" json:"usedTimeSec"
   int32 usedTimeSec = 5;
-  // 游戏开始时间。秒时间戳 | @inject_tag: msgpack:"gameStartTime"
-  int32 gameStartTime = 6;
-  // 游戏结束时间 | @inject_tag: msgpack:"gameEndTime"
-  int32 gameEndTime = 7;
 }
 
 // 游戏结束后，玩家的结算信息
@@ -392,6 +388,8 @@ message GameStartInfo{
   string msg = 1;
   // 当前房间内，角色详情 | @inject_tag: msgpack:"roles"
   repeated RoleDetailed roles = 2;
+  // 游戏开始时间 | @inject_tag: msgpack:"gameStartTime"
+  int32 gameStartTime = 3;
 }
 
 // pve 对战开始下一轮
