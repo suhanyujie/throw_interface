@@ -288,8 +288,8 @@ message ResRoomJoin {
   int32 uid  = 1;
   // 加入的房间信息 | @inject_tag: msgpack:"room"
   RoomDetail room = 2;
-  // pvp 的关卡 id | @inject_tag: msgpack:"room"
-  int32 levelId = 3;
+  // pvp 的关卡 id | @inject_tag: msgpack:"pvpLevelId"
+  int32 pvpLevelId = 3;
 }
 
 message ResRoomForPveJoin {
