@@ -284,10 +284,12 @@ message RoomDetail {
 }
 
 message ResRoomJoin {
-  // @inject_tag: msgpack:"uid"
+  // 当前玩家 uid | @inject_tag: msgpack:"uid"
   int32 uid  = 1;
-  // @inject_tag: msgpack:"room"
+  // 加入的房间信息 | @inject_tag: msgpack:"room"
   RoomDetail room = 2;
+  // pvp 的关卡 id | @inject_tag: msgpack:"room"
+  int32 levelId = 3;
 }
 
 message ResRoomForPveJoin {
@@ -402,4 +404,26 @@ message PveNewRound {
   int32 roundTh = 1;
   // 关卡 id | @inject_tag: msgpack:"levelId"
   int32 levelId = 2;
+}
+
+// 技能-回血推送
+message SkillHot {
+  // 目标玩家 uid | @inject_tag: msgpack:"uid"
+  int32 uid = 1;
+  // 目标玩家的角色 id | @inject_tag: msgpack:"roleId"
+  int32 roleId = 2;
+  // 回复的生命值 | @inject_tag: msgpack:"hotVal"
+  int32 hotVal = 3;
+}
+
+// 技能-僵直
+message SkillRigidity {
+  // 目标玩家 uid | @inject_tag: msgpack:"uid"
+  int32 uid = 1;
+  // 目标玩家的角色 id | @inject_tag: msgpack:"roleId"
+  int32 roleId = 2;
+  // 持续时间 | @inject_tag: msgpack:"keepSec"
+  int32 keepSec = 3;
+  // 延长后的普攻的 cd 值 | @inject_tag: msgpack:"normalAtkCd"
+  int32 normalAtkCd = 4;
 }
