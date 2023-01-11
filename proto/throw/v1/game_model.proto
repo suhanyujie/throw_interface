@@ -101,6 +101,8 @@ message PlayerSettleInfo {
   int32 roleId = 11;
   // 玩家赢得的代币数，为负数时，表示损失的代币数 | @inject_tag: msgpack:"earnToken" json:"earnToken"
   int32 earnToken = 12;
+  // nft 分值、战力 | @inject_tag: msgpack:"nftScore" json:"nftScore"
+  int32 nftScore = 13;
 }
 
 // 玩家/角色移动
