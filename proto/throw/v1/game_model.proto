@@ -409,12 +409,7 @@ message PveNewRound {
 }
 
 // 只有对自己生效的技能才会使用该请求
-message SkillReleaseForSelf {
-  // 施放技能的玩家 uid | @inject_tag: msgpack:"uid"
-  int32 uid = 1;
-  // 施放技能的角色 id | @inject_tag: msgpack:"roleId"
-  int32 roleId = 2;
-}
+message SkillReleaseForSelf {}
 
 // 武器发生碰撞/阻挡
 message WeaponBlock {
