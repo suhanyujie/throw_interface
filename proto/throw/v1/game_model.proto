@@ -406,6 +406,18 @@ message PveNewRound {
   int32 levelId = 2;
 }
 
+// 武器发生碰撞/阻挡
+message WeaponBlock {
+  // 发出攻击的玩家 uid | @inject_tag: msgpack:"uid"
+  int32 uid = 1;
+  // 发出攻击的角色 id | @inject_tag: msgpack:"roleId"
+  int32 roleId = 2;
+  // 对应的攻击 id | @inject_tag: msgpack:"atkId"
+  string atkId = 3;
+  // 发生碰撞时的坐标 | @inject_tag: msgpack:"weaponPos"
+  RolePosition weaponPos = 4;
+}
+
 // 技能-回血推送
 message SkillHot {
   // 目标玩家 uid | @inject_tag: msgpack:"uid"
