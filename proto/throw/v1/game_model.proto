@@ -126,8 +126,10 @@ enum SkillState {
   Back = 2;
   // 冷却
   Cooling = 3;
+  // 充能中
+  Charging = 4;
   // 就绪
-  Ready = 4;
+  Ready = 5;
 }
 
 // 广播攻击行为
