@@ -1199,7 +1199,7 @@ type HitRoleInfo struct {
 	RolePos *RolePosition `protobuf:"bytes,5,opt,name=rolePos,proto3" json:"rolePos,omitempty" msgpack:"rolePos"`
 	// 是否命中 | @inject_tag: msgpack:"isHit"
 	IsHit bool `protobuf:"varint,6,opt,name=isHit,proto3" json:"isHit,omitempty" msgpack:"isHit"`
-	// @inject_tag: msgpack:"hitPos"
+	// 命中部位 @inject_tag: msgpack:"hitPos"
 	HitPos HitPos `protobuf:"varint,7,opt,name=hitPos,proto3,enum=throw.v1.HitPos" json:"hitPos,omitempty" msgpack:"hitPos"`
 	// 攻击参数 | @inject_tag: msgpack:"atkInput"
 	AtkInput *SInputData `protobuf:"bytes,8,opt,name=atkInput,proto3" json:"atkInput,omitempty" msgpack:"atkInput"`

@@ -206,7 +206,7 @@ message HitRoleInfo {
   RolePosition rolePos = 5;
   // 是否命中 | @inject_tag: msgpack:"isHit"
   bool isHit = 6;
-  // @inject_tag: msgpack:"hitPos"
+  // 命中部位 @inject_tag: msgpack:"hitPos"
   HitPos hitPos = 7;
   // 攻击参数 | @inject_tag: msgpack:"atkInput"
   SInputData atkInput = 8;
