@@ -431,8 +431,10 @@ message SkillHot {
   int32 uid = 1;
   // 目标玩家的角色 id | @inject_tag: msgpack:"roleId"
   int32 roleId = 2;
-  // 回复的生命值 | @inject_tag: msgpack:"hotVal"
+  // 每秒回复的生命值 | @inject_tag: msgpack:"hotVal"
   int32 hotVal = 3;
+  // 持续的秒数 | @inject_tag: msgpack:"keepSec"
+  int32 keepSec = 4;
 }
 
 // 技能-僵直
