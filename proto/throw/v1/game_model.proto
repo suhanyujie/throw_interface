@@ -444,10 +444,12 @@ message SkillHot {
   int32 skillId = 3;
   // 所属的技能效果 id | @inject_tag: msgpack:"skillId"
   int32 effectId = 4;
+  // 技能效果类型 | @inject_tag: msgpack:"effectType"
+  int32 effectType = 5;
   // 每秒回复的生命值 | @inject_tag: msgpack:"hotVal"
-  int32 hotVal = 5;
+  int32 hotVal = 6;
   // 持续的秒数 | @inject_tag: msgpack:"keepSec"
-  int32 keepSec = 6;
+  int32 keepSec = 7;
 }
 
 // 技能-僵直
@@ -460,8 +462,14 @@ message SkillRigidity {
   int32 skillId = 3;
   // 所属的技能效果 id | @inject_tag: msgpack:"skillId"
   int32 effectId = 4;
+  // 技能效果类型 | @inject_tag: msgpack:"effectType"
+  int32 effectType = 5;
   // 持续时间 | @inject_tag: msgpack:"keepSec"
-  int32 keepSec = 5;
+  int32 keepSec = 6;
   // 延长后的普攻的 cd 值 | @inject_tag: msgpack:"normalAtkCd"
-  int32 normalAtkCd = 6;
+  int32 normalAtkCd = 7;
+  // 中技能的玩家 uid | @inject_tag: msgpack:"targetUid"
+  int32 targetUid = 8;
+  // 中技能的玩家的角色 id | @inject_tag: msgpack:"targetRoleId"
+  int32 targetRoleId = 9;
 }
