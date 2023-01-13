@@ -40,6 +40,8 @@ message HitInfo {
   HitPos pos = 2;
   // 命中的攻击编号 | @inject_tag: json:"atkId" msgpack:"atkId"
   string atkId = 3;
+  // 使用的技能 id | @inject_tag: json:"skillId" msgpack:"skillId"
+  int32 skillId = 4;
 }
 
 message PlayerStatus {
