@@ -2874,7 +2874,7 @@ func (x *SkillRigidity) GetTargetRoleId() int32 {
 	return 0
 }
 
-// 反伤时间
+// 反伤时间/反伤次数
 type SkillBackWound struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2971,6 +2971,109 @@ func (x *SkillBackWound) GetKeepSec() int32 {
 }
 
 func (x *SkillBackWound) GetRemainTimes() int32 {
+	if x != nil {
+		return x.RemainTimes
+	}
+	return 0
+}
+
+// 攻击提升
+type SkillAtkImprove struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// 目标玩家 uid | @inject_tag: msgpack:"uid"
+	Uid int32 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty" msgpack:"uid"`
+	// 目标玩家的角色 id | @inject_tag: msgpack:"roleId"
+	RoleId int32 `protobuf:"varint,2,opt,name=roleId,proto3" json:"roleId,omitempty" msgpack:"roleId"`
+	// 所属的技能 id | @inject_tag: msgpack:"skillId"
+	SkillId int32 `protobuf:"varint,3,opt,name=skillId,proto3" json:"skillId,omitempty" msgpack:"skillId"`
+	// 所属的技能效果 id | @inject_tag: msgpack:"skillId"
+	EffectId int32 `protobuf:"varint,4,opt,name=effectId,proto3" json:"effectId,omitempty" msgpack:"skillId"`
+	// 技能效果类型 | @inject_tag: msgpack:"effectType"
+	EffectType int32 `protobuf:"varint,5,opt,name=effectType,proto3" json:"effectType,omitempty" msgpack:"effectType"`
+	// 持续时间 | @inject_tag: msgpack:"keepSec"
+	KeepSec int32 `protobuf:"varint,6,opt,name=keepSec,proto3" json:"keepSec,omitempty" msgpack:"keepSec"`
+	// 有效次数 | @inject_tag: msgpack:"remainTimes"
+	RemainTimes int32 `protobuf:"varint,7,opt,name=remainTimes,proto3" json:"remainTimes,omitempty" msgpack:"remainTimes"`
+}
+
+func (x *SkillAtkImprove) Reset() {
+	*x = SkillAtkImprove{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_game_model_proto_msgTypes[33]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SkillAtkImprove) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SkillAtkImprove) ProtoMessage() {}
+
+func (x *SkillAtkImprove) ProtoReflect() protoreflect.Message {
+	mi := &file_game_model_proto_msgTypes[33]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SkillAtkImprove.ProtoReflect.Descriptor instead.
+func (*SkillAtkImprove) Descriptor() ([]byte, []int) {
+	return file_game_model_proto_rawDescGZIP(), []int{33}
+}
+
+func (x *SkillAtkImprove) GetUid() int32 {
+	if x != nil {
+		return x.Uid
+	}
+	return 0
+}
+
+func (x *SkillAtkImprove) GetRoleId() int32 {
+	if x != nil {
+		return x.RoleId
+	}
+	return 0
+}
+
+func (x *SkillAtkImprove) GetSkillId() int32 {
+	if x != nil {
+		return x.SkillId
+	}
+	return 0
+}
+
+func (x *SkillAtkImprove) GetEffectId() int32 {
+	if x != nil {
+		return x.EffectId
+	}
+	return 0
+}
+
+func (x *SkillAtkImprove) GetEffectType() int32 {
+	if x != nil {
+		return x.EffectType
+	}
+	return 0
+}
+
+func (x *SkillAtkImprove) GetKeepSec() int32 {
+	if x != nil {
+		return x.KeepSec
+	}
+	return 0
+}
+
+func (x *SkillAtkImprove) GetRemainTimes() int32 {
 	if x != nil {
 		return x.RemainTimes
 	}
@@ -3343,6 +3446,19 @@ var file_game_model_proto_rawDesc = []byte{
 	0x18, 0x0a, 0x07, 0x6b, 0x65, 0x65, 0x70, 0x53, 0x65, 0x63, 0x18, 0x06, 0x20, 0x01, 0x28, 0x05,
 	0x52, 0x07, 0x6b, 0x65, 0x65, 0x70, 0x53, 0x65, 0x63, 0x12, 0x20, 0x0a, 0x0b, 0x72, 0x65, 0x6d,
 	0x61, 0x69, 0x6e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x18, 0x07, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0b,
+	0x72, 0x65, 0x6d, 0x61, 0x69, 0x6e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x22, 0xcd, 0x01, 0x0a, 0x0f,
+	0x53, 0x6b, 0x69, 0x6c, 0x6c, 0x41, 0x74, 0x6b, 0x49, 0x6d, 0x70, 0x72, 0x6f, 0x76, 0x65, 0x12,
+	0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x03, 0x75, 0x69,
+	0x64, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x6f, 0x6c, 0x65, 0x49, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x05, 0x52, 0x06, 0x72, 0x6f, 0x6c, 0x65, 0x49, 0x64, 0x12, 0x18, 0x0a, 0x07, 0x73, 0x6b, 0x69,
+	0x6c, 0x6c, 0x49, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x07, 0x73, 0x6b, 0x69, 0x6c,
+	0x6c, 0x49, 0x64, 0x12, 0x1a, 0x0a, 0x08, 0x65, 0x66, 0x66, 0x65, 0x63, 0x74, 0x49, 0x64, 0x18,
+	0x04, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x65, 0x66, 0x66, 0x65, 0x63, 0x74, 0x49, 0x64, 0x12,
+	0x1e, 0x0a, 0x0a, 0x65, 0x66, 0x66, 0x65, 0x63, 0x74, 0x54, 0x79, 0x70, 0x65, 0x18, 0x05, 0x20,
+	0x01, 0x28, 0x05, 0x52, 0x0a, 0x65, 0x66, 0x66, 0x65, 0x63, 0x74, 0x54, 0x79, 0x70, 0x65, 0x12,
+	0x18, 0x0a, 0x07, 0x6b, 0x65, 0x65, 0x70, 0x53, 0x65, 0x63, 0x18, 0x06, 0x20, 0x01, 0x28, 0x05,
+	0x52, 0x07, 0x6b, 0x65, 0x65, 0x70, 0x53, 0x65, 0x63, 0x12, 0x20, 0x0a, 0x0b, 0x72, 0x65, 0x6d,
+	0x61, 0x69, 0x6e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x18, 0x07, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0b,
 	0x72, 0x65, 0x6d, 0x61, 0x69, 0x6e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x2a, 0x54, 0x0a, 0x0a, 0x53,
 	0x6b, 0x69, 0x6c, 0x6c, 0x53, 0x74, 0x61, 0x74, 0x65, 0x12, 0x09, 0x0a, 0x05, 0x46, 0x72, 0x6f,
 	0x6e, 0x74, 0x10, 0x00, 0x12, 0x0b, 0x0a, 0x07, 0x43, 0x61, 0x73, 0x74, 0x69, 0x6e, 0x67, 0x10,
@@ -3372,7 +3488,7 @@ func file_game_model_proto_rawDescGZIP() []byte {
 }
 
 var file_game_model_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_game_model_proto_msgTypes = make([]protoimpl.MessageInfo, 37)
+var file_game_model_proto_msgTypes = make([]protoimpl.MessageInfo, 38)
 var file_game_model_proto_goTypes = []interface{}{
 	(SkillState)(0),             // 0: throw.v1.SkillState
 	(HitPos)(0),                 // 1: throw.v1.HitPos
@@ -3409,10 +3525,11 @@ var file_game_model_proto_goTypes = []interface{}{
 	(*SkillHot)(nil),            // 32: throw.v1.SkillHot
 	(*SkillRigidity)(nil),       // 33: throw.v1.SkillRigidity
 	(*SkillBackWound)(nil),      // 34: throw.v1.SkillBackWound
-	nil,                         // 35: throw.v1.PlayerSettleInfo.HitPosMapEntry
-	nil,                         // 36: throw.v1.PlayerSettleInfo.UsingPropCountMapEntry
-	nil,                         // 37: throw.v1.RoleSkill.AttrEntry
-	nil,                         // 38: throw.v1.RoleDetailed.AttributesEntry
+	(*SkillAtkImprove)(nil),     // 35: throw.v1.SkillAtkImprove
+	nil,                         // 36: throw.v1.PlayerSettleInfo.HitPosMapEntry
+	nil,                         // 37: throw.v1.PlayerSettleInfo.UsingPropCountMapEntry
+	nil,                         // 38: throw.v1.RoleSkill.AttrEntry
+	nil,                         // 39: throw.v1.RoleDetailed.AttributesEntry
 }
 var file_game_model_proto_depIdxs = []int32{
 	6,  // 0: throw.v1.AttackOnceResult.players:type_name -> throw.v1.PlayerStatus
@@ -3421,8 +3538,8 @@ var file_game_model_proto_depIdxs = []int32{
 	26, // 3: throw.v1.GameOver.winPlayer:type_name -> throw.v1.RoleDetailed
 	26, // 4: throw.v1.GameOver.losePlayer:type_name -> throw.v1.RoleDetailed
 	9,  // 5: throw.v1.GameOver.playerSettles:type_name -> throw.v1.PlayerSettleInfo
-	35, // 6: throw.v1.PlayerSettleInfo.hitPosMap:type_name -> throw.v1.PlayerSettleInfo.HitPosMapEntry
-	36, // 7: throw.v1.PlayerSettleInfo.usingPropCountMap:type_name -> throw.v1.PlayerSettleInfo.UsingPropCountMapEntry
+	36, // 6: throw.v1.PlayerSettleInfo.hitPosMap:type_name -> throw.v1.PlayerSettleInfo.HitPosMapEntry
+	37, // 7: throw.v1.PlayerSettleInfo.usingPropCountMap:type_name -> throw.v1.PlayerSettleInfo.UsingPropCountMapEntry
 	16, // 8: throw.v1.RoleMove.newPos:type_name -> throw.v1.RolePosition
 	16, // 9: throw.v1.RoleMove.beforePos:type_name -> throw.v1.RolePosition
 	0,  // 10: throw.v1.MsgRoleAttack.state:type_name -> throw.v1.SkillState
@@ -3437,7 +3554,7 @@ var file_game_model_proto_depIdxs = []int32{
 	16, // 19: throw.v1.RoleState.pos:type_name -> throw.v1.RolePosition
 	17, // 20: throw.v1.RoleState.skills:type_name -> throw.v1.RoleSkill
 	0,  // 21: throw.v1.RoleSkill.state:type_name -> throw.v1.SkillState
-	37, // 22: throw.v1.RoleSkill.attr:type_name -> throw.v1.RoleSkill.AttrEntry
+	38, // 22: throw.v1.RoleSkill.attr:type_name -> throw.v1.RoleSkill.AttrEntry
 	26, // 23: throw.v1.RoomDetail.roles:type_name -> throw.v1.RoleDetailed
 	26, // 24: throw.v1.RoomDetail.npcs:type_name -> throw.v1.RoleDetailed
 	24, // 25: throw.v1.RoomDetail.messages:type_name -> throw.v1.RoomMsgRecord
@@ -3451,7 +3568,7 @@ var file_game_model_proto_depIdxs = []int32{
 	25, // 33: throw.v1.RoomMsgRecord.role:type_name -> throw.v1.RoleInfo
 	25, // 34: throw.v1.RoleDetailed.roleInfo:type_name -> throw.v1.RoleInfo
 	15, // 35: throw.v1.RoleDetailed.state:type_name -> throw.v1.RoleState
-	38, // 36: throw.v1.RoleDetailed.attributes:type_name -> throw.v1.RoleDetailed.AttributesEntry
+	39, // 36: throw.v1.RoleDetailed.attributes:type_name -> throw.v1.RoleDetailed.AttributesEntry
 	26, // 37: throw.v1.GameStartInfo.roles:type_name -> throw.v1.RoleDetailed
 	16, // 38: throw.v1.WeaponBlock.weaponPos:type_name -> throw.v1.RolePosition
 	39, // [39:39] is the sub-list for method output_type
@@ -3863,6 +3980,18 @@ func file_game_model_proto_init() {
 				return nil
 			}
 		}
+		file_game_model_proto_msgTypes[33].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SkillAtkImprove); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	file_game_model_proto_msgTypes[9].OneofWrappers = []interface{}{}
 	type x struct{}
@@ -3871,7 +4000,7 @@ func file_game_model_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_game_model_proto_rawDesc,
 			NumEnums:      2,
-			NumMessages:   37,
+			NumMessages:   38,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
