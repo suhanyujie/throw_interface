@@ -454,7 +454,7 @@ message SkillHot {
   // 所属的技能效果 id | @inject_tag: msgpack:"skillId"
   int32 effectId = 4;
   // 技能效果类型 | @inject_tag: msgpack:"effectType"
-  int32 effectType = 5;
+  EffectType effectType = 5;
   // 每秒回复的生命值 | @inject_tag: msgpack:"hotVal"
   int32 hotVal = 6;
   // 持续的秒数 | @inject_tag: msgpack:"keepSec"
@@ -472,7 +472,7 @@ message SkillRigidity {
   // 所属的技能效果 id | @inject_tag: msgpack:"skillId"
   int32 effectId = 4;
   // 技能效果类型 | @inject_tag: msgpack:"effectType"
-  int32 effectType = 5;
+  EffectType effectType = 5;
   // 持续时间 | @inject_tag: msgpack:"keepSec"
   int32 keepSec = 6;
   // 延长后的普攻的 cd 值 | @inject_tag: msgpack:"normalAtkCd"
@@ -494,7 +494,7 @@ message SkillBackWound {
   // 所属的技能效果 id | @inject_tag: msgpack:"skillId"
   int32 effectId = 4;
   // 技能效果类型 | @inject_tag: msgpack:"effectType"
-  int32 effectType = 5;
+  EffectType effectType = 5;
   // 持续时间 | @inject_tag: msgpack:"keepSec"
   int32 keepSec = 6;
   // 有效次数 | @inject_tag: msgpack:"remainTimes"
@@ -512,7 +512,7 @@ message SkillAtkImprove {
   // 所属的技能效果 id | @inject_tag: msgpack:"skillId"
   int32 effectId = 4;
   // 技能效果类型 | @inject_tag: msgpack:"effectType"
-  int32 effectType = 5;
+  EffectType effectType = 5;
   // 持续时间 | @inject_tag: msgpack:"keepSec"
   int32 keepSec = 6;
   // 有效次数 | @inject_tag: msgpack:"remainTimes"
@@ -527,10 +527,10 @@ message SkillShield {
   int32 roleId = 2;
   // 所属的技能 id | @inject_tag: msgpack:"skillId"
   int32 skillId = 3;
-  // 所属的技能效果 id | @inject_tag: msgpack:"skillId"
+  // 所属的技能效果 id | @inject_tag: msgpack:"effectId"
   int32 effectId = 4;
   // 技能效果类型 | @inject_tag: msgpack:"effectType"
-  int32 effectType = 5;
+  EffectType effectType = 5;
   // 有效次数 | @inject_tag: msgpack:"remainTimes"
   int32 remainTimes = 6;
 }
@@ -546,7 +546,24 @@ message SkillDefenseImprove {
   // 所属的技能效果 id | @inject_tag: msgpack:"skillId"
   int32 effectId = 4;
   // 技能效果类型 | @inject_tag: msgpack:"effectType"
-  int32 effectType = 5;
+  EffectType effectType = 5;
   // 持续时间 | @inject_tag: msgpack:"keepSec"
   int32 keepSec = 6;
+}
+
+enum EffectType {
+    Effect0Normal = 0; // 普攻
+    Effect1KeepDecrHp = 1; // 持续掉血
+    Effect2ComboHit = 2; // 连击
+    Effect3ExtraHurt = 3; // 额外伤害
+    Effect4Rigidity = 4; // 僵直
+    Effect5DecrDef = 5; // 防御降低
+    Effect6BackWoundTime = 6; // 反伤时间
+    Effect7BackWoundTimes = 7; // 反伤次数
+    Effect8Hot = 8; // hot
+    Effect9IncrAtk = 9; // 攻击提升
+    Effect10Weak = 10; // 虚弱
+    Effect11Shield = 11; // 护盾
+    Effect12Thorns = 12; // 荆棘
+    Effect13IncrDef = 13; // 防御提升
 }
