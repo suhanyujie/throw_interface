@@ -412,6 +412,12 @@ message PveNewRound {
   int32 levelId = 2;
 }
 
+// pvp 决胜时刻到了
+message PvpGameDecideVictory {
+  // 描述信息 | @inject_tag: msgpack:"msg"
+  string msg = 1;
+}
+
 // 只有对自己生效的技能才会使用该请求
 message SkillReleaseForSelf {}
 
@@ -426,14 +432,15 @@ message PlayerReleaseSkill {
 
 // 武器发生碰撞/阻挡
 message WeaponBlock {
-  // 发出攻击的玩家 uid | @inject_tag: msgpack:"uid"
-  int32 uid = 1;
-  // 发出攻击的角色 id | @inject_tag: msgpack:"roleId"
-  int32 roleId = 2;
+  // 碰撞的武器信息 | @inject_tag: msgpack:"weapons"
+  repeated BlockedWeapon weapons = 1;
+}
+
+message BlockedWeapon {
   // 对应的攻击 id | @inject_tag: msgpack:"atkId"
-  string atkId = 3;
+  string atkId = 1;
   // 发生碰撞时的坐标 | @inject_tag: msgpack:"weaponPos"
-  RolePosition weaponPos = 4;
+  RolePosition weaponPos = 2;
 }
 
 // 技能-回血推送
