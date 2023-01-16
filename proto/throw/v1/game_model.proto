@@ -105,6 +105,8 @@ message PlayerSettleInfo {
   int32 earnToken = 12;
   // nft 分值、战力 | @inject_tag: msgpack:"nftScore" json:"nftScore"
   int32 nftScore = 13;
+  // 推荐的场次 | @inject_tag: msgpack:"recGameField" json:"recGameField"
+  int32 recGameField = 14;
 }
 
 // 玩家/角色移动
