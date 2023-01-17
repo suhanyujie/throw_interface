@@ -396,6 +396,16 @@ message RoleDetailed {
   map<string, int32> attributes = 4;
 }
 
+// 角色同步血量
+message RoleSyncHp {
+  // 原因 | @inject_tag: msgpack:"reason" json:"reason"
+  EffectType reason = 1;
+  // 原因描述 | @inject_tag: msgpack:"reasonDesc" json:"reasonDesc"
+  string reasonDesc = 2;
+  // 角色信息，其中包含血量 | @inject_tag: msgpack:"players" json:"players"
+  repeated PlayerStatus players = 3;
+}
+
 // 游戏即将开始时，广播房间内玩家的状态
 message GameStartInfo{
   // 描述 | @inject_tag: msgpack:"msg"
