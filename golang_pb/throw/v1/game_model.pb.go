@@ -499,14 +499,14 @@ type PlayerStatus struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// @inject_tag: msgpack:"uid"
-	Uid int32 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty" msgpack:"uid"`
-	// @inject_tag: msgpack:"heroId"
-	HeroId int32 `protobuf:"varint,2,opt,name=heroId,proto3" json:"heroId,omitempty" msgpack:"heroId"`
-	// @inject_tag: msgpack:"hp"
-	Hp int32 `protobuf:"varint,3,opt,name=hp,proto3" json:"hp,omitempty" msgpack:"hp"`
-	// @inject_tag: msgpack:"name"
-	Name string `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty" msgpack:"name"`
+	// @inject_tag: msgpack:"uid" json:"uid"
+	Uid int32 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid" msgpack:"uid"`
+	// @inject_tag: msgpack:"heroId" json:"heroId"
+	HeroId int32 `protobuf:"varint,2,opt,name=heroId,proto3" json:"heroId" msgpack:"heroId"`
+	// @inject_tag: msgpack:"hp" json:"hp"
+	Hp int32 `protobuf:"varint,3,opt,name=hp,proto3" json:"hp" msgpack:"hp"`
+	// @inject_tag: msgpack:"name" json:"name"
+	Name string `protobuf:"bytes,4,opt,name=name,proto3" json:"name" msgpack:"name"`
 }
 
 func (x *PlayerStatus) Reset() {
@@ -2253,24 +2253,24 @@ type RoleInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// 角色 id | @inject_tag: msgpack:"id"
-	Id int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty" msgpack:"id"`
-	// @inject_tag: msgpack:"nickname"
-	Nickname string `protobuf:"bytes,2,opt,name=nickname,proto3" json:"nickname,omitempty" msgpack:"nickname"`
-	// 角色相关资源 | @inject_tag: msgpack:"image"
-	Image int32 `protobuf:"varint,3,opt,name=image,proto3" json:"image,omitempty" msgpack:"image"`
-	// 品质 | @inject_tag: msgpack:"quality"
-	Quality int32 `protobuf:"varint,4,opt,name=quality,proto3" json:"quality,omitempty" msgpack:"quality"`
-	// 生命值 | @inject_tag: msgpack:"hp"
-	Hp int32 `protobuf:"varint,5,opt,name=hp,proto3" json:"hp,omitempty" msgpack:"hp"`
-	// 防御力 | @inject_tag: msgpack:"def"
-	Def int32 `protobuf:"varint,6,opt,name=def,proto3" json:"def,omitempty" msgpack:"def"`
-	// 攻击力 | @inject_tag: msgpack:"atk"
-	Atk int32 `protobuf:"varint,7,opt,name=atk,proto3" json:"atk,omitempty" msgpack:"atk"`
-	// 技能 id | @inject_tag: msgpack:"skillId"
-	SkillId int32 `protobuf:"varint,8,opt,name=skillId,proto3" json:"skillId,omitempty" msgpack:"skillId"`
-	// 是否是怪物，true 怪物，false 角色 | @inject_tag: msgpack:"isMonster"
-	IsMonster bool `protobuf:"varint,9,opt,name=isMonster,proto3" json:"isMonster,omitempty" msgpack:"isMonster"`
+	// 角色 id | @inject_tag: msgpack:"id" json:"id"
+	Id int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id" msgpack:"id"`
+	// @inject_tag: msgpack:"nickname" json:"nickname"
+	Nickname string `protobuf:"bytes,2,opt,name=nickname,proto3" json:"nickname" msgpack:"nickname"`
+	// 角色相关资源 | @inject_tag: msgpack:"image" json:"image"
+	Image int32 `protobuf:"varint,3,opt,name=image,proto3" json:"image" msgpack:"image"`
+	// 品质 | @inject_tag: msgpack:"quality" json:"quality"
+	Quality int32 `protobuf:"varint,4,opt,name=quality,proto3" json:"quality" msgpack:"quality"`
+	// 生命值 | @inject_tag: msgpack:"hp" json:"hp"
+	Hp int32 `protobuf:"varint,5,opt,name=hp,proto3" json:"hp" msgpack:"hp"`
+	// 防御力 | @inject_tag: msgpack:"def" json:"def"
+	Def int32 `protobuf:"varint,6,opt,name=def,proto3" json:"def" msgpack:"def"`
+	// 攻击力 | @inject_tag: msgpack:"atk" json:"atk"
+	Atk int32 `protobuf:"varint,7,opt,name=atk,proto3" json:"atk" msgpack:"atk"`
+	// 技能 id | @inject_tag: msgpack:"skillId" json:"skillId"
+	SkillId int32 `protobuf:"varint,8,opt,name=skillId,proto3" json:"skillId" msgpack:"skillId"`
+	// 是否是怪物，true 怪物，false 角色 | @inject_tag: msgpack:"isMonster" json:"isMonster"
+	IsMonster bool `protobuf:"varint,9,opt,name=isMonster,proto3" json:"isMonster" msgpack:"isMonster"`
 }
 
 func (x *RoleInfo) Reset() {
