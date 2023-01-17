@@ -296,6 +296,8 @@ message ResRoomJoin {
   RoomDetail room = 2;
   // pvp 的关卡 id | @inject_tag: msgpack:"pvpLevelId"
   int32 pvpLevelId = 3;
+  // 是否需要镜像 | @inject_tag: msgpack:"needMirror"
+  bool needMirror = 4;
 }
 
 message ResRoomForPveJoin {
@@ -453,7 +455,7 @@ message SkillHot {
   int32 roleId = 2;
   // 所属的技能 id | @inject_tag: msgpack:"skillId"
   int32 skillId = 3;
-  // 所属的技能效果 id | @inject_tag: msgpack:"skillId"
+  // 所属的技能效果 id | @inject_tag: msgpack:"effectId"
   int32 effectId = 4;
   // 技能效果类型 | @inject_tag: msgpack:"effectType"
   EffectType effectType = 5;
@@ -471,7 +473,7 @@ message SkillRigidity {
   int32 roleId = 2;
   // 所属的技能 id | @inject_tag: msgpack:"skillId"
   int32 skillId = 3;
-  // 所属的技能效果 id | @inject_tag: msgpack:"skillId"
+  // 所属的技能效果 id | @inject_tag: msgpack:"effectId"
   int32 effectId = 4;
   // 技能效果类型 | @inject_tag: msgpack:"effectType"
   EffectType effectType = 5;
@@ -493,7 +495,7 @@ message SkillBackWound {
   int32 roleId = 2;
   // 所属的技能 id | @inject_tag: msgpack:"skillId"
   int32 skillId = 3;
-  // 所属的技能效果 id | @inject_tag: msgpack:"skillId"
+  // 所属的技能效果 id | @inject_tag: msgpack:"effectId"
   int32 effectId = 4;
   // 技能效果类型 | @inject_tag: msgpack:"effectType"
   EffectType effectType = 5;
@@ -511,7 +513,7 @@ message SkillAtkImprove {
   int32 roleId = 2;
   // 所属的技能 id | @inject_tag: msgpack:"skillId"
   int32 skillId = 3;
-  // 所属的技能效果 id | @inject_tag: msgpack:"skillId"
+  // 所属的技能效果 id | @inject_tag: msgpack:"effectId"
   int32 effectId = 4;
   // 技能效果类型 | @inject_tag: msgpack:"effectType"
   EffectType effectType = 5;
@@ -545,7 +547,7 @@ message SkillDefenseImprove {
   int32 roleId = 2;
   // 所属的技能 id | @inject_tag: msgpack:"skillId"
   int32 skillId = 3;
-  // 所属的技能效果 id | @inject_tag: msgpack:"skillId"
+  // 所属的技能效果 id | @inject_tag: msgpack:"effectId"
   int32 effectId = 4;
   // 技能效果类型 | @inject_tag: msgpack:"effectType"
   EffectType effectType = 5;
