@@ -414,6 +414,8 @@ message GameStartInfo{
   repeated RoleDetailed roles = 2;
   // 游戏开始时间 | @inject_tag: msgpack:"gameStartTime"
   int32 gameStartTime = 3;
+  // 游戏时长，秒 | @inject_tag: msgpack:"timeLimitSec" json:"timeLimitSec"
+  int32 timeLimitSec = 4;
 }
 
 // pve 对战开始下一轮
