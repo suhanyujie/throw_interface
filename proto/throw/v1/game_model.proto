@@ -155,7 +155,7 @@ message MsgRoleAttack {
   // 敌方如果是机器人，则携带此参数。由后端告知前端是否命中；如果没有，可传 null | @inject_tag: msgpack:"botAtk"
   optional BotAtkInfo botAtk = 8;
   // 额外参数，用于扩展 | @inject_tag: msgpack:"extraInfo" json:"extraInfo"
-  map<string, bytes> extraInfo = 9;
+  map<string, string> extraInfo = 9;
 }
 
 message BotAtkInfo {
