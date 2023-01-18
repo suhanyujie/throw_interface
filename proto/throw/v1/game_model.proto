@@ -218,6 +218,8 @@ message HitRoleInfo {
   SInputData atkInput = 8;
   // 攻击编号 | @inject_tag: msgpack:"atkId"
   string atkId = 9;
+  // 额外参数，用于扩展 | @inject_tag: msgpack:"extraInfo" json:"extraInfo"
+  map<string, string> extraInfo = 10;
 }
 
 
