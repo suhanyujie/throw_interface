@@ -118,7 +118,7 @@ message RoleMove {
   // 新的位置 | @inject_tag: msgpack:"newPos"
   RolePosition newPos = 3;
   // 移动前的位置 | @inject_tag: msgpack:"beforePos"
-  RolePosition beforePos = 4;
+  // RolePosition beforePos = 4;
 }
 
 enum SkillState {
