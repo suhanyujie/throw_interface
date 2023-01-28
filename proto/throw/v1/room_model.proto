@@ -6,8 +6,8 @@ option go_package = "github.com/suhanyujie/throw_interface/proto/throw/v1;v1";
 // 加入游戏时对应的游戏 id
 // 一场游戏的 id；全局唯一；不能有两场游戏 id 一样。
 message DataOfJoin {
-  // 对局id | @inject_tag: msgpack:"id"
-  int32 id = 1;
+  // 对局 id/房间 id/游戏 id | @inject_tag: msgpack:"id"
+  string id = 1;
   // 是否与机器人对战 | @inject_tag: msgpack:"needBot"
   bool needBot = 2;
   // nft id | @inject_tag: msgpack:"nft"
