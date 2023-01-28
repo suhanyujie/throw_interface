@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package throw.v1;
+option go_package = "github.com/suhanyujie/throw_interface/proto/farm/v1;v1";
+
+message AccountInfo {
+  int32 uid = 1;
+  string nick_name = 2;
+  string avatar = 3;
+  int32 gender = 4;
+}
