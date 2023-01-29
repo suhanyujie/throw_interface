@@ -294,13 +294,13 @@ message RoomDetail {
 }
 
 message ResRoomJoin {
-  // 当前玩家 uid | @inject_tag: msgpack:"uid"
+  // 当前玩家 uid | @inject_tag: json:"uid" msgpack:"uid"
   int32 uid  = 1;
-  // 加入的房间信息 | @inject_tag: msgpack:"room"
+  // 加入的房间信息 | @inject_tag: json:"room" msgpack:"room"
   RoomDetail room = 2;
-  // pvp 的关卡 id | @inject_tag: msgpack:"pvpLevelId"
+  // pvp 的关卡 id | @inject_tag: json:"pvpLevelId" msgpack:"pvpLevelId"
   int32 pvpLevelId = 3;
-  // 是否需要镜像 | @inject_tag: msgpack:"needMirror"
+  // 是否需要镜像 | @inject_tag: json:"needMirror" msgpack:"needMirror"
   bool needMirror = 4;
 }
 

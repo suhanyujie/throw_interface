@@ -1812,14 +1812,14 @@ type ResRoomJoin struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// 当前玩家 uid | @inject_tag: msgpack:"uid"
-	Uid int32 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty" msgpack:"uid"`
-	// 加入的房间信息 | @inject_tag: msgpack:"room"
-	Room *RoomDetail `protobuf:"bytes,2,opt,name=room,proto3" json:"room,omitempty" msgpack:"room"`
-	// pvp 的关卡 id | @inject_tag: msgpack:"pvpLevelId"
-	PvpLevelId int32 `protobuf:"varint,3,opt,name=pvpLevelId,proto3" json:"pvpLevelId,omitempty" msgpack:"pvpLevelId"`
-	// 是否需要镜像 | @inject_tag: msgpack:"needMirror"
-	NeedMirror bool `protobuf:"varint,4,opt,name=needMirror,proto3" json:"needMirror,omitempty" msgpack:"needMirror"`
+	// 当前玩家 uid | @inject_tag: json:"uid" msgpack:"uid"
+	Uid int32 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid" msgpack:"uid"`
+	// 加入的房间信息 | @inject_tag: json:"room" msgpack:"room"
+	Room *RoomDetail `protobuf:"bytes,2,opt,name=room,proto3" json:"room" msgpack:"room"`
+	// pvp 的关卡 id | @inject_tag: json:"pvpLevelId" msgpack:"pvpLevelId"
+	PvpLevelId int32 `protobuf:"varint,3,opt,name=pvpLevelId,proto3" json:"pvpLevelId" msgpack:"pvpLevelId"`
+	// 是否需要镜像 | @inject_tag: json:"needMirror" msgpack:"needMirror"
+	NeedMirror bool `protobuf:"varint,4,opt,name=needMirror,proto3" json:"needMirror" msgpack:"needMirror"`
 }
 
 func (x *ResRoomJoin) Reset() {
