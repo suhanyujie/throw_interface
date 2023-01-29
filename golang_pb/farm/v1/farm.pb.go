@@ -20,21 +20,64 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// 检查登录
+type ScCheckLogin struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *ScCheckLogin) Reset() {
+	*x = ScCheckLogin{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_farm_proto_msgTypes[0]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ScCheckLogin) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ScCheckLogin) ProtoMessage() {}
+
+func (x *ScCheckLogin) ProtoReflect() protoreflect.Message {
+	mi := &file_farm_proto_msgTypes[0]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ScCheckLogin.ProtoReflect.Descriptor instead.
+func (*ScCheckLogin) Descriptor() ([]byte, []int) {
+	return file_farm_proto_rawDescGZIP(), []int{0}
+}
+
 type AccountInfo struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uid      int32  `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	// user id | @inject_tag: msgpack:"uid" json:"uid"
+	Uid int32 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	// | @inject_tag: msgpack:"nick_name" json:"nick_name"
 	NickName string `protobuf:"bytes,2,opt,name=nick_name,json=nickName,proto3" json:"nick_name,omitempty"`
-	Avatar   string `protobuf:"bytes,3,opt,name=avatar,proto3" json:"avatar,omitempty"`
-	Gender   int32  `protobuf:"varint,4,opt,name=gender,proto3" json:"gender,omitempty"`
+	// | @inject_tag: msgpack:"avatar" json:"avatar"
+	Avatar string `protobuf:"bytes,3,opt,name=avatar,proto3" json:"avatar,omitempty"`
+	// | @inject_tag: msgpack:"gender" json:"gender"
+	Gender int32 `protobuf:"varint,4,opt,name=gender,proto3" json:"gender,omitempty"`
 }
 
 func (x *AccountInfo) Reset() {
 	*x = AccountInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[0]
+		mi := &file_farm_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -47,7 +90,7 @@ func (x *AccountInfo) String() string {
 func (*AccountInfo) ProtoMessage() {}
 
 func (x *AccountInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[0]
+	mi := &file_farm_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -60,7 +103,7 @@ func (x *AccountInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AccountInfo.ProtoReflect.Descriptor instead.
 func (*AccountInfo) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{0}
+	return file_farm_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *AccountInfo) GetUid() int32 {
@@ -91,22 +134,125 @@ func (x *AccountInfo) GetGender() int32 {
 	return 0
 }
 
+type ScGetUInfoList struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *ScGetUInfoList) Reset() {
+	*x = ScGetUInfoList{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_farm_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ScGetUInfoList) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ScGetUInfoList) ProtoMessage() {}
+
+func (x *ScGetUInfoList) ProtoReflect() protoreflect.Message {
+	mi := &file_farm_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ScGetUInfoList.ProtoReflect.Descriptor instead.
+func (*ScGetUInfoList) Descriptor() ([]byte, []int) {
+	return file_farm_proto_rawDescGZIP(), []int{2}
+}
+
+type MyInfo struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// | @inject_tag: msgpack:"accountInfo" json:"accountInfo"
+	AccountInfo *AccountInfo `protobuf:"bytes,1,opt,name=accountInfo,proto3" json:"accountInfo,omitempty"`
+	// | @inject_tag: msgpack:"needReset" json:"needReset"
+	NeedReset bool `protobuf:"varint,2,opt,name=needReset,proto3" json:"needReset,omitempty"`
+}
+
+func (x *MyInfo) Reset() {
+	*x = MyInfo{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_farm_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MyInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MyInfo) ProtoMessage() {}
+
+func (x *MyInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_farm_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MyInfo.ProtoReflect.Descriptor instead.
+func (*MyInfo) Descriptor() ([]byte, []int) {
+	return file_farm_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *MyInfo) GetAccountInfo() *AccountInfo {
+	if x != nil {
+		return x.AccountInfo
+	}
+	return nil
+}
+
+func (x *MyInfo) GetNeedReset() bool {
+	if x != nil {
+		return x.NeedReset
+	}
+	return false
+}
+
 var File_farm_proto protoreflect.FileDescriptor
 
 var file_farm_proto_rawDesc = []byte{
 	0x0a, 0x0a, 0x66, 0x61, 0x72, 0x6d, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x08, 0x74, 0x68,
-	0x72, 0x6f, 0x77, 0x2e, 0x76, 0x31, 0x22, 0x6c, 0x0a, 0x0b, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e,
+	0x72, 0x6f, 0x77, 0x2e, 0x76, 0x31, 0x22, 0x0e, 0x0a, 0x0c, 0x53, 0x63, 0x43, 0x68, 0x65, 0x63,
+	0x6b, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x22, 0x6c, 0x0a, 0x0b, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e,
 	0x74, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01,
 	0x28, 0x05, 0x52, 0x03, 0x75, 0x69, 0x64, 0x12, 0x1b, 0x0a, 0x09, 0x6e, 0x69, 0x63, 0x6b, 0x5f,
 	0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x6e, 0x69, 0x63, 0x6b,
 	0x4e, 0x61, 0x6d, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x61, 0x76, 0x61, 0x74, 0x61, 0x72, 0x18, 0x03,
 	0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x61, 0x76, 0x61, 0x74, 0x61, 0x72, 0x12, 0x16, 0x0a, 0x06,
 	0x67, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x18, 0x04, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x67, 0x65,
-	0x6e, 0x64, 0x65, 0x72, 0x42, 0x38, 0x5a, 0x36, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63,
-	0x6f, 0x6d, 0x2f, 0x73, 0x75, 0x68, 0x61, 0x6e, 0x79, 0x75, 0x6a, 0x69, 0x65, 0x2f, 0x74, 0x68,
-	0x72, 0x6f, 0x77, 0x5f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x2f, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x2f, 0x66, 0x61, 0x72, 0x6d, 0x2f, 0x76, 0x31, 0x3b, 0x76, 0x31, 0x62, 0x06,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6e, 0x64, 0x65, 0x72, 0x22, 0x10, 0x0a, 0x0e, 0x53, 0x63, 0x47, 0x65, 0x74, 0x55, 0x49, 0x6e,
+	0x66, 0x6f, 0x4c, 0x69, 0x73, 0x74, 0x22, 0x5f, 0x0a, 0x06, 0x4d, 0x79, 0x49, 0x6e, 0x66, 0x6f,
+	0x12, 0x37, 0x0a, 0x0b, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x15, 0x2e, 0x74, 0x68, 0x72, 0x6f, 0x77, 0x2e, 0x76, 0x31,
+	0x2e, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x0b, 0x61, 0x63,
+	0x63, 0x6f, 0x75, 0x6e, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x1c, 0x0a, 0x09, 0x6e, 0x65, 0x65,
+	0x64, 0x52, 0x65, 0x73, 0x65, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x08, 0x52, 0x09, 0x6e, 0x65,
+	0x65, 0x64, 0x52, 0x65, 0x73, 0x65, 0x74, 0x42, 0x38, 0x5a, 0x36, 0x67, 0x69, 0x74, 0x68, 0x75,
+	0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x75, 0x68, 0x61, 0x6e, 0x79, 0x75, 0x6a, 0x69, 0x65,
+	0x2f, 0x74, 0x68, 0x72, 0x6f, 0x77, 0x5f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65,
+	0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x66, 0x61, 0x72, 0x6d, 0x2f, 0x76, 0x31, 0x3b, 0x76,
+	0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -121,16 +267,20 @@ func file_farm_proto_rawDescGZIP() []byte {
 	return file_farm_proto_rawDescData
 }
 
-var file_farm_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_farm_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_farm_proto_goTypes = []interface{}{
-	(*AccountInfo)(nil), // 0: throw.v1.AccountInfo
+	(*ScCheckLogin)(nil),   // 0: throw.v1.ScCheckLogin
+	(*AccountInfo)(nil),    // 1: throw.v1.AccountInfo
+	(*ScGetUInfoList)(nil), // 2: throw.v1.ScGetUInfoList
+	(*MyInfo)(nil),         // 3: throw.v1.MyInfo
 }
 var file_farm_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	1, // 0: throw.v1.MyInfo.accountInfo:type_name -> throw.v1.AccountInfo
+	1, // [1:1] is the sub-list for method output_type
+	1, // [1:1] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_farm_proto_init() }
@@ -140,7 +290,43 @@ func file_farm_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_farm_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ScCheckLogin); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_farm_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*AccountInfo); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_farm_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ScGetUInfoList); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_farm_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MyInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -158,7 +344,7 @@ func file_farm_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_farm_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   1,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

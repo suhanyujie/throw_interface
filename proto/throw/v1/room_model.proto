@@ -6,12 +6,24 @@ option go_package = "github.com/suhanyujie/throw_interface/proto/throw/v1;v1";
 // 加入游戏时对应的游戏 id
 // 一场游戏的 id；全局唯一；不能有两场游戏 id 一样。
 message DataOfJoin {
-  // 对局 id/房间 id/游戏 id | @inject_tag: msgpack:"id"
-  string id = 1;
-  // 是否与机器人对战 | @inject_tag: msgpack:"needBot"
-  bool needBot = 2;
-  // nft id | @inject_tag: msgpack:"nft"
+  // 平台提供的房间 id | @inject_tag: msgpack:"roomId" json:"roomId"
+  string roomId = 1;
+  // 对局 id | @inject_tag: msgpack:"gameId" json:"gameId"
+  string gameId = 2;
+  // nft id | @inject_tag: msgpack:"nft" json:"nft"
   int32 nft  = 3;
+  // 是否与机器人对战 | @inject_tag: msgpack:"needBot" json:"needBot"
+  bool needBot = 4;
+  // 机器人的 uid | @inject_tag: msgpack:"botId" json:"botId"
+  int32 botId = 5;
+  // 机器人的 nft | @inject_tag: msgpack:"botNft" json:"botNft"
+  int32 botNft = 6;
+  // 门票 | @inject_tag: msgpack:"ticket" json:"ticket"
+  float ticket = 7;
+  // 对战类型，区分 1v1，淘汰赛等 | @inject_tag: msgpack:"pvpType" json:"pvpType"
+  int32 pvpType = 8;
+  // 机器人的 ai 策略类型 | @inject_tag: msgpack:"aiPolicyType" json:"aiPolicyType"
+  int32 aiPolicyType = 9;
 }
 
 message PveJoin {
