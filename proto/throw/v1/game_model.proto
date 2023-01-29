@@ -59,7 +59,7 @@ message PlayerStatus {
 // 考虑一下，游戏中途时，用户退出房间，如何处理？
 message UserQuit {
   // @inject_tag: msgpack:"uid"
-  int32 uid = 1;
+  // int32 uid = 1;
 }
 
 // 游戏结束时，服务端推送消息给客户端
