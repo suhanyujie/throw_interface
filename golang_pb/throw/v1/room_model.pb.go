@@ -31,7 +31,7 @@ type DataOfJoin struct {
 	RoomId string `protobuf:"bytes,1,opt,name=roomId,proto3" json:"roomId" msgpack:"roomId"`
 	// 对局 id | @inject_tag: msgpack:"gameId" json:"gameId"
 	GameId string `protobuf:"bytes,2,opt,name=gameId,proto3" json:"gameId" msgpack:"gameId"`
-	// nft id | @inject_tag: msgpack:"nft" json:"nft"
+	// 当前玩家的 nft id | @inject_tag: msgpack:"nft" json:"nft"
 	Nft int32 `protobuf:"varint,3,opt,name=nft,proto3" json:"nft" msgpack:"nft"`
 	// 是否与机器人对战 | @inject_tag: msgpack:"needBot" json:"needBot"
 	NeedBot bool `protobuf:"varint,4,opt,name=needBot,proto3" json:"needBot" msgpack:"needBot"`

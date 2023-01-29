@@ -10,7 +10,7 @@ message DataOfJoin {
   string roomId = 1;
   // 对局 id | @inject_tag: msgpack:"gameId" json:"gameId"
   string gameId = 2;
-  // nft id | @inject_tag: msgpack:"nft" json:"nft"
+  // 当前玩家的 nft id | @inject_tag: msgpack:"nft" json:"nft"
   int32 nft  = 3;
   // 是否与机器人对战 | @inject_tag: msgpack:"needBot" json:"needBot"
   bool needBot = 4;
