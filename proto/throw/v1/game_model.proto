@@ -300,8 +300,8 @@ message ResRoomJoin {
   RoomDetail room = 2;
   // pvp 的关卡 id | @inject_tag: json:"pvpLevelId" msgpack:"pvpLevelId"
   int32 pvpLevelId = 3;
-  // 是否需要镜像 | @inject_tag: json:"needMirror" msgpack:"needMirror"
-  bool needMirror = 4;
+  // 是否需要镜像 1需要，0 不需要 | @inject_tag: json:"needMirror" msgpack:"needMirror"
+  int32 needMirror = 4;
 }
 
 message ResRoomForPveJoin {
