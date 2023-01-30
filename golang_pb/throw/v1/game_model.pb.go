@@ -1129,30 +1129,30 @@ type SInputData struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// 发射起点 x | @inject_tag: msgpack:"sx"
-	Sx float32 `protobuf:"fixed32,1,opt,name=sx,proto3" json:"sx,omitempty" msgpack:"sx"`
-	// 发射起点 y | @inject_tag: msgpack:"sy"
-	Sy float32 `protobuf:"fixed32,2,opt,name=sy,proto3" json:"sy,omitempty" msgpack:"sy"`
-	// 速度 | @inject_tag: msgpack:"vx"
-	Vx float32 `protobuf:"fixed32,3,opt,name=vx,proto3" json:"vx,omitempty" msgpack:"vx"`
-	// @inject_tag: msgpack:"vy"
-	Vy float32 `protobuf:"fixed32,4,opt,name=vy,proto3" json:"vy,omitempty" msgpack:"vy"`
-	// x 方向上的位移 @inject_tag: msgpack:"s"
-	S float32 `protobuf:"fixed32,5,opt,name=s,proto3" json:"s,omitempty" msgpack:"s"`
-	// y 方向上的位移 @inject_tag: msgpack:"h"
-	H float32 `protobuf:"fixed32,6,opt,name=h,proto3" json:"h,omitempty" msgpack:"h"`
-	// 力量值 @inject_tag: msgpack:"force"
-	Force float32 `protobuf:"fixed32,7,opt,name=force,proto3" json:"force,omitempty" msgpack:"force"`
-	// 重力刻度 | @inject_tag: msgpack:"gs"
-	Gs float32 `protobuf:"fixed32,8,opt,name=gs,proto3" json:"gs,omitempty" msgpack:"gs"`
-	// 重力系数 | @inject_tag: msgpack:"g"
-	G float32 `protobuf:"fixed32,9,opt,name=g,proto3" json:"g,omitempty" msgpack:"g"`
-	// 部位偏移 x  | @inject_tag: msgpack:"ex"
-	Ex float32 `protobuf:"fixed32,10,opt,name=ex,proto3" json:"ex,omitempty" msgpack:"ex"`
-	// 部位偏移 y  | @inject_tag: msgpack:"ey"
-	Ey float32 `protobuf:"fixed32,11,opt,name=ey,proto3" json:"ey,omitempty" msgpack:"ey"`
-	// 部位 1，头，2，中间，3 下面 | @inject_tag: msgpack:"parts"
-	Parts int32 `protobuf:"varint,12,opt,name=parts,proto3" json:"parts,omitempty" msgpack:"parts"`
+	// 发射起点 x | @inject_tag: msgpack:"sx" json:"sx"
+	Sx float32 `protobuf:"fixed32,1,opt,name=sx,proto3" json:"sx" msgpack:"sx"`
+	// 发射起点 y | @inject_tag: msgpack:"sy" json:"sy"
+	Sy float32 `protobuf:"fixed32,2,opt,name=sy,proto3" json:"sy" msgpack:"sy"`
+	// 速度 | @inject_tag: msgpack:"vx" json:"vx"
+	Vx float32 `protobuf:"fixed32,3,opt,name=vx,proto3" json:"vx" msgpack:"vx"`
+	// @inject_tag: msgpack:"vy" json:"vy"
+	Vy float32 `protobuf:"fixed32,4,opt,name=vy,proto3" json:"vy" msgpack:"vy"`
+	// x 方向上的位移 @inject_tag: msgpack:"s" json:"s"
+	S float32 `protobuf:"fixed32,5,opt,name=s,proto3" json:"s" msgpack:"s"`
+	// y 方向上的位移 @inject_tag: msgpack:"h" json:"h"
+	H float32 `protobuf:"fixed32,6,opt,name=h,proto3" json:"h" msgpack:"h"`
+	// 力量值 @inject_tag: msgpack:"force" json:"force"
+	Force float32 `protobuf:"fixed32,7,opt,name=force,proto3" json:"force" msgpack:"force"`
+	// 重力刻度 | @inject_tag: msgpack:"gs" json:"gs"
+	Gs float32 `protobuf:"fixed32,8,opt,name=gs,proto3" json:"gs" msgpack:"gs"`
+	// 重力系数 | @inject_tag: msgpack:"g" json:"g"
+	G float32 `protobuf:"fixed32,9,opt,name=g,proto3" json:"g" msgpack:"g"`
+	// 部位偏移 x  | @inject_tag: msgpack:"ex" json:"ex"
+	Ex float32 `protobuf:"fixed32,10,opt,name=ex,proto3" json:"ex" msgpack:"ex"`
+	// 部位偏移 y  | @inject_tag: msgpack:"ey" json:"ey"
+	Ey float32 `protobuf:"fixed32,11,opt,name=ey,proto3" json:"ey" msgpack:"ey"`
+	// 部位 1，头，2，中间，3 下面 | @inject_tag: msgpack:"parts" json:"parts"
+	Parts int32 `protobuf:"varint,12,opt,name=parts,proto3" json:"parts" msgpack:"parts"`
 }
 
 func (x *SInputData) Reset() {

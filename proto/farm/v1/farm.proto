@@ -29,3 +29,204 @@ message MyInfo {
   // | @inject_tag: msgpack:"needReset" json:"needReset"
   bool needReset = 2;
 }
+
+message ScGetUInfo {
+  int32 exp = 1;
+  int32 gold = 2;
+  int32 diamond = 3;
+  int32 guideStep = 4;
+  int32 leftDoubleTime = 5;
+  // 仓库内物品信息 | @inject_tag: msgpack:"wareHouse" json:"wareHouse"
+  repeated WareHouseItem wareHouse = 6;
+  // 种值的最大的等级数据，key为物品id, lv 为 level | @inject_tag: msgpack:"maxBuildLvMap" json:"maxBuildLvMap"
+  repeated MaxBuildLvItem maxBuildLvMap = 7;
+}
+
+message WareHouseItem {
+  // | @inject_tag: msgpack:"key" json:"key"
+  int32 key = 1;
+  // | @inject_tag: msgpack:"num" json:"num"
+  int32 num = 2;
+}
+
+message MaxBuildLvItem {
+  // | @inject_tag: msgpack:"key" json:"key"
+  int32 key = 1;
+  // | @inject_tag: msgpack:"lv" json:"lv"
+  int32 lv = 2;
+}
+
+message CsUpdateMoney {
+  // 1表示金币， 2表示钻石 | @inject_tag: msgpack:"moneyType" json:"moneyType"
+  int32 moneyType = 1;
+  // 数量变化的量，如果是加钱，为正数，如果是减钱就是负数 | @inject_tag: msgpack:"moneyChangeNum" json:"moneyChangeNum"
+  int32 moneyChangeNum = 2;
+  // 变化的原因 1、出售  2 任务 | @inject_tag: msgpack:"changeReason" json:"changeReason"
+  int32 changeReason = 3;
+}
+
+message CsWareHouseSale {
+  // | @inject_tag: msgpack:"saveProduct" json:"saveProduct"
+  repeated WareHouse saveProduct = 1;// 可能是之前写错的单词，先保持一样吧
+  // 1表示神秘商人出售, 2表示这架出售普通仓库出售 | @inject_tag: msgpack:"saleType" json:"saleType"
+  int32 saleType =2;
+}
+
+message WareHouse {
+  // | @inject_tag: msgpack:"key" json:"key"
+  int32 key = 1;
+  // | @inject_tag: msgpack:"num" json:"num"
+  int32 num = 2;
+}
+
+message ScWareHouseSale {
+  // | @inject_tag: msgpack:"gold" json:"gold"
+  int32 gold = 1;
+}
+
+message CsSetGuideStep {
+  // 新手教学的位置 | @inject_tag: msgpack:"guideStep" json:"guideStep"
+  int32 guideStep = 1;
+}
+
+message CsSetDouble {
+  // 是否是免费开启 | @inject_tag: msgpack:"isFree" json:"isFree"
+  bool isFree = 1;
+}
+message ScSetDouble {
+  // 花费的的钻石数量 | @inject_tag: msgpack:"diamond" json:"diamond"
+  int32 diamond = 1;
+}
+
+message ScFarmInfo {
+  // 花费的的钻石数量 | @inject_tag: msgpack:"seedFarmInfo" json:"seedFarmInfo"
+  repeated SeedFarmInfo seedFarmInfo = 1;
+  // 作物信息 | @inject_tag: msgpack:"buildInfo" json:"buildInfo"
+  repeated BuildInfo buildInfo = 2;
+  // 服务器时间，用于计算 dt | @inject_tag: msgpack:"serverTime" json:"serverTime"
+  int32 serverTime = 3;
+}
+
+message SeedFarmInfo {
+  // 格子 x | @inject_tag: msgpack:"gridX" json:"gridX"
+  int32 gridX = 1;
+  // 格子 y | @inject_tag: msgpack:"gridY" json:"gridY"
+  int32 gridY = 2;
+  // 干涸天灾 | @inject_tag: msgpack:"ganhe" json:"ganhe"
+  int32 ganhe = 3;
+}
+
+message BuildInfo {
+  // 格子 x | @inject_tag: msgpack:"gridX" json:"gridX"
+  int32 gridX = 1;
+  // 格子 y | @inject_tag: msgpack:"gridY" json:"gridY"
+  int32 gridY = 2;
+  // 建筑 id | @inject_tag: msgpack:"buildId" json:"buildId"
+  int32 buildId = 3;
+  // 建筑等级 | @inject_tag: msgpack:"buildLevel" json:"buildLevel"
+  int32 buildLevel = 4;
+  // 建筑uid  | @inject_tag: msgpack:"uuid" json:"uuid"
+  string uuid = 5;
+  // 建造时间  | @inject_tag: msgpack:"buildTime" json:"buildTime"
+  int32 buildTime = 6;
+  // 最后一次收获时间 | @inject_tag: msgpack:"lastHarvestTime" json:"lastHarvestTime"
+  int32 lastHarvestTime = 7;
+  // 生产的id,主要用于工厂一类的 | @inject_tag: msgpack:"productId" json:"productId"
+  int32 productId = 8;
+  // 使用过建造加速 | @inject_tag: msgpack:"buildSpeed" json:"buildSpeed"
+  bool buildSpeed = 9;
+  // 虫灾信息 | @inject_tag: msgpack:"buildId" json:"buildId"
+  int32 chong = 10;
+}
+
+message CsBuyFarm {
+  // 格子 x | @inject_tag: msgpack:"gridX" json:"gridX"
+  int32 gridX = 1;
+  // 格子 y | @inject_tag: msgpack:"gridY" json:"gridY"
+  int32 gridY = 2;
+  // 是否是免费的 | @inject_tag: msgpack:"gridY" json:"gridY"
+  bool isFree = 3;
+}
+
+message ScBuyFarm {
+  // 减少的金币数量 | @inject_tag: msgpack:"misGold" json:"misGold"
+  int32 misGold = 1;
+}
+
+message CsSeedBuild {
+  // 格子 x | @inject_tag: msgpack:"gridX" json:"gridX"
+  int32 gridX = 1;
+  // 格子 y | @inject_tag: msgpack:"gridY" json:"gridY"
+  int32 gridY = 2;
+  // 建筑 id | @inject_tag: msgpack:"buildId" json:"buildId"
+  int32 buildId = 3;
+  // 建筑等级 | @inject_tag: msgpack:"buildLevel" json:"buildLevel"
+  int32 buildLevel = 4;
+  // 建筑uid  | @inject_tag: msgpack:"uuid" json:"uuid"
+  string uuid = 5;
+  // 是否是免费的 | @inject_tag: msgpack:"isFree" json:"isFree"
+  bool isFree = 6;
+}
+
+message ScSeedBuild {
+  // 减少的金币数量 | @inject_tag: msgpack:"misGold" json:"misGold"
+  int32 misGold = 1;
+}
+
+message CsRemoveBuild {
+  // 格子 x | @inject_tag: msgpack:"gridX" json:"gridX"
+  int32 gridX = 1;
+  // 格子 y | @inject_tag: msgpack:"gridY" json:"gridY"
+  int32 gridY = 2;
+}
+
+message ScRemoveBuild {
+  // 增加的钱 | @inject_tag: msgpack:"gold" json:"gold"
+  int32 gold = 1;
+}
+
+message CsMergerBuild {
+  // 格子 x | @inject_tag: msgpack:"fromGridX" json:"fromGridX"
+  int32 fromGridX = 1;
+  // 格子 y | @inject_tag: msgpack:"fromGridY" json:"fromGridY"
+  int32 fromGridY = 2;
+  // 目标格子 x | @inject_tag: msgpack:"toGridX" json:"toGridX"
+  int32 toGridX = 3;
+  // 目标格子 y | @inject_tag: msgpack:"toGridY" json:"toGridY"
+  int32 toGridY = 4;
+}
+
+message ScMergerBuild {}
+
+message CsMoveBuild {
+  // 格子 x | @inject_tag: msgpack:"fromGridX" json:"fromGridX"
+  int32 fromGridX = 1;
+  // 格子 y | @inject_tag: msgpack:"fromGridY" json:"fromGridY"
+  int32 fromGridY = 2;
+  // 目标格子 x | @inject_tag: msgpack:"toGridX" json:"toGridX"
+  int32 toGridX = 3;
+  // 目标格子 y | @inject_tag: msgpack:"toGridY" json:"toGridY"
+  int32 toGridY = 4;
+}
+
+message ScMoveBuild {
+  // 格子 x | @inject_tag: msgpack:"fromGridX" json:"fromGridX"
+  int32 fromGridX = 1;
+  // 格子 y | @inject_tag: msgpack:"fromGridY" json:"fromGridY"
+  int32 fromGridY = 2;
+  // 目标格子 x | @inject_tag: msgpack:"toGridX" json:"toGridX"
+  int32 toGridX = 3;
+  // 目标格子 y | @inject_tag: msgpack:"toGridY" json:"toGridY"
+  int32 toGridY = 4;
+}
+
+message CsHarvestBuild {
+  // 格子 x | @inject_tag: msgpack:"gridX" json:"gridX"
+  int32 gridX = 1;
+  // 格子 y | @inject_tag: msgpack:"gridY" json:"gridY"
+  int32 gridY = 2;
+  // 收成作物的 id | @inject_tag: msgpack:"productId" json:"productId"
+  int32 productId = 3;
+  // 收成的数量 | @inject_tag: msgpack:"productNum" json:"productNum"
+  int32 productNum = 4;
+}

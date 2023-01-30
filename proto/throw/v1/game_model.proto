@@ -172,29 +172,29 @@ message BotAtkInfo {
 }
 
 message SInputData {
-  // 发射起点 x | @inject_tag: msgpack:"sx"
+  // 发射起点 x | @inject_tag: msgpack:"sx" json:"sx"
   float sx = 1;
-  // 发射起点 y | @inject_tag: msgpack:"sy"
+  // 发射起点 y | @inject_tag: msgpack:"sy" json:"sy"
   float sy = 2;
-  // 速度 | @inject_tag: msgpack:"vx"
+  // 速度 | @inject_tag: msgpack:"vx" json:"vx"
   float vx = 3;
-  // @inject_tag: msgpack:"vy"
+  // @inject_tag: msgpack:"vy" json:"vy"
   float vy = 4;
-  // x 方向上的位移 @inject_tag: msgpack:"s"
+  // x 方向上的位移 @inject_tag: msgpack:"s" json:"s"
   float s = 5;
-  // y 方向上的位移 @inject_tag: msgpack:"h"
+  // y 方向上的位移 @inject_tag: msgpack:"h" json:"h"
   float h = 6;
-  // 力量值 @inject_tag: msgpack:"force"
+  // 力量值 @inject_tag: msgpack:"force" json:"force"
   float force = 7;
-  // 重力刻度 | @inject_tag: msgpack:"gs"
+  // 重力刻度 | @inject_tag: msgpack:"gs" json:"gs"
   float gs = 8;
-  // 重力系数 | @inject_tag: msgpack:"g"
+  // 重力系数 | @inject_tag: msgpack:"g" json:"g"
   float g = 9;
-  // 部位偏移 x  | @inject_tag: msgpack:"ex"
+  // 部位偏移 x  | @inject_tag: msgpack:"ex" json:"ex"
   float ex = 10;
-  // 部位偏移 y  | @inject_tag: msgpack:"ey"
+  // 部位偏移 y  | @inject_tag: msgpack:"ey" json:"ey"
   float ey = 11;
-  // 部位 1，头，2，中间，3 下面 | @inject_tag: msgpack:"parts"
+  // 部位 1，头，2，中间，3 下面 | @inject_tag: msgpack:"parts" json:"parts"
   int32 parts = 12;
 }
 
