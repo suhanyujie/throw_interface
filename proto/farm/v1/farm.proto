@@ -24,17 +24,22 @@ message ScGetUInfoList {
 }
 
 message MyInfo {
-  // | @inject_tag: msgpack:"accountInfo" json:"accountInfo"
+  // 用户信息 | @inject_tag: msgpack:"accountInfo" json:"accountInfo"
   AccountInfo accountInfo = 1;
   // | @inject_tag: msgpack:"needReset" json:"needReset"
   bool needReset = 2;
 }
 
 message ScGetUInfo {
+  // 经验值 | @inject_tag: msgpack:"exp" json:"exp"
   int32 exp = 1;
+  // 金币值 | @inject_tag: msgpack:"gold" json:"gold"
   int32 gold = 2;
+  // 钻石 | @inject_tag: msgpack:"diamond" json:"diamond"
   int32 diamond = 3;
+  // 新手步骤 | @inject_tag: msgpack:"guideStep" json:"guideStep"
   int32 guideStep = 4;
+  // 剩余双倍收获的时间 | @inject_tag: msgpack:"leftDoubleTime" json:"leftDoubleTime"
   int32 leftDoubleTime = 5;
   // 仓库内物品信息 | @inject_tag: msgpack:"wareHouse" json:"wareHouse"
   repeated WareHouseItem wareHouse = 6;
@@ -229,4 +234,127 @@ message CsHarvestBuild {
   int32 productId = 3;
   // 收成的数量 | @inject_tag: msgpack:"productNum" json:"productNum"
   int32 productNum = 4;
+}
+
+message CsProductFarm {
+  // 格子 x | @inject_tag: msgpack:"gridX" json:"gridX"
+  int32 gridX = 1;
+  // 格子 y | @inject_tag: msgpack:"gridY" json:"gridY"
+  int32 gridY = 2;
+  // 收成作物的 id | @inject_tag: msgpack:"productId" json:"productId"
+  int32 productId = 3;
+}
+
+message CsChangePosBuild {
+  // 格子 x | @inject_tag: msgpack:"fromGridX" json:"fromGridX"
+  int32 fromGridX = 1;
+  // 格子 y | @inject_tag: msgpack:"fromGridY" json:"fromGridY"
+  int32 fromGridY = 2;
+  // 目标格子 x | @inject_tag: msgpack:"toGridX" json:"toGridX"
+  int32 toGridX = 3;
+  // 目标格子 y | @inject_tag: msgpack:"toGridY" json:"toGridY"
+  int32 toGridY = 4;
+}
+
+message CsTraderSale {
+  // 商品 | @inject_tag: msgpack:"products" json:"products"
+  map<int32, int32> products = 1;
+}
+
+message ScTraderSale {
+  // 增加的钱 | @inject_tag: msgpack:"gold" json:"gold"
+  int32 gold = 1;
+  // 增加的经验 | @inject_tag: msgpack:"exp" json:"exp"
+  int32 exp = 2;
+}
+
+message ScOfflineAward {
+  // 离线时长,以秒为单位 | @inject_tag: msgpack:"offlineTime" json:"offlineTime"
+  int32 offlineTime = 1;
+  // 金币奖励 | @inject_tag: msgpack:"gold" json:"gold"
+  int32 gold = 2;
+  // 钻石奖励 | @inject_tag: msgpack:"diamond" json:"diamond"
+  int32 diamond = 3;
+}
+
+message CsReceiveMysteryAward {
+  // 神秘礼物的奖励 | @inject_tag: msgpack:"goldNum" json:"goldNum"
+  int32 goldNum = 1;
+}
+
+message ScReceiveMysteryAward {
+  // 赠送的金币奖励数量 | @inject_tag: msgpack:"gold" json:"gold"
+  int32 gold = 1;
+}
+
+message CsScareCrowAdd {
+  // 稻草人 id | @inject_tag: msgpack:"scarecrowId" json:"scarecrowId"
+  int32 scarecrowId = 1;
+}
+
+message ScScareCrowAdd {
+  // 稻草人 id | @inject_tag: msgpack:"scarecrowId" json:"scarecrowId"
+  int32 scarecrowId = 1;
+  // 稻草人剩余时间 | @inject_tag: msgpack:"leftTime" json:"leftTime"
+  int32 leftTime = 2;
+}
+
+message ScScareCrowInfo {
+  // 稻草人 id | @inject_tag: msgpack:"scarecrowId" json:"scarecrowId"
+  int32 scarecrowId = 1;
+  // 稻草人剩余时间 | @inject_tag: msgpack:"leftTime" json:"leftTime"
+  int32 leftTime = 2;
+}
+
+message CsTzReport {
+  // 格子 x | @inject_tag: msgpack:"gridX" json:"gridX"
+  int32 gridX = 1;
+  // 格子 y | @inject_tag: msgpack:"gridY" json:"gridY"
+  int32 gridY = 2;
+  // 天灾 id | @inject_tag: msgpack:"tzId" json:"tzId"
+  int32 tzId = 3;
+}
+
+message CsTzRemove {
+  // 格子 x | @inject_tag: msgpack:"gridX" json:"gridX"
+  int32 gridX = 1;
+  // 格子 y | @inject_tag: msgpack:"gridY" json:"gridY"
+  int32 gridY = 2;
+  // 使用道具类型 (浇水类道具类型为1; 杀虫类道具类型为2) | @inject_tag: msgpack:"propType" json:"propType"
+  int32 propType = 3;
+  // 使用的道具id | @inject_tag: msgpack:"propId" json:"propId"
+  int32 propId = 4;
+}
+
+message ScTzRemove {
+  // 花费的道具 | @inject_tag: msgpack:"misGold" json:"misGold"
+  int32 misGold = 1;
+}
+
+message CsFertilizerAdd {
+  // 格子 x | @inject_tag: msgpack:"gridX" json:"gridX"
+  int32 gridX = 1;
+  // 格子 y | @inject_tag: msgpack:"gridY" json:"gridY"
+  int32 gridY = 2;
+}
+
+message ScFertilizerAdd {
+  // 格子 x | @inject_tag: msgpack:"info" json:"info"
+  FertilizerInfo info = 1;
+  // 格子 y | @inject_tag: msgpack:"misGold" json:"misGold"
+  int32 misGold = 2;
+}
+
+message FertilizerInfo {
+  // 格子 x | @inject_tag: msgpack:"gridX" json:"gridX"
+  int32 gridX = 1;
+  // 格子 y | @inject_tag: msgpack:"gridY" json:"gridY"
+  int32 gridY = 2;
+  // 剩余时间 | @inject_tag: msgpack:"leftTime" json:"leftTime"
+  int32 leftTime = 3;
+}
+
+message ScFertilizerInfo {
+  // 格子 x | @inject_tag: msgpack:"info" json:"info"
+  repeated FertilizerInfo info = 1;
 }

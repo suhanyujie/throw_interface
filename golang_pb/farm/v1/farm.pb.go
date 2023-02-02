@@ -65,13 +65,13 @@ type AccountInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// user id | @inject_tag: msgpack:"uid" json:"uid"
-	Uid int32 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Uid int32 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid" msgpack:"uid"`
 	// | @inject_tag: msgpack:"nick_name" json:"nick_name"
-	NickName string `protobuf:"bytes,2,opt,name=nick_name,json=nickName,proto3" json:"nick_name,omitempty"`
+	NickName string `protobuf:"bytes,2,opt,name=nick_name,json=nickName,proto3" json:"nick_name" msgpack:"nick_name"`
 	// | @inject_tag: msgpack:"avatar" json:"avatar"
-	Avatar string `protobuf:"bytes,3,opt,name=avatar,proto3" json:"avatar,omitempty"`
+	Avatar string `protobuf:"bytes,3,opt,name=avatar,proto3" json:"avatar" msgpack:"avatar"`
 	// | @inject_tag: msgpack:"gender" json:"gender"
-	Gender int32 `protobuf:"varint,4,opt,name=gender,proto3" json:"gender,omitempty"`
+	Gender int32 `protobuf:"varint,4,opt,name=gender,proto3" json:"gender" msgpack:"gender"`
 }
 
 func (x *AccountInfo) Reset() {
@@ -177,10 +177,10 @@ type MyInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// | @inject_tag: msgpack:"accountInfo" json:"accountInfo"
-	AccountInfo *AccountInfo `protobuf:"bytes,1,opt,name=accountInfo,proto3" json:"accountInfo,omitempty"`
+	// 用户信息 | @inject_tag: msgpack:"accountInfo" json:"accountInfo"
+	AccountInfo *AccountInfo `protobuf:"bytes,1,opt,name=accountInfo,proto3" json:"accountInfo" msgpack:"accountInfo"`
 	// | @inject_tag: msgpack:"needReset" json:"needReset"
-	NeedReset bool `protobuf:"varint,2,opt,name=needReset,proto3" json:"needReset,omitempty"`
+	NeedReset bool `protobuf:"varint,2,opt,name=needReset,proto3" json:"needReset" msgpack:"needReset"`
 }
 
 func (x *MyInfo) Reset() {
@@ -234,15 +234,20 @@ type ScGetUInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Exp            int32 `protobuf:"varint,1,opt,name=exp,proto3" json:"exp,omitempty"`
-	Gold           int32 `protobuf:"varint,2,opt,name=gold,proto3" json:"gold,omitempty"`
-	Diamond        int32 `protobuf:"varint,3,opt,name=diamond,proto3" json:"diamond,omitempty"`
-	GuideStep      int32 `protobuf:"varint,4,opt,name=guideStep,proto3" json:"guideStep,omitempty"`
-	LeftDoubleTime int32 `protobuf:"varint,5,opt,name=leftDoubleTime,proto3" json:"leftDoubleTime,omitempty"`
+	// 经验值 | @inject_tag: msgpack:"exp" json:"exp"
+	Exp int32 `protobuf:"varint,1,opt,name=exp,proto3" json:"exp" msgpack:"exp"`
+	// 金币值 | @inject_tag: msgpack:"gold" json:"gold"
+	Gold int32 `protobuf:"varint,2,opt,name=gold,proto3" json:"gold" msgpack:"gold"`
+	// 钻石 | @inject_tag: msgpack:"diamond" json:"diamond"
+	Diamond int32 `protobuf:"varint,3,opt,name=diamond,proto3" json:"diamond" msgpack:"diamond"`
+	// 新手步骤 | @inject_tag: msgpack:"guideStep" json:"guideStep"
+	GuideStep int32 `protobuf:"varint,4,opt,name=guideStep,proto3" json:"guideStep" msgpack:"guideStep"`
+	// 剩余双倍收获的时间 | @inject_tag: msgpack:"leftDoubleTime" json:"leftDoubleTime"
+	LeftDoubleTime int32 `protobuf:"varint,5,opt,name=leftDoubleTime,proto3" json:"leftDoubleTime" msgpack:"leftDoubleTime"`
 	// 仓库内物品信息 | @inject_tag: msgpack:"wareHouse" json:"wareHouse"
-	WareHouse []*WareHouseItem `protobuf:"bytes,6,rep,name=wareHouse,proto3" json:"wareHouse,omitempty"`
+	WareHouse []*WareHouseItem `protobuf:"bytes,6,rep,name=wareHouse,proto3" json:"wareHouse" msgpack:"wareHouse"`
 	// 种值的最大的等级数据，key为物品id, lv 为 level | @inject_tag: msgpack:"maxBuildLvMap" json:"maxBuildLvMap"
-	MaxBuildLvMap []*MaxBuildLvItem `protobuf:"bytes,7,rep,name=maxBuildLvMap,proto3" json:"maxBuildLvMap,omitempty"`
+	MaxBuildLvMap []*MaxBuildLvItem `protobuf:"bytes,7,rep,name=maxBuildLvMap,proto3" json:"maxBuildLvMap" msgpack:"maxBuildLvMap"`
 }
 
 func (x *ScGetUInfo) Reset() {
@@ -332,9 +337,9 @@ type WareHouseItem struct {
 	unknownFields protoimpl.UnknownFields
 
 	// | @inject_tag: msgpack:"key" json:"key"
-	Key int32 `protobuf:"varint,1,opt,name=key,proto3" json:"key,omitempty"`
+	Key int32 `protobuf:"varint,1,opt,name=key,proto3" json:"key" msgpack:"key"`
 	// | @inject_tag: msgpack:"num" json:"num"
-	Num int32 `protobuf:"varint,2,opt,name=num,proto3" json:"num,omitempty"`
+	Num int32 `protobuf:"varint,2,opt,name=num,proto3" json:"num" msgpack:"num"`
 }
 
 func (x *WareHouseItem) Reset() {
@@ -389,9 +394,9 @@ type MaxBuildLvItem struct {
 	unknownFields protoimpl.UnknownFields
 
 	// | @inject_tag: msgpack:"key" json:"key"
-	Key int32 `protobuf:"varint,1,opt,name=key,proto3" json:"key,omitempty"`
+	Key int32 `protobuf:"varint,1,opt,name=key,proto3" json:"key" msgpack:"key"`
 	// | @inject_tag: msgpack:"lv" json:"lv"
-	Lv int32 `protobuf:"varint,2,opt,name=lv,proto3" json:"lv,omitempty"`
+	Lv int32 `protobuf:"varint,2,opt,name=lv,proto3" json:"lv" msgpack:"lv"`
 }
 
 func (x *MaxBuildLvItem) Reset() {
@@ -446,11 +451,11 @@ type CsUpdateMoney struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 1表示金币， 2表示钻石 | @inject_tag: msgpack:"moneyType" json:"moneyType"
-	MoneyType int32 `protobuf:"varint,1,opt,name=moneyType,proto3" json:"moneyType,omitempty"`
+	MoneyType int32 `protobuf:"varint,1,opt,name=moneyType,proto3" json:"moneyType" msgpack:"moneyType"`
 	// 数量变化的量，如果是加钱，为正数，如果是减钱就是负数 | @inject_tag: msgpack:"moneyChangeNum" json:"moneyChangeNum"
-	MoneyChangeNum int32 `protobuf:"varint,2,opt,name=moneyChangeNum,proto3" json:"moneyChangeNum,omitempty"`
+	MoneyChangeNum int32 `protobuf:"varint,2,opt,name=moneyChangeNum,proto3" json:"moneyChangeNum" msgpack:"moneyChangeNum"`
 	// 变化的原因 1、出售  2 任务 | @inject_tag: msgpack:"changeReason" json:"changeReason"
-	ChangeReason int32 `protobuf:"varint,3,opt,name=changeReason,proto3" json:"changeReason,omitempty"`
+	ChangeReason int32 `protobuf:"varint,3,opt,name=changeReason,proto3" json:"changeReason" msgpack:"changeReason"`
 }
 
 func (x *CsUpdateMoney) Reset() {
@@ -512,9 +517,9 @@ type CsWareHouseSale struct {
 	unknownFields protoimpl.UnknownFields
 
 	// | @inject_tag: msgpack:"saveProduct" json:"saveProduct"
-	SaveProduct []*WareHouse `protobuf:"bytes,1,rep,name=saveProduct,proto3" json:"saveProduct,omitempty"` // 可能是之前写错的单词，先保持一样吧
+	SaveProduct []*WareHouse `protobuf:"bytes,1,rep,name=saveProduct,proto3" json:"saveProduct" msgpack:"saveProduct"` // 可能是之前写错的单词，先保持一样吧
 	// 1表示神秘商人出售, 2表示这架出售普通仓库出售 | @inject_tag: msgpack:"saleType" json:"saleType"
-	SaleType int32 `protobuf:"varint,2,opt,name=saleType,proto3" json:"saleType,omitempty"`
+	SaleType int32 `protobuf:"varint,2,opt,name=saleType,proto3" json:"saleType" msgpack:"saleType"`
 }
 
 func (x *CsWareHouseSale) Reset() {
@@ -569,9 +574,9 @@ type WareHouse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// | @inject_tag: msgpack:"key" json:"key"
-	Key int32 `protobuf:"varint,1,opt,name=key,proto3" json:"key,omitempty"`
+	Key int32 `protobuf:"varint,1,opt,name=key,proto3" json:"key" msgpack:"key"`
 	// | @inject_tag: msgpack:"num" json:"num"
-	Num int32 `protobuf:"varint,2,opt,name=num,proto3" json:"num,omitempty"`
+	Num int32 `protobuf:"varint,2,opt,name=num,proto3" json:"num" msgpack:"num"`
 }
 
 func (x *WareHouse) Reset() {
@@ -626,7 +631,7 @@ type ScWareHouseSale struct {
 	unknownFields protoimpl.UnknownFields
 
 	// | @inject_tag: msgpack:"gold" json:"gold"
-	Gold int32 `protobuf:"varint,1,opt,name=gold,proto3" json:"gold,omitempty"`
+	Gold int32 `protobuf:"varint,1,opt,name=gold,proto3" json:"gold" msgpack:"gold"`
 }
 
 func (x *ScWareHouseSale) Reset() {
@@ -674,7 +679,7 @@ type CsSetGuideStep struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 新手教学的位置 | @inject_tag: msgpack:"guideStep" json:"guideStep"
-	GuideStep int32 `protobuf:"varint,1,opt,name=guideStep,proto3" json:"guideStep,omitempty"`
+	GuideStep int32 `protobuf:"varint,1,opt,name=guideStep,proto3" json:"guideStep" msgpack:"guideStep"`
 }
 
 func (x *CsSetGuideStep) Reset() {
@@ -722,7 +727,7 @@ type CsSetDouble struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 是否是免费开启 | @inject_tag: msgpack:"isFree" json:"isFree"
-	IsFree bool `protobuf:"varint,1,opt,name=isFree,proto3" json:"isFree,omitempty"`
+	IsFree bool `protobuf:"varint,1,opt,name=isFree,proto3" json:"isFree" msgpack:"isFree"`
 }
 
 func (x *CsSetDouble) Reset() {
@@ -770,7 +775,7 @@ type ScSetDouble struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 花费的的钻石数量 | @inject_tag: msgpack:"diamond" json:"diamond"
-	Diamond int32 `protobuf:"varint,1,opt,name=diamond,proto3" json:"diamond,omitempty"`
+	Diamond int32 `protobuf:"varint,1,opt,name=diamond,proto3" json:"diamond" msgpack:"diamond"`
 }
 
 func (x *ScSetDouble) Reset() {
@@ -818,11 +823,11 @@ type ScFarmInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 花费的的钻石数量 | @inject_tag: msgpack:"seedFarmInfo" json:"seedFarmInfo"
-	SeedFarmInfo []*SeedFarmInfo `protobuf:"bytes,1,rep,name=seedFarmInfo,proto3" json:"seedFarmInfo,omitempty"`
+	SeedFarmInfo []*SeedFarmInfo `protobuf:"bytes,1,rep,name=seedFarmInfo,proto3" json:"seedFarmInfo" msgpack:"seedFarmInfo"`
 	// 作物信息 | @inject_tag: msgpack:"buildInfo" json:"buildInfo"
-	BuildInfo []*BuildInfo `protobuf:"bytes,2,rep,name=buildInfo,proto3" json:"buildInfo,omitempty"`
+	BuildInfo []*BuildInfo `protobuf:"bytes,2,rep,name=buildInfo,proto3" json:"buildInfo" msgpack:"buildInfo"`
 	// 服务器时间，用于计算 dt | @inject_tag: msgpack:"serverTime" json:"serverTime"
-	ServerTime int32 `protobuf:"varint,3,opt,name=serverTime,proto3" json:"serverTime,omitempty"`
+	ServerTime int32 `protobuf:"varint,3,opt,name=serverTime,proto3" json:"serverTime" msgpack:"serverTime"`
 }
 
 func (x *ScFarmInfo) Reset() {
@@ -884,11 +889,11 @@ type SeedFarmInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 格子 x | @inject_tag: msgpack:"gridX" json:"gridX"
-	GridX int32 `protobuf:"varint,1,opt,name=gridX,proto3" json:"gridX,omitempty"`
+	GridX int32 `protobuf:"varint,1,opt,name=gridX,proto3" json:"gridX" msgpack:"gridX"`
 	// 格子 y | @inject_tag: msgpack:"gridY" json:"gridY"
-	GridY int32 `protobuf:"varint,2,opt,name=gridY,proto3" json:"gridY,omitempty"`
+	GridY int32 `protobuf:"varint,2,opt,name=gridY,proto3" json:"gridY" msgpack:"gridY"`
 	// 干涸天灾 | @inject_tag: msgpack:"ganhe" json:"ganhe"
-	Ganhe int32 `protobuf:"varint,3,opt,name=ganhe,proto3" json:"ganhe,omitempty"`
+	Ganhe int32 `protobuf:"varint,3,opt,name=ganhe,proto3" json:"ganhe" msgpack:"ganhe"`
 }
 
 func (x *SeedFarmInfo) Reset() {
@@ -950,25 +955,25 @@ type BuildInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 格子 x | @inject_tag: msgpack:"gridX" json:"gridX"
-	GridX int32 `protobuf:"varint,1,opt,name=gridX,proto3" json:"gridX,omitempty"`
+	GridX int32 `protobuf:"varint,1,opt,name=gridX,proto3" json:"gridX" msgpack:"gridX"`
 	// 格子 y | @inject_tag: msgpack:"gridY" json:"gridY"
-	GridY int32 `protobuf:"varint,2,opt,name=gridY,proto3" json:"gridY,omitempty"`
+	GridY int32 `protobuf:"varint,2,opt,name=gridY,proto3" json:"gridY" msgpack:"gridY"`
 	// 建筑 id | @inject_tag: msgpack:"buildId" json:"buildId"
-	BuildId int32 `protobuf:"varint,3,opt,name=buildId,proto3" json:"buildId,omitempty"`
+	BuildId int32 `protobuf:"varint,3,opt,name=buildId,proto3" json:"buildId" msgpack:"buildId"`
 	// 建筑等级 | @inject_tag: msgpack:"buildLevel" json:"buildLevel"
-	BuildLevel int32 `protobuf:"varint,4,opt,name=buildLevel,proto3" json:"buildLevel,omitempty"`
+	BuildLevel int32 `protobuf:"varint,4,opt,name=buildLevel,proto3" json:"buildLevel" msgpack:"buildLevel"`
 	// 建筑uid  | @inject_tag: msgpack:"uuid" json:"uuid"
-	Uuid string `protobuf:"bytes,5,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	Uuid string `protobuf:"bytes,5,opt,name=uuid,proto3" json:"uuid" msgpack:"uuid"`
 	// 建造时间  | @inject_tag: msgpack:"buildTime" json:"buildTime"
-	BuildTime int32 `protobuf:"varint,6,opt,name=buildTime,proto3" json:"buildTime,omitempty"`
+	BuildTime int32 `protobuf:"varint,6,opt,name=buildTime,proto3" json:"buildTime" msgpack:"buildTime"`
 	// 最后一次收获时间 | @inject_tag: msgpack:"lastHarvestTime" json:"lastHarvestTime"
-	LastHarvestTime int32 `protobuf:"varint,7,opt,name=lastHarvestTime,proto3" json:"lastHarvestTime,omitempty"`
+	LastHarvestTime int32 `protobuf:"varint,7,opt,name=lastHarvestTime,proto3" json:"lastHarvestTime" msgpack:"lastHarvestTime"`
 	// 生产的id,主要用于工厂一类的 | @inject_tag: msgpack:"productId" json:"productId"
-	ProductId int32 `protobuf:"varint,8,opt,name=productId,proto3" json:"productId,omitempty"`
+	ProductId int32 `protobuf:"varint,8,opt,name=productId,proto3" json:"productId" msgpack:"productId"`
 	// 使用过建造加速 | @inject_tag: msgpack:"buildSpeed" json:"buildSpeed"
-	BuildSpeed bool `protobuf:"varint,9,opt,name=buildSpeed,proto3" json:"buildSpeed,omitempty"`
+	BuildSpeed bool `protobuf:"varint,9,opt,name=buildSpeed,proto3" json:"buildSpeed" msgpack:"buildSpeed"`
 	// 虫灾信息 | @inject_tag: msgpack:"buildId" json:"buildId"
-	Chong int32 `protobuf:"varint,10,opt,name=chong,proto3" json:"chong,omitempty"`
+	Chong int32 `protobuf:"varint,10,opt,name=chong,proto3" json:"buildId" msgpack:"buildId"`
 }
 
 func (x *BuildInfo) Reset() {
@@ -1079,11 +1084,11 @@ type CsBuyFarm struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 格子 x | @inject_tag: msgpack:"gridX" json:"gridX"
-	GridX int32 `protobuf:"varint,1,opt,name=gridX,proto3" json:"gridX,omitempty"`
+	GridX int32 `protobuf:"varint,1,opt,name=gridX,proto3" json:"gridX" msgpack:"gridX"`
 	// 格子 y | @inject_tag: msgpack:"gridY" json:"gridY"
-	GridY int32 `protobuf:"varint,2,opt,name=gridY,proto3" json:"gridY,omitempty"`
+	GridY int32 `protobuf:"varint,2,opt,name=gridY,proto3" json:"gridY" msgpack:"gridY"`
 	// 是否是免费的 | @inject_tag: msgpack:"gridY" json:"gridY"
-	IsFree bool `protobuf:"varint,3,opt,name=isFree,proto3" json:"isFree,omitempty"`
+	IsFree bool `protobuf:"varint,3,opt,name=isFree,proto3" json:"gridY" msgpack:"gridY"`
 }
 
 func (x *CsBuyFarm) Reset() {
@@ -1145,7 +1150,7 @@ type ScBuyFarm struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 减少的金币数量 | @inject_tag: msgpack:"misGold" json:"misGold"
-	MisGold int32 `protobuf:"varint,1,opt,name=misGold,proto3" json:"misGold,omitempty"`
+	MisGold int32 `protobuf:"varint,1,opt,name=misGold,proto3" json:"misGold" msgpack:"misGold"`
 }
 
 func (x *ScBuyFarm) Reset() {
@@ -1193,17 +1198,17 @@ type CsSeedBuild struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 格子 x | @inject_tag: msgpack:"gridX" json:"gridX"
-	GridX int32 `protobuf:"varint,1,opt,name=gridX,proto3" json:"gridX,omitempty"`
+	GridX int32 `protobuf:"varint,1,opt,name=gridX,proto3" json:"gridX" msgpack:"gridX"`
 	// 格子 y | @inject_tag: msgpack:"gridY" json:"gridY"
-	GridY int32 `protobuf:"varint,2,opt,name=gridY,proto3" json:"gridY,omitempty"`
+	GridY int32 `protobuf:"varint,2,opt,name=gridY,proto3" json:"gridY" msgpack:"gridY"`
 	// 建筑 id | @inject_tag: msgpack:"buildId" json:"buildId"
-	BuildId int32 `protobuf:"varint,3,opt,name=buildId,proto3" json:"buildId,omitempty"`
+	BuildId int32 `protobuf:"varint,3,opt,name=buildId,proto3" json:"buildId" msgpack:"buildId"`
 	// 建筑等级 | @inject_tag: msgpack:"buildLevel" json:"buildLevel"
-	BuildLevel int32 `protobuf:"varint,4,opt,name=buildLevel,proto3" json:"buildLevel,omitempty"`
+	BuildLevel int32 `protobuf:"varint,4,opt,name=buildLevel,proto3" json:"buildLevel" msgpack:"buildLevel"`
 	// 建筑uid  | @inject_tag: msgpack:"uuid" json:"uuid"
-	Uuid string `protobuf:"bytes,5,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	Uuid string `protobuf:"bytes,5,opt,name=uuid,proto3" json:"uuid" msgpack:"uuid"`
 	// 是否是免费的 | @inject_tag: msgpack:"isFree" json:"isFree"
-	IsFree bool `protobuf:"varint,6,opt,name=isFree,proto3" json:"isFree,omitempty"`
+	IsFree bool `protobuf:"varint,6,opt,name=isFree,proto3" json:"isFree" msgpack:"isFree"`
 }
 
 func (x *CsSeedBuild) Reset() {
@@ -1286,7 +1291,7 @@ type ScSeedBuild struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 减少的金币数量 | @inject_tag: msgpack:"misGold" json:"misGold"
-	MisGold int32 `protobuf:"varint,1,opt,name=misGold,proto3" json:"misGold,omitempty"`
+	MisGold int32 `protobuf:"varint,1,opt,name=misGold,proto3" json:"misGold" msgpack:"misGold"`
 }
 
 func (x *ScSeedBuild) Reset() {
@@ -1334,9 +1339,9 @@ type CsRemoveBuild struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 格子 x | @inject_tag: msgpack:"gridX" json:"gridX"
-	GridX int32 `protobuf:"varint,1,opt,name=gridX,proto3" json:"gridX,omitempty"`
+	GridX int32 `protobuf:"varint,1,opt,name=gridX,proto3" json:"gridX" msgpack:"gridX"`
 	// 格子 y | @inject_tag: msgpack:"gridY" json:"gridY"
-	GridY int32 `protobuf:"varint,2,opt,name=gridY,proto3" json:"gridY,omitempty"`
+	GridY int32 `protobuf:"varint,2,opt,name=gridY,proto3" json:"gridY" msgpack:"gridY"`
 }
 
 func (x *CsRemoveBuild) Reset() {
@@ -1391,7 +1396,7 @@ type ScRemoveBuild struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 增加的钱 | @inject_tag: msgpack:"gold" json:"gold"
-	Gold int32 `protobuf:"varint,1,opt,name=gold,proto3" json:"gold,omitempty"`
+	Gold int32 `protobuf:"varint,1,opt,name=gold,proto3" json:"gold" msgpack:"gold"`
 }
 
 func (x *ScRemoveBuild) Reset() {
@@ -1439,13 +1444,13 @@ type CsMergerBuild struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 格子 x | @inject_tag: msgpack:"fromGridX" json:"fromGridX"
-	FromGridX int32 `protobuf:"varint,1,opt,name=fromGridX,proto3" json:"fromGridX,omitempty"`
+	FromGridX int32 `protobuf:"varint,1,opt,name=fromGridX,proto3" json:"fromGridX" msgpack:"fromGridX"`
 	// 格子 y | @inject_tag: msgpack:"fromGridY" json:"fromGridY"
-	FromGridY int32 `protobuf:"varint,2,opt,name=fromGridY,proto3" json:"fromGridY,omitempty"`
+	FromGridY int32 `protobuf:"varint,2,opt,name=fromGridY,proto3" json:"fromGridY" msgpack:"fromGridY"`
 	// 目标格子 x | @inject_tag: msgpack:"toGridX" json:"toGridX"
-	ToGridX int32 `protobuf:"varint,3,opt,name=toGridX,proto3" json:"toGridX,omitempty"`
+	ToGridX int32 `protobuf:"varint,3,opt,name=toGridX,proto3" json:"toGridX" msgpack:"toGridX"`
 	// 目标格子 y | @inject_tag: msgpack:"toGridY" json:"toGridY"
-	ToGridY int32 `protobuf:"varint,4,opt,name=toGridY,proto3" json:"toGridY,omitempty"`
+	ToGridY int32 `protobuf:"varint,4,opt,name=toGridY,proto3" json:"toGridY" msgpack:"toGridY"`
 }
 
 func (x *CsMergerBuild) Reset() {
@@ -1552,13 +1557,13 @@ type CsMoveBuild struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 格子 x | @inject_tag: msgpack:"fromGridX" json:"fromGridX"
-	FromGridX int32 `protobuf:"varint,1,opt,name=fromGridX,proto3" json:"fromGridX,omitempty"`
+	FromGridX int32 `protobuf:"varint,1,opt,name=fromGridX,proto3" json:"fromGridX" msgpack:"fromGridX"`
 	// 格子 y | @inject_tag: msgpack:"fromGridY" json:"fromGridY"
-	FromGridY int32 `protobuf:"varint,2,opt,name=fromGridY,proto3" json:"fromGridY,omitempty"`
+	FromGridY int32 `protobuf:"varint,2,opt,name=fromGridY,proto3" json:"fromGridY" msgpack:"fromGridY"`
 	// 目标格子 x | @inject_tag: msgpack:"toGridX" json:"toGridX"
-	ToGridX int32 `protobuf:"varint,3,opt,name=toGridX,proto3" json:"toGridX,omitempty"`
+	ToGridX int32 `protobuf:"varint,3,opt,name=toGridX,proto3" json:"toGridX" msgpack:"toGridX"`
 	// 目标格子 y | @inject_tag: msgpack:"toGridY" json:"toGridY"
-	ToGridY int32 `protobuf:"varint,4,opt,name=toGridY,proto3" json:"toGridY,omitempty"`
+	ToGridY int32 `protobuf:"varint,4,opt,name=toGridY,proto3" json:"toGridY" msgpack:"toGridY"`
 }
 
 func (x *CsMoveBuild) Reset() {
@@ -1627,13 +1632,13 @@ type ScMoveBuild struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 格子 x | @inject_tag: msgpack:"fromGridX" json:"fromGridX"
-	FromGridX int32 `protobuf:"varint,1,opt,name=fromGridX,proto3" json:"fromGridX,omitempty"`
+	FromGridX int32 `protobuf:"varint,1,opt,name=fromGridX,proto3" json:"fromGridX" msgpack:"fromGridX"`
 	// 格子 y | @inject_tag: msgpack:"fromGridY" json:"fromGridY"
-	FromGridY int32 `protobuf:"varint,2,opt,name=fromGridY,proto3" json:"fromGridY,omitempty"`
+	FromGridY int32 `protobuf:"varint,2,opt,name=fromGridY,proto3" json:"fromGridY" msgpack:"fromGridY"`
 	// 目标格子 x | @inject_tag: msgpack:"toGridX" json:"toGridX"
-	ToGridX int32 `protobuf:"varint,3,opt,name=toGridX,proto3" json:"toGridX,omitempty"`
+	ToGridX int32 `protobuf:"varint,3,opt,name=toGridX,proto3" json:"toGridX" msgpack:"toGridX"`
 	// 目标格子 y | @inject_tag: msgpack:"toGridY" json:"toGridY"
-	ToGridY int32 `protobuf:"varint,4,opt,name=toGridY,proto3" json:"toGridY,omitempty"`
+	ToGridY int32 `protobuf:"varint,4,opt,name=toGridY,proto3" json:"toGridY" msgpack:"toGridY"`
 }
 
 func (x *ScMoveBuild) Reset() {
@@ -1702,13 +1707,13 @@ type CsHarvestBuild struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 格子 x | @inject_tag: msgpack:"gridX" json:"gridX"
-	GridX int32 `protobuf:"varint,1,opt,name=gridX,proto3" json:"gridX,omitempty"`
+	GridX int32 `protobuf:"varint,1,opt,name=gridX,proto3" json:"gridX" msgpack:"gridX"`
 	// 格子 y | @inject_tag: msgpack:"gridY" json:"gridY"
-	GridY int32 `protobuf:"varint,2,opt,name=gridY,proto3" json:"gridY,omitempty"`
+	GridY int32 `protobuf:"varint,2,opt,name=gridY,proto3" json:"gridY" msgpack:"gridY"`
 	// 收成作物的 id | @inject_tag: msgpack:"productId" json:"productId"
-	ProductId int32 `protobuf:"varint,3,opt,name=productId,proto3" json:"productId,omitempty"`
+	ProductId int32 `protobuf:"varint,3,opt,name=productId,proto3" json:"productId" msgpack:"productId"`
 	// 收成的数量 | @inject_tag: msgpack:"productNum" json:"productNum"
-	ProductNum int32 `protobuf:"varint,4,opt,name=productNum,proto3" json:"productNum,omitempty"`
+	ProductNum int32 `protobuf:"varint,4,opt,name=productNum,proto3" json:"productNum" msgpack:"productNum"`
 }
 
 func (x *CsHarvestBuild) Reset() {
@@ -1769,6 +1774,993 @@ func (x *CsHarvestBuild) GetProductNum() int32 {
 		return x.ProductNum
 	}
 	return 0
+}
+
+type CsProductFarm struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// 格子 x | @inject_tag: msgpack:"gridX" json:"gridX"
+	GridX int32 `protobuf:"varint,1,opt,name=gridX,proto3" json:"gridX" msgpack:"gridX"`
+	// 格子 y | @inject_tag: msgpack:"gridY" json:"gridY"
+	GridY int32 `protobuf:"varint,2,opt,name=gridY,proto3" json:"gridY" msgpack:"gridY"`
+	// 收成作物的 id | @inject_tag: msgpack:"productId" json:"productId"
+	ProductId int32 `protobuf:"varint,3,opt,name=productId,proto3" json:"productId" msgpack:"productId"`
+}
+
+func (x *CsProductFarm) Reset() {
+	*x = CsProductFarm{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_farm_proto_msgTypes[28]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CsProductFarm) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CsProductFarm) ProtoMessage() {}
+
+func (x *CsProductFarm) ProtoReflect() protoreflect.Message {
+	mi := &file_farm_proto_msgTypes[28]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CsProductFarm.ProtoReflect.Descriptor instead.
+func (*CsProductFarm) Descriptor() ([]byte, []int) {
+	return file_farm_proto_rawDescGZIP(), []int{28}
+}
+
+func (x *CsProductFarm) GetGridX() int32 {
+	if x != nil {
+		return x.GridX
+	}
+	return 0
+}
+
+func (x *CsProductFarm) GetGridY() int32 {
+	if x != nil {
+		return x.GridY
+	}
+	return 0
+}
+
+func (x *CsProductFarm) GetProductId() int32 {
+	if x != nil {
+		return x.ProductId
+	}
+	return 0
+}
+
+type CsChangePosBuild struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// 格子 x | @inject_tag: msgpack:"fromGridX" json:"fromGridX"
+	FromGridX int32 `protobuf:"varint,1,opt,name=fromGridX,proto3" json:"fromGridX" msgpack:"fromGridX"`
+	// 格子 y | @inject_tag: msgpack:"fromGridY" json:"fromGridY"
+	FromGridY int32 `protobuf:"varint,2,opt,name=fromGridY,proto3" json:"fromGridY" msgpack:"fromGridY"`
+	// 目标格子 x | @inject_tag: msgpack:"toGridX" json:"toGridX"
+	ToGridX int32 `protobuf:"varint,3,opt,name=toGridX,proto3" json:"toGridX" msgpack:"toGridX"`
+	// 目标格子 y | @inject_tag: msgpack:"toGridY" json:"toGridY"
+	ToGridY int32 `protobuf:"varint,4,opt,name=toGridY,proto3" json:"toGridY" msgpack:"toGridY"`
+}
+
+func (x *CsChangePosBuild) Reset() {
+	*x = CsChangePosBuild{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_farm_proto_msgTypes[29]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CsChangePosBuild) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CsChangePosBuild) ProtoMessage() {}
+
+func (x *CsChangePosBuild) ProtoReflect() protoreflect.Message {
+	mi := &file_farm_proto_msgTypes[29]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CsChangePosBuild.ProtoReflect.Descriptor instead.
+func (*CsChangePosBuild) Descriptor() ([]byte, []int) {
+	return file_farm_proto_rawDescGZIP(), []int{29}
+}
+
+func (x *CsChangePosBuild) GetFromGridX() int32 {
+	if x != nil {
+		return x.FromGridX
+	}
+	return 0
+}
+
+func (x *CsChangePosBuild) GetFromGridY() int32 {
+	if x != nil {
+		return x.FromGridY
+	}
+	return 0
+}
+
+func (x *CsChangePosBuild) GetToGridX() int32 {
+	if x != nil {
+		return x.ToGridX
+	}
+	return 0
+}
+
+func (x *CsChangePosBuild) GetToGridY() int32 {
+	if x != nil {
+		return x.ToGridY
+	}
+	return 0
+}
+
+type CsTraderSale struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// 商品 | @inject_tag: msgpack:"products" json:"products"
+	Products map[int32]int32 `protobuf:"bytes,1,rep,name=products,proto3" json:"products" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3" msgpack:"products"`
+}
+
+func (x *CsTraderSale) Reset() {
+	*x = CsTraderSale{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_farm_proto_msgTypes[30]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CsTraderSale) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CsTraderSale) ProtoMessage() {}
+
+func (x *CsTraderSale) ProtoReflect() protoreflect.Message {
+	mi := &file_farm_proto_msgTypes[30]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CsTraderSale.ProtoReflect.Descriptor instead.
+func (*CsTraderSale) Descriptor() ([]byte, []int) {
+	return file_farm_proto_rawDescGZIP(), []int{30}
+}
+
+func (x *CsTraderSale) GetProducts() map[int32]int32 {
+	if x != nil {
+		return x.Products
+	}
+	return nil
+}
+
+type ScTraderSale struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// 增加的钱 | @inject_tag: msgpack:"gold" json:"gold"
+	Gold int32 `protobuf:"varint,1,opt,name=gold,proto3" json:"gold" msgpack:"gold"`
+	// 增加的经验 | @inject_tag: msgpack:"exp" json:"exp"
+	Exp int32 `protobuf:"varint,2,opt,name=exp,proto3" json:"exp" msgpack:"exp"`
+}
+
+func (x *ScTraderSale) Reset() {
+	*x = ScTraderSale{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_farm_proto_msgTypes[31]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ScTraderSale) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ScTraderSale) ProtoMessage() {}
+
+func (x *ScTraderSale) ProtoReflect() protoreflect.Message {
+	mi := &file_farm_proto_msgTypes[31]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ScTraderSale.ProtoReflect.Descriptor instead.
+func (*ScTraderSale) Descriptor() ([]byte, []int) {
+	return file_farm_proto_rawDescGZIP(), []int{31}
+}
+
+func (x *ScTraderSale) GetGold() int32 {
+	if x != nil {
+		return x.Gold
+	}
+	return 0
+}
+
+func (x *ScTraderSale) GetExp() int32 {
+	if x != nil {
+		return x.Exp
+	}
+	return 0
+}
+
+type ScOfflineAward struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// 离线时长,以秒为单位 | @inject_tag: msgpack:"offlineTime" json:"offlineTime"
+	OfflineTime int32 `protobuf:"varint,1,opt,name=offlineTime,proto3" json:"offlineTime" msgpack:"offlineTime"`
+	// 金币奖励 | @inject_tag: msgpack:"gold" json:"gold"
+	Gold int32 `protobuf:"varint,2,opt,name=gold,proto3" json:"gold" msgpack:"gold"`
+	// 钻石奖励 | @inject_tag: msgpack:"diamond" json:"diamond"
+	Diamond int32 `protobuf:"varint,3,opt,name=diamond,proto3" json:"diamond" msgpack:"diamond"`
+}
+
+func (x *ScOfflineAward) Reset() {
+	*x = ScOfflineAward{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_farm_proto_msgTypes[32]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ScOfflineAward) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ScOfflineAward) ProtoMessage() {}
+
+func (x *ScOfflineAward) ProtoReflect() protoreflect.Message {
+	mi := &file_farm_proto_msgTypes[32]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ScOfflineAward.ProtoReflect.Descriptor instead.
+func (*ScOfflineAward) Descriptor() ([]byte, []int) {
+	return file_farm_proto_rawDescGZIP(), []int{32}
+}
+
+func (x *ScOfflineAward) GetOfflineTime() int32 {
+	if x != nil {
+		return x.OfflineTime
+	}
+	return 0
+}
+
+func (x *ScOfflineAward) GetGold() int32 {
+	if x != nil {
+		return x.Gold
+	}
+	return 0
+}
+
+func (x *ScOfflineAward) GetDiamond() int32 {
+	if x != nil {
+		return x.Diamond
+	}
+	return 0
+}
+
+type CsReceiveMysteryAward struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// 神秘礼物的奖励 | @inject_tag: msgpack:"goldNum" json:"goldNum"
+	GoldNum int32 `protobuf:"varint,1,opt,name=goldNum,proto3" json:"goldNum" msgpack:"goldNum"`
+}
+
+func (x *CsReceiveMysteryAward) Reset() {
+	*x = CsReceiveMysteryAward{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_farm_proto_msgTypes[33]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CsReceiveMysteryAward) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CsReceiveMysteryAward) ProtoMessage() {}
+
+func (x *CsReceiveMysteryAward) ProtoReflect() protoreflect.Message {
+	mi := &file_farm_proto_msgTypes[33]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CsReceiveMysteryAward.ProtoReflect.Descriptor instead.
+func (*CsReceiveMysteryAward) Descriptor() ([]byte, []int) {
+	return file_farm_proto_rawDescGZIP(), []int{33}
+}
+
+func (x *CsReceiveMysteryAward) GetGoldNum() int32 {
+	if x != nil {
+		return x.GoldNum
+	}
+	return 0
+}
+
+type ScReceiveMysteryAward struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// 赠送的金币奖励数量 | @inject_tag: msgpack:"gold" json:"gold"
+	Gold int32 `protobuf:"varint,1,opt,name=gold,proto3" json:"gold" msgpack:"gold"`
+}
+
+func (x *ScReceiveMysteryAward) Reset() {
+	*x = ScReceiveMysteryAward{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_farm_proto_msgTypes[34]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ScReceiveMysteryAward) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ScReceiveMysteryAward) ProtoMessage() {}
+
+func (x *ScReceiveMysteryAward) ProtoReflect() protoreflect.Message {
+	mi := &file_farm_proto_msgTypes[34]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ScReceiveMysteryAward.ProtoReflect.Descriptor instead.
+func (*ScReceiveMysteryAward) Descriptor() ([]byte, []int) {
+	return file_farm_proto_rawDescGZIP(), []int{34}
+}
+
+func (x *ScReceiveMysteryAward) GetGold() int32 {
+	if x != nil {
+		return x.Gold
+	}
+	return 0
+}
+
+type CsScareCrowAdd struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// 稻草人 id | @inject_tag: msgpack:"scarecrowId" json:"scarecrowId"
+	ScarecrowId int32 `protobuf:"varint,1,opt,name=scarecrowId,proto3" json:"scarecrowId" msgpack:"scarecrowId"`
+}
+
+func (x *CsScareCrowAdd) Reset() {
+	*x = CsScareCrowAdd{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_farm_proto_msgTypes[35]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CsScareCrowAdd) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CsScareCrowAdd) ProtoMessage() {}
+
+func (x *CsScareCrowAdd) ProtoReflect() protoreflect.Message {
+	mi := &file_farm_proto_msgTypes[35]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CsScareCrowAdd.ProtoReflect.Descriptor instead.
+func (*CsScareCrowAdd) Descriptor() ([]byte, []int) {
+	return file_farm_proto_rawDescGZIP(), []int{35}
+}
+
+func (x *CsScareCrowAdd) GetScarecrowId() int32 {
+	if x != nil {
+		return x.ScarecrowId
+	}
+	return 0
+}
+
+type ScScareCrowAdd struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// 稻草人 id | @inject_tag: msgpack:"scarecrowId" json:"scarecrowId"
+	ScarecrowId int32 `protobuf:"varint,1,opt,name=scarecrowId,proto3" json:"scarecrowId" msgpack:"scarecrowId"`
+	// 稻草人剩余时间 | @inject_tag: msgpack:"leftTime" json:"leftTime"
+	LeftTime int32 `protobuf:"varint,2,opt,name=leftTime,proto3" json:"leftTime" msgpack:"leftTime"`
+}
+
+func (x *ScScareCrowAdd) Reset() {
+	*x = ScScareCrowAdd{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_farm_proto_msgTypes[36]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ScScareCrowAdd) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ScScareCrowAdd) ProtoMessage() {}
+
+func (x *ScScareCrowAdd) ProtoReflect() protoreflect.Message {
+	mi := &file_farm_proto_msgTypes[36]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ScScareCrowAdd.ProtoReflect.Descriptor instead.
+func (*ScScareCrowAdd) Descriptor() ([]byte, []int) {
+	return file_farm_proto_rawDescGZIP(), []int{36}
+}
+
+func (x *ScScareCrowAdd) GetScarecrowId() int32 {
+	if x != nil {
+		return x.ScarecrowId
+	}
+	return 0
+}
+
+func (x *ScScareCrowAdd) GetLeftTime() int32 {
+	if x != nil {
+		return x.LeftTime
+	}
+	return 0
+}
+
+type ScScareCrowInfo struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// 稻草人 id | @inject_tag: msgpack:"scarecrowId" json:"scarecrowId"
+	ScarecrowId int32 `protobuf:"varint,1,opt,name=scarecrowId,proto3" json:"scarecrowId" msgpack:"scarecrowId"`
+	// 稻草人剩余时间 | @inject_tag: msgpack:"leftTime" json:"leftTime"
+	LeftTime int32 `protobuf:"varint,2,opt,name=leftTime,proto3" json:"leftTime" msgpack:"leftTime"`
+}
+
+func (x *ScScareCrowInfo) Reset() {
+	*x = ScScareCrowInfo{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_farm_proto_msgTypes[37]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ScScareCrowInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ScScareCrowInfo) ProtoMessage() {}
+
+func (x *ScScareCrowInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_farm_proto_msgTypes[37]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ScScareCrowInfo.ProtoReflect.Descriptor instead.
+func (*ScScareCrowInfo) Descriptor() ([]byte, []int) {
+	return file_farm_proto_rawDescGZIP(), []int{37}
+}
+
+func (x *ScScareCrowInfo) GetScarecrowId() int32 {
+	if x != nil {
+		return x.ScarecrowId
+	}
+	return 0
+}
+
+func (x *ScScareCrowInfo) GetLeftTime() int32 {
+	if x != nil {
+		return x.LeftTime
+	}
+	return 0
+}
+
+type CsTzReport struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// 格子 x | @inject_tag: msgpack:"gridX" json:"gridX"
+	GridX int32 `protobuf:"varint,1,opt,name=gridX,proto3" json:"gridX" msgpack:"gridX"`
+	// 格子 y | @inject_tag: msgpack:"gridY" json:"gridY"
+	GridY int32 `protobuf:"varint,2,opt,name=gridY,proto3" json:"gridY" msgpack:"gridY"`
+	// 天灾 id | @inject_tag: msgpack:"tzId" json:"tzId"
+	TzId int32 `protobuf:"varint,3,opt,name=tzId,proto3" json:"tzId" msgpack:"tzId"`
+}
+
+func (x *CsTzReport) Reset() {
+	*x = CsTzReport{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_farm_proto_msgTypes[38]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CsTzReport) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CsTzReport) ProtoMessage() {}
+
+func (x *CsTzReport) ProtoReflect() protoreflect.Message {
+	mi := &file_farm_proto_msgTypes[38]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CsTzReport.ProtoReflect.Descriptor instead.
+func (*CsTzReport) Descriptor() ([]byte, []int) {
+	return file_farm_proto_rawDescGZIP(), []int{38}
+}
+
+func (x *CsTzReport) GetGridX() int32 {
+	if x != nil {
+		return x.GridX
+	}
+	return 0
+}
+
+func (x *CsTzReport) GetGridY() int32 {
+	if x != nil {
+		return x.GridY
+	}
+	return 0
+}
+
+func (x *CsTzReport) GetTzId() int32 {
+	if x != nil {
+		return x.TzId
+	}
+	return 0
+}
+
+type CsTzRemove struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// 格子 x | @inject_tag: msgpack:"gridX" json:"gridX"
+	GridX int32 `protobuf:"varint,1,opt,name=gridX,proto3" json:"gridX" msgpack:"gridX"`
+	// 格子 y | @inject_tag: msgpack:"gridY" json:"gridY"
+	GridY int32 `protobuf:"varint,2,opt,name=gridY,proto3" json:"gridY" msgpack:"gridY"`
+	// 使用道具类型 (浇水类道具类型为1; 杀虫类道具类型为2) | @inject_tag: msgpack:"propType" json:"propType"
+	PropType int32 `protobuf:"varint,3,opt,name=propType,proto3" json:"propType" msgpack:"propType"`
+	// 使用的道具id | @inject_tag: msgpack:"propId" json:"propId"
+	PropId int32 `protobuf:"varint,4,opt,name=propId,proto3" json:"propId" msgpack:"propId"`
+}
+
+func (x *CsTzRemove) Reset() {
+	*x = CsTzRemove{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_farm_proto_msgTypes[39]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CsTzRemove) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CsTzRemove) ProtoMessage() {}
+
+func (x *CsTzRemove) ProtoReflect() protoreflect.Message {
+	mi := &file_farm_proto_msgTypes[39]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CsTzRemove.ProtoReflect.Descriptor instead.
+func (*CsTzRemove) Descriptor() ([]byte, []int) {
+	return file_farm_proto_rawDescGZIP(), []int{39}
+}
+
+func (x *CsTzRemove) GetGridX() int32 {
+	if x != nil {
+		return x.GridX
+	}
+	return 0
+}
+
+func (x *CsTzRemove) GetGridY() int32 {
+	if x != nil {
+		return x.GridY
+	}
+	return 0
+}
+
+func (x *CsTzRemove) GetPropType() int32 {
+	if x != nil {
+		return x.PropType
+	}
+	return 0
+}
+
+func (x *CsTzRemove) GetPropId() int32 {
+	if x != nil {
+		return x.PropId
+	}
+	return 0
+}
+
+type ScTzRemove struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// 花费的道具 | @inject_tag: msgpack:"misGold" json:"misGold"
+	MisGold int32 `protobuf:"varint,1,opt,name=misGold,proto3" json:"misGold" msgpack:"misGold"`
+}
+
+func (x *ScTzRemove) Reset() {
+	*x = ScTzRemove{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_farm_proto_msgTypes[40]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ScTzRemove) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ScTzRemove) ProtoMessage() {}
+
+func (x *ScTzRemove) ProtoReflect() protoreflect.Message {
+	mi := &file_farm_proto_msgTypes[40]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ScTzRemove.ProtoReflect.Descriptor instead.
+func (*ScTzRemove) Descriptor() ([]byte, []int) {
+	return file_farm_proto_rawDescGZIP(), []int{40}
+}
+
+func (x *ScTzRemove) GetMisGold() int32 {
+	if x != nil {
+		return x.MisGold
+	}
+	return 0
+}
+
+type CsFertilizerAdd struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// 格子 x | @inject_tag: msgpack:"gridX" json:"gridX"
+	GridX int32 `protobuf:"varint,1,opt,name=gridX,proto3" json:"gridX" msgpack:"gridX"`
+	// 格子 y | @inject_tag: msgpack:"gridY" json:"gridY"
+	GridY int32 `protobuf:"varint,2,opt,name=gridY,proto3" json:"gridY" msgpack:"gridY"`
+}
+
+func (x *CsFertilizerAdd) Reset() {
+	*x = CsFertilizerAdd{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_farm_proto_msgTypes[41]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CsFertilizerAdd) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CsFertilizerAdd) ProtoMessage() {}
+
+func (x *CsFertilizerAdd) ProtoReflect() protoreflect.Message {
+	mi := &file_farm_proto_msgTypes[41]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CsFertilizerAdd.ProtoReflect.Descriptor instead.
+func (*CsFertilizerAdd) Descriptor() ([]byte, []int) {
+	return file_farm_proto_rawDescGZIP(), []int{41}
+}
+
+func (x *CsFertilizerAdd) GetGridX() int32 {
+	if x != nil {
+		return x.GridX
+	}
+	return 0
+}
+
+func (x *CsFertilizerAdd) GetGridY() int32 {
+	if x != nil {
+		return x.GridY
+	}
+	return 0
+}
+
+type ScFertilizerAdd struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// 格子 x | @inject_tag: msgpack:"info" json:"info"
+	Info *FertilizerInfo `protobuf:"bytes,1,opt,name=info,proto3" json:"info" msgpack:"info"`
+	// 格子 y | @inject_tag: msgpack:"misGold" json:"misGold"
+	MisGold int32 `protobuf:"varint,2,opt,name=misGold,proto3" json:"misGold" msgpack:"misGold"`
+}
+
+func (x *ScFertilizerAdd) Reset() {
+	*x = ScFertilizerAdd{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_farm_proto_msgTypes[42]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ScFertilizerAdd) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ScFertilizerAdd) ProtoMessage() {}
+
+func (x *ScFertilizerAdd) ProtoReflect() protoreflect.Message {
+	mi := &file_farm_proto_msgTypes[42]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ScFertilizerAdd.ProtoReflect.Descriptor instead.
+func (*ScFertilizerAdd) Descriptor() ([]byte, []int) {
+	return file_farm_proto_rawDescGZIP(), []int{42}
+}
+
+func (x *ScFertilizerAdd) GetInfo() *FertilizerInfo {
+	if x != nil {
+		return x.Info
+	}
+	return nil
+}
+
+func (x *ScFertilizerAdd) GetMisGold() int32 {
+	if x != nil {
+		return x.MisGold
+	}
+	return 0
+}
+
+type FertilizerInfo struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// 格子 x | @inject_tag: msgpack:"gridX" json:"gridX"
+	GridX int32 `protobuf:"varint,1,opt,name=gridX,proto3" json:"gridX" msgpack:"gridX"`
+	// 格子 y | @inject_tag: msgpack:"gridY" json:"gridY"
+	GridY int32 `protobuf:"varint,2,opt,name=gridY,proto3" json:"gridY" msgpack:"gridY"`
+	// 剩余时间 | @inject_tag: msgpack:"leftTime" json:"leftTime"
+	LeftTime int32 `protobuf:"varint,3,opt,name=leftTime,proto3" json:"leftTime" msgpack:"leftTime"`
+}
+
+func (x *FertilizerInfo) Reset() {
+	*x = FertilizerInfo{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_farm_proto_msgTypes[43]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *FertilizerInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FertilizerInfo) ProtoMessage() {}
+
+func (x *FertilizerInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_farm_proto_msgTypes[43]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FertilizerInfo.ProtoReflect.Descriptor instead.
+func (*FertilizerInfo) Descriptor() ([]byte, []int) {
+	return file_farm_proto_rawDescGZIP(), []int{43}
+}
+
+func (x *FertilizerInfo) GetGridX() int32 {
+	if x != nil {
+		return x.GridX
+	}
+	return 0
+}
+
+func (x *FertilizerInfo) GetGridY() int32 {
+	if x != nil {
+		return x.GridY
+	}
+	return 0
+}
+
+func (x *FertilizerInfo) GetLeftTime() int32 {
+	if x != nil {
+		return x.LeftTime
+	}
+	return 0
+}
+
+type ScFertilizerInfo struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// 格子 x | @inject_tag: msgpack:"info" json:"info"
+	Info []*FertilizerInfo `protobuf:"bytes,1,rep,name=info,proto3" json:"info" msgpack:"info"`
+}
+
+func (x *ScFertilizerInfo) Reset() {
+	*x = ScFertilizerInfo{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_farm_proto_msgTypes[44]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ScFertilizerInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ScFertilizerInfo) ProtoMessage() {}
+
+func (x *ScFertilizerInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_farm_proto_msgTypes[44]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ScFertilizerInfo.ProtoReflect.Descriptor instead.
+func (*ScFertilizerInfo) Descriptor() ([]byte, []int) {
+	return file_farm_proto_rawDescGZIP(), []int{44}
+}
+
+func (x *ScFertilizerInfo) GetInfo() []*FertilizerInfo {
+	if x != nil {
+		return x.Info
+	}
+	return nil
 }
 
 var File_farm_proto protoreflect.FileDescriptor
@@ -1933,11 +2925,97 @@ var file_farm_proto_rawDesc = []byte{
 	0x70, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x49, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52,
 	0x09, 0x70, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x49, 0x64, 0x12, 0x1e, 0x0a, 0x0a, 0x70, 0x72,
 	0x6f, 0x64, 0x75, 0x63, 0x74, 0x4e, 0x75, 0x6d, 0x18, 0x04, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0a,
-	0x70, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x4e, 0x75, 0x6d, 0x42, 0x38, 0x5a, 0x36, 0x67, 0x69,
-	0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x75, 0x68, 0x61, 0x6e, 0x79, 0x75,
-	0x6a, 0x69, 0x65, 0x2f, 0x74, 0x68, 0x72, 0x6f, 0x77, 0x5f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66,
-	0x61, 0x63, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x66, 0x61, 0x72, 0x6d, 0x2f, 0x76,
-	0x31, 0x3b, 0x76, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x70, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x4e, 0x75, 0x6d, 0x22, 0x59, 0x0a, 0x0d, 0x43, 0x73,
+	0x50, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x46, 0x61, 0x72, 0x6d, 0x12, 0x14, 0x0a, 0x05, 0x67,
+	0x72, 0x69, 0x64, 0x58, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x67, 0x72, 0x69, 0x64,
+	0x58, 0x12, 0x14, 0x0a, 0x05, 0x67, 0x72, 0x69, 0x64, 0x59, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05,
+	0x52, 0x05, 0x67, 0x72, 0x69, 0x64, 0x59, 0x12, 0x1c, 0x0a, 0x09, 0x70, 0x72, 0x6f, 0x64, 0x75,
+	0x63, 0x74, 0x49, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x09, 0x70, 0x72, 0x6f, 0x64,
+	0x75, 0x63, 0x74, 0x49, 0x64, 0x22, 0x82, 0x01, 0x0a, 0x10, 0x43, 0x73, 0x43, 0x68, 0x61, 0x6e,
+	0x67, 0x65, 0x50, 0x6f, 0x73, 0x42, 0x75, 0x69, 0x6c, 0x64, 0x12, 0x1c, 0x0a, 0x09, 0x66, 0x72,
+	0x6f, 0x6d, 0x47, 0x72, 0x69, 0x64, 0x58, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x09, 0x66,
+	0x72, 0x6f, 0x6d, 0x47, 0x72, 0x69, 0x64, 0x58, 0x12, 0x1c, 0x0a, 0x09, 0x66, 0x72, 0x6f, 0x6d,
+	0x47, 0x72, 0x69, 0x64, 0x59, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x09, 0x66, 0x72, 0x6f,
+	0x6d, 0x47, 0x72, 0x69, 0x64, 0x59, 0x12, 0x18, 0x0a, 0x07, 0x74, 0x6f, 0x47, 0x72, 0x69, 0x64,
+	0x58, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x07, 0x74, 0x6f, 0x47, 0x72, 0x69, 0x64, 0x58,
+	0x12, 0x18, 0x0a, 0x07, 0x74, 0x6f, 0x47, 0x72, 0x69, 0x64, 0x59, 0x18, 0x04, 0x20, 0x01, 0x28,
+	0x05, 0x52, 0x07, 0x74, 0x6f, 0x47, 0x72, 0x69, 0x64, 0x59, 0x22, 0x8d, 0x01, 0x0a, 0x0c, 0x43,
+	0x73, 0x54, 0x72, 0x61, 0x64, 0x65, 0x72, 0x53, 0x61, 0x6c, 0x65, 0x12, 0x40, 0x0a, 0x08, 0x70,
+	0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x24, 0x2e,
+	0x74, 0x68, 0x72, 0x6f, 0x77, 0x2e, 0x76, 0x31, 0x2e, 0x43, 0x73, 0x54, 0x72, 0x61, 0x64, 0x65,
+	0x72, 0x53, 0x61, 0x6c, 0x65, 0x2e, 0x50, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x73, 0x45, 0x6e,
+	0x74, 0x72, 0x79, 0x52, 0x08, 0x70, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x73, 0x1a, 0x3b, 0x0a,
+	0x0d, 0x50, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10,
+	0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x03, 0x6b, 0x65, 0x79,
+	0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52,
+	0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0x34, 0x0a, 0x0c, 0x53, 0x63,
+	0x54, 0x72, 0x61, 0x64, 0x65, 0x72, 0x53, 0x61, 0x6c, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x67, 0x6f,
+	0x6c, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x67, 0x6f, 0x6c, 0x64, 0x12, 0x10,
+	0x0a, 0x03, 0x65, 0x78, 0x70, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x03, 0x65, 0x78, 0x70,
+	0x22, 0x60, 0x0a, 0x0e, 0x53, 0x63, 0x4f, 0x66, 0x66, 0x6c, 0x69, 0x6e, 0x65, 0x41, 0x77, 0x61,
+	0x72, 0x64, 0x12, 0x20, 0x0a, 0x0b, 0x6f, 0x66, 0x66, 0x6c, 0x69, 0x6e, 0x65, 0x54, 0x69, 0x6d,
+	0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0b, 0x6f, 0x66, 0x66, 0x6c, 0x69, 0x6e, 0x65,
+	0x54, 0x69, 0x6d, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x67, 0x6f, 0x6c, 0x64, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x05, 0x52, 0x04, 0x67, 0x6f, 0x6c, 0x64, 0x12, 0x18, 0x0a, 0x07, 0x64, 0x69, 0x61, 0x6d,
+	0x6f, 0x6e, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x07, 0x64, 0x69, 0x61, 0x6d, 0x6f,
+	0x6e, 0x64, 0x22, 0x31, 0x0a, 0x15, 0x43, 0x73, 0x52, 0x65, 0x63, 0x65, 0x69, 0x76, 0x65, 0x4d,
+	0x79, 0x73, 0x74, 0x65, 0x72, 0x79, 0x41, 0x77, 0x61, 0x72, 0x64, 0x12, 0x18, 0x0a, 0x07, 0x67,
+	0x6f, 0x6c, 0x64, 0x4e, 0x75, 0x6d, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x07, 0x67, 0x6f,
+	0x6c, 0x64, 0x4e, 0x75, 0x6d, 0x22, 0x2b, 0x0a, 0x15, 0x53, 0x63, 0x52, 0x65, 0x63, 0x65, 0x69,
+	0x76, 0x65, 0x4d, 0x79, 0x73, 0x74, 0x65, 0x72, 0x79, 0x41, 0x77, 0x61, 0x72, 0x64, 0x12, 0x12,
+	0x0a, 0x04, 0x67, 0x6f, 0x6c, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x67, 0x6f,
+	0x6c, 0x64, 0x22, 0x32, 0x0a, 0x0e, 0x43, 0x73, 0x53, 0x63, 0x61, 0x72, 0x65, 0x43, 0x72, 0x6f,
+	0x77, 0x41, 0x64, 0x64, 0x12, 0x20, 0x0a, 0x0b, 0x73, 0x63, 0x61, 0x72, 0x65, 0x63, 0x72, 0x6f,
+	0x77, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0b, 0x73, 0x63, 0x61, 0x72, 0x65,
+	0x63, 0x72, 0x6f, 0x77, 0x49, 0x64, 0x22, 0x4e, 0x0a, 0x0e, 0x53, 0x63, 0x53, 0x63, 0x61, 0x72,
+	0x65, 0x43, 0x72, 0x6f, 0x77, 0x41, 0x64, 0x64, 0x12, 0x20, 0x0a, 0x0b, 0x73, 0x63, 0x61, 0x72,
+	0x65, 0x63, 0x72, 0x6f, 0x77, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0b, 0x73,
+	0x63, 0x61, 0x72, 0x65, 0x63, 0x72, 0x6f, 0x77, 0x49, 0x64, 0x12, 0x1a, 0x0a, 0x08, 0x6c, 0x65,
+	0x66, 0x74, 0x54, 0x69, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x6c, 0x65,
+	0x66, 0x74, 0x54, 0x69, 0x6d, 0x65, 0x22, 0x4f, 0x0a, 0x0f, 0x53, 0x63, 0x53, 0x63, 0x61, 0x72,
+	0x65, 0x43, 0x72, 0x6f, 0x77, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x20, 0x0a, 0x0b, 0x73, 0x63, 0x61,
+	0x72, 0x65, 0x63, 0x72, 0x6f, 0x77, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0b,
+	0x73, 0x63, 0x61, 0x72, 0x65, 0x63, 0x72, 0x6f, 0x77, 0x49, 0x64, 0x12, 0x1a, 0x0a, 0x08, 0x6c,
+	0x65, 0x66, 0x74, 0x54, 0x69, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x6c,
+	0x65, 0x66, 0x74, 0x54, 0x69, 0x6d, 0x65, 0x22, 0x4c, 0x0a, 0x0a, 0x43, 0x73, 0x54, 0x7a, 0x52,
+	0x65, 0x70, 0x6f, 0x72, 0x74, 0x12, 0x14, 0x0a, 0x05, 0x67, 0x72, 0x69, 0x64, 0x58, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x67, 0x72, 0x69, 0x64, 0x58, 0x12, 0x14, 0x0a, 0x05, 0x67,
+	0x72, 0x69, 0x64, 0x59, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x67, 0x72, 0x69, 0x64,
+	0x59, 0x12, 0x12, 0x0a, 0x04, 0x74, 0x7a, 0x49, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52,
+	0x04, 0x74, 0x7a, 0x49, 0x64, 0x22, 0x6c, 0x0a, 0x0a, 0x43, 0x73, 0x54, 0x7a, 0x52, 0x65, 0x6d,
+	0x6f, 0x76, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x67, 0x72, 0x69, 0x64, 0x58, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x05, 0x52, 0x05, 0x67, 0x72, 0x69, 0x64, 0x58, 0x12, 0x14, 0x0a, 0x05, 0x67, 0x72, 0x69,
+	0x64, 0x59, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x67, 0x72, 0x69, 0x64, 0x59, 0x12,
+	0x1a, 0x0a, 0x08, 0x70, 0x72, 0x6f, 0x70, 0x54, 0x79, 0x70, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28,
+	0x05, 0x52, 0x08, 0x70, 0x72, 0x6f, 0x70, 0x54, 0x79, 0x70, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x70,
+	0x72, 0x6f, 0x70, 0x49, 0x64, 0x18, 0x04, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x70, 0x72, 0x6f,
+	0x70, 0x49, 0x64, 0x22, 0x26, 0x0a, 0x0a, 0x53, 0x63, 0x54, 0x7a, 0x52, 0x65, 0x6d, 0x6f, 0x76,
+	0x65, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x69, 0x73, 0x47, 0x6f, 0x6c, 0x64, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x05, 0x52, 0x07, 0x6d, 0x69, 0x73, 0x47, 0x6f, 0x6c, 0x64, 0x22, 0x3d, 0x0a, 0x0f, 0x43,
+	0x73, 0x46, 0x65, 0x72, 0x74, 0x69, 0x6c, 0x69, 0x7a, 0x65, 0x72, 0x41, 0x64, 0x64, 0x12, 0x14,
+	0x0a, 0x05, 0x67, 0x72, 0x69, 0x64, 0x58, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x67,
+	0x72, 0x69, 0x64, 0x58, 0x12, 0x14, 0x0a, 0x05, 0x67, 0x72, 0x69, 0x64, 0x59, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x05, 0x52, 0x05, 0x67, 0x72, 0x69, 0x64, 0x59, 0x22, 0x59, 0x0a, 0x0f, 0x53, 0x63,
+	0x46, 0x65, 0x72, 0x74, 0x69, 0x6c, 0x69, 0x7a, 0x65, 0x72, 0x41, 0x64, 0x64, 0x12, 0x2c, 0x0a,
+	0x04, 0x69, 0x6e, 0x66, 0x6f, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x18, 0x2e, 0x74, 0x68,
+	0x72, 0x6f, 0x77, 0x2e, 0x76, 0x31, 0x2e, 0x46, 0x65, 0x72, 0x74, 0x69, 0x6c, 0x69, 0x7a, 0x65,
+	0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x04, 0x69, 0x6e, 0x66, 0x6f, 0x12, 0x18, 0x0a, 0x07, 0x6d,
+	0x69, 0x73, 0x47, 0x6f, 0x6c, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x07, 0x6d, 0x69,
+	0x73, 0x47, 0x6f, 0x6c, 0x64, 0x22, 0x58, 0x0a, 0x0e, 0x46, 0x65, 0x72, 0x74, 0x69, 0x6c, 0x69,
+	0x7a, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x14, 0x0a, 0x05, 0x67, 0x72, 0x69, 0x64, 0x58,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x67, 0x72, 0x69, 0x64, 0x58, 0x12, 0x14, 0x0a,
+	0x05, 0x67, 0x72, 0x69, 0x64, 0x59, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x67, 0x72,
+	0x69, 0x64, 0x59, 0x12, 0x1a, 0x0a, 0x08, 0x6c, 0x65, 0x66, 0x74, 0x54, 0x69, 0x6d, 0x65, 0x18,
+	0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x6c, 0x65, 0x66, 0x74, 0x54, 0x69, 0x6d, 0x65, 0x22,
+	0x40, 0x0a, 0x10, 0x53, 0x63, 0x46, 0x65, 0x72, 0x74, 0x69, 0x6c, 0x69, 0x7a, 0x65, 0x72, 0x49,
+	0x6e, 0x66, 0x6f, 0x12, 0x2c, 0x0a, 0x04, 0x69, 0x6e, 0x66, 0x6f, 0x18, 0x01, 0x20, 0x03, 0x28,
+	0x0b, 0x32, 0x18, 0x2e, 0x74, 0x68, 0x72, 0x6f, 0x77, 0x2e, 0x76, 0x31, 0x2e, 0x46, 0x65, 0x72,
+	0x74, 0x69, 0x6c, 0x69, 0x7a, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x04, 0x69, 0x6e, 0x66,
+	0x6f, 0x42, 0x38, 0x5a, 0x36, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f,
+	0x73, 0x75, 0x68, 0x61, 0x6e, 0x79, 0x75, 0x6a, 0x69, 0x65, 0x2f, 0x74, 0x68, 0x72, 0x6f, 0x77,
+	0x5f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x2f, 0x66, 0x61, 0x72, 0x6d, 0x2f, 0x76, 0x31, 0x3b, 0x76, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1952,36 +3030,54 @@ func file_farm_proto_rawDescGZIP() []byte {
 	return file_farm_proto_rawDescData
 }
 
-var file_farm_proto_msgTypes = make([]protoimpl.MessageInfo, 28)
+var file_farm_proto_msgTypes = make([]protoimpl.MessageInfo, 46)
 var file_farm_proto_goTypes = []interface{}{
-	(*ScCheckLogin)(nil),    // 0: throw.v1.ScCheckLogin
-	(*AccountInfo)(nil),     // 1: throw.v1.AccountInfo
-	(*ScGetUInfoList)(nil),  // 2: throw.v1.ScGetUInfoList
-	(*MyInfo)(nil),          // 3: throw.v1.MyInfo
-	(*ScGetUInfo)(nil),      // 4: throw.v1.ScGetUInfo
-	(*WareHouseItem)(nil),   // 5: throw.v1.WareHouseItem
-	(*MaxBuildLvItem)(nil),  // 6: throw.v1.MaxBuildLvItem
-	(*CsUpdateMoney)(nil),   // 7: throw.v1.CsUpdateMoney
-	(*CsWareHouseSale)(nil), // 8: throw.v1.CsWareHouseSale
-	(*WareHouse)(nil),       // 9: throw.v1.WareHouse
-	(*ScWareHouseSale)(nil), // 10: throw.v1.ScWareHouseSale
-	(*CsSetGuideStep)(nil),  // 11: throw.v1.CsSetGuideStep
-	(*CsSetDouble)(nil),     // 12: throw.v1.CsSetDouble
-	(*ScSetDouble)(nil),     // 13: throw.v1.ScSetDouble
-	(*ScFarmInfo)(nil),      // 14: throw.v1.ScFarmInfo
-	(*SeedFarmInfo)(nil),    // 15: throw.v1.SeedFarmInfo
-	(*BuildInfo)(nil),       // 16: throw.v1.BuildInfo
-	(*CsBuyFarm)(nil),       // 17: throw.v1.CsBuyFarm
-	(*ScBuyFarm)(nil),       // 18: throw.v1.ScBuyFarm
-	(*CsSeedBuild)(nil),     // 19: throw.v1.CsSeedBuild
-	(*ScSeedBuild)(nil),     // 20: throw.v1.ScSeedBuild
-	(*CsRemoveBuild)(nil),   // 21: throw.v1.CsRemoveBuild
-	(*ScRemoveBuild)(nil),   // 22: throw.v1.ScRemoveBuild
-	(*CsMergerBuild)(nil),   // 23: throw.v1.CsMergerBuild
-	(*ScMergerBuild)(nil),   // 24: throw.v1.ScMergerBuild
-	(*CsMoveBuild)(nil),     // 25: throw.v1.CsMoveBuild
-	(*ScMoveBuild)(nil),     // 26: throw.v1.ScMoveBuild
-	(*CsHarvestBuild)(nil),  // 27: throw.v1.CsHarvestBuild
+	(*ScCheckLogin)(nil),          // 0: throw.v1.ScCheckLogin
+	(*AccountInfo)(nil),           // 1: throw.v1.AccountInfo
+	(*ScGetUInfoList)(nil),        // 2: throw.v1.ScGetUInfoList
+	(*MyInfo)(nil),                // 3: throw.v1.MyInfo
+	(*ScGetUInfo)(nil),            // 4: throw.v1.ScGetUInfo
+	(*WareHouseItem)(nil),         // 5: throw.v1.WareHouseItem
+	(*MaxBuildLvItem)(nil),        // 6: throw.v1.MaxBuildLvItem
+	(*CsUpdateMoney)(nil),         // 7: throw.v1.CsUpdateMoney
+	(*CsWareHouseSale)(nil),       // 8: throw.v1.CsWareHouseSale
+	(*WareHouse)(nil),             // 9: throw.v1.WareHouse
+	(*ScWareHouseSale)(nil),       // 10: throw.v1.ScWareHouseSale
+	(*CsSetGuideStep)(nil),        // 11: throw.v1.CsSetGuideStep
+	(*CsSetDouble)(nil),           // 12: throw.v1.CsSetDouble
+	(*ScSetDouble)(nil),           // 13: throw.v1.ScSetDouble
+	(*ScFarmInfo)(nil),            // 14: throw.v1.ScFarmInfo
+	(*SeedFarmInfo)(nil),          // 15: throw.v1.SeedFarmInfo
+	(*BuildInfo)(nil),             // 16: throw.v1.BuildInfo
+	(*CsBuyFarm)(nil),             // 17: throw.v1.CsBuyFarm
+	(*ScBuyFarm)(nil),             // 18: throw.v1.ScBuyFarm
+	(*CsSeedBuild)(nil),           // 19: throw.v1.CsSeedBuild
+	(*ScSeedBuild)(nil),           // 20: throw.v1.ScSeedBuild
+	(*CsRemoveBuild)(nil),         // 21: throw.v1.CsRemoveBuild
+	(*ScRemoveBuild)(nil),         // 22: throw.v1.ScRemoveBuild
+	(*CsMergerBuild)(nil),         // 23: throw.v1.CsMergerBuild
+	(*ScMergerBuild)(nil),         // 24: throw.v1.ScMergerBuild
+	(*CsMoveBuild)(nil),           // 25: throw.v1.CsMoveBuild
+	(*ScMoveBuild)(nil),           // 26: throw.v1.ScMoveBuild
+	(*CsHarvestBuild)(nil),        // 27: throw.v1.CsHarvestBuild
+	(*CsProductFarm)(nil),         // 28: throw.v1.CsProductFarm
+	(*CsChangePosBuild)(nil),      // 29: throw.v1.CsChangePosBuild
+	(*CsTraderSale)(nil),          // 30: throw.v1.CsTraderSale
+	(*ScTraderSale)(nil),          // 31: throw.v1.ScTraderSale
+	(*ScOfflineAward)(nil),        // 32: throw.v1.ScOfflineAward
+	(*CsReceiveMysteryAward)(nil), // 33: throw.v1.CsReceiveMysteryAward
+	(*ScReceiveMysteryAward)(nil), // 34: throw.v1.ScReceiveMysteryAward
+	(*CsScareCrowAdd)(nil),        // 35: throw.v1.CsScareCrowAdd
+	(*ScScareCrowAdd)(nil),        // 36: throw.v1.ScScareCrowAdd
+	(*ScScareCrowInfo)(nil),       // 37: throw.v1.ScScareCrowInfo
+	(*CsTzReport)(nil),            // 38: throw.v1.CsTzReport
+	(*CsTzRemove)(nil),            // 39: throw.v1.CsTzRemove
+	(*ScTzRemove)(nil),            // 40: throw.v1.ScTzRemove
+	(*CsFertilizerAdd)(nil),       // 41: throw.v1.CsFertilizerAdd
+	(*ScFertilizerAdd)(nil),       // 42: throw.v1.ScFertilizerAdd
+	(*FertilizerInfo)(nil),        // 43: throw.v1.FertilizerInfo
+	(*ScFertilizerInfo)(nil),      // 44: throw.v1.ScFertilizerInfo
+	nil,                           // 45: throw.v1.CsTraderSale.ProductsEntry
 }
 var file_farm_proto_depIdxs = []int32{
 	1,  // 0: throw.v1.MyInfo.accountInfo:type_name -> throw.v1.AccountInfo
@@ -1990,11 +3086,14 @@ var file_farm_proto_depIdxs = []int32{
 	9,  // 3: throw.v1.CsWareHouseSale.saveProduct:type_name -> throw.v1.WareHouse
 	15, // 4: throw.v1.ScFarmInfo.seedFarmInfo:type_name -> throw.v1.SeedFarmInfo
 	16, // 5: throw.v1.ScFarmInfo.buildInfo:type_name -> throw.v1.BuildInfo
-	6,  // [6:6] is the sub-list for method output_type
-	6,  // [6:6] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	45, // 6: throw.v1.CsTraderSale.products:type_name -> throw.v1.CsTraderSale.ProductsEntry
+	43, // 7: throw.v1.ScFertilizerAdd.info:type_name -> throw.v1.FertilizerInfo
+	43, // 8: throw.v1.ScFertilizerInfo.info:type_name -> throw.v1.FertilizerInfo
+	9,  // [9:9] is the sub-list for method output_type
+	9,  // [9:9] is the sub-list for method input_type
+	9,  // [9:9] is the sub-list for extension type_name
+	9,  // [9:9] is the sub-list for extension extendee
+	0,  // [0:9] is the sub-list for field type_name
 }
 
 func init() { file_farm_proto_init() }
@@ -2339,6 +3438,210 @@ func file_farm_proto_init() {
 				return nil
 			}
 		}
+		file_farm_proto_msgTypes[28].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CsProductFarm); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_farm_proto_msgTypes[29].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CsChangePosBuild); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_farm_proto_msgTypes[30].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CsTraderSale); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_farm_proto_msgTypes[31].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ScTraderSale); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_farm_proto_msgTypes[32].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ScOfflineAward); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_farm_proto_msgTypes[33].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CsReceiveMysteryAward); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_farm_proto_msgTypes[34].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ScReceiveMysteryAward); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_farm_proto_msgTypes[35].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CsScareCrowAdd); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_farm_proto_msgTypes[36].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ScScareCrowAdd); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_farm_proto_msgTypes[37].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ScScareCrowInfo); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_farm_proto_msgTypes[38].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CsTzReport); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_farm_proto_msgTypes[39].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CsTzRemove); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_farm_proto_msgTypes[40].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ScTzRemove); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_farm_proto_msgTypes[41].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CsFertilizerAdd); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_farm_proto_msgTypes[42].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ScFertilizerAdd); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_farm_proto_msgTypes[43].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*FertilizerInfo); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_farm_proto_msgTypes[44].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ScFertilizerInfo); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -2346,7 +3649,7 @@ func file_farm_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_farm_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   28,
+			NumMessages:   46,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
