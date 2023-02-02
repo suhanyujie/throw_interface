@@ -278,8 +278,8 @@ message ScOfflineAward {
 }
 
 message CsReceiveMysteryAward {
-  // 神秘礼物的奖励 | @inject_tag: msgpack:"goldNum" json:"goldNum"
-  int32 goldNum = 1;
+  // 神秘礼物的 uuid，来自于服务端的消息推送 | @inject_tag: msgpack:"awardUuid" json:"awardUuid"
+  string awardUuid = 1;
 }
 
 message ScReceiveMysteryAward {
@@ -357,4 +357,14 @@ message FertilizerInfo {
 message ScFertilizerInfo {
   // 格子 x | @inject_tag: msgpack:"info" json:"info"
   repeated FertilizerInfo info = 1;
+}
+
+message CsVisitorsLogin {
+  // 游客登录的 uuid | @inject_tag: msgpack:"uuid" json:"uuid"
+  string uuid = 1;
+}
+
+message ScVisitorsLogin {
+  // 用户的会话密钥 | @inject_tag: msgpack:"session" json:"session"
+  string session = 1;
 }
