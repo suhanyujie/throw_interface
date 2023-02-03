@@ -140,7 +140,7 @@ message BuildInfo {
   int32 productId = 8;
   // 使用过建造加速 | @inject_tag: msgpack:"buildSpeed" json:"buildSpeed"
   bool buildSpeed = 9;
-  // 虫灾信息 | @inject_tag: msgpack:"buildId" json:"buildId"
+  // 虫灾信息 | @inject_tag: msgpack:"chong" json:"chong"
   int32 chong = 10;
 }
 
@@ -149,7 +149,7 @@ message CsBuyFarm {
   int32 gridX = 1;
   // 格子 y | @inject_tag: msgpack:"gridY" json:"gridY"
   int32 gridY = 2;
-  // 是否是免费的 | @inject_tag: msgpack:"gridY" json:"gridY"
+  // 是否是免费的 | @inject_tag: msgpack:"isFree" json:"isFree"
   bool isFree = 3;
 }
 

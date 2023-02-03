@@ -972,8 +972,8 @@ type BuildInfo struct {
 	ProductId int32 `protobuf:"varint,8,opt,name=productId,proto3" json:"productId" msgpack:"productId"`
 	// 使用过建造加速 | @inject_tag: msgpack:"buildSpeed" json:"buildSpeed"
 	BuildSpeed bool `protobuf:"varint,9,opt,name=buildSpeed,proto3" json:"buildSpeed" msgpack:"buildSpeed"`
-	// 虫灾信息 | @inject_tag: msgpack:"buildId" json:"buildId"
-	Chong int32 `protobuf:"varint,10,opt,name=chong,proto3" json:"buildId" msgpack:"buildId"`
+	// 虫灾信息 | @inject_tag: msgpack:"chong" json:"chong"
+	Chong int32 `protobuf:"varint,10,opt,name=chong,proto3" json:"chong" msgpack:"chong"`
 }
 
 func (x *BuildInfo) Reset() {
@@ -1087,8 +1087,8 @@ type CsBuyFarm struct {
 	GridX int32 `protobuf:"varint,1,opt,name=gridX,proto3" json:"gridX" msgpack:"gridX"`
 	// 格子 y | @inject_tag: msgpack:"gridY" json:"gridY"
 	GridY int32 `protobuf:"varint,2,opt,name=gridY,proto3" json:"gridY" msgpack:"gridY"`
-	// 是否是免费的 | @inject_tag: msgpack:"gridY" json:"gridY"
-	IsFree bool `protobuf:"varint,3,opt,name=isFree,proto3" json:"gridY" msgpack:"gridY"`
+	// 是否是免费的 | @inject_tag: msgpack:"isFree" json:"isFree"
+	IsFree bool `protobuf:"varint,3,opt,name=isFree,proto3" json:"isFree" msgpack:"isFree"`
 }
 
 func (x *CsBuyFarm) Reset() {
