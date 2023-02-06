@@ -265,6 +265,8 @@ message BuildInfo {
   bool buildSpeed = 9;
   // 虫灾信息 | @inject_tag: msgpack:"chong" json:"chong"
   int32 chong = 10;
+  // 作物状态 1正常，2枯萎（已到达最大收获次数） | @inject_tag: msgpack:"status" json:"status"
+  int32 status = 11;
 }
 
 message CsBuyFarm {
