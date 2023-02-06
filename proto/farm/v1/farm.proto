@@ -3,6 +3,50 @@ syntax = "proto3";
 package throw.v1;
 option go_package = "github.com/suhanyujie/throw_interface/proto/farm/v1;v1";
 
+// 客户端请求服务端结构
+message IRequest {
+  // @inject_tag: msgpack:"action"
+  string action = 1;
+  // @inject_tag: msgpack:"method"
+  string method = 2;
+  // @inject_tag: msgpack:"callback"
+  string callback = 3;
+  // @inject_tag: msgpack:"isCompress"
+  bool isCompress = 4; // true 表示 data 为 proto 编码的字节数组
+  // @inject_tag: msgpack:"data"
+  bytes data = 5;     // data 是 proto 编码的字节
+}
+
+// 服务端响应客户端的请求，或者给客户端推送消息
+message IResponse {
+  // 0 正常，不为0是异常 | @inject_tag: msgpack:"code" json:"code"
+  int32 code = 1;
+  // 异常时的详细信息 | @inject_tag: msgpack:"msg" json:"msg"
+  string msg = 2;
+  // @inject_tag: msgpack:"isCompress" json:"isCompress"
+  bool isCompress = 3; // true 表示 data 为 proto 编码的字节数组
+  // @inject_tag: msgpack:"data" json:"data"
+  bytes data = 4;    // data 是 proto 编码的字节
+  // @inject_tag: msgpack:"callback" json:"callback"
+  string callback = 5;
+}
+
+// 天灾推送
+message FarmDisaster {
+    DisasterType typ = 1;
+    int32 disasterId = 2;
+    int32 gridX = 3;
+    int32 gridY = 4;
+    string msg = 5;
+}
+
+enum DisasterType {
+  empty0 = 0;
+  dry = 1;
+  insect = 2;
+  crow = 3;
+}
+
 // 检查登录
 message ScCheckLogin {
 
