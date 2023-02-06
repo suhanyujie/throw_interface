@@ -73,6 +73,8 @@ message OneNormalSeller {
   string key = 1;
   // 商人需要的商品信息 | @inject_tag: msgpack:"needCrops" json:"needCrops"
   repeated OneCropNeedle needCrops = 2;
+  // 交易后的报酬 | @inject_tag: msgpack:"rewards" json:"rewards"
+  SellReward rewards = 3;
 }
 
 message MysterySeller {
@@ -80,6 +82,8 @@ message MysterySeller {
   string key = 1;
   // 商人需要的商品信息 | @inject_tag: msgpack:"needCrops" json:"needCrops"
   repeated OneCropNeedle needCrops = 2;
+  // 交易后的报酬 | @inject_tag: msgpack:"rewards" json:"rewards"
+  SellReward rewards = 3;
 }
 
 message OneCropNeedle {
@@ -87,6 +91,13 @@ message OneCropNeedle {
   int32 productId = 1;
   // 商品对应的数量 | @inject_tag: msgpack:"num" json:"num"
   int32 num = 2;
+}
+
+message SellReward {
+  // 金币数 | @inject_tag: msgpack:"gold" json:"gold"
+  int32 gold = 1;
+  // 宝箱 | @inject_tag: msgpack:"chest" json:"chest"
+  map<int32, int32> chest = 2;
 }
 
 enum DisasterType {
