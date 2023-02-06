@@ -59,8 +59,8 @@ message FarmDisaster {
 message MeetCrow {
   // 备注信息 | @inject_tag: msgpack:"msg" json:"msg"
   string msg = 1;
-  // 是否生效，如果有稻草人，则“乌鸦灾难”不生效 | @inject_tag: msgpack:"isEffect" json:"isEffect"
-  bool isEffect = 2;
+  // 稻草人是否生效，如果稻草人生效，则“乌鸦灾难”不减产 | @inject_tag: msgpack:"scareCrowIsEffect" json:"scareCrowIsEffect"
+  bool scareCrowIsEffect = 2;
 }
 
 // 普通商人
@@ -77,8 +77,8 @@ message OneNormalSeller {
   repeated OneCropNeedle needCrops = 2;
   // 交易后的报酬 | @inject_tag: msgpack:"rewards" json:"rewards"
   SellReward rewards = 3;
-  // 停留的秒数
-  int32 keepSec = 4;
+  // 停留的秒数 | @inject_tag: msgpack:"interval" json:"interval"
+  int32 interval = 4;
 }
 
 message MysterySeller {
@@ -88,6 +88,8 @@ message MysterySeller {
   repeated OneCropNeedle needCrops = 2;
   // 交易后的报酬 | @inject_tag: msgpack:"reward" json:"reward"
   SellReward reward = 3;
+  // 停留的秒数 | @inject_tag: msgpack:"interval" json:"interval"
+  int32 interval = 4;
 }
 
 message OneCropNeedle {
