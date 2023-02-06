@@ -37,7 +37,7 @@ message ErrInfo {
 }
 
 // 客户端建立连接后，请求一次登录，参数是用户的 token
-message UserLogin {
+message FarmUserLogin {
   // 用户的 token，一般从平台获取 | @inject_tag: msgpack:"token" json:"token"
   string token = 1;
 }
@@ -90,7 +90,7 @@ message OneCropNeedle {
 }
 
 enum DisasterType {
-  Empty0 = 0;
+  Empty0DisasterType = 0;
   // 干旱
   Dry = 1;
   // 昆虫
