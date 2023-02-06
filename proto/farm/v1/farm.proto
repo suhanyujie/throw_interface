@@ -59,6 +59,8 @@ message FarmDisaster {
 message MeetCrow {
   // 备注信息 | @inject_tag: msgpack:"msg" json:"msg"
   string msg = 1;
+  // 是否生效，如果有稻草人，则“乌鸦灾难”不生效 | @inject_tag: msgpack:"isEffect" json:"isEffect"
+  bool isEffect = 2;
 }
 
 // 普通商人
