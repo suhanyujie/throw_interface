@@ -105,14 +105,14 @@ message PlayerSettleInfo {
   int32 earnToken = 12;
   // nft 分值、战力 | @inject_tag: msgpack:"nftScore" json:"nftScore"
   int32 nftScore = 13;
-  // 推荐场次的游戏 id | @inject_tag: msgpack:"gameId" json:"gameId"
-  int32 gameId = 14;
-  // 推荐场次的门票 | @inject_tag: msgpack:"ticket" json:"ticket"
-  int32 ticket = 15;
-  // 推荐场次的奖励 | @inject_tag: msgpack:"reward" json:"reward"
-  int32 reward = 16;
-  // 推荐场次的图片地址 | @inject_tag: msgpack:"gameImg" json:"gameImg"
-  int32 gameImg = 17;
+  // 推荐场次的游戏 id | @inject_tag: msgpack:"recGameId" json:"recGameId"
+  optional int32 recGameId = 14;
+  // 推荐场次的门票 | @inject_tag: msgpack:"recTicket" json:"recTicket"
+  optional float recTicket = 15;
+  // 推荐场次的奖励 | @inject_tag: msgpack:"recReward" json:"recReward"
+  optional float recReward = 16;
+  // 推荐场次的图片地址 | @inject_tag: msgpack:"recGameImg" json:"recGameImg"
+  optional string recGameImg = 17;
 }
 
 // 玩家/角色移动
