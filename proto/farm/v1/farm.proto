@@ -493,3 +493,19 @@ message ScVisitorsLogin {
   // 用户的会话密钥 | @inject_tag: msgpack:"session" json:"session"
   string session = 1;
 }
+
+message CsBuildSpeedUp {
+  // 加速类型，1表示建造加速 2表示生产加速 | @inject_tag: msgpack:"speedType" json:"speedType"
+  int32 speedType = 1;
+  //  | @inject_tag: msgpack:"gridX" json:"gridX"
+  int32 gridX = 2;
+  //  | @inject_tag: msgpack:"gridY" json:"gridY"
+  int32 gridY = 3;
+  // 是否免费 | @inject_tag: msgpack:"isFree" json:"isFree"
+  bool isFree = 4;
+}
+
+message ScBuildSpeedUp {
+  // 减少的金币数量 | @inject_tag: msgpack:"misDiamond" json:"misDiamond"
+  int32 misDiamond = 1;
+}
