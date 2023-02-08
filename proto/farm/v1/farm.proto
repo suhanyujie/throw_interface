@@ -363,10 +363,11 @@ message CsHarvestBuild {
   int32 gridX = 1;
   // 格子 y | @inject_tag: msgpack:"gridY" json:"gridY"
   int32 gridY = 2;
-  // 收成作物的 id | @inject_tag: msgpack:"productId" json:"productId"
-  int32 productId = 3;
-  // 收成的数量 | @inject_tag: msgpack:"productNum" json:"productNum"
-  int32 productNum = 4;
+}
+
+message ScHarvestBuild {
+  // 收获得到的果实数 | @inject_tag: msgpack:"proNum" json:"proNum"
+  int32 proNum = 1;
 }
 
 message CsProductFarm {
@@ -413,6 +414,8 @@ message ScOfflineAward {
 message CsReceiveMysteryAward {
   // 神秘礼物的 uuid，来自于服务端的消息推送 | @inject_tag: msgpack:"awardUuid" json:"awardUuid"
   string awardUuid = 1;
+  // 是否已观看广告。默认 false | @inject_tag: msgpack:"hasWatchAd" json:"hasWatchAd"
+  bool hasWatchAd = 2;
 }
 
 message ScReceiveMysteryAward {
