@@ -293,6 +293,54 @@ func (x *ErrInfo) GetMsg() string {
 	return ""
 }
 
+type NormalInfo struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// 备注信息 | @inject_tag: msgpack:"msg" json:"msg"
+	Msg string `protobuf:"bytes,1,opt,name=msg,proto3" json:"msg" msgpack:"msg"`
+}
+
+func (x *NormalInfo) Reset() {
+	*x = NormalInfo{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_farm_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *NormalInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NormalInfo) ProtoMessage() {}
+
+func (x *NormalInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_farm_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NormalInfo.ProtoReflect.Descriptor instead.
+func (*NormalInfo) Descriptor() ([]byte, []int) {
+	return file_farm_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *NormalInfo) GetMsg() string {
+	if x != nil {
+		return x.Msg
+	}
+	return ""
+}
+
 // 客户端建立连接后，请求一次登录，参数是用户的 token
 type FarmUserLogin struct {
 	state         protoimpl.MessageState
@@ -306,7 +354,7 @@ type FarmUserLogin struct {
 func (x *FarmUserLogin) Reset() {
 	*x = FarmUserLogin{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[3]
+		mi := &file_farm_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -319,7 +367,7 @@ func (x *FarmUserLogin) String() string {
 func (*FarmUserLogin) ProtoMessage() {}
 
 func (x *FarmUserLogin) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[3]
+	mi := &file_farm_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -332,7 +380,7 @@ func (x *FarmUserLogin) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FarmUserLogin.ProtoReflect.Descriptor instead.
 func (*FarmUserLogin) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{3}
+	return file_farm_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *FarmUserLogin) GetToken() string {
@@ -363,7 +411,7 @@ type FarmDisaster struct {
 func (x *FarmDisaster) Reset() {
 	*x = FarmDisaster{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[4]
+		mi := &file_farm_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -376,7 +424,7 @@ func (x *FarmDisaster) String() string {
 func (*FarmDisaster) ProtoMessage() {}
 
 func (x *FarmDisaster) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[4]
+	mi := &file_farm_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -389,7 +437,7 @@ func (x *FarmDisaster) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FarmDisaster.ProtoReflect.Descriptor instead.
 func (*FarmDisaster) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{4}
+	return file_farm_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *FarmDisaster) GetTyp() DisasterType {
@@ -441,7 +489,7 @@ type MeetCrow struct {
 func (x *MeetCrow) Reset() {
 	*x = MeetCrow{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[5]
+		mi := &file_farm_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -454,7 +502,7 @@ func (x *MeetCrow) String() string {
 func (*MeetCrow) ProtoMessage() {}
 
 func (x *MeetCrow) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[5]
+	mi := &file_farm_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -467,7 +515,7 @@ func (x *MeetCrow) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MeetCrow.ProtoReflect.Descriptor instead.
 func (*MeetCrow) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{5}
+	return file_farm_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *MeetCrow) GetMsg() string {
@@ -497,7 +545,7 @@ type NormalSellers struct {
 func (x *NormalSellers) Reset() {
 	*x = NormalSellers{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[6]
+		mi := &file_farm_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -510,7 +558,7 @@ func (x *NormalSellers) String() string {
 func (*NormalSellers) ProtoMessage() {}
 
 func (x *NormalSellers) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[6]
+	mi := &file_farm_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -523,7 +571,7 @@ func (x *NormalSellers) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NormalSellers.ProtoReflect.Descriptor instead.
 func (*NormalSellers) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{6}
+	return file_farm_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *NormalSellers) GetList() []*OneNormalSeller {
@@ -552,7 +600,7 @@ type OneNormalSeller struct {
 func (x *OneNormalSeller) Reset() {
 	*x = OneNormalSeller{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[7]
+		mi := &file_farm_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -565,7 +613,7 @@ func (x *OneNormalSeller) String() string {
 func (*OneNormalSeller) ProtoMessage() {}
 
 func (x *OneNormalSeller) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[7]
+	mi := &file_farm_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -578,7 +626,7 @@ func (x *OneNormalSeller) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OneNormalSeller.ProtoReflect.Descriptor instead.
 func (*OneNormalSeller) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{7}
+	return file_farm_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *OneNormalSeller) GetKey() string {
@@ -627,7 +675,7 @@ type MysterySeller struct {
 func (x *MysterySeller) Reset() {
 	*x = MysterySeller{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[8]
+		mi := &file_farm_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -640,7 +688,7 @@ func (x *MysterySeller) String() string {
 func (*MysterySeller) ProtoMessage() {}
 
 func (x *MysterySeller) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[8]
+	mi := &file_farm_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -653,7 +701,7 @@ func (x *MysterySeller) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MysterySeller.ProtoReflect.Descriptor instead.
 func (*MysterySeller) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{8}
+	return file_farm_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *MysterySeller) GetKey() string {
@@ -698,7 +746,7 @@ type OneCropNeedle struct {
 func (x *OneCropNeedle) Reset() {
 	*x = OneCropNeedle{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[9]
+		mi := &file_farm_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -711,7 +759,7 @@ func (x *OneCropNeedle) String() string {
 func (*OneCropNeedle) ProtoMessage() {}
 
 func (x *OneCropNeedle) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[9]
+	mi := &file_farm_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -724,7 +772,7 @@ func (x *OneCropNeedle) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OneCropNeedle.ProtoReflect.Descriptor instead.
 func (*OneCropNeedle) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{9}
+	return file_farm_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *OneCropNeedle) GetProductId() int32 {
@@ -755,7 +803,7 @@ type SellReward struct {
 func (x *SellReward) Reset() {
 	*x = SellReward{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[10]
+		mi := &file_farm_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -768,7 +816,7 @@ func (x *SellReward) String() string {
 func (*SellReward) ProtoMessage() {}
 
 func (x *SellReward) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[10]
+	mi := &file_farm_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -781,7 +829,7 @@ func (x *SellReward) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SellReward.ProtoReflect.Descriptor instead.
 func (*SellReward) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{10}
+	return file_farm_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *SellReward) GetGold() int32 {
@@ -815,7 +863,7 @@ type MysteryLeaf struct {
 func (x *MysteryLeaf) Reset() {
 	*x = MysteryLeaf{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[11]
+		mi := &file_farm_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -828,7 +876,7 @@ func (x *MysteryLeaf) String() string {
 func (*MysteryLeaf) ProtoMessage() {}
 
 func (x *MysteryLeaf) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[11]
+	mi := &file_farm_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -841,7 +889,7 @@ func (x *MysteryLeaf) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MysteryLeaf.ProtoReflect.Descriptor instead.
 func (*MysteryLeaf) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{11}
+	return file_farm_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *MysteryLeaf) GetKey() string {
@@ -878,7 +926,7 @@ type ScCheckLogin struct {
 func (x *ScCheckLogin) Reset() {
 	*x = ScCheckLogin{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[12]
+		mi := &file_farm_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -891,7 +939,7 @@ func (x *ScCheckLogin) String() string {
 func (*ScCheckLogin) ProtoMessage() {}
 
 func (x *ScCheckLogin) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[12]
+	mi := &file_farm_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -904,7 +952,7 @@ func (x *ScCheckLogin) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScCheckLogin.ProtoReflect.Descriptor instead.
 func (*ScCheckLogin) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{12}
+	return file_farm_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *ScCheckLogin) GetIsNewUser() bool {
@@ -932,7 +980,7 @@ type AccountInfo struct {
 func (x *AccountInfo) Reset() {
 	*x = AccountInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[13]
+		mi := &file_farm_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -945,7 +993,7 @@ func (x *AccountInfo) String() string {
 func (*AccountInfo) ProtoMessage() {}
 
 func (x *AccountInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[13]
+	mi := &file_farm_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -958,7 +1006,7 @@ func (x *AccountInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AccountInfo.ProtoReflect.Descriptor instead.
 func (*AccountInfo) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{13}
+	return file_farm_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *AccountInfo) GetUid() int32 {
@@ -998,7 +1046,7 @@ type ScGetUInfoList struct {
 func (x *ScGetUInfoList) Reset() {
 	*x = ScGetUInfoList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[14]
+		mi := &file_farm_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1011,7 +1059,7 @@ func (x *ScGetUInfoList) String() string {
 func (*ScGetUInfoList) ProtoMessage() {}
 
 func (x *ScGetUInfoList) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[14]
+	mi := &file_farm_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1024,7 +1072,7 @@ func (x *ScGetUInfoList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScGetUInfoList.ProtoReflect.Descriptor instead.
 func (*ScGetUInfoList) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{14}
+	return file_farm_proto_rawDescGZIP(), []int{15}
 }
 
 type MyInfo struct {
@@ -1041,7 +1089,7 @@ type MyInfo struct {
 func (x *MyInfo) Reset() {
 	*x = MyInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[15]
+		mi := &file_farm_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1054,7 +1102,7 @@ func (x *MyInfo) String() string {
 func (*MyInfo) ProtoMessage() {}
 
 func (x *MyInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[15]
+	mi := &file_farm_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1067,7 +1115,7 @@ func (x *MyInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MyInfo.ProtoReflect.Descriptor instead.
 func (*MyInfo) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{15}
+	return file_farm_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *MyInfo) GetAccountInfo() *AccountInfo {
@@ -1108,7 +1156,7 @@ type ScGetUInfo struct {
 func (x *ScGetUInfo) Reset() {
 	*x = ScGetUInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[16]
+		mi := &file_farm_proto_msgTypes[17]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1121,7 +1169,7 @@ func (x *ScGetUInfo) String() string {
 func (*ScGetUInfo) ProtoMessage() {}
 
 func (x *ScGetUInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[16]
+	mi := &file_farm_proto_msgTypes[17]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1134,7 +1182,7 @@ func (x *ScGetUInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScGetUInfo.ProtoReflect.Descriptor instead.
 func (*ScGetUInfo) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{16}
+	return file_farm_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *ScGetUInfo) GetExp() int32 {
@@ -1200,7 +1248,7 @@ type WareHouseItem struct {
 func (x *WareHouseItem) Reset() {
 	*x = WareHouseItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[17]
+		mi := &file_farm_proto_msgTypes[18]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1213,7 +1261,7 @@ func (x *WareHouseItem) String() string {
 func (*WareHouseItem) ProtoMessage() {}
 
 func (x *WareHouseItem) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[17]
+	mi := &file_farm_proto_msgTypes[18]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1226,7 +1274,7 @@ func (x *WareHouseItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WareHouseItem.ProtoReflect.Descriptor instead.
 func (*WareHouseItem) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{17}
+	return file_farm_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *WareHouseItem) GetKey() int32 {
@@ -1257,7 +1305,7 @@ type MaxBuildLvItem struct {
 func (x *MaxBuildLvItem) Reset() {
 	*x = MaxBuildLvItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[18]
+		mi := &file_farm_proto_msgTypes[19]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1270,7 +1318,7 @@ func (x *MaxBuildLvItem) String() string {
 func (*MaxBuildLvItem) ProtoMessage() {}
 
 func (x *MaxBuildLvItem) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[18]
+	mi := &file_farm_proto_msgTypes[19]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1283,7 +1331,7 @@ func (x *MaxBuildLvItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MaxBuildLvItem.ProtoReflect.Descriptor instead.
 func (*MaxBuildLvItem) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{18}
+	return file_farm_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *MaxBuildLvItem) GetKey() int32 {
@@ -1316,7 +1364,7 @@ type CsUpdateMoney struct {
 func (x *CsUpdateMoney) Reset() {
 	*x = CsUpdateMoney{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[19]
+		mi := &file_farm_proto_msgTypes[20]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1329,7 +1377,7 @@ func (x *CsUpdateMoney) String() string {
 func (*CsUpdateMoney) ProtoMessage() {}
 
 func (x *CsUpdateMoney) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[19]
+	mi := &file_farm_proto_msgTypes[20]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1342,7 +1390,7 @@ func (x *CsUpdateMoney) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CsUpdateMoney.ProtoReflect.Descriptor instead.
 func (*CsUpdateMoney) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{19}
+	return file_farm_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *CsUpdateMoney) GetMoneyType() int32 {
@@ -1382,7 +1430,7 @@ type CsWareHouseSale struct {
 func (x *CsWareHouseSale) Reset() {
 	*x = CsWareHouseSale{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[20]
+		mi := &file_farm_proto_msgTypes[21]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1395,7 +1443,7 @@ func (x *CsWareHouseSale) String() string {
 func (*CsWareHouseSale) ProtoMessage() {}
 
 func (x *CsWareHouseSale) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[20]
+	mi := &file_farm_proto_msgTypes[21]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1408,7 +1456,7 @@ func (x *CsWareHouseSale) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CsWareHouseSale.ProtoReflect.Descriptor instead.
 func (*CsWareHouseSale) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{20}
+	return file_farm_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *CsWareHouseSale) GetSaveProduct() []*WareHouse {
@@ -1446,7 +1494,7 @@ type WareHouse struct {
 func (x *WareHouse) Reset() {
 	*x = WareHouse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[21]
+		mi := &file_farm_proto_msgTypes[22]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1459,7 +1507,7 @@ func (x *WareHouse) String() string {
 func (*WareHouse) ProtoMessage() {}
 
 func (x *WareHouse) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[21]
+	mi := &file_farm_proto_msgTypes[22]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1472,7 +1520,7 @@ func (x *WareHouse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WareHouse.ProtoReflect.Descriptor instead.
 func (*WareHouse) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{21}
+	return file_farm_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *WareHouse) GetKey() int32 {
@@ -1501,7 +1549,7 @@ type ScWareHouseSale struct {
 func (x *ScWareHouseSale) Reset() {
 	*x = ScWareHouseSale{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[22]
+		mi := &file_farm_proto_msgTypes[23]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1514,7 +1562,7 @@ func (x *ScWareHouseSale) String() string {
 func (*ScWareHouseSale) ProtoMessage() {}
 
 func (x *ScWareHouseSale) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[22]
+	mi := &file_farm_proto_msgTypes[23]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1527,7 +1575,7 @@ func (x *ScWareHouseSale) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScWareHouseSale.ProtoReflect.Descriptor instead.
 func (*ScWareHouseSale) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{22}
+	return file_farm_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *ScWareHouseSale) GetGold() int32 {
@@ -1549,7 +1597,7 @@ type CsSetGuideStep struct {
 func (x *CsSetGuideStep) Reset() {
 	*x = CsSetGuideStep{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[23]
+		mi := &file_farm_proto_msgTypes[24]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1562,7 +1610,7 @@ func (x *CsSetGuideStep) String() string {
 func (*CsSetGuideStep) ProtoMessage() {}
 
 func (x *CsSetGuideStep) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[23]
+	mi := &file_farm_proto_msgTypes[24]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1575,7 +1623,7 @@ func (x *CsSetGuideStep) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CsSetGuideStep.ProtoReflect.Descriptor instead.
 func (*CsSetGuideStep) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{23}
+	return file_farm_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *CsSetGuideStep) GetGuideStep() int32 {
@@ -1597,7 +1645,7 @@ type CsSetDouble struct {
 func (x *CsSetDouble) Reset() {
 	*x = CsSetDouble{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[24]
+		mi := &file_farm_proto_msgTypes[25]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1610,7 +1658,7 @@ func (x *CsSetDouble) String() string {
 func (*CsSetDouble) ProtoMessage() {}
 
 func (x *CsSetDouble) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[24]
+	mi := &file_farm_proto_msgTypes[25]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1623,7 +1671,7 @@ func (x *CsSetDouble) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CsSetDouble.ProtoReflect.Descriptor instead.
 func (*CsSetDouble) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{24}
+	return file_farm_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *CsSetDouble) GetIsFree() bool {
@@ -1645,7 +1693,7 @@ type ScSetDouble struct {
 func (x *ScSetDouble) Reset() {
 	*x = ScSetDouble{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[25]
+		mi := &file_farm_proto_msgTypes[26]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1658,7 +1706,7 @@ func (x *ScSetDouble) String() string {
 func (*ScSetDouble) ProtoMessage() {}
 
 func (x *ScSetDouble) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[25]
+	mi := &file_farm_proto_msgTypes[26]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1671,7 +1719,7 @@ func (x *ScSetDouble) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScSetDouble.ProtoReflect.Descriptor instead.
 func (*ScSetDouble) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{25}
+	return file_farm_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *ScSetDouble) GetDiamond() int32 {
@@ -1697,7 +1745,7 @@ type ScFarmInfo struct {
 func (x *ScFarmInfo) Reset() {
 	*x = ScFarmInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[26]
+		mi := &file_farm_proto_msgTypes[27]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1710,7 +1758,7 @@ func (x *ScFarmInfo) String() string {
 func (*ScFarmInfo) ProtoMessage() {}
 
 func (x *ScFarmInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[26]
+	mi := &file_farm_proto_msgTypes[27]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1723,7 +1771,7 @@ func (x *ScFarmInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScFarmInfo.ProtoReflect.Descriptor instead.
 func (*ScFarmInfo) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{26}
+	return file_farm_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *ScFarmInfo) GetSeedFarmInfo() []*SeedFarmInfo {
@@ -1763,7 +1811,7 @@ type SeedFarmInfo struct {
 func (x *SeedFarmInfo) Reset() {
 	*x = SeedFarmInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[27]
+		mi := &file_farm_proto_msgTypes[28]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1776,7 +1824,7 @@ func (x *SeedFarmInfo) String() string {
 func (*SeedFarmInfo) ProtoMessage() {}
 
 func (x *SeedFarmInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[27]
+	mi := &file_farm_proto_msgTypes[28]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1789,7 +1837,7 @@ func (x *SeedFarmInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SeedFarmInfo.ProtoReflect.Descriptor instead.
 func (*SeedFarmInfo) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{27}
+	return file_farm_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *SeedFarmInfo) GetGridX() int32 {
@@ -1845,7 +1893,7 @@ type BuildInfo struct {
 func (x *BuildInfo) Reset() {
 	*x = BuildInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[28]
+		mi := &file_farm_proto_msgTypes[29]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1858,7 +1906,7 @@ func (x *BuildInfo) String() string {
 func (*BuildInfo) ProtoMessage() {}
 
 func (x *BuildInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[28]
+	mi := &file_farm_proto_msgTypes[29]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1871,7 +1919,7 @@ func (x *BuildInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BuildInfo.ProtoReflect.Descriptor instead.
 func (*BuildInfo) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{28}
+	return file_farm_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *BuildInfo) GetGridX() int32 {
@@ -1967,7 +2015,7 @@ type CsBuyFarm struct {
 func (x *CsBuyFarm) Reset() {
 	*x = CsBuyFarm{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[29]
+		mi := &file_farm_proto_msgTypes[30]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1980,7 +2028,7 @@ func (x *CsBuyFarm) String() string {
 func (*CsBuyFarm) ProtoMessage() {}
 
 func (x *CsBuyFarm) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[29]
+	mi := &file_farm_proto_msgTypes[30]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1993,7 +2041,7 @@ func (x *CsBuyFarm) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CsBuyFarm.ProtoReflect.Descriptor instead.
 func (*CsBuyFarm) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{29}
+	return file_farm_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *CsBuyFarm) GetGridX() int32 {
@@ -2029,7 +2077,7 @@ type ScBuyFarm struct {
 func (x *ScBuyFarm) Reset() {
 	*x = ScBuyFarm{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[30]
+		mi := &file_farm_proto_msgTypes[31]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2042,7 +2090,7 @@ func (x *ScBuyFarm) String() string {
 func (*ScBuyFarm) ProtoMessage() {}
 
 func (x *ScBuyFarm) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[30]
+	mi := &file_farm_proto_msgTypes[31]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2055,7 +2103,7 @@ func (x *ScBuyFarm) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScBuyFarm.ProtoReflect.Descriptor instead.
 func (*ScBuyFarm) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{30}
+	return file_farm_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *ScBuyFarm) GetMisGold() int32 {
@@ -2087,7 +2135,7 @@ type CsSeedBuild struct {
 func (x *CsSeedBuild) Reset() {
 	*x = CsSeedBuild{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[31]
+		mi := &file_farm_proto_msgTypes[32]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2100,7 +2148,7 @@ func (x *CsSeedBuild) String() string {
 func (*CsSeedBuild) ProtoMessage() {}
 
 func (x *CsSeedBuild) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[31]
+	mi := &file_farm_proto_msgTypes[32]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2113,7 +2161,7 @@ func (x *CsSeedBuild) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CsSeedBuild.ProtoReflect.Descriptor instead.
 func (*CsSeedBuild) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{31}
+	return file_farm_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *CsSeedBuild) GetGridX() int32 {
@@ -2170,7 +2218,7 @@ type ScSeedBuild struct {
 func (x *ScSeedBuild) Reset() {
 	*x = ScSeedBuild{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[32]
+		mi := &file_farm_proto_msgTypes[33]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2183,7 +2231,7 @@ func (x *ScSeedBuild) String() string {
 func (*ScSeedBuild) ProtoMessage() {}
 
 func (x *ScSeedBuild) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[32]
+	mi := &file_farm_proto_msgTypes[33]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2196,7 +2244,7 @@ func (x *ScSeedBuild) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScSeedBuild.ProtoReflect.Descriptor instead.
 func (*ScSeedBuild) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{32}
+	return file_farm_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *ScSeedBuild) GetMisGold() int32 {
@@ -2220,7 +2268,7 @@ type CsRemoveBuild struct {
 func (x *CsRemoveBuild) Reset() {
 	*x = CsRemoveBuild{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[33]
+		mi := &file_farm_proto_msgTypes[34]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2233,7 +2281,7 @@ func (x *CsRemoveBuild) String() string {
 func (*CsRemoveBuild) ProtoMessage() {}
 
 func (x *CsRemoveBuild) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[33]
+	mi := &file_farm_proto_msgTypes[34]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2246,7 +2294,7 @@ func (x *CsRemoveBuild) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CsRemoveBuild.ProtoReflect.Descriptor instead.
 func (*CsRemoveBuild) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{33}
+	return file_farm_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *CsRemoveBuild) GetGridX() int32 {
@@ -2275,7 +2323,7 @@ type ScRemoveBuild struct {
 func (x *ScRemoveBuild) Reset() {
 	*x = ScRemoveBuild{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[34]
+		mi := &file_farm_proto_msgTypes[35]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2288,7 +2336,7 @@ func (x *ScRemoveBuild) String() string {
 func (*ScRemoveBuild) ProtoMessage() {}
 
 func (x *ScRemoveBuild) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[34]
+	mi := &file_farm_proto_msgTypes[35]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2301,7 +2349,7 @@ func (x *ScRemoveBuild) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScRemoveBuild.ProtoReflect.Descriptor instead.
 func (*ScRemoveBuild) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{34}
+	return file_farm_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *ScRemoveBuild) GetGold() int32 {
@@ -2329,7 +2377,7 @@ type CsMergerBuild struct {
 func (x *CsMergerBuild) Reset() {
 	*x = CsMergerBuild{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[35]
+		mi := &file_farm_proto_msgTypes[36]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2342,7 +2390,7 @@ func (x *CsMergerBuild) String() string {
 func (*CsMergerBuild) ProtoMessage() {}
 
 func (x *CsMergerBuild) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[35]
+	mi := &file_farm_proto_msgTypes[36]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2355,7 +2403,7 @@ func (x *CsMergerBuild) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CsMergerBuild.ProtoReflect.Descriptor instead.
 func (*CsMergerBuild) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{35}
+	return file_farm_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *CsMergerBuild) GetFromGridX() int32 {
@@ -2395,7 +2443,7 @@ type ScMergerBuild struct {
 func (x *ScMergerBuild) Reset() {
 	*x = ScMergerBuild{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[36]
+		mi := &file_farm_proto_msgTypes[37]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2408,7 +2456,7 @@ func (x *ScMergerBuild) String() string {
 func (*ScMergerBuild) ProtoMessage() {}
 
 func (x *ScMergerBuild) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[36]
+	mi := &file_farm_proto_msgTypes[37]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2421,7 +2469,7 @@ func (x *ScMergerBuild) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScMergerBuild.ProtoReflect.Descriptor instead.
 func (*ScMergerBuild) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{36}
+	return file_farm_proto_rawDescGZIP(), []int{37}
 }
 
 type CsMoveBuild struct {
@@ -2442,7 +2490,7 @@ type CsMoveBuild struct {
 func (x *CsMoveBuild) Reset() {
 	*x = CsMoveBuild{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[37]
+		mi := &file_farm_proto_msgTypes[38]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2455,7 +2503,7 @@ func (x *CsMoveBuild) String() string {
 func (*CsMoveBuild) ProtoMessage() {}
 
 func (x *CsMoveBuild) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[37]
+	mi := &file_farm_proto_msgTypes[38]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2468,7 +2516,7 @@ func (x *CsMoveBuild) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CsMoveBuild.ProtoReflect.Descriptor instead.
 func (*CsMoveBuild) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{37}
+	return file_farm_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *CsMoveBuild) GetFromGridX() int32 {
@@ -2517,7 +2565,7 @@ type ScMoveBuild struct {
 func (x *ScMoveBuild) Reset() {
 	*x = ScMoveBuild{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[38]
+		mi := &file_farm_proto_msgTypes[39]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2530,7 +2578,7 @@ func (x *ScMoveBuild) String() string {
 func (*ScMoveBuild) ProtoMessage() {}
 
 func (x *ScMoveBuild) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[38]
+	mi := &file_farm_proto_msgTypes[39]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2543,7 +2591,7 @@ func (x *ScMoveBuild) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScMoveBuild.ProtoReflect.Descriptor instead.
 func (*ScMoveBuild) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{38}
+	return file_farm_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *ScMoveBuild) GetFromGridX() int32 {
@@ -2592,7 +2640,7 @@ type CsHarvestBuild struct {
 func (x *CsHarvestBuild) Reset() {
 	*x = CsHarvestBuild{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[39]
+		mi := &file_farm_proto_msgTypes[40]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2605,7 +2653,7 @@ func (x *CsHarvestBuild) String() string {
 func (*CsHarvestBuild) ProtoMessage() {}
 
 func (x *CsHarvestBuild) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[39]
+	mi := &file_farm_proto_msgTypes[40]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2618,7 +2666,7 @@ func (x *CsHarvestBuild) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CsHarvestBuild.ProtoReflect.Descriptor instead.
 func (*CsHarvestBuild) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{39}
+	return file_farm_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *CsHarvestBuild) GetGridX() int32 {
@@ -2665,7 +2713,7 @@ type CsProductFarm struct {
 func (x *CsProductFarm) Reset() {
 	*x = CsProductFarm{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[40]
+		mi := &file_farm_proto_msgTypes[41]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2678,7 +2726,7 @@ func (x *CsProductFarm) String() string {
 func (*CsProductFarm) ProtoMessage() {}
 
 func (x *CsProductFarm) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[40]
+	mi := &file_farm_proto_msgTypes[41]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2691,7 +2739,7 @@ func (x *CsProductFarm) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CsProductFarm.ProtoReflect.Descriptor instead.
 func (*CsProductFarm) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{40}
+	return file_farm_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *CsProductFarm) GetGridX() int32 {
@@ -2733,7 +2781,7 @@ type CsChangePosBuild struct {
 func (x *CsChangePosBuild) Reset() {
 	*x = CsChangePosBuild{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[41]
+		mi := &file_farm_proto_msgTypes[42]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2746,7 +2794,7 @@ func (x *CsChangePosBuild) String() string {
 func (*CsChangePosBuild) ProtoMessage() {}
 
 func (x *CsChangePosBuild) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[41]
+	mi := &file_farm_proto_msgTypes[42]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2759,7 +2807,7 @@ func (x *CsChangePosBuild) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CsChangePosBuild.ProtoReflect.Descriptor instead.
 func (*CsChangePosBuild) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{41}
+	return file_farm_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *CsChangePosBuild) GetFromGridX() int32 {
@@ -2802,7 +2850,7 @@ type CsTraderSale struct {
 func (x *CsTraderSale) Reset() {
 	*x = CsTraderSale{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[42]
+		mi := &file_farm_proto_msgTypes[43]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2815,7 +2863,7 @@ func (x *CsTraderSale) String() string {
 func (*CsTraderSale) ProtoMessage() {}
 
 func (x *CsTraderSale) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[42]
+	mi := &file_farm_proto_msgTypes[43]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2828,7 +2876,7 @@ func (x *CsTraderSale) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CsTraderSale.ProtoReflect.Descriptor instead.
 func (*CsTraderSale) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{42}
+	return file_farm_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *CsTraderSale) GetProducts() map[int32]int32 {
@@ -2852,7 +2900,7 @@ type ScTraderSale struct {
 func (x *ScTraderSale) Reset() {
 	*x = ScTraderSale{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[43]
+		mi := &file_farm_proto_msgTypes[44]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2865,7 +2913,7 @@ func (x *ScTraderSale) String() string {
 func (*ScTraderSale) ProtoMessage() {}
 
 func (x *ScTraderSale) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[43]
+	mi := &file_farm_proto_msgTypes[44]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2878,7 +2926,7 @@ func (x *ScTraderSale) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScTraderSale.ProtoReflect.Descriptor instead.
 func (*ScTraderSale) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{43}
+	return file_farm_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *ScTraderSale) GetGold() int32 {
@@ -2911,7 +2959,7 @@ type ScOfflineAward struct {
 func (x *ScOfflineAward) Reset() {
 	*x = ScOfflineAward{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[44]
+		mi := &file_farm_proto_msgTypes[45]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2924,7 +2972,7 @@ func (x *ScOfflineAward) String() string {
 func (*ScOfflineAward) ProtoMessage() {}
 
 func (x *ScOfflineAward) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[44]
+	mi := &file_farm_proto_msgTypes[45]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2937,7 +2985,7 @@ func (x *ScOfflineAward) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScOfflineAward.ProtoReflect.Descriptor instead.
 func (*ScOfflineAward) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{44}
+	return file_farm_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *ScOfflineAward) GetOfflineTime() int32 {
@@ -2973,7 +3021,7 @@ type CsReceiveMysteryAward struct {
 func (x *CsReceiveMysteryAward) Reset() {
 	*x = CsReceiveMysteryAward{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[45]
+		mi := &file_farm_proto_msgTypes[46]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2986,7 +3034,7 @@ func (x *CsReceiveMysteryAward) String() string {
 func (*CsReceiveMysteryAward) ProtoMessage() {}
 
 func (x *CsReceiveMysteryAward) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[45]
+	mi := &file_farm_proto_msgTypes[46]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2999,7 +3047,7 @@ func (x *CsReceiveMysteryAward) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CsReceiveMysteryAward.ProtoReflect.Descriptor instead.
 func (*CsReceiveMysteryAward) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{45}
+	return file_farm_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *CsReceiveMysteryAward) GetAwardUuid() string {
@@ -3021,7 +3069,7 @@ type ScReceiveMysteryAward struct {
 func (x *ScReceiveMysteryAward) Reset() {
 	*x = ScReceiveMysteryAward{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[46]
+		mi := &file_farm_proto_msgTypes[47]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3034,7 +3082,7 @@ func (x *ScReceiveMysteryAward) String() string {
 func (*ScReceiveMysteryAward) ProtoMessage() {}
 
 func (x *ScReceiveMysteryAward) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[46]
+	mi := &file_farm_proto_msgTypes[47]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3047,7 +3095,7 @@ func (x *ScReceiveMysteryAward) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScReceiveMysteryAward.ProtoReflect.Descriptor instead.
 func (*ScReceiveMysteryAward) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{46}
+	return file_farm_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *ScReceiveMysteryAward) GetGold() int32 {
@@ -3069,7 +3117,7 @@ type CsScareCrowAdd struct {
 func (x *CsScareCrowAdd) Reset() {
 	*x = CsScareCrowAdd{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[47]
+		mi := &file_farm_proto_msgTypes[48]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3082,7 +3130,7 @@ func (x *CsScareCrowAdd) String() string {
 func (*CsScareCrowAdd) ProtoMessage() {}
 
 func (x *CsScareCrowAdd) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[47]
+	mi := &file_farm_proto_msgTypes[48]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3095,7 +3143,7 @@ func (x *CsScareCrowAdd) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CsScareCrowAdd.ProtoReflect.Descriptor instead.
 func (*CsScareCrowAdd) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{47}
+	return file_farm_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *CsScareCrowAdd) GetScarecrowId() int32 {
@@ -3119,7 +3167,7 @@ type ScScareCrowAdd struct {
 func (x *ScScareCrowAdd) Reset() {
 	*x = ScScareCrowAdd{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[48]
+		mi := &file_farm_proto_msgTypes[49]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3132,7 +3180,7 @@ func (x *ScScareCrowAdd) String() string {
 func (*ScScareCrowAdd) ProtoMessage() {}
 
 func (x *ScScareCrowAdd) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[48]
+	mi := &file_farm_proto_msgTypes[49]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3145,7 +3193,7 @@ func (x *ScScareCrowAdd) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScScareCrowAdd.ProtoReflect.Descriptor instead.
 func (*ScScareCrowAdd) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{48}
+	return file_farm_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *ScScareCrowAdd) GetScarecrowId() int32 {
@@ -3176,7 +3224,7 @@ type ScScareCrowInfo struct {
 func (x *ScScareCrowInfo) Reset() {
 	*x = ScScareCrowInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[49]
+		mi := &file_farm_proto_msgTypes[50]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3189,7 +3237,7 @@ func (x *ScScareCrowInfo) String() string {
 func (*ScScareCrowInfo) ProtoMessage() {}
 
 func (x *ScScareCrowInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[49]
+	mi := &file_farm_proto_msgTypes[50]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3202,7 +3250,7 @@ func (x *ScScareCrowInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScScareCrowInfo.ProtoReflect.Descriptor instead.
 func (*ScScareCrowInfo) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{49}
+	return file_farm_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *ScScareCrowInfo) GetScarecrowId() int32 {
@@ -3235,7 +3283,7 @@ type CsTzReport struct {
 func (x *CsTzReport) Reset() {
 	*x = CsTzReport{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[50]
+		mi := &file_farm_proto_msgTypes[51]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3248,7 +3296,7 @@ func (x *CsTzReport) String() string {
 func (*CsTzReport) ProtoMessage() {}
 
 func (x *CsTzReport) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[50]
+	mi := &file_farm_proto_msgTypes[51]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3261,7 +3309,7 @@ func (x *CsTzReport) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CsTzReport.ProtoReflect.Descriptor instead.
 func (*CsTzReport) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{50}
+	return file_farm_proto_rawDescGZIP(), []int{51}
 }
 
 func (x *CsTzReport) GetGridX() int32 {
@@ -3303,7 +3351,7 @@ type CsTzRemove struct {
 func (x *CsTzRemove) Reset() {
 	*x = CsTzRemove{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[51]
+		mi := &file_farm_proto_msgTypes[52]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3316,7 +3364,7 @@ func (x *CsTzRemove) String() string {
 func (*CsTzRemove) ProtoMessage() {}
 
 func (x *CsTzRemove) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[51]
+	mi := &file_farm_proto_msgTypes[52]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3329,7 +3377,7 @@ func (x *CsTzRemove) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CsTzRemove.ProtoReflect.Descriptor instead.
 func (*CsTzRemove) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{51}
+	return file_farm_proto_rawDescGZIP(), []int{52}
 }
 
 func (x *CsTzRemove) GetGridX() int32 {
@@ -3372,7 +3420,7 @@ type ScTzRemove struct {
 func (x *ScTzRemove) Reset() {
 	*x = ScTzRemove{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[52]
+		mi := &file_farm_proto_msgTypes[53]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3385,7 +3433,7 @@ func (x *ScTzRemove) String() string {
 func (*ScTzRemove) ProtoMessage() {}
 
 func (x *ScTzRemove) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[52]
+	mi := &file_farm_proto_msgTypes[53]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3398,7 +3446,7 @@ func (x *ScTzRemove) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScTzRemove.ProtoReflect.Descriptor instead.
 func (*ScTzRemove) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{52}
+	return file_farm_proto_rawDescGZIP(), []int{53}
 }
 
 func (x *ScTzRemove) GetMisGold() int32 {
@@ -3422,7 +3470,7 @@ type CsFertilizerAdd struct {
 func (x *CsFertilizerAdd) Reset() {
 	*x = CsFertilizerAdd{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[53]
+		mi := &file_farm_proto_msgTypes[54]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3435,7 +3483,7 @@ func (x *CsFertilizerAdd) String() string {
 func (*CsFertilizerAdd) ProtoMessage() {}
 
 func (x *CsFertilizerAdd) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[53]
+	mi := &file_farm_proto_msgTypes[54]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3448,7 +3496,7 @@ func (x *CsFertilizerAdd) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CsFertilizerAdd.ProtoReflect.Descriptor instead.
 func (*CsFertilizerAdd) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{53}
+	return file_farm_proto_rawDescGZIP(), []int{54}
 }
 
 func (x *CsFertilizerAdd) GetGridX() int32 {
@@ -3479,7 +3527,7 @@ type ScFertilizerAdd struct {
 func (x *ScFertilizerAdd) Reset() {
 	*x = ScFertilizerAdd{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[54]
+		mi := &file_farm_proto_msgTypes[55]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3492,7 +3540,7 @@ func (x *ScFertilizerAdd) String() string {
 func (*ScFertilizerAdd) ProtoMessage() {}
 
 func (x *ScFertilizerAdd) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[54]
+	mi := &file_farm_proto_msgTypes[55]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3505,7 +3553,7 @@ func (x *ScFertilizerAdd) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScFertilizerAdd.ProtoReflect.Descriptor instead.
 func (*ScFertilizerAdd) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{54}
+	return file_farm_proto_rawDescGZIP(), []int{55}
 }
 
 func (x *ScFertilizerAdd) GetInfo() *FertilizerInfo {
@@ -3538,7 +3586,7 @@ type FertilizerInfo struct {
 func (x *FertilizerInfo) Reset() {
 	*x = FertilizerInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[55]
+		mi := &file_farm_proto_msgTypes[56]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3551,7 +3599,7 @@ func (x *FertilizerInfo) String() string {
 func (*FertilizerInfo) ProtoMessage() {}
 
 func (x *FertilizerInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[55]
+	mi := &file_farm_proto_msgTypes[56]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3564,7 +3612,7 @@ func (x *FertilizerInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FertilizerInfo.ProtoReflect.Descriptor instead.
 func (*FertilizerInfo) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{55}
+	return file_farm_proto_rawDescGZIP(), []int{56}
 }
 
 func (x *FertilizerInfo) GetGridX() int32 {
@@ -3600,7 +3648,7 @@ type ScFertilizerInfo struct {
 func (x *ScFertilizerInfo) Reset() {
 	*x = ScFertilizerInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[56]
+		mi := &file_farm_proto_msgTypes[57]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3613,7 +3661,7 @@ func (x *ScFertilizerInfo) String() string {
 func (*ScFertilizerInfo) ProtoMessage() {}
 
 func (x *ScFertilizerInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[56]
+	mi := &file_farm_proto_msgTypes[57]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3626,7 +3674,7 @@ func (x *ScFertilizerInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScFertilizerInfo.ProtoReflect.Descriptor instead.
 func (*ScFertilizerInfo) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{56}
+	return file_farm_proto_rawDescGZIP(), []int{57}
 }
 
 func (x *ScFertilizerInfo) GetInfo() []*FertilizerInfo {
@@ -3648,7 +3696,7 @@ type CsVisitorsLogin struct {
 func (x *CsVisitorsLogin) Reset() {
 	*x = CsVisitorsLogin{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[57]
+		mi := &file_farm_proto_msgTypes[58]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3661,7 +3709,7 @@ func (x *CsVisitorsLogin) String() string {
 func (*CsVisitorsLogin) ProtoMessage() {}
 
 func (x *CsVisitorsLogin) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[57]
+	mi := &file_farm_proto_msgTypes[58]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3674,7 +3722,7 @@ func (x *CsVisitorsLogin) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CsVisitorsLogin.ProtoReflect.Descriptor instead.
 func (*CsVisitorsLogin) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{57}
+	return file_farm_proto_rawDescGZIP(), []int{58}
 }
 
 func (x *CsVisitorsLogin) GetUuid() string {
@@ -3696,7 +3744,7 @@ type ScVisitorsLogin struct {
 func (x *ScVisitorsLogin) Reset() {
 	*x = ScVisitorsLogin{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[58]
+		mi := &file_farm_proto_msgTypes[59]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3709,7 +3757,7 @@ func (x *ScVisitorsLogin) String() string {
 func (*ScVisitorsLogin) ProtoMessage() {}
 
 func (x *ScVisitorsLogin) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[58]
+	mi := &file_farm_proto_msgTypes[59]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3722,7 +3770,7 @@ func (x *ScVisitorsLogin) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScVisitorsLogin.ProtoReflect.Descriptor instead.
 func (*ScVisitorsLogin) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{58}
+	return file_farm_proto_rawDescGZIP(), []int{59}
 }
 
 func (x *ScVisitorsLogin) GetSession() string {
@@ -3750,7 +3798,7 @@ type CsBuildSpeedUp struct {
 func (x *CsBuildSpeedUp) Reset() {
 	*x = CsBuildSpeedUp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[59]
+		mi := &file_farm_proto_msgTypes[60]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3763,7 +3811,7 @@ func (x *CsBuildSpeedUp) String() string {
 func (*CsBuildSpeedUp) ProtoMessage() {}
 
 func (x *CsBuildSpeedUp) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[59]
+	mi := &file_farm_proto_msgTypes[60]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3776,7 +3824,7 @@ func (x *CsBuildSpeedUp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CsBuildSpeedUp.ProtoReflect.Descriptor instead.
 func (*CsBuildSpeedUp) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{59}
+	return file_farm_proto_rawDescGZIP(), []int{60}
 }
 
 func (x *CsBuildSpeedUp) GetSpeedType() int32 {
@@ -3819,7 +3867,7 @@ type ScBuildSpeedUp struct {
 func (x *ScBuildSpeedUp) Reset() {
 	*x = ScBuildSpeedUp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_farm_proto_msgTypes[60]
+		mi := &file_farm_proto_msgTypes[61]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3832,7 +3880,7 @@ func (x *ScBuildSpeedUp) String() string {
 func (*ScBuildSpeedUp) ProtoMessage() {}
 
 func (x *ScBuildSpeedUp) ProtoReflect() protoreflect.Message {
-	mi := &file_farm_proto_msgTypes[60]
+	mi := &file_farm_proto_msgTypes[61]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3845,7 +3893,7 @@ func (x *ScBuildSpeedUp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScBuildSpeedUp.ProtoReflect.Descriptor instead.
 func (*ScBuildSpeedUp) Descriptor() ([]byte, []int) {
-	return file_farm_proto_rawDescGZIP(), []int{60}
+	return file_farm_proto_rawDescGZIP(), []int{61}
 }
 
 func (x *ScBuildSpeedUp) GetMisDiamond() int32 {
@@ -3877,6 +3925,8 @@ var file_farm_proto_rawDesc = []byte{
 	0x04, 0x20, 0x01, 0x28, 0x0c, 0x52, 0x04, 0x64, 0x61, 0x74, 0x61, 0x12, 0x1a, 0x0a, 0x08, 0x63,
 	0x61, 0x6c, 0x6c, 0x62, 0x61, 0x63, 0x6b, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x63,
 	0x61, 0x6c, 0x6c, 0x62, 0x61, 0x63, 0x6b, 0x22, 0x1b, 0x0a, 0x07, 0x45, 0x72, 0x72, 0x49, 0x6e,
+	0x66, 0x6f, 0x12, 0x10, 0x0a, 0x03, 0x6d, 0x73, 0x67, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x03, 0x6d, 0x73, 0x67, 0x22, 0x1e, 0x0a, 0x0a, 0x4e, 0x6f, 0x72, 0x6d, 0x61, 0x6c, 0x49, 0x6e,
 	0x66, 0x6f, 0x12, 0x10, 0x0a, 0x03, 0x6d, 0x73, 0x67, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
 	0x03, 0x6d, 0x73, 0x67, 0x22, 0x25, 0x0a, 0x0d, 0x46, 0x61, 0x72, 0x6d, 0x55, 0x73, 0x65, 0x72,
 	0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01,
@@ -4227,90 +4277,91 @@ func file_farm_proto_rawDescGZIP() []byte {
 }
 
 var file_farm_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_farm_proto_msgTypes = make([]protoimpl.MessageInfo, 63)
+var file_farm_proto_msgTypes = make([]protoimpl.MessageInfo, 64)
 var file_farm_proto_goTypes = []interface{}{
 	(DisasterType)(0),             // 0: throw.v1.DisasterType
 	(*IRequest)(nil),              // 1: throw.v1.IRequest
 	(*IResponse)(nil),             // 2: throw.v1.IResponse
 	(*ErrInfo)(nil),               // 3: throw.v1.ErrInfo
-	(*FarmUserLogin)(nil),         // 4: throw.v1.FarmUserLogin
-	(*FarmDisaster)(nil),          // 5: throw.v1.FarmDisaster
-	(*MeetCrow)(nil),              // 6: throw.v1.MeetCrow
-	(*NormalSellers)(nil),         // 7: throw.v1.NormalSellers
-	(*OneNormalSeller)(nil),       // 8: throw.v1.OneNormalSeller
-	(*MysterySeller)(nil),         // 9: throw.v1.MysterySeller
-	(*OneCropNeedle)(nil),         // 10: throw.v1.OneCropNeedle
-	(*SellReward)(nil),            // 11: throw.v1.SellReward
-	(*MysteryLeaf)(nil),           // 12: throw.v1.MysteryLeaf
-	(*ScCheckLogin)(nil),          // 13: throw.v1.ScCheckLogin
-	(*AccountInfo)(nil),           // 14: throw.v1.AccountInfo
-	(*ScGetUInfoList)(nil),        // 15: throw.v1.ScGetUInfoList
-	(*MyInfo)(nil),                // 16: throw.v1.MyInfo
-	(*ScGetUInfo)(nil),            // 17: throw.v1.ScGetUInfo
-	(*WareHouseItem)(nil),         // 18: throw.v1.WareHouseItem
-	(*MaxBuildLvItem)(nil),        // 19: throw.v1.MaxBuildLvItem
-	(*CsUpdateMoney)(nil),         // 20: throw.v1.CsUpdateMoney
-	(*CsWareHouseSale)(nil),       // 21: throw.v1.CsWareHouseSale
-	(*WareHouse)(nil),             // 22: throw.v1.WareHouse
-	(*ScWareHouseSale)(nil),       // 23: throw.v1.ScWareHouseSale
-	(*CsSetGuideStep)(nil),        // 24: throw.v1.CsSetGuideStep
-	(*CsSetDouble)(nil),           // 25: throw.v1.CsSetDouble
-	(*ScSetDouble)(nil),           // 26: throw.v1.ScSetDouble
-	(*ScFarmInfo)(nil),            // 27: throw.v1.ScFarmInfo
-	(*SeedFarmInfo)(nil),          // 28: throw.v1.SeedFarmInfo
-	(*BuildInfo)(nil),             // 29: throw.v1.BuildInfo
-	(*CsBuyFarm)(nil),             // 30: throw.v1.CsBuyFarm
-	(*ScBuyFarm)(nil),             // 31: throw.v1.ScBuyFarm
-	(*CsSeedBuild)(nil),           // 32: throw.v1.CsSeedBuild
-	(*ScSeedBuild)(nil),           // 33: throw.v1.ScSeedBuild
-	(*CsRemoveBuild)(nil),         // 34: throw.v1.CsRemoveBuild
-	(*ScRemoveBuild)(nil),         // 35: throw.v1.ScRemoveBuild
-	(*CsMergerBuild)(nil),         // 36: throw.v1.CsMergerBuild
-	(*ScMergerBuild)(nil),         // 37: throw.v1.ScMergerBuild
-	(*CsMoveBuild)(nil),           // 38: throw.v1.CsMoveBuild
-	(*ScMoveBuild)(nil),           // 39: throw.v1.ScMoveBuild
-	(*CsHarvestBuild)(nil),        // 40: throw.v1.CsHarvestBuild
-	(*CsProductFarm)(nil),         // 41: throw.v1.CsProductFarm
-	(*CsChangePosBuild)(nil),      // 42: throw.v1.CsChangePosBuild
-	(*CsTraderSale)(nil),          // 43: throw.v1.CsTraderSale
-	(*ScTraderSale)(nil),          // 44: throw.v1.ScTraderSale
-	(*ScOfflineAward)(nil),        // 45: throw.v1.ScOfflineAward
-	(*CsReceiveMysteryAward)(nil), // 46: throw.v1.CsReceiveMysteryAward
-	(*ScReceiveMysteryAward)(nil), // 47: throw.v1.ScReceiveMysteryAward
-	(*CsScareCrowAdd)(nil),        // 48: throw.v1.CsScareCrowAdd
-	(*ScScareCrowAdd)(nil),        // 49: throw.v1.ScScareCrowAdd
-	(*ScScareCrowInfo)(nil),       // 50: throw.v1.ScScareCrowInfo
-	(*CsTzReport)(nil),            // 51: throw.v1.CsTzReport
-	(*CsTzRemove)(nil),            // 52: throw.v1.CsTzRemove
-	(*ScTzRemove)(nil),            // 53: throw.v1.ScTzRemove
-	(*CsFertilizerAdd)(nil),       // 54: throw.v1.CsFertilizerAdd
-	(*ScFertilizerAdd)(nil),       // 55: throw.v1.ScFertilizerAdd
-	(*FertilizerInfo)(nil),        // 56: throw.v1.FertilizerInfo
-	(*ScFertilizerInfo)(nil),      // 57: throw.v1.ScFertilizerInfo
-	(*CsVisitorsLogin)(nil),       // 58: throw.v1.CsVisitorsLogin
-	(*ScVisitorsLogin)(nil),       // 59: throw.v1.ScVisitorsLogin
-	(*CsBuildSpeedUp)(nil),        // 60: throw.v1.CsBuildSpeedUp
-	(*ScBuildSpeedUp)(nil),        // 61: throw.v1.ScBuildSpeedUp
-	nil,                           // 62: throw.v1.SellReward.ChestEntry
-	nil,                           // 63: throw.v1.CsTraderSale.ProductsEntry
+	(*NormalInfo)(nil),            // 4: throw.v1.NormalInfo
+	(*FarmUserLogin)(nil),         // 5: throw.v1.FarmUserLogin
+	(*FarmDisaster)(nil),          // 6: throw.v1.FarmDisaster
+	(*MeetCrow)(nil),              // 7: throw.v1.MeetCrow
+	(*NormalSellers)(nil),         // 8: throw.v1.NormalSellers
+	(*OneNormalSeller)(nil),       // 9: throw.v1.OneNormalSeller
+	(*MysterySeller)(nil),         // 10: throw.v1.MysterySeller
+	(*OneCropNeedle)(nil),         // 11: throw.v1.OneCropNeedle
+	(*SellReward)(nil),            // 12: throw.v1.SellReward
+	(*MysteryLeaf)(nil),           // 13: throw.v1.MysteryLeaf
+	(*ScCheckLogin)(nil),          // 14: throw.v1.ScCheckLogin
+	(*AccountInfo)(nil),           // 15: throw.v1.AccountInfo
+	(*ScGetUInfoList)(nil),        // 16: throw.v1.ScGetUInfoList
+	(*MyInfo)(nil),                // 17: throw.v1.MyInfo
+	(*ScGetUInfo)(nil),            // 18: throw.v1.ScGetUInfo
+	(*WareHouseItem)(nil),         // 19: throw.v1.WareHouseItem
+	(*MaxBuildLvItem)(nil),        // 20: throw.v1.MaxBuildLvItem
+	(*CsUpdateMoney)(nil),         // 21: throw.v1.CsUpdateMoney
+	(*CsWareHouseSale)(nil),       // 22: throw.v1.CsWareHouseSale
+	(*WareHouse)(nil),             // 23: throw.v1.WareHouse
+	(*ScWareHouseSale)(nil),       // 24: throw.v1.ScWareHouseSale
+	(*CsSetGuideStep)(nil),        // 25: throw.v1.CsSetGuideStep
+	(*CsSetDouble)(nil),           // 26: throw.v1.CsSetDouble
+	(*ScSetDouble)(nil),           // 27: throw.v1.ScSetDouble
+	(*ScFarmInfo)(nil),            // 28: throw.v1.ScFarmInfo
+	(*SeedFarmInfo)(nil),          // 29: throw.v1.SeedFarmInfo
+	(*BuildInfo)(nil),             // 30: throw.v1.BuildInfo
+	(*CsBuyFarm)(nil),             // 31: throw.v1.CsBuyFarm
+	(*ScBuyFarm)(nil),             // 32: throw.v1.ScBuyFarm
+	(*CsSeedBuild)(nil),           // 33: throw.v1.CsSeedBuild
+	(*ScSeedBuild)(nil),           // 34: throw.v1.ScSeedBuild
+	(*CsRemoveBuild)(nil),         // 35: throw.v1.CsRemoveBuild
+	(*ScRemoveBuild)(nil),         // 36: throw.v1.ScRemoveBuild
+	(*CsMergerBuild)(nil),         // 37: throw.v1.CsMergerBuild
+	(*ScMergerBuild)(nil),         // 38: throw.v1.ScMergerBuild
+	(*CsMoveBuild)(nil),           // 39: throw.v1.CsMoveBuild
+	(*ScMoveBuild)(nil),           // 40: throw.v1.ScMoveBuild
+	(*CsHarvestBuild)(nil),        // 41: throw.v1.CsHarvestBuild
+	(*CsProductFarm)(nil),         // 42: throw.v1.CsProductFarm
+	(*CsChangePosBuild)(nil),      // 43: throw.v1.CsChangePosBuild
+	(*CsTraderSale)(nil),          // 44: throw.v1.CsTraderSale
+	(*ScTraderSale)(nil),          // 45: throw.v1.ScTraderSale
+	(*ScOfflineAward)(nil),        // 46: throw.v1.ScOfflineAward
+	(*CsReceiveMysteryAward)(nil), // 47: throw.v1.CsReceiveMysteryAward
+	(*ScReceiveMysteryAward)(nil), // 48: throw.v1.ScReceiveMysteryAward
+	(*CsScareCrowAdd)(nil),        // 49: throw.v1.CsScareCrowAdd
+	(*ScScareCrowAdd)(nil),        // 50: throw.v1.ScScareCrowAdd
+	(*ScScareCrowInfo)(nil),       // 51: throw.v1.ScScareCrowInfo
+	(*CsTzReport)(nil),            // 52: throw.v1.CsTzReport
+	(*CsTzRemove)(nil),            // 53: throw.v1.CsTzRemove
+	(*ScTzRemove)(nil),            // 54: throw.v1.ScTzRemove
+	(*CsFertilizerAdd)(nil),       // 55: throw.v1.CsFertilizerAdd
+	(*ScFertilizerAdd)(nil),       // 56: throw.v1.ScFertilizerAdd
+	(*FertilizerInfo)(nil),        // 57: throw.v1.FertilizerInfo
+	(*ScFertilizerInfo)(nil),      // 58: throw.v1.ScFertilizerInfo
+	(*CsVisitorsLogin)(nil),       // 59: throw.v1.CsVisitorsLogin
+	(*ScVisitorsLogin)(nil),       // 60: throw.v1.ScVisitorsLogin
+	(*CsBuildSpeedUp)(nil),        // 61: throw.v1.CsBuildSpeedUp
+	(*ScBuildSpeedUp)(nil),        // 62: throw.v1.ScBuildSpeedUp
+	nil,                           // 63: throw.v1.SellReward.ChestEntry
+	nil,                           // 64: throw.v1.CsTraderSale.ProductsEntry
 }
 var file_farm_proto_depIdxs = []int32{
 	0,  // 0: throw.v1.FarmDisaster.typ:type_name -> throw.v1.DisasterType
-	8,  // 1: throw.v1.NormalSellers.list:type_name -> throw.v1.OneNormalSeller
-	10, // 2: throw.v1.OneNormalSeller.needCrops:type_name -> throw.v1.OneCropNeedle
-	11, // 3: throw.v1.OneNormalSeller.rewards:type_name -> throw.v1.SellReward
-	10, // 4: throw.v1.MysterySeller.needCrops:type_name -> throw.v1.OneCropNeedle
-	11, // 5: throw.v1.MysterySeller.reward:type_name -> throw.v1.SellReward
-	62, // 6: throw.v1.SellReward.chest:type_name -> throw.v1.SellReward.ChestEntry
-	14, // 7: throw.v1.MyInfo.accountInfo:type_name -> throw.v1.AccountInfo
-	18, // 8: throw.v1.ScGetUInfo.wareHouse:type_name -> throw.v1.WareHouseItem
-	19, // 9: throw.v1.ScGetUInfo.maxBuildLvMap:type_name -> throw.v1.MaxBuildLvItem
-	22, // 10: throw.v1.CsWareHouseSale.saveProduct:type_name -> throw.v1.WareHouse
-	28, // 11: throw.v1.ScFarmInfo.seedFarmInfo:type_name -> throw.v1.SeedFarmInfo
-	29, // 12: throw.v1.ScFarmInfo.buildInfo:type_name -> throw.v1.BuildInfo
-	63, // 13: throw.v1.CsTraderSale.products:type_name -> throw.v1.CsTraderSale.ProductsEntry
-	56, // 14: throw.v1.ScFertilizerAdd.info:type_name -> throw.v1.FertilizerInfo
-	56, // 15: throw.v1.ScFertilizerInfo.info:type_name -> throw.v1.FertilizerInfo
+	9,  // 1: throw.v1.NormalSellers.list:type_name -> throw.v1.OneNormalSeller
+	11, // 2: throw.v1.OneNormalSeller.needCrops:type_name -> throw.v1.OneCropNeedle
+	12, // 3: throw.v1.OneNormalSeller.rewards:type_name -> throw.v1.SellReward
+	11, // 4: throw.v1.MysterySeller.needCrops:type_name -> throw.v1.OneCropNeedle
+	12, // 5: throw.v1.MysterySeller.reward:type_name -> throw.v1.SellReward
+	63, // 6: throw.v1.SellReward.chest:type_name -> throw.v1.SellReward.ChestEntry
+	15, // 7: throw.v1.MyInfo.accountInfo:type_name -> throw.v1.AccountInfo
+	19, // 8: throw.v1.ScGetUInfo.wareHouse:type_name -> throw.v1.WareHouseItem
+	20, // 9: throw.v1.ScGetUInfo.maxBuildLvMap:type_name -> throw.v1.MaxBuildLvItem
+	23, // 10: throw.v1.CsWareHouseSale.saveProduct:type_name -> throw.v1.WareHouse
+	29, // 11: throw.v1.ScFarmInfo.seedFarmInfo:type_name -> throw.v1.SeedFarmInfo
+	30, // 12: throw.v1.ScFarmInfo.buildInfo:type_name -> throw.v1.BuildInfo
+	64, // 13: throw.v1.CsTraderSale.products:type_name -> throw.v1.CsTraderSale.ProductsEntry
+	57, // 14: throw.v1.ScFertilizerAdd.info:type_name -> throw.v1.FertilizerInfo
+	57, // 15: throw.v1.ScFertilizerInfo.info:type_name -> throw.v1.FertilizerInfo
 	16, // [16:16] is the sub-list for method output_type
 	16, // [16:16] is the sub-list for method input_type
 	16, // [16:16] is the sub-list for extension type_name
@@ -4361,7 +4412,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*FarmUserLogin); i {
+			switch v := v.(*NormalInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4373,7 +4424,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*FarmDisaster); i {
+			switch v := v.(*FarmUserLogin); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4385,7 +4436,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MeetCrow); i {
+			switch v := v.(*FarmDisaster); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4397,7 +4448,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*NormalSellers); i {
+			switch v := v.(*MeetCrow); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4409,7 +4460,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*OneNormalSeller); i {
+			switch v := v.(*NormalSellers); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4421,7 +4472,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MysterySeller); i {
+			switch v := v.(*OneNormalSeller); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4433,7 +4484,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*OneCropNeedle); i {
+			switch v := v.(*MysterySeller); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4445,7 +4496,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SellReward); i {
+			switch v := v.(*OneCropNeedle); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4457,7 +4508,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MysteryLeaf); i {
+			switch v := v.(*SellReward); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4469,7 +4520,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ScCheckLogin); i {
+			switch v := v.(*MysteryLeaf); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4481,7 +4532,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AccountInfo); i {
+			switch v := v.(*ScCheckLogin); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4493,7 +4544,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ScGetUInfoList); i {
+			switch v := v.(*AccountInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4505,7 +4556,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MyInfo); i {
+			switch v := v.(*ScGetUInfoList); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4517,7 +4568,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ScGetUInfo); i {
+			switch v := v.(*MyInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4529,7 +4580,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*WareHouseItem); i {
+			switch v := v.(*ScGetUInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4541,7 +4592,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MaxBuildLvItem); i {
+			switch v := v.(*WareHouseItem); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4553,7 +4604,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CsUpdateMoney); i {
+			switch v := v.(*MaxBuildLvItem); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4565,7 +4616,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CsWareHouseSale); i {
+			switch v := v.(*CsUpdateMoney); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4577,7 +4628,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*WareHouse); i {
+			switch v := v.(*CsWareHouseSale); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4589,7 +4640,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ScWareHouseSale); i {
+			switch v := v.(*WareHouse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4601,7 +4652,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CsSetGuideStep); i {
+			switch v := v.(*ScWareHouseSale); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4613,7 +4664,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[24].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CsSetDouble); i {
+			switch v := v.(*CsSetGuideStep); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4625,7 +4676,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[25].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ScSetDouble); i {
+			switch v := v.(*CsSetDouble); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4637,7 +4688,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[26].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ScFarmInfo); i {
+			switch v := v.(*ScSetDouble); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4649,7 +4700,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[27].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SeedFarmInfo); i {
+			switch v := v.(*ScFarmInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4661,7 +4712,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[28].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*BuildInfo); i {
+			switch v := v.(*SeedFarmInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4673,7 +4724,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[29].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CsBuyFarm); i {
+			switch v := v.(*BuildInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4685,7 +4736,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[30].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ScBuyFarm); i {
+			switch v := v.(*CsBuyFarm); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4697,7 +4748,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[31].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CsSeedBuild); i {
+			switch v := v.(*ScBuyFarm); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4709,7 +4760,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[32].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ScSeedBuild); i {
+			switch v := v.(*CsSeedBuild); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4721,7 +4772,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[33].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CsRemoveBuild); i {
+			switch v := v.(*ScSeedBuild); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4733,7 +4784,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[34].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ScRemoveBuild); i {
+			switch v := v.(*CsRemoveBuild); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4745,7 +4796,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[35].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CsMergerBuild); i {
+			switch v := v.(*ScRemoveBuild); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4757,7 +4808,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[36].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ScMergerBuild); i {
+			switch v := v.(*CsMergerBuild); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4769,7 +4820,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[37].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CsMoveBuild); i {
+			switch v := v.(*ScMergerBuild); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4781,7 +4832,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[38].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ScMoveBuild); i {
+			switch v := v.(*CsMoveBuild); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4793,7 +4844,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[39].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CsHarvestBuild); i {
+			switch v := v.(*ScMoveBuild); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4805,7 +4856,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[40].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CsProductFarm); i {
+			switch v := v.(*CsHarvestBuild); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4817,7 +4868,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[41].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CsChangePosBuild); i {
+			switch v := v.(*CsProductFarm); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4829,7 +4880,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[42].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CsTraderSale); i {
+			switch v := v.(*CsChangePosBuild); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4841,7 +4892,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[43].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ScTraderSale); i {
+			switch v := v.(*CsTraderSale); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4853,7 +4904,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[44].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ScOfflineAward); i {
+			switch v := v.(*ScTraderSale); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4865,7 +4916,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[45].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CsReceiveMysteryAward); i {
+			switch v := v.(*ScOfflineAward); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4877,7 +4928,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[46].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ScReceiveMysteryAward); i {
+			switch v := v.(*CsReceiveMysteryAward); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4889,7 +4940,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[47].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CsScareCrowAdd); i {
+			switch v := v.(*ScReceiveMysteryAward); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4901,7 +4952,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[48].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ScScareCrowAdd); i {
+			switch v := v.(*CsScareCrowAdd); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4913,7 +4964,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[49].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ScScareCrowInfo); i {
+			switch v := v.(*ScScareCrowAdd); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4925,7 +4976,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[50].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CsTzReport); i {
+			switch v := v.(*ScScareCrowInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4937,7 +4988,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[51].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CsTzRemove); i {
+			switch v := v.(*CsTzReport); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4949,7 +5000,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[52].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ScTzRemove); i {
+			switch v := v.(*CsTzRemove); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4961,7 +5012,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[53].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CsFertilizerAdd); i {
+			switch v := v.(*ScTzRemove); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4973,7 +5024,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[54].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ScFertilizerAdd); i {
+			switch v := v.(*CsFertilizerAdd); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4985,7 +5036,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[55].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*FertilizerInfo); i {
+			switch v := v.(*ScFertilizerAdd); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4997,7 +5048,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[56].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ScFertilizerInfo); i {
+			switch v := v.(*FertilizerInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5009,7 +5060,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[57].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CsVisitorsLogin); i {
+			switch v := v.(*ScFertilizerInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5021,7 +5072,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[58].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ScVisitorsLogin); i {
+			switch v := v.(*CsVisitorsLogin); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5033,7 +5084,7 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[59].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CsBuildSpeedUp); i {
+			switch v := v.(*ScVisitorsLogin); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5045,6 +5096,18 @@ func file_farm_proto_init() {
 			}
 		}
 		file_farm_proto_msgTypes[60].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CsBuildSpeedUp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_farm_proto_msgTypes[61].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ScBuildSpeedUp); i {
 			case 0:
 				return &v.state
@@ -5063,7 +5126,7 @@ func file_farm_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_farm_proto_rawDesc,
 			NumEnums:      1,
-			NumMessages:   63,
+			NumMessages:   64,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
