@@ -199,6 +199,8 @@ message CsWareHouseSale {
   repeated WareHouse saveProduct = 1;// 可能是之前写错的单词，先保持一样吧
   // 1表示神秘商人出售, 2表示这架出售普通仓库出售 | @inject_tag: msgpack:"saleType" json:"saleType"
   int32 saleType =2;
+  // 对神秘商人出售时，携带对应的标识 | @inject_tag: msgpack:"uuid" json:"uuid"
+  string uuid = 3;
 }
 
 message WareHouse {
