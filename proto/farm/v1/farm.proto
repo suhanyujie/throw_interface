@@ -275,6 +275,10 @@ message BuildInfo {
   int32 chong = 10;
   // 作物状态 1正常，2枯萎（已到达最大收获次数） | @inject_tag: msgpack:"status" json:"status"
   int32 status = 11;
+  // 最大收获次数 | @inject_tag: msgpack:"maxHarvestTimes" json:"maxHarvestTimes"
+  int32 maxHarvestTimes = 12;
+  // 已使用的收获次数 | @inject_tag: msgpack:"hasHarvestTimes" json:"hasHarvestTimes"
+  int32 hasHarvestTimes = 13;
 }
 
 message CsBuyFarm {
