@@ -319,8 +319,10 @@ message CsRemoveBuild {
 }
 
 message ScRemoveBuild {
-  // 增加的钱 | @inject_tag: msgpack:"gold" json:"gold"
+  // 增加的代币 | @inject_tag: msgpack:"gold" json:"gold"
   int32 gold = 1;
+  // 用户当前代币数 | @inject_tag: msgpack:"userGold" json:"userGold"
+  int32 userGold = 2;
 }
 
 message CsMergerBuild {
@@ -368,6 +370,8 @@ message CsHarvestBuild {
 message ScHarvestBuild {
   // 收获得到的果实数 | @inject_tag: msgpack:"proNum" json:"proNum"
   int32 proNum = 1;
+  // 用户当前代币数 | @inject_tag: msgpack:"userGold" json:"userGold"
+  int32 userGold = 2;
 }
 
 message CsProductFarm {
