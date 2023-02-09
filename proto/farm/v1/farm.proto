@@ -521,3 +521,8 @@ message ScBuildSpeedUp {
   int32 misDiamond = 1;
 }
 
+// 仓库信息
+message ScWareHouse {
+  // 果实及其数量，对象，key是果实id，value是数量 | @inject_tag: msgpack:"products" json:"products"
+  map<string, int32> products = 1;
+}
