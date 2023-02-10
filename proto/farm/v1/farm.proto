@@ -84,6 +84,8 @@ message OneNormalSeller {
   SellReward rewards = 3;
   // 停留的秒数 | @inject_tag: msgpack:"interval" json:"interval"
   int32 interval = 4;
+  // 商人出现的时间戳 | @inject_tag: msgpack:"createTime" json:"createTime"
+  int32 createTime = 5;
 }
 
 message MysterySeller {
@@ -95,6 +97,8 @@ message MysterySeller {
   SellReward reward = 3;
   // 停留的秒数 | @inject_tag: msgpack:"interval" json:"interval"
   int32 interval = 4;
+  // 商人出现的时间戳 | @inject_tag: msgpack:"createTime" json:"createTime"
+  int32 createTime = 5;
 }
 
 message OneCropNeedle {
