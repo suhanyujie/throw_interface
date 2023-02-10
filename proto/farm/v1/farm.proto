@@ -380,6 +380,10 @@ message ScHarvestBuild {
   int32 proNum = 1;
   // 用户当前代币数 | @inject_tag: msgpack:"userGold" json:"userGold"
   int32 userGold = 2;
+  // 收获得到的果实的 id | @inject_tag: msgpack:"proId" json:"proId"
+  int32 proId = 3;
+  // 该果实的总量 | @inject_tag: msgpack:"proTotalNum" json:"proTotalNum"
+  int32 proTotalNum = 4;
 }
 
 message CsProductFarm {
