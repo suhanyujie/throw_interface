@@ -86,6 +86,8 @@ message OneNormalSeller {
   int32 interval = 4;
   // 商人出现的时间戳 | @inject_tag: msgpack:"createTime" json:"createTime"
   int32 createTime = 5;
+  // 订单车停留的时间，秒 | @inject_tag: msgpack:"keepSec" json:"keepSec"
+  int32 keepSec = 6;
 }
 
 message MysterySeller {
