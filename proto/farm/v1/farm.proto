@@ -82,7 +82,7 @@ message OneNormalSeller {
   repeated OneCropNeedle needCrops = 2;
   // 交易后的报酬 | @inject_tag: msgpack:"rewards" json:"rewards"
   SellReward rewards = 3;
-  // 停留的秒数 | @inject_tag: msgpack:"interval" json:"interval"
+  // 下一辆车出现的间隔 | @inject_tag: msgpack:"interval" json:"interval"
   int32 interval = 4;
   // 商人出现的时间戳 | @inject_tag: msgpack:"createTime" json:"createTime"
   int32 createTime = 5;

@@ -593,7 +593,7 @@ type OneNormalSeller struct {
 	NeedCrops []*OneCropNeedle `protobuf:"bytes,2,rep,name=needCrops,proto3" json:"needCrops" msgpack:"needCrops"`
 	// 交易后的报酬 | @inject_tag: msgpack:"rewards" json:"rewards"
 	Rewards *SellReward `protobuf:"bytes,3,opt,name=rewards,proto3" json:"rewards" msgpack:"rewards"`
-	// 停留的秒数 | @inject_tag: msgpack:"interval" json:"interval"
+	// 下一辆车出现的间隔 | @inject_tag: msgpack:"interval" json:"interval"
 	Interval int32 `protobuf:"varint,4,opt,name=interval,proto3" json:"interval" msgpack:"interval"`
 	// 商人出现的时间戳 | @inject_tag: msgpack:"createTime" json:"createTime"
 	CreateTime int32 `protobuf:"varint,5,opt,name=createTime,proto3" json:"createTime" msgpack:"createTime"`
