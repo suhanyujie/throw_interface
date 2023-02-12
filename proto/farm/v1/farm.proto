@@ -86,7 +86,7 @@ message OneNormalSeller {
   int32 interval = 4;
   // 商人出现的时间戳 | @inject_tag: msgpack:"createTime" json:"createTime"
   int32 createTime = 5;
-  // 订单车停留的时间，秒 | @inject_tag: msgpack:"keepSec" json:"keepSec"
+  // 订单停留的时间，秒 | @inject_tag: msgpack:"keepSec" json:"keepSec"
   int32 keepSec = 6;
 }
 
@@ -101,6 +101,8 @@ message MysterySeller {
   int32 interval = 4;
   // 商人出现的时间戳 | @inject_tag: msgpack:"createTime" json:"createTime"
   int32 createTime = 5;
+  // 订单停留的时间，秒 | @inject_tag: msgpack:"keepSec" json:"keepSec"
+  int32 keepSec = 6;
 }
 
 message OneCropNeedle {
@@ -125,7 +127,16 @@ message MysteryLeaf {
   int32 keepSec = 2;
   // 创建的时间 | @inject_tag: msgpack:"createTime" json:"createTime"
   int32 createTime = 3;
+  // 奖励类型,1农作物，2金币 | @inject_tag: msgpack:"awardType" json:"awardType"
+  int32 awardType = 4;
+  // 如果是金币，对应的金币数 | @inject_tag: msgpack:"goldNum" json:"goldNum"
+  int32 goldNum = 5;
+  //如果是农作物，对应的农作物 id | @inject_tag: msgpack:"buildId" json:"buildId"
+  int32 buildId = 6;
 }
+
+
+
 
 enum DisasterType {
   Empty0DisasterType = 0;
@@ -314,6 +325,8 @@ message CsSeedBuild {
   string uuid = 5;
   // 是否是免费的 | @inject_tag: msgpack:"isFree" json:"isFree"
   bool isFree = 6;
+  // 如果是免费的，免费的凭证 | @inject_tag: msgpack:"freeUuid" json:"freeUuid"
+  string freeUuid = 7;
 }
 
 message ScSeedBuild {
@@ -411,6 +424,8 @@ message CsChangePosBuild {
 message CsTraderSale {
   // 商品 | @inject_tag: msgpack:"products" json:"products"
   map<int32, int32> products = 1;
+  // 商品订单的标识 | @inject_tag: msgpack:"uuid" json:"uuid"
+  string uuid = 2;
 }
 
 message ScTraderSale {
@@ -434,6 +449,10 @@ message CsReceiveMysteryAward {
   string awardUuid = 1;
   // 是否已观看广告。默认 false | @inject_tag: msgpack:"hasWatchAd" json:"hasWatchAd"
   bool hasWatchAd = 2;
+  // 如果是种子，则传入种植的位置 x | @inject_tag: msgpack:"gridX" json:"gridX"
+  int32 gridX = 3;
+  // 如果是种子，则传入种植的位置 y | @inject_tag: msgpack:"gridY" json:"gridY"
+  int32 gridY = 4;
 }
 
 message ScReceiveMysteryAward {
