@@ -252,7 +252,7 @@ message ScSetDouble {
 }
 
 message ScFarmInfo {
-  // 花费的的钻石数量 | @inject_tag: msgpack:"seedFarmInfo" json:"seedFarmInfo"
+  // 土地信息 | @inject_tag: msgpack:"seedFarmInfo" json:"seedFarmInfo"
   repeated SeedFarmInfo seedFarmInfo = 1;
   // 作物信息 | @inject_tag: msgpack:"buildInfo" json:"buildInfo"
   repeated BuildInfo buildInfo = 2;
@@ -562,4 +562,20 @@ message ScBuildSpeedUp {
 message ScWareHouse {
   // 果实及其数量，对象，key是果实id，value是数量 | @inject_tag: msgpack:"products" json:"products"
   map<string, int32> products = 1;
+}
+
+message CsCellInfo {
+  //  | @inject_tag: msgpack:"gridX" json:"gridX"
+  int32 gridX = 1;
+  //  | @inject_tag: msgpack:"gridY" json:"gridY"
+  int32 gridY = 2;
+}
+
+message ScCellInfo {
+  // 土地信息 | @inject_tag: msgpack:"seedFarmInfo" json:"seedFarmInfo"
+  SeedFarmInfo seedFarmInfo = 1;
+  // 作物信息 | @inject_tag: msgpack:"buildInfo" json:"buildInfo"
+  BuildInfo buildInfo = 2;
+  // 服务器时间，用于计算 dt | @inject_tag: msgpack:"serverTime" json:"serverTime"
+  int32 serverTime = 3;
 }

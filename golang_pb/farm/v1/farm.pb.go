@@ -1797,7 +1797,7 @@ type ScFarmInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// 花费的的钻石数量 | @inject_tag: msgpack:"seedFarmInfo" json:"seedFarmInfo"
+	// 土地信息 | @inject_tag: msgpack:"seedFarmInfo" json:"seedFarmInfo"
 	SeedFarmInfo []*SeedFarmInfo `protobuf:"bytes,1,rep,name=seedFarmInfo,proto3" json:"seedFarmInfo" msgpack:"seedFarmInfo"`
 	// 作物信息 | @inject_tag: msgpack:"buildInfo" json:"buildInfo"
 	BuildInfo []*BuildInfo `protobuf:"bytes,2,rep,name=buildInfo,proto3" json:"buildInfo" msgpack:"buildInfo"`
@@ -4144,6 +4144,129 @@ func (x *ScWareHouse) GetProducts() map[string]int32 {
 	return nil
 }
 
+type CsCellInfo struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// | @inject_tag: msgpack:"gridX" json:"gridX"
+	GridX int32 `protobuf:"varint,1,opt,name=gridX,proto3" json:"gridX" msgpack:"gridX"`
+	// | @inject_tag: msgpack:"gridY" json:"gridY"
+	GridY int32 `protobuf:"varint,2,opt,name=gridY,proto3" json:"gridY" msgpack:"gridY"`
+}
+
+func (x *CsCellInfo) Reset() {
+	*x = CsCellInfo{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_farm_proto_msgTypes[64]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CsCellInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CsCellInfo) ProtoMessage() {}
+
+func (x *CsCellInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_farm_proto_msgTypes[64]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CsCellInfo.ProtoReflect.Descriptor instead.
+func (*CsCellInfo) Descriptor() ([]byte, []int) {
+	return file_farm_proto_rawDescGZIP(), []int{64}
+}
+
+func (x *CsCellInfo) GetGridX() int32 {
+	if x != nil {
+		return x.GridX
+	}
+	return 0
+}
+
+func (x *CsCellInfo) GetGridY() int32 {
+	if x != nil {
+		return x.GridY
+	}
+	return 0
+}
+
+type ScCellInfo struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// 土地信息 | @inject_tag: msgpack:"seedFarmInfo" json:"seedFarmInfo"
+	SeedFarmInfo *SeedFarmInfo `protobuf:"bytes,1,opt,name=seedFarmInfo,proto3" json:"seedFarmInfo" msgpack:"seedFarmInfo"`
+	// 作物信息 | @inject_tag: msgpack:"buildInfo" json:"buildInfo"
+	BuildInfo *BuildInfo `protobuf:"bytes,2,opt,name=buildInfo,proto3" json:"buildInfo" msgpack:"buildInfo"`
+	// 服务器时间，用于计算 dt | @inject_tag: msgpack:"serverTime" json:"serverTime"
+	ServerTime int32 `protobuf:"varint,3,opt,name=serverTime,proto3" json:"serverTime" msgpack:"serverTime"`
+}
+
+func (x *ScCellInfo) Reset() {
+	*x = ScCellInfo{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_farm_proto_msgTypes[65]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ScCellInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ScCellInfo) ProtoMessage() {}
+
+func (x *ScCellInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_farm_proto_msgTypes[65]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ScCellInfo.ProtoReflect.Descriptor instead.
+func (*ScCellInfo) Descriptor() ([]byte, []int) {
+	return file_farm_proto_rawDescGZIP(), []int{65}
+}
+
+func (x *ScCellInfo) GetSeedFarmInfo() *SeedFarmInfo {
+	if x != nil {
+		return x.SeedFarmInfo
+	}
+	return nil
+}
+
+func (x *ScCellInfo) GetBuildInfo() *BuildInfo {
+	if x != nil {
+		return x.BuildInfo
+	}
+	return nil
+}
+
+func (x *ScCellInfo) GetServerTime() int32 {
+	if x != nil {
+		return x.ServerTime
+	}
+	return 0
+}
+
 var File_farm_proto protoreflect.FileDescriptor
 
 var file_farm_proto_rawDesc = []byte{
@@ -4534,15 +4657,29 @@ var file_farm_proto_rawDesc = []byte{
 	0x74, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01,
 	0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c,
 	0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a,
-	0x02, 0x38, 0x01, 0x2a, 0x45, 0x0a, 0x0c, 0x44, 0x69, 0x73, 0x61, 0x73, 0x74, 0x65, 0x72, 0x54,
-	0x79, 0x70, 0x65, 0x12, 0x16, 0x0a, 0x12, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x30, 0x44, 0x69, 0x73,
-	0x61, 0x73, 0x74, 0x65, 0x72, 0x54, 0x79, 0x70, 0x65, 0x10, 0x00, 0x12, 0x07, 0x0a, 0x03, 0x44,
-	0x72, 0x79, 0x10, 0x01, 0x12, 0x0a, 0x0a, 0x06, 0x49, 0x6e, 0x73, 0x65, 0x63, 0x74, 0x10, 0x02,
-	0x12, 0x08, 0x0a, 0x04, 0x43, 0x72, 0x6f, 0x77, 0x10, 0x03, 0x42, 0x38, 0x5a, 0x36, 0x67, 0x69,
-	0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x75, 0x68, 0x61, 0x6e, 0x79, 0x75,
-	0x6a, 0x69, 0x65, 0x2f, 0x74, 0x68, 0x72, 0x6f, 0x77, 0x5f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66,
-	0x61, 0x63, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x66, 0x61, 0x72, 0x6d, 0x2f, 0x76,
-	0x31, 0x3b, 0x76, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x02, 0x38, 0x01, 0x22, 0x38, 0x0a, 0x0a, 0x43, 0x73, 0x43, 0x65, 0x6c, 0x6c, 0x49, 0x6e, 0x66,
+	0x6f, 0x12, 0x14, 0x0a, 0x05, 0x67, 0x72, 0x69, 0x64, 0x58, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05,
+	0x52, 0x05, 0x67, 0x72, 0x69, 0x64, 0x58, 0x12, 0x14, 0x0a, 0x05, 0x67, 0x72, 0x69, 0x64, 0x59,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x67, 0x72, 0x69, 0x64, 0x59, 0x22, 0x9b, 0x01,
+	0x0a, 0x0a, 0x53, 0x63, 0x43, 0x65, 0x6c, 0x6c, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x3a, 0x0a, 0x0c,
+	0x73, 0x65, 0x65, 0x64, 0x46, 0x61, 0x72, 0x6d, 0x49, 0x6e, 0x66, 0x6f, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x16, 0x2e, 0x74, 0x68, 0x72, 0x6f, 0x77, 0x2e, 0x76, 0x31, 0x2e, 0x53, 0x65,
+	0x65, 0x64, 0x46, 0x61, 0x72, 0x6d, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x0c, 0x73, 0x65, 0x65, 0x64,
+	0x46, 0x61, 0x72, 0x6d, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x31, 0x0a, 0x09, 0x62, 0x75, 0x69, 0x6c,
+	0x64, 0x49, 0x6e, 0x66, 0x6f, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x13, 0x2e, 0x74, 0x68,
+	0x72, 0x6f, 0x77, 0x2e, 0x76, 0x31, 0x2e, 0x42, 0x75, 0x69, 0x6c, 0x64, 0x49, 0x6e, 0x66, 0x6f,
+	0x52, 0x09, 0x62, 0x75, 0x69, 0x6c, 0x64, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x1e, 0x0a, 0x0a, 0x73,
+	0x65, 0x72, 0x76, 0x65, 0x72, 0x54, 0x69, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52,
+	0x0a, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x54, 0x69, 0x6d, 0x65, 0x2a, 0x45, 0x0a, 0x0c, 0x44,
+	0x69, 0x73, 0x61, 0x73, 0x74, 0x65, 0x72, 0x54, 0x79, 0x70, 0x65, 0x12, 0x16, 0x0a, 0x12, 0x45,
+	0x6d, 0x70, 0x74, 0x79, 0x30, 0x44, 0x69, 0x73, 0x61, 0x73, 0x74, 0x65, 0x72, 0x54, 0x79, 0x70,
+	0x65, 0x10, 0x00, 0x12, 0x07, 0x0a, 0x03, 0x44, 0x72, 0x79, 0x10, 0x01, 0x12, 0x0a, 0x0a, 0x06,
+	0x49, 0x6e, 0x73, 0x65, 0x63, 0x74, 0x10, 0x02, 0x12, 0x08, 0x0a, 0x04, 0x43, 0x72, 0x6f, 0x77,
+	0x10, 0x03, 0x42, 0x38, 0x5a, 0x36, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d,
+	0x2f, 0x73, 0x75, 0x68, 0x61, 0x6e, 0x79, 0x75, 0x6a, 0x69, 0x65, 0x2f, 0x74, 0x68, 0x72, 0x6f,
+	0x77, 0x5f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x2f, 0x66, 0x61, 0x72, 0x6d, 0x2f, 0x76, 0x31, 0x3b, 0x76, 0x31, 0x62, 0x06, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -4558,7 +4695,7 @@ func file_farm_proto_rawDescGZIP() []byte {
 }
 
 var file_farm_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_farm_proto_msgTypes = make([]protoimpl.MessageInfo, 67)
+var file_farm_proto_msgTypes = make([]protoimpl.MessageInfo, 69)
 var file_farm_proto_goTypes = []interface{}{
 	(DisasterType)(0),             // 0: throw.v1.DisasterType
 	(*IRequest)(nil),              // 1: throw.v1.IRequest
@@ -4625,9 +4762,11 @@ var file_farm_proto_goTypes = []interface{}{
 	(*CsBuildSpeedUp)(nil),        // 62: throw.v1.CsBuildSpeedUp
 	(*ScBuildSpeedUp)(nil),        // 63: throw.v1.ScBuildSpeedUp
 	(*ScWareHouse)(nil),           // 64: throw.v1.ScWareHouse
-	nil,                           // 65: throw.v1.SellReward.ChestEntry
-	nil,                           // 66: throw.v1.CsTraderSale.ProductsEntry
-	nil,                           // 67: throw.v1.ScWareHouse.ProductsEntry
+	(*CsCellInfo)(nil),            // 65: throw.v1.CsCellInfo
+	(*ScCellInfo)(nil),            // 66: throw.v1.ScCellInfo
+	nil,                           // 67: throw.v1.SellReward.ChestEntry
+	nil,                           // 68: throw.v1.CsTraderSale.ProductsEntry
+	nil,                           // 69: throw.v1.ScWareHouse.ProductsEntry
 }
 var file_farm_proto_depIdxs = []int32{
 	0,  // 0: throw.v1.FarmDisaster.typ:type_name -> throw.v1.DisasterType
@@ -4636,22 +4775,24 @@ var file_farm_proto_depIdxs = []int32{
 	12, // 3: throw.v1.OneNormalSeller.rewards:type_name -> throw.v1.SellReward
 	11, // 4: throw.v1.MysterySeller.needCrops:type_name -> throw.v1.OneCropNeedle
 	12, // 5: throw.v1.MysterySeller.reward:type_name -> throw.v1.SellReward
-	65, // 6: throw.v1.SellReward.chest:type_name -> throw.v1.SellReward.ChestEntry
+	67, // 6: throw.v1.SellReward.chest:type_name -> throw.v1.SellReward.ChestEntry
 	15, // 7: throw.v1.MyInfo.accountInfo:type_name -> throw.v1.AccountInfo
 	19, // 8: throw.v1.ScGetUInfo.wareHouse:type_name -> throw.v1.WareHouseItem
 	20, // 9: throw.v1.ScGetUInfo.maxBuildLvMap:type_name -> throw.v1.MaxBuildLvItem
 	23, // 10: throw.v1.CsWareHouseSale.saveProduct:type_name -> throw.v1.WareHouse
 	29, // 11: throw.v1.ScFarmInfo.seedFarmInfo:type_name -> throw.v1.SeedFarmInfo
 	30, // 12: throw.v1.ScFarmInfo.buildInfo:type_name -> throw.v1.BuildInfo
-	66, // 13: throw.v1.CsTraderSale.products:type_name -> throw.v1.CsTraderSale.ProductsEntry
+	68, // 13: throw.v1.CsTraderSale.products:type_name -> throw.v1.CsTraderSale.ProductsEntry
 	58, // 14: throw.v1.ScFertilizerAdd.info:type_name -> throw.v1.FertilizerInfo
 	58, // 15: throw.v1.ScFertilizerInfo.info:type_name -> throw.v1.FertilizerInfo
-	67, // 16: throw.v1.ScWareHouse.products:type_name -> throw.v1.ScWareHouse.ProductsEntry
-	17, // [17:17] is the sub-list for method output_type
-	17, // [17:17] is the sub-list for method input_type
-	17, // [17:17] is the sub-list for extension type_name
-	17, // [17:17] is the sub-list for extension extendee
-	0,  // [0:17] is the sub-list for field type_name
+	69, // 16: throw.v1.ScWareHouse.products:type_name -> throw.v1.ScWareHouse.ProductsEntry
+	29, // 17: throw.v1.ScCellInfo.seedFarmInfo:type_name -> throw.v1.SeedFarmInfo
+	30, // 18: throw.v1.ScCellInfo.buildInfo:type_name -> throw.v1.BuildInfo
+	19, // [19:19] is the sub-list for method output_type
+	19, // [19:19] is the sub-list for method input_type
+	19, // [19:19] is the sub-list for extension type_name
+	19, // [19:19] is the sub-list for extension extendee
+	0,  // [0:19] is the sub-list for field type_name
 }
 
 func init() { file_farm_proto_init() }
@@ -5428,6 +5569,30 @@ func file_farm_proto_init() {
 				return nil
 			}
 		}
+		file_farm_proto_msgTypes[64].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CsCellInfo); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_farm_proto_msgTypes[65].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ScCellInfo); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -5435,7 +5600,7 @@ func file_farm_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_farm_proto_rawDesc,
 			NumEnums:      1,
-			NumMessages:   67,
+			NumMessages:   69,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
