@@ -479,6 +479,8 @@ message ScScareCrowInfo {
   int32 scarecrowId = 1;
   // 稻草人剩余时间 | @inject_tag: msgpack:"leftTime" json:"leftTime"
   int32 leftTime = 2;
+  // 稻草人的购买时间 | @inject_tag: msgpack:"createTime" json:"createTime"
+  int32 createTime = 3;
 }
 
 message CsTzReport {
