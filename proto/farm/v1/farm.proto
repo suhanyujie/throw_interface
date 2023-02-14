@@ -459,6 +459,8 @@ message CsReceiveMysteryAward {
 message ScReceiveMysteryAward {
   // 赠送的金币奖励数量 | @inject_tag: msgpack:"gold" json:"gold"
   int32 gold = 1;
+  // 如果是作物，对应的作物 id | @inject_tag: msgpack:"buildId" json:"buildId"
+  int32 buildId = 2;
 }
 
 message CsScareCrowAdd {
