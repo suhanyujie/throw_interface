@@ -293,6 +293,8 @@ message BuildInfo {
   int32 maxHarvestTimes = 12;
   // 已使用的收获次数 | @inject_tag: msgpack:"hasHarvestTimes" json:"hasHarvestTimes"
   int32 hasHarvestTimes = 13;
+  // 已成熟的果实数 | @inject_tag: msgpack:"proNum" json:"proNum"
+  int32 proNum = 14;
 }
 
 message CsBuyFarm {
@@ -588,4 +590,9 @@ message RemoveBatchReq {
   bool hasWatchedAd = 1;
   // 消除的天灾类型 | @inject_tag: msgpack:"disType" json:"disType"
   DisasterType disType = 2;
+}
+
+message CsProtectCrop {
+  // 是否已观看完广告 | @inject_tag: msgpack:"hasWatchedAd" json:"hasWatchedAd"
+  bool hasWatchedAd = 1;
 }
