@@ -135,9 +135,6 @@ message MysteryLeaf {
   int32 buildId = 6;
 }
 
-
-
-
 enum DisasterType {
   Empty0DisasterType = 0;
   // 干旱
@@ -472,6 +469,8 @@ message ScScareCrowAdd {
   int32 leftTime = 2;
   // 稻草人的购买时间 | @inject_tag: msgpack:"createTime" json:"createTime"
   int32 createTime = 3;
+  // 扣减的金币数 | @inject_tag: msgpack:"misGold" json:"misGold"
+  int32 misGold = 4;
 }
 
 message ScScareCrowInfo {
@@ -582,4 +581,11 @@ message ScCellInfo {
   BuildInfo buildInfo = 2;
   // 服务器时间，用于计算 dt | @inject_tag: msgpack:"serverTime" json:"serverTime"
   int32 serverTime = 3;
+}
+
+message RemoveBatchReq {
+  // 是否已观看完广告 | @inject_tag: msgpack:"hasWatchedAd" json:"hasWatchedAd"
+  bool hasWatchedAd = 1;
+  // 消除的天灾类型 | @inject_tag: msgpack:"disType" json:"disType"
+  DisasterType disType = 2;
 }
