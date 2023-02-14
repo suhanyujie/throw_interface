@@ -66,6 +66,8 @@ message MeetCrow {
   string msg = 1;
   // 稻草人是否生效，如果稻草人生效，则“乌鸦灾难”不减产 | @inject_tag: msgpack:"scareCrowIsEffect" json:"scareCrowIsEffect"
   bool scareCrowIsEffect = 2;
+  // 此次乌鸦来袭，每棵作物减产的果实数 | @inject_tag: msgpack:"misProNum" json:"misProNum"
+  int32 misProNum = 3;
 }
 
 // 普通商人
