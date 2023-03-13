@@ -600,3 +600,17 @@ message CsProtectCrop {
   // 是否已观看完广告 | @inject_tag: msgpack:"hasWatchedAd" json:"hasWatchedAd"
   bool hasWatchedAd = 1;
 }
+
+message CsReceiveLevelAward {
+  // 领取的奖励等级 | @inject_tag: msgpack:"level" json:"level"
+  int32 level = 1;
+  // 是否是加倍 | @inject_tag: msgpack:"isDouble" json:"isDouble"
+  bool isDouble = 2;
+  // 加倍时，观看的广告 id | @inject_tag: msgpack:"adFlag" json:"adFlag"
+  string adFlag = 3;
+}
+
+message ScReceiveLevelAward {
+  // 赠送的金币奖励数量 | @inject_tag: msgpack:"gold" json:"gold"
+  int32 gold = 1;
+}

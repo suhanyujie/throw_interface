@@ -4426,6 +4426,120 @@ func (x *CsProtectCrop) GetHasWatchedAd() bool {
 	return false
 }
 
+type CsReceiveLevelAward struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// 领取的奖励等级 | @inject_tag: msgpack:"level" json:"level"
+	Level int32 `protobuf:"varint,1,opt,name=level,proto3" json:"level" msgpack:"level"`
+	// 是否是加倍 | @inject_tag: msgpack:"isDouble" json:"isDouble"
+	IsDouble bool `protobuf:"varint,2,opt,name=isDouble,proto3" json:"isDouble" msgpack:"isDouble"`
+	// 加倍时，观看的广告 id | @inject_tag: msgpack:"adFlag" json:"adFlag"
+	AdFlag string `protobuf:"bytes,3,opt,name=adFlag,proto3" json:"adFlag" msgpack:"adFlag"`
+}
+
+func (x *CsReceiveLevelAward) Reset() {
+	*x = CsReceiveLevelAward{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_farm_proto_msgTypes[68]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CsReceiveLevelAward) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CsReceiveLevelAward) ProtoMessage() {}
+
+func (x *CsReceiveLevelAward) ProtoReflect() protoreflect.Message {
+	mi := &file_farm_proto_msgTypes[68]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CsReceiveLevelAward.ProtoReflect.Descriptor instead.
+func (*CsReceiveLevelAward) Descriptor() ([]byte, []int) {
+	return file_farm_proto_rawDescGZIP(), []int{68}
+}
+
+func (x *CsReceiveLevelAward) GetLevel() int32 {
+	if x != nil {
+		return x.Level
+	}
+	return 0
+}
+
+func (x *CsReceiveLevelAward) GetIsDouble() bool {
+	if x != nil {
+		return x.IsDouble
+	}
+	return false
+}
+
+func (x *CsReceiveLevelAward) GetAdFlag() string {
+	if x != nil {
+		return x.AdFlag
+	}
+	return ""
+}
+
+type ScReceiveLevelAward struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// 赠送的金币奖励数量 | @inject_tag: msgpack:"gold" json:"gold"
+	Gold int32 `protobuf:"varint,1,opt,name=gold,proto3" json:"gold" msgpack:"gold"`
+}
+
+func (x *ScReceiveLevelAward) Reset() {
+	*x = ScReceiveLevelAward{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_farm_proto_msgTypes[69]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ScReceiveLevelAward) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ScReceiveLevelAward) ProtoMessage() {}
+
+func (x *ScReceiveLevelAward) ProtoReflect() protoreflect.Message {
+	mi := &file_farm_proto_msgTypes[69]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ScReceiveLevelAward.ProtoReflect.Descriptor instead.
+func (*ScReceiveLevelAward) Descriptor() ([]byte, []int) {
+	return file_farm_proto_rawDescGZIP(), []int{69}
+}
+
+func (x *ScReceiveLevelAward) GetGold() int32 {
+	if x != nil {
+		return x.Gold
+	}
+	return 0
+}
+
 var File_farm_proto protoreflect.FileDescriptor
 
 var file_farm_proto_rawDesc = []byte{
@@ -4850,15 +4964,24 @@ var file_farm_proto_rawDesc = []byte{
 	0x0a, 0x0d, 0x43, 0x73, 0x50, 0x72, 0x6f, 0x74, 0x65, 0x63, 0x74, 0x43, 0x72, 0x6f, 0x70, 0x12,
 	0x22, 0x0a, 0x0c, 0x68, 0x61, 0x73, 0x57, 0x61, 0x74, 0x63, 0x68, 0x65, 0x64, 0x41, 0x64, 0x18,
 	0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x0c, 0x68, 0x61, 0x73, 0x57, 0x61, 0x74, 0x63, 0x68, 0x65,
-	0x64, 0x41, 0x64, 0x2a, 0x45, 0x0a, 0x0c, 0x44, 0x69, 0x73, 0x61, 0x73, 0x74, 0x65, 0x72, 0x54,
-	0x79, 0x70, 0x65, 0x12, 0x16, 0x0a, 0x12, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x30, 0x44, 0x69, 0x73,
-	0x61, 0x73, 0x74, 0x65, 0x72, 0x54, 0x79, 0x70, 0x65, 0x10, 0x00, 0x12, 0x07, 0x0a, 0x03, 0x44,
-	0x72, 0x79, 0x10, 0x01, 0x12, 0x0a, 0x0a, 0x06, 0x49, 0x6e, 0x73, 0x65, 0x63, 0x74, 0x10, 0x02,
-	0x12, 0x08, 0x0a, 0x04, 0x43, 0x72, 0x6f, 0x77, 0x10, 0x03, 0x42, 0x38, 0x5a, 0x36, 0x67, 0x69,
-	0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x75, 0x68, 0x61, 0x6e, 0x79, 0x75,
-	0x6a, 0x69, 0x65, 0x2f, 0x74, 0x68, 0x72, 0x6f, 0x77, 0x5f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66,
-	0x61, 0x63, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x66, 0x61, 0x72, 0x6d, 0x2f, 0x76,
-	0x31, 0x3b, 0x76, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x64, 0x41, 0x64, 0x22, 0x5f, 0x0a, 0x13, 0x43, 0x73, 0x52, 0x65, 0x63, 0x65, 0x69, 0x76, 0x65,
+	0x4c, 0x65, 0x76, 0x65, 0x6c, 0x41, 0x77, 0x61, 0x72, 0x64, 0x12, 0x14, 0x0a, 0x05, 0x6c, 0x65,
+	0x76, 0x65, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x6c, 0x65, 0x76, 0x65, 0x6c,
+	0x12, 0x1a, 0x0a, 0x08, 0x69, 0x73, 0x44, 0x6f, 0x75, 0x62, 0x6c, 0x65, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x08, 0x52, 0x08, 0x69, 0x73, 0x44, 0x6f, 0x75, 0x62, 0x6c, 0x65, 0x12, 0x16, 0x0a, 0x06,
+	0x61, 0x64, 0x46, 0x6c, 0x61, 0x67, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x61, 0x64,
+	0x46, 0x6c, 0x61, 0x67, 0x22, 0x29, 0x0a, 0x13, 0x53, 0x63, 0x52, 0x65, 0x63, 0x65, 0x69, 0x76,
+	0x65, 0x4c, 0x65, 0x76, 0x65, 0x6c, 0x41, 0x77, 0x61, 0x72, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x67,
+	0x6f, 0x6c, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x67, 0x6f, 0x6c, 0x64, 0x2a,
+	0x45, 0x0a, 0x0c, 0x44, 0x69, 0x73, 0x61, 0x73, 0x74, 0x65, 0x72, 0x54, 0x79, 0x70, 0x65, 0x12,
+	0x16, 0x0a, 0x12, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x30, 0x44, 0x69, 0x73, 0x61, 0x73, 0x74, 0x65,
+	0x72, 0x54, 0x79, 0x70, 0x65, 0x10, 0x00, 0x12, 0x07, 0x0a, 0x03, 0x44, 0x72, 0x79, 0x10, 0x01,
+	0x12, 0x0a, 0x0a, 0x06, 0x49, 0x6e, 0x73, 0x65, 0x63, 0x74, 0x10, 0x02, 0x12, 0x08, 0x0a, 0x04,
+	0x43, 0x72, 0x6f, 0x77, 0x10, 0x03, 0x42, 0x38, 0x5a, 0x36, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62,
+	0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x75, 0x68, 0x61, 0x6e, 0x79, 0x75, 0x6a, 0x69, 0x65, 0x2f,
+	0x74, 0x68, 0x72, 0x6f, 0x77, 0x5f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x2f,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x66, 0x61, 0x72, 0x6d, 0x2f, 0x76, 0x31, 0x3b, 0x76, 0x31,
+	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -4874,7 +4997,7 @@ func file_farm_proto_rawDescGZIP() []byte {
 }
 
 var file_farm_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_farm_proto_msgTypes = make([]protoimpl.MessageInfo, 71)
+var file_farm_proto_msgTypes = make([]protoimpl.MessageInfo, 73)
 var file_farm_proto_goTypes = []interface{}{
 	(DisasterType)(0),             // 0: throw.v1.DisasterType
 	(*IRequest)(nil),              // 1: throw.v1.IRequest
@@ -4945,9 +5068,11 @@ var file_farm_proto_goTypes = []interface{}{
 	(*ScCellInfo)(nil),            // 66: throw.v1.ScCellInfo
 	(*RemoveBatchReq)(nil),        // 67: throw.v1.RemoveBatchReq
 	(*CsProtectCrop)(nil),         // 68: throw.v1.CsProtectCrop
-	nil,                           // 69: throw.v1.SellReward.ChestEntry
-	nil,                           // 70: throw.v1.CsTraderSale.ProductsEntry
-	nil,                           // 71: throw.v1.ScWareHouse.ProductsEntry
+	(*CsReceiveLevelAward)(nil),   // 69: throw.v1.CsReceiveLevelAward
+	(*ScReceiveLevelAward)(nil),   // 70: throw.v1.ScReceiveLevelAward
+	nil,                           // 71: throw.v1.SellReward.ChestEntry
+	nil,                           // 72: throw.v1.CsTraderSale.ProductsEntry
+	nil,                           // 73: throw.v1.ScWareHouse.ProductsEntry
 }
 var file_farm_proto_depIdxs = []int32{
 	0,  // 0: throw.v1.FarmDisaster.typ:type_name -> throw.v1.DisasterType
@@ -4956,17 +5081,17 @@ var file_farm_proto_depIdxs = []int32{
 	12, // 3: throw.v1.OneNormalSeller.rewards:type_name -> throw.v1.SellReward
 	11, // 4: throw.v1.MysterySeller.needCrops:type_name -> throw.v1.OneCropNeedle
 	12, // 5: throw.v1.MysterySeller.reward:type_name -> throw.v1.SellReward
-	69, // 6: throw.v1.SellReward.chest:type_name -> throw.v1.SellReward.ChestEntry
+	71, // 6: throw.v1.SellReward.chest:type_name -> throw.v1.SellReward.ChestEntry
 	15, // 7: throw.v1.MyInfo.accountInfo:type_name -> throw.v1.AccountInfo
 	19, // 8: throw.v1.ScGetUInfo.wareHouse:type_name -> throw.v1.WareHouseItem
 	20, // 9: throw.v1.ScGetUInfo.maxBuildLvMap:type_name -> throw.v1.MaxBuildLvItem
 	23, // 10: throw.v1.CsWareHouseSale.saveProduct:type_name -> throw.v1.WareHouse
 	29, // 11: throw.v1.ScFarmInfo.seedFarmInfo:type_name -> throw.v1.SeedFarmInfo
 	30, // 12: throw.v1.ScFarmInfo.buildInfo:type_name -> throw.v1.BuildInfo
-	70, // 13: throw.v1.CsTraderSale.products:type_name -> throw.v1.CsTraderSale.ProductsEntry
+	72, // 13: throw.v1.CsTraderSale.products:type_name -> throw.v1.CsTraderSale.ProductsEntry
 	58, // 14: throw.v1.ScFertilizerAdd.info:type_name -> throw.v1.FertilizerInfo
 	58, // 15: throw.v1.ScFertilizerInfo.info:type_name -> throw.v1.FertilizerInfo
-	71, // 16: throw.v1.ScWareHouse.products:type_name -> throw.v1.ScWareHouse.ProductsEntry
+	73, // 16: throw.v1.ScWareHouse.products:type_name -> throw.v1.ScWareHouse.ProductsEntry
 	29, // 17: throw.v1.ScCellInfo.seedFarmInfo:type_name -> throw.v1.SeedFarmInfo
 	30, // 18: throw.v1.ScCellInfo.buildInfo:type_name -> throw.v1.BuildInfo
 	0,  // 19: throw.v1.RemoveBatchReq.disType:type_name -> throw.v1.DisasterType
@@ -5799,6 +5924,30 @@ func file_farm_proto_init() {
 				return nil
 			}
 		}
+		file_farm_proto_msgTypes[68].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CsReceiveLevelAward); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_farm_proto_msgTypes[69].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ScReceiveLevelAward); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -5806,7 +5955,7 @@ func file_farm_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_farm_proto_rawDesc,
 			NumEnums:      1,
-			NumMessages:   71,
+			NumMessages:   73,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
