@@ -1491,8 +1491,8 @@ type CsWareHouseSale struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// | @inject_tag: msgpack:"saveProduct" json:"saveProduct"
-	SaveProduct []*WareHouse `protobuf:"bytes,1,rep,name=saveProduct,proto3" json:"saveProduct" msgpack:"saveProduct"` // 可能是之前写错的单词，先保持一样吧
+	// 售卖的商品及其数量 | @inject_tag: msgpack:"saveProduct" json:"saveProduct"
+	SaveProduct []*WareHouse `protobuf:"bytes,1,rep,name=saveProduct,proto3" json:"saveProduct" msgpack:"saveProduct"` // 可能是之前写错的单词（sale->save），先保持一样吧
 	// 1表示神秘商人出售, 2表示这架出售普通仓库出售 | @inject_tag: msgpack:"saleType" json:"saleType"
 	SaleType int32 `protobuf:"varint,2,opt,name=saleType,proto3" json:"saleType" msgpack:"saleType"`
 	// 对神秘商人出售时，携带对应的标识 | @inject_tag: msgpack:"uuid" json:"uuid"
