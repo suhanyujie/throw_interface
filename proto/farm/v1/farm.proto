@@ -297,6 +297,17 @@ message BuildInfo {
   int32 hasHarvestTimes = 13;
   // 已成熟的果实数 | @inject_tag: msgpack:"proNum" json:"proNum"
   int32 proNum = 14;
+  // 当前作物占用哪几个格子，这些格子的作物都是同一棵作物 | @inject_tag: msgpack:"same" json:"same"
+  repeated FarmPos same = 15;
+  // 如果作物占多个格子，则这棵作物的主格是 mainPos。占1格的作物，该值为 null | @inject_tag: msgpack:"mainPos" json:"mainPos"
+  FarmPos mainPos = 16;
+}
+
+message FarmPos {
+  // 格子 x | @inject_tag: msgpack:"gridX" json:"gridX"
+  int32 gridX = 1;
+  // 格子 y | @inject_tag: msgpack:"gridY" json:"gridY"
+  int32 gridY = 2;
 }
 
 message CsBuyFarm {
