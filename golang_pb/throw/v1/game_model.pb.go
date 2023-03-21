@@ -727,7 +727,7 @@ type PlayerSettleInfo struct {
 	EarnToken int32 `protobuf:"varint,12,opt,name=earnToken,proto3" json:"earnToken" msgpack:"earnToken"`
 	// nft 分值、战力 | @inject_tag: msgpack:"nftScore" json:"nftScore"
 	NftScore int32 `protobuf:"varint,13,opt,name=nftScore,proto3" json:"nftScore" msgpack:"nftScore"`
-	// 奖励类型 | @inject_tag: msgpack:"rewardType" json:"rewardType"
+	// 奖励的宝箱类型 | @inject_tag: msgpack:"rewardType" json:"rewardType"
 	RewardType int32 `protobuf:"varint,14,opt,name=rewardType,proto3" json:"rewardType" msgpack:"rewardType"`
 	// 推荐场次的游戏 id | @inject_tag: msgpack:"recGameId" json:"recGameId"
 	RecGameId *int32 `protobuf:"varint,20,opt,name=recGameId,proto3,oneof" json:"recGameId" msgpack:"recGameId"`
