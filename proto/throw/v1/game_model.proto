@@ -79,36 +79,34 @@ message GameOver {
 
 // 游戏结束后，玩家的结算信息
 message PlayerSettleInfo {
-  // 命中的次数 | @inject_tag: msgpack:"hitRate" json:"hitRate"
-  float hitNum = 1;
   // 命中率 | @inject_tag: msgpack:"hitRate" json:"hitRate"
-  float hitRate = 2;
+  float hitRate = 1;
   // 攻击次数，投掷次数 | @inject_tag: msgpack:"atkCount" json:"atkCount"
-  int32 atkCount = 3;
+  int32 atkCount = 2;
   // 命中次数 | @inject_tag: msgpack:"hitCount" json:"hitCount"
-  int32 hitCount = 4;
+  int32 hitCount = 3;
   // 平均每发伤害 | @inject_tag: msgpack:"damagePerShotAvg" json:"damagePerShotAvg"
-  float damagePerShotAvg = 5;
+  float damagePerShotAvg = 4;
   // 最大连击次数 | @inject_tag: msgpack:"maxComboHitTimes" json:"maxComboHitTimes"
-  int32 maxComboHitTimes = 6;
+  int32 maxComboHitTimes = 5;
   // 打击到致命部位的总伤害 | @inject_tag: msgpack:"fatalInjury" json:"fatalInjury"
-  int32 fatalInjury = 7;
+  int32 fatalInjury = 6;
   // 各部位命中次数 | @inject_tag: msgpack:"hitPosMap" json:"hitPosMap"
-  map<int32, int32> hitPosMap = 8;
+  map<int32, int32> hitPosMap = 7;
   // 使用道具的次数 | @inject_tag: msgpack:"usingPropCountMap" json:"usingPropCountMap"
-  map<int32, int32> usingPropCountMap = 9;
+  map<int32, int32> usingPropCountMap = 8;
   // 攻击被阻挡次数 | @inject_tag: msgpack:"weaponBlockCount" json:"weaponBlockCount"
-  int32 weaponBlockCount = 10;
+  int32 weaponBlockCount = 9;
   // 用户 id | @inject_tag: msgpack:"uid" json:"uid"
-  int32 uid = 11;
+  int32 uid = 10;
   // 角色 id | @inject_tag: msgpack:"roleId" json:"roleId"
-  int32 roleId = 12;
+  int32 roleId = 11;
   // 玩家赢得的代币数，为负数时，表示损失的代币数 | @inject_tag: msgpack:"earnToken" json:"earnToken"
-  int32 earnToken = 13;
+  int32 earnToken = 12;
   // nft 分值、战力 | @inject_tag: msgpack:"nftScore" json:"nftScore"
-  int32 nftScore = 14;
+  int32 nftScore = 13;
   // 奖励的宝箱类型 | @inject_tag: msgpack:"rewardType" json:"rewardType"
-  int32 rewardType = 15;
+  int32 rewardType = 14;
   // 推荐场次的游戏 id | @inject_tag: msgpack:"recGameId" json:"recGameId"
   optional int32 recGameId = 30;
   // 推荐场次的门票 | @inject_tag: msgpack:"recTicket" json:"recTicket"
