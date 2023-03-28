@@ -405,20 +405,22 @@ message RoomMsgRecord {
 message RoleInfo {
   // 角色 id | @inject_tag: msgpack:"id" json:"id"
   int32 id = 1;
+  // 角色对应的 nftId | @inject_tag: msgpack:"nftId" json:"nftId"
+  int32 nftId = 2;
   // @inject_tag: msgpack:"nickname" json:"nickname"
-  string nickname = 2;
+  string nickname = 3;
   // 品质 | @inject_tag: msgpack:"quality" json:"quality"
-  int32 quality = 3;
+  int32 quality = 4;
   // 生命值 | @inject_tag: msgpack:"hp" json:"hp"
-  int32 hp = 4;
+  int32 hp = 5;
   // 防御力 | @inject_tag: msgpack:"def" json:"def"
-  int32 def = 5;
+  int32 def = 6;
   // 攻击力 | @inject_tag: msgpack:"atk" json:"atk"
-  int32 atk = 6;
+  int32 atk = 7;
   // 技能 id | @inject_tag: msgpack:"skillId" json:"skillId"
-  int32 skillId = 7;
+  int32 skillId = 8;
   // 是否是怪物，true 怪物，false 角色 | @inject_tag: msgpack:"isMonster" json:"isMonster"
-  bool isMonster = 8;
+  bool isMonster = 9;
 }
 
 // 角色/英雄信息
@@ -621,4 +623,11 @@ enum EffectType {
     Effect11Shield = 11; // 护盾
     Effect12Thorns = 12; // 荆棘
     Effect13IncrDef = 13; // 防御提升
+}
+
+message BrChangeNft {
+  // 玩家 uid | @inject_tag: msgpack:"uid" json:"uid"
+  int32 uid = 1;
+  // 新的 nft 信息 | @inject_tag: msgpack:"newNft" json:"newNft"
+  RoleInfo newNft = 2;
 }
