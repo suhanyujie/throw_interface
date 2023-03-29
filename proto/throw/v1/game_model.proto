@@ -629,5 +629,5 @@ message BrChangeNft {
   // 玩家 uid | @inject_tag: msgpack:"uid" json:"uid"
   int32 uid = 1;
   // 新的 nft 信息 | @inject_tag: msgpack:"newNft" json:"newNft"
-  RoleInfo newNft = 2;
+  RoleDetailed newNft = 2;
 }
