@@ -116,9 +116,6 @@ message PlayerSettleInfo {
   optional float recReward = 32;
   // 推荐场次的图片地址 | @inject_tag: msgpack:"recGameImg" json:"recGameImg"
   optional string recGameImg = 33;
-
-  // 对战结束后，玩家的 nft 信息 | @inject_tag: msgpack:"nftList" json:"nftList"
-  repeated NftDetail nftList  = 40;
 }
 
 // 玩家/角色移动
