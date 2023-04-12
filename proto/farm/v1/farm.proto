@@ -305,6 +305,8 @@ message BuildInfo {
   repeated FarmPos same = 15;
   // 如果作物占多个格子，则这棵作物的主格是 mainPos。占1格的作物，该值为 null | @inject_tag: msgpack:"mainPos" json:"mainPos"
   FarmPos mainPos = 16;
+  // 已加速的时间，秒数 | @inject_tag: msgpack:"hasSpeedupSec" json:"hasSpeedupSec"
+  int32 hasSpeedupSec = 17;
 }
 
 message FarmPos {
@@ -659,4 +661,10 @@ enum CropSpeedupConsumeType {
     Free = 1;
     Token = 2;
     Ad = 3;
+}
+
+// 手动刷新普通商人
+message ScRefreshNormalTraderManually {
+  // 刷新后的商人列表 | @inject_tag: msgpack:"sellers" json:"sellers"
+  repeated OneNormalSeller sellers = 1;
 }
