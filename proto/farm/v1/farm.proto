@@ -625,3 +625,34 @@ message ScReceiveLevelAward {
   // 赠送的金币奖励数量 | @inject_tag: msgpack:"gold" json:"gold"
   int32 gold = 1;
 }
+
+message CsRefreshNormalTrader {
+  // 消耗的金币数 | @inject_tag: msgpack:"misGold" json:"misGold"
+  int32 misGold = 1;
+}
+
+message ScRefreshNormalTrader {
+  // 更新后的金币数 | @inject_tag: msgpack:"resGoldNum" json:"resGoldNum"
+  int32 resGoldNum = 1;
+}
+
+// 作物加速
+message CsCropSpeedup {
+  //  | @inject_tag: msgpack:"gridX" json:"gridX"
+  int32 gridX = 1;
+  //  | @inject_tag: msgpack:"gridY" json:"gridY"
+  int32 gridY = 2;
+  // 消耗类型 | @inject_tag: msgpack:"consumeType" json:"consumeType"
+  CropSpeedupConsumeType consumeType = 3;
+  // 加速的值类型 | @inject_tag: msgpack:"speedupValType" json:"speedupValType"
+  int32 speedupValType = 4;
+  // 加速的具体时间信息值 | @inject_tag: msgpack:"speedupValue" json:"speedupValue"
+  float speedupValue = 5;
+}
+
+enum CropSpeedupConsumeType {
+    CropSpeedupConsumeTypeEmpty = 0;
+    Free = 1;
+    Token = 2;
+    Ad = 3;
+}

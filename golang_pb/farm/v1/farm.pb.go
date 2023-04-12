@@ -75,6 +75,58 @@ func (DisasterType) EnumDescriptor() ([]byte, []int) {
 	return file_farm_proto_rawDescGZIP(), []int{0}
 }
 
+type CropSpeedupConsumeType int32
+
+const (
+	CropSpeedupConsumeType_CropSpeedupConsumeTypeEmpty CropSpeedupConsumeType = 0
+	CropSpeedupConsumeType_Free                        CropSpeedupConsumeType = 1
+	CropSpeedupConsumeType_Token                       CropSpeedupConsumeType = 2
+	CropSpeedupConsumeType_Ad                          CropSpeedupConsumeType = 3
+)
+
+// Enum value maps for CropSpeedupConsumeType.
+var (
+	CropSpeedupConsumeType_name = map[int32]string{
+		0: "CropSpeedupConsumeTypeEmpty",
+		1: "Free",
+		2: "Token",
+		3: "Ad",
+	}
+	CropSpeedupConsumeType_value = map[string]int32{
+		"CropSpeedupConsumeTypeEmpty": 0,
+		"Free":                        1,
+		"Token":                       2,
+		"Ad":                          3,
+	}
+)
+
+func (x CropSpeedupConsumeType) Enum() *CropSpeedupConsumeType {
+	p := new(CropSpeedupConsumeType)
+	*p = x
+	return p
+}
+
+func (x CropSpeedupConsumeType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CropSpeedupConsumeType) Descriptor() protoreflect.EnumDescriptor {
+	return file_farm_proto_enumTypes[1].Descriptor()
+}
+
+func (CropSpeedupConsumeType) Type() protoreflect.EnumType {
+	return &file_farm_proto_enumTypes[1]
+}
+
+func (x CropSpeedupConsumeType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CropSpeedupConsumeType.Descriptor instead.
+func (CropSpeedupConsumeType) EnumDescriptor() ([]byte, []int) {
+	return file_farm_proto_rawDescGZIP(), []int{1}
+}
+
 // 客户端请求服务端结构
 type IRequest struct {
 	state         protoimpl.MessageState
@@ -4615,6 +4667,187 @@ func (x *ScReceiveLevelAward) GetGold() int32 {
 	return 0
 }
 
+type CsRefreshNormalTrader struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// 消耗的金币数 | @inject_tag: msgpack:"misGold" json:"misGold"
+	MisGold int32 `protobuf:"varint,1,opt,name=misGold,proto3" json:"misGold" msgpack:"misGold"`
+}
+
+func (x *CsRefreshNormalTrader) Reset() {
+	*x = CsRefreshNormalTrader{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_farm_proto_msgTypes[71]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CsRefreshNormalTrader) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CsRefreshNormalTrader) ProtoMessage() {}
+
+func (x *CsRefreshNormalTrader) ProtoReflect() protoreflect.Message {
+	mi := &file_farm_proto_msgTypes[71]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CsRefreshNormalTrader.ProtoReflect.Descriptor instead.
+func (*CsRefreshNormalTrader) Descriptor() ([]byte, []int) {
+	return file_farm_proto_rawDescGZIP(), []int{71}
+}
+
+func (x *CsRefreshNormalTrader) GetMisGold() int32 {
+	if x != nil {
+		return x.MisGold
+	}
+	return 0
+}
+
+type ScRefreshNormalTrader struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// 更新后的金币数 | @inject_tag: msgpack:"resGoldNum" json:"resGoldNum"
+	ResGoldNum int32 `protobuf:"varint,1,opt,name=resGoldNum,proto3" json:"resGoldNum" msgpack:"resGoldNum"`
+}
+
+func (x *ScRefreshNormalTrader) Reset() {
+	*x = ScRefreshNormalTrader{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_farm_proto_msgTypes[72]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ScRefreshNormalTrader) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ScRefreshNormalTrader) ProtoMessage() {}
+
+func (x *ScRefreshNormalTrader) ProtoReflect() protoreflect.Message {
+	mi := &file_farm_proto_msgTypes[72]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ScRefreshNormalTrader.ProtoReflect.Descriptor instead.
+func (*ScRefreshNormalTrader) Descriptor() ([]byte, []int) {
+	return file_farm_proto_rawDescGZIP(), []int{72}
+}
+
+func (x *ScRefreshNormalTrader) GetResGoldNum() int32 {
+	if x != nil {
+		return x.ResGoldNum
+	}
+	return 0
+}
+
+// 作物加速
+type CsCropSpeedup struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// | @inject_tag: msgpack:"gridX" json:"gridX"
+	GridX int32 `protobuf:"varint,1,opt,name=gridX,proto3" json:"gridX" msgpack:"gridX"`
+	// | @inject_tag: msgpack:"gridY" json:"gridY"
+	GridY int32 `protobuf:"varint,2,opt,name=gridY,proto3" json:"gridY" msgpack:"gridY"`
+	// 消耗类型 | @inject_tag: msgpack:"consumeType" json:"consumeType"
+	ConsumeType CropSpeedupConsumeType `protobuf:"varint,3,opt,name=consumeType,proto3,enum=throw.v1.CropSpeedupConsumeType" json:"consumeType" msgpack:"consumeType"`
+	// 加速的值类型 | @inject_tag: msgpack:"speedupValType" json:"speedupValType"
+	SpeedupValType int32 `protobuf:"varint,4,opt,name=speedupValType,proto3" json:"speedupValType" msgpack:"speedupValType"`
+	// 加速的具体时间信息值 | @inject_tag: msgpack:"speedupValue" json:"speedupValue"
+	SpeedupValue float32 `protobuf:"fixed32,5,opt,name=speedupValue,proto3" json:"speedupValue" msgpack:"speedupValue"`
+}
+
+func (x *CsCropSpeedup) Reset() {
+	*x = CsCropSpeedup{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_farm_proto_msgTypes[73]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CsCropSpeedup) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CsCropSpeedup) ProtoMessage() {}
+
+func (x *CsCropSpeedup) ProtoReflect() protoreflect.Message {
+	mi := &file_farm_proto_msgTypes[73]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CsCropSpeedup.ProtoReflect.Descriptor instead.
+func (*CsCropSpeedup) Descriptor() ([]byte, []int) {
+	return file_farm_proto_rawDescGZIP(), []int{73}
+}
+
+func (x *CsCropSpeedup) GetGridX() int32 {
+	if x != nil {
+		return x.GridX
+	}
+	return 0
+}
+
+func (x *CsCropSpeedup) GetGridY() int32 {
+	if x != nil {
+		return x.GridY
+	}
+	return 0
+}
+
+func (x *CsCropSpeedup) GetConsumeType() CropSpeedupConsumeType {
+	if x != nil {
+		return x.ConsumeType
+	}
+	return CropSpeedupConsumeType_CropSpeedupConsumeTypeEmpty
+}
+
+func (x *CsCropSpeedup) GetSpeedupValType() int32 {
+	if x != nil {
+		return x.SpeedupValType
+	}
+	return 0
+}
+
+func (x *CsCropSpeedup) GetSpeedupValue() float32 {
+	if x != nil {
+		return x.SpeedupValue
+	}
+	return 0
+}
+
 var File_farm_proto protoreflect.FileDescriptor
 
 var file_farm_proto_rawDesc = []byte{
@@ -5056,16 +5289,41 @@ var file_farm_proto_rawDesc = []byte{
 	0x67, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x61, 0x64, 0x46, 0x6c, 0x61, 0x67, 0x22,
 	0x29, 0x0a, 0x13, 0x53, 0x63, 0x52, 0x65, 0x63, 0x65, 0x69, 0x76, 0x65, 0x4c, 0x65, 0x76, 0x65,
 	0x6c, 0x41, 0x77, 0x61, 0x72, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x67, 0x6f, 0x6c, 0x64, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x67, 0x6f, 0x6c, 0x64, 0x2a, 0x45, 0x0a, 0x0c, 0x44, 0x69,
-	0x73, 0x61, 0x73, 0x74, 0x65, 0x72, 0x54, 0x79, 0x70, 0x65, 0x12, 0x16, 0x0a, 0x12, 0x45, 0x6d,
-	0x70, 0x74, 0x79, 0x30, 0x44, 0x69, 0x73, 0x61, 0x73, 0x74, 0x65, 0x72, 0x54, 0x79, 0x70, 0x65,
-	0x10, 0x00, 0x12, 0x07, 0x0a, 0x03, 0x44, 0x72, 0x79, 0x10, 0x01, 0x12, 0x0a, 0x0a, 0x06, 0x49,
-	0x6e, 0x73, 0x65, 0x63, 0x74, 0x10, 0x02, 0x12, 0x08, 0x0a, 0x04, 0x43, 0x72, 0x6f, 0x77, 0x10,
-	0x03, 0x42, 0x38, 0x5a, 0x36, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f,
-	0x73, 0x75, 0x68, 0x61, 0x6e, 0x79, 0x75, 0x6a, 0x69, 0x65, 0x2f, 0x74, 0x68, 0x72, 0x6f, 0x77,
-	0x5f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x2f, 0x66, 0x61, 0x72, 0x6d, 0x2f, 0x76, 0x31, 0x3b, 0x76, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x33,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x67, 0x6f, 0x6c, 0x64, 0x22, 0x31, 0x0a, 0x15, 0x43, 0x73,
+	0x52, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x4e, 0x6f, 0x72, 0x6d, 0x61, 0x6c, 0x54, 0x72, 0x61,
+	0x64, 0x65, 0x72, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x69, 0x73, 0x47, 0x6f, 0x6c, 0x64, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x07, 0x6d, 0x69, 0x73, 0x47, 0x6f, 0x6c, 0x64, 0x22, 0x37, 0x0a,
+	0x15, 0x53, 0x63, 0x52, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x4e, 0x6f, 0x72, 0x6d, 0x61, 0x6c,
+	0x54, 0x72, 0x61, 0x64, 0x65, 0x72, 0x12, 0x1e, 0x0a, 0x0a, 0x72, 0x65, 0x73, 0x47, 0x6f, 0x6c,
+	0x64, 0x4e, 0x75, 0x6d, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0a, 0x72, 0x65, 0x73, 0x47,
+	0x6f, 0x6c, 0x64, 0x4e, 0x75, 0x6d, 0x22, 0xcb, 0x01, 0x0a, 0x0d, 0x43, 0x73, 0x43, 0x72, 0x6f,
+	0x70, 0x53, 0x70, 0x65, 0x65, 0x64, 0x75, 0x70, 0x12, 0x14, 0x0a, 0x05, 0x67, 0x72, 0x69, 0x64,
+	0x58, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x67, 0x72, 0x69, 0x64, 0x58, 0x12, 0x14,
+	0x0a, 0x05, 0x67, 0x72, 0x69, 0x64, 0x59, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x67,
+	0x72, 0x69, 0x64, 0x59, 0x12, 0x42, 0x0a, 0x0b, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x54,
+	0x79, 0x70, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x20, 0x2e, 0x74, 0x68, 0x72, 0x6f,
+	0x77, 0x2e, 0x76, 0x31, 0x2e, 0x43, 0x72, 0x6f, 0x70, 0x53, 0x70, 0x65, 0x65, 0x64, 0x75, 0x70,
+	0x43, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x54, 0x79, 0x70, 0x65, 0x52, 0x0b, 0x63, 0x6f, 0x6e,
+	0x73, 0x75, 0x6d, 0x65, 0x54, 0x79, 0x70, 0x65, 0x12, 0x26, 0x0a, 0x0e, 0x73, 0x70, 0x65, 0x65,
+	0x64, 0x75, 0x70, 0x56, 0x61, 0x6c, 0x54, 0x79, 0x70, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x05,
+	0x52, 0x0e, 0x73, 0x70, 0x65, 0x65, 0x64, 0x75, 0x70, 0x56, 0x61, 0x6c, 0x54, 0x79, 0x70, 0x65,
+	0x12, 0x22, 0x0a, 0x0c, 0x73, 0x70, 0x65, 0x65, 0x64, 0x75, 0x70, 0x56, 0x61, 0x6c, 0x75, 0x65,
+	0x18, 0x05, 0x20, 0x01, 0x28, 0x02, 0x52, 0x0c, 0x73, 0x70, 0x65, 0x65, 0x64, 0x75, 0x70, 0x56,
+	0x61, 0x6c, 0x75, 0x65, 0x2a, 0x45, 0x0a, 0x0c, 0x44, 0x69, 0x73, 0x61, 0x73, 0x74, 0x65, 0x72,
+	0x54, 0x79, 0x70, 0x65, 0x12, 0x16, 0x0a, 0x12, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x30, 0x44, 0x69,
+	0x73, 0x61, 0x73, 0x74, 0x65, 0x72, 0x54, 0x79, 0x70, 0x65, 0x10, 0x00, 0x12, 0x07, 0x0a, 0x03,
+	0x44, 0x72, 0x79, 0x10, 0x01, 0x12, 0x0a, 0x0a, 0x06, 0x49, 0x6e, 0x73, 0x65, 0x63, 0x74, 0x10,
+	0x02, 0x12, 0x08, 0x0a, 0x04, 0x43, 0x72, 0x6f, 0x77, 0x10, 0x03, 0x2a, 0x56, 0x0a, 0x16, 0x43,
+	0x72, 0x6f, 0x70, 0x53, 0x70, 0x65, 0x65, 0x64, 0x75, 0x70, 0x43, 0x6f, 0x6e, 0x73, 0x75, 0x6d,
+	0x65, 0x54, 0x79, 0x70, 0x65, 0x12, 0x1f, 0x0a, 0x1b, 0x43, 0x72, 0x6f, 0x70, 0x53, 0x70, 0x65,
+	0x65, 0x64, 0x75, 0x70, 0x43, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x54, 0x79, 0x70, 0x65, 0x45,
+	0x6d, 0x70, 0x74, 0x79, 0x10, 0x00, 0x12, 0x08, 0x0a, 0x04, 0x46, 0x72, 0x65, 0x65, 0x10, 0x01,
+	0x12, 0x09, 0x0a, 0x05, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x10, 0x02, 0x12, 0x06, 0x0a, 0x02, 0x41,
+	0x64, 0x10, 0x03, 0x42, 0x38, 0x5a, 0x36, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f,
+	0x6d, 0x2f, 0x73, 0x75, 0x68, 0x61, 0x6e, 0x79, 0x75, 0x6a, 0x69, 0x65, 0x2f, 0x74, 0x68, 0x72,
+	0x6f, 0x77, 0x5f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x2f, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x2f, 0x66, 0x61, 0x72, 0x6d, 0x2f, 0x76, 0x31, 0x3b, 0x76, 0x31, 0x62, 0x06, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -5080,113 +5338,118 @@ func file_farm_proto_rawDescGZIP() []byte {
 	return file_farm_proto_rawDescData
 }
 
-var file_farm_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_farm_proto_msgTypes = make([]protoimpl.MessageInfo, 74)
+var file_farm_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
+var file_farm_proto_msgTypes = make([]protoimpl.MessageInfo, 77)
 var file_farm_proto_goTypes = []interface{}{
 	(DisasterType)(0),             // 0: throw.v1.DisasterType
-	(*IRequest)(nil),              // 1: throw.v1.IRequest
-	(*IResponse)(nil),             // 2: throw.v1.IResponse
-	(*ErrInfo)(nil),               // 3: throw.v1.ErrInfo
-	(*NormalInfo)(nil),            // 4: throw.v1.NormalInfo
-	(*FarmUserLogin)(nil),         // 5: throw.v1.FarmUserLogin
-	(*FarmDisaster)(nil),          // 6: throw.v1.FarmDisaster
-	(*MeetCrow)(nil),              // 7: throw.v1.MeetCrow
-	(*NormalSellers)(nil),         // 8: throw.v1.NormalSellers
-	(*OneNormalSeller)(nil),       // 9: throw.v1.OneNormalSeller
-	(*MysterySeller)(nil),         // 10: throw.v1.MysterySeller
-	(*OneCropNeedle)(nil),         // 11: throw.v1.OneCropNeedle
-	(*SellReward)(nil),            // 12: throw.v1.SellReward
-	(*MysteryLeaf)(nil),           // 13: throw.v1.MysteryLeaf
-	(*ScCheckLogin)(nil),          // 14: throw.v1.ScCheckLogin
-	(*AccountInfo)(nil),           // 15: throw.v1.AccountInfo
-	(*ScGetUInfoList)(nil),        // 16: throw.v1.ScGetUInfoList
-	(*MyInfo)(nil),                // 17: throw.v1.MyInfo
-	(*ScGetUInfo)(nil),            // 18: throw.v1.ScGetUInfo
-	(*WareHouseItem)(nil),         // 19: throw.v1.WareHouseItem
-	(*MaxBuildLvItem)(nil),        // 20: throw.v1.MaxBuildLvItem
-	(*CsUpdateMoney)(nil),         // 21: throw.v1.CsUpdateMoney
-	(*CsWareHouseSale)(nil),       // 22: throw.v1.CsWareHouseSale
-	(*WareHouse)(nil),             // 23: throw.v1.WareHouse
-	(*ScWareHouseSale)(nil),       // 24: throw.v1.ScWareHouseSale
-	(*CsSetGuideStep)(nil),        // 25: throw.v1.CsSetGuideStep
-	(*CsSetDouble)(nil),           // 26: throw.v1.CsSetDouble
-	(*ScSetDouble)(nil),           // 27: throw.v1.ScSetDouble
-	(*ScFarmInfo)(nil),            // 28: throw.v1.ScFarmInfo
-	(*SeedFarmInfo)(nil),          // 29: throw.v1.SeedFarmInfo
-	(*BuildInfo)(nil),             // 30: throw.v1.BuildInfo
-	(*FarmPos)(nil),               // 31: throw.v1.FarmPos
-	(*CsBuyFarm)(nil),             // 32: throw.v1.CsBuyFarm
-	(*ScBuyFarm)(nil),             // 33: throw.v1.ScBuyFarm
-	(*CsSeedBuild)(nil),           // 34: throw.v1.CsSeedBuild
-	(*ScSeedBuild)(nil),           // 35: throw.v1.ScSeedBuild
-	(*CsRemoveBuild)(nil),         // 36: throw.v1.CsRemoveBuild
-	(*ScRemoveBuild)(nil),         // 37: throw.v1.ScRemoveBuild
-	(*CsMergerBuild)(nil),         // 38: throw.v1.CsMergerBuild
-	(*ScMergerBuild)(nil),         // 39: throw.v1.ScMergerBuild
-	(*CsMoveBuild)(nil),           // 40: throw.v1.CsMoveBuild
-	(*ScMoveBuild)(nil),           // 41: throw.v1.ScMoveBuild
-	(*CsHarvestBuild)(nil),        // 42: throw.v1.CsHarvestBuild
-	(*ScHarvestBuild)(nil),        // 43: throw.v1.ScHarvestBuild
-	(*CsProductFarm)(nil),         // 44: throw.v1.CsProductFarm
-	(*CsChangePosBuild)(nil),      // 45: throw.v1.CsChangePosBuild
-	(*CsTraderSale)(nil),          // 46: throw.v1.CsTraderSale
-	(*ScTraderSale)(nil),          // 47: throw.v1.ScTraderSale
-	(*ScOfflineAward)(nil),        // 48: throw.v1.ScOfflineAward
-	(*CsReceiveMysteryAward)(nil), // 49: throw.v1.CsReceiveMysteryAward
-	(*ScReceiveMysteryAward)(nil), // 50: throw.v1.ScReceiveMysteryAward
-	(*CsScareCrowAdd)(nil),        // 51: throw.v1.CsScareCrowAdd
-	(*ScScareCrowAdd)(nil),        // 52: throw.v1.ScScareCrowAdd
-	(*ScScareCrowInfo)(nil),       // 53: throw.v1.ScScareCrowInfo
-	(*CsTzReport)(nil),            // 54: throw.v1.CsTzReport
-	(*CsTzRemove)(nil),            // 55: throw.v1.CsTzRemove
-	(*ScTzRemove)(nil),            // 56: throw.v1.ScTzRemove
-	(*CsFertilizerAdd)(nil),       // 57: throw.v1.CsFertilizerAdd
-	(*ScFertilizerAdd)(nil),       // 58: throw.v1.ScFertilizerAdd
-	(*FertilizerInfo)(nil),        // 59: throw.v1.FertilizerInfo
-	(*ScFertilizerInfo)(nil),      // 60: throw.v1.ScFertilizerInfo
-	(*CsVisitorsLogin)(nil),       // 61: throw.v1.CsVisitorsLogin
-	(*ScVisitorsLogin)(nil),       // 62: throw.v1.ScVisitorsLogin
-	(*CsBuildSpeedUp)(nil),        // 63: throw.v1.CsBuildSpeedUp
-	(*ScBuildSpeedUp)(nil),        // 64: throw.v1.ScBuildSpeedUp
-	(*ScWareHouse)(nil),           // 65: throw.v1.ScWareHouse
-	(*CsCellInfo)(nil),            // 66: throw.v1.CsCellInfo
-	(*ScCellInfo)(nil),            // 67: throw.v1.ScCellInfo
-	(*RemoveBatchReq)(nil),        // 68: throw.v1.RemoveBatchReq
-	(*CsProtectCrop)(nil),         // 69: throw.v1.CsProtectCrop
-	(*CsReceiveLevelAward)(nil),   // 70: throw.v1.CsReceiveLevelAward
-	(*ScReceiveLevelAward)(nil),   // 71: throw.v1.ScReceiveLevelAward
-	nil,                           // 72: throw.v1.SellReward.ChestEntry
-	nil,                           // 73: throw.v1.CsTraderSale.ProductsEntry
-	nil,                           // 74: throw.v1.ScWareHouse.ProductsEntry
+	(CropSpeedupConsumeType)(0),   // 1: throw.v1.CropSpeedupConsumeType
+	(*IRequest)(nil),              // 2: throw.v1.IRequest
+	(*IResponse)(nil),             // 3: throw.v1.IResponse
+	(*ErrInfo)(nil),               // 4: throw.v1.ErrInfo
+	(*NormalInfo)(nil),            // 5: throw.v1.NormalInfo
+	(*FarmUserLogin)(nil),         // 6: throw.v1.FarmUserLogin
+	(*FarmDisaster)(nil),          // 7: throw.v1.FarmDisaster
+	(*MeetCrow)(nil),              // 8: throw.v1.MeetCrow
+	(*NormalSellers)(nil),         // 9: throw.v1.NormalSellers
+	(*OneNormalSeller)(nil),       // 10: throw.v1.OneNormalSeller
+	(*MysterySeller)(nil),         // 11: throw.v1.MysterySeller
+	(*OneCropNeedle)(nil),         // 12: throw.v1.OneCropNeedle
+	(*SellReward)(nil),            // 13: throw.v1.SellReward
+	(*MysteryLeaf)(nil),           // 14: throw.v1.MysteryLeaf
+	(*ScCheckLogin)(nil),          // 15: throw.v1.ScCheckLogin
+	(*AccountInfo)(nil),           // 16: throw.v1.AccountInfo
+	(*ScGetUInfoList)(nil),        // 17: throw.v1.ScGetUInfoList
+	(*MyInfo)(nil),                // 18: throw.v1.MyInfo
+	(*ScGetUInfo)(nil),            // 19: throw.v1.ScGetUInfo
+	(*WareHouseItem)(nil),         // 20: throw.v1.WareHouseItem
+	(*MaxBuildLvItem)(nil),        // 21: throw.v1.MaxBuildLvItem
+	(*CsUpdateMoney)(nil),         // 22: throw.v1.CsUpdateMoney
+	(*CsWareHouseSale)(nil),       // 23: throw.v1.CsWareHouseSale
+	(*WareHouse)(nil),             // 24: throw.v1.WareHouse
+	(*ScWareHouseSale)(nil),       // 25: throw.v1.ScWareHouseSale
+	(*CsSetGuideStep)(nil),        // 26: throw.v1.CsSetGuideStep
+	(*CsSetDouble)(nil),           // 27: throw.v1.CsSetDouble
+	(*ScSetDouble)(nil),           // 28: throw.v1.ScSetDouble
+	(*ScFarmInfo)(nil),            // 29: throw.v1.ScFarmInfo
+	(*SeedFarmInfo)(nil),          // 30: throw.v1.SeedFarmInfo
+	(*BuildInfo)(nil),             // 31: throw.v1.BuildInfo
+	(*FarmPos)(nil),               // 32: throw.v1.FarmPos
+	(*CsBuyFarm)(nil),             // 33: throw.v1.CsBuyFarm
+	(*ScBuyFarm)(nil),             // 34: throw.v1.ScBuyFarm
+	(*CsSeedBuild)(nil),           // 35: throw.v1.CsSeedBuild
+	(*ScSeedBuild)(nil),           // 36: throw.v1.ScSeedBuild
+	(*CsRemoveBuild)(nil),         // 37: throw.v1.CsRemoveBuild
+	(*ScRemoveBuild)(nil),         // 38: throw.v1.ScRemoveBuild
+	(*CsMergerBuild)(nil),         // 39: throw.v1.CsMergerBuild
+	(*ScMergerBuild)(nil),         // 40: throw.v1.ScMergerBuild
+	(*CsMoveBuild)(nil),           // 41: throw.v1.CsMoveBuild
+	(*ScMoveBuild)(nil),           // 42: throw.v1.ScMoveBuild
+	(*CsHarvestBuild)(nil),        // 43: throw.v1.CsHarvestBuild
+	(*ScHarvestBuild)(nil),        // 44: throw.v1.ScHarvestBuild
+	(*CsProductFarm)(nil),         // 45: throw.v1.CsProductFarm
+	(*CsChangePosBuild)(nil),      // 46: throw.v1.CsChangePosBuild
+	(*CsTraderSale)(nil),          // 47: throw.v1.CsTraderSale
+	(*ScTraderSale)(nil),          // 48: throw.v1.ScTraderSale
+	(*ScOfflineAward)(nil),        // 49: throw.v1.ScOfflineAward
+	(*CsReceiveMysteryAward)(nil), // 50: throw.v1.CsReceiveMysteryAward
+	(*ScReceiveMysteryAward)(nil), // 51: throw.v1.ScReceiveMysteryAward
+	(*CsScareCrowAdd)(nil),        // 52: throw.v1.CsScareCrowAdd
+	(*ScScareCrowAdd)(nil),        // 53: throw.v1.ScScareCrowAdd
+	(*ScScareCrowInfo)(nil),       // 54: throw.v1.ScScareCrowInfo
+	(*CsTzReport)(nil),            // 55: throw.v1.CsTzReport
+	(*CsTzRemove)(nil),            // 56: throw.v1.CsTzRemove
+	(*ScTzRemove)(nil),            // 57: throw.v1.ScTzRemove
+	(*CsFertilizerAdd)(nil),       // 58: throw.v1.CsFertilizerAdd
+	(*ScFertilizerAdd)(nil),       // 59: throw.v1.ScFertilizerAdd
+	(*FertilizerInfo)(nil),        // 60: throw.v1.FertilizerInfo
+	(*ScFertilizerInfo)(nil),      // 61: throw.v1.ScFertilizerInfo
+	(*CsVisitorsLogin)(nil),       // 62: throw.v1.CsVisitorsLogin
+	(*ScVisitorsLogin)(nil),       // 63: throw.v1.ScVisitorsLogin
+	(*CsBuildSpeedUp)(nil),        // 64: throw.v1.CsBuildSpeedUp
+	(*ScBuildSpeedUp)(nil),        // 65: throw.v1.ScBuildSpeedUp
+	(*ScWareHouse)(nil),           // 66: throw.v1.ScWareHouse
+	(*CsCellInfo)(nil),            // 67: throw.v1.CsCellInfo
+	(*ScCellInfo)(nil),            // 68: throw.v1.ScCellInfo
+	(*RemoveBatchReq)(nil),        // 69: throw.v1.RemoveBatchReq
+	(*CsProtectCrop)(nil),         // 70: throw.v1.CsProtectCrop
+	(*CsReceiveLevelAward)(nil),   // 71: throw.v1.CsReceiveLevelAward
+	(*ScReceiveLevelAward)(nil),   // 72: throw.v1.ScReceiveLevelAward
+	(*CsRefreshNormalTrader)(nil), // 73: throw.v1.CsRefreshNormalTrader
+	(*ScRefreshNormalTrader)(nil), // 74: throw.v1.ScRefreshNormalTrader
+	(*CsCropSpeedup)(nil),         // 75: throw.v1.CsCropSpeedup
+	nil,                           // 76: throw.v1.SellReward.ChestEntry
+	nil,                           // 77: throw.v1.CsTraderSale.ProductsEntry
+	nil,                           // 78: throw.v1.ScWareHouse.ProductsEntry
 }
 var file_farm_proto_depIdxs = []int32{
 	0,  // 0: throw.v1.FarmDisaster.typ:type_name -> throw.v1.DisasterType
-	9,  // 1: throw.v1.NormalSellers.list:type_name -> throw.v1.OneNormalSeller
-	11, // 2: throw.v1.OneNormalSeller.needCrops:type_name -> throw.v1.OneCropNeedle
-	12, // 3: throw.v1.OneNormalSeller.rewards:type_name -> throw.v1.SellReward
-	11, // 4: throw.v1.MysterySeller.needCrops:type_name -> throw.v1.OneCropNeedle
-	12, // 5: throw.v1.MysterySeller.reward:type_name -> throw.v1.SellReward
-	72, // 6: throw.v1.SellReward.chest:type_name -> throw.v1.SellReward.ChestEntry
-	15, // 7: throw.v1.MyInfo.accountInfo:type_name -> throw.v1.AccountInfo
-	19, // 8: throw.v1.ScGetUInfo.wareHouse:type_name -> throw.v1.WareHouseItem
-	20, // 9: throw.v1.ScGetUInfo.maxBuildLvMap:type_name -> throw.v1.MaxBuildLvItem
-	23, // 10: throw.v1.CsWareHouseSale.saveProduct:type_name -> throw.v1.WareHouse
-	29, // 11: throw.v1.ScFarmInfo.seedFarmInfo:type_name -> throw.v1.SeedFarmInfo
-	30, // 12: throw.v1.ScFarmInfo.buildInfo:type_name -> throw.v1.BuildInfo
-	31, // 13: throw.v1.BuildInfo.same:type_name -> throw.v1.FarmPos
-	31, // 14: throw.v1.BuildInfo.mainPos:type_name -> throw.v1.FarmPos
-	73, // 15: throw.v1.CsTraderSale.products:type_name -> throw.v1.CsTraderSale.ProductsEntry
-	59, // 16: throw.v1.ScFertilizerAdd.info:type_name -> throw.v1.FertilizerInfo
-	59, // 17: throw.v1.ScFertilizerInfo.info:type_name -> throw.v1.FertilizerInfo
-	74, // 18: throw.v1.ScWareHouse.products:type_name -> throw.v1.ScWareHouse.ProductsEntry
-	29, // 19: throw.v1.ScCellInfo.seedFarmInfo:type_name -> throw.v1.SeedFarmInfo
-	30, // 20: throw.v1.ScCellInfo.buildInfo:type_name -> throw.v1.BuildInfo
+	10, // 1: throw.v1.NormalSellers.list:type_name -> throw.v1.OneNormalSeller
+	12, // 2: throw.v1.OneNormalSeller.needCrops:type_name -> throw.v1.OneCropNeedle
+	13, // 3: throw.v1.OneNormalSeller.rewards:type_name -> throw.v1.SellReward
+	12, // 4: throw.v1.MysterySeller.needCrops:type_name -> throw.v1.OneCropNeedle
+	13, // 5: throw.v1.MysterySeller.reward:type_name -> throw.v1.SellReward
+	76, // 6: throw.v1.SellReward.chest:type_name -> throw.v1.SellReward.ChestEntry
+	16, // 7: throw.v1.MyInfo.accountInfo:type_name -> throw.v1.AccountInfo
+	20, // 8: throw.v1.ScGetUInfo.wareHouse:type_name -> throw.v1.WareHouseItem
+	21, // 9: throw.v1.ScGetUInfo.maxBuildLvMap:type_name -> throw.v1.MaxBuildLvItem
+	24, // 10: throw.v1.CsWareHouseSale.saveProduct:type_name -> throw.v1.WareHouse
+	30, // 11: throw.v1.ScFarmInfo.seedFarmInfo:type_name -> throw.v1.SeedFarmInfo
+	31, // 12: throw.v1.ScFarmInfo.buildInfo:type_name -> throw.v1.BuildInfo
+	32, // 13: throw.v1.BuildInfo.same:type_name -> throw.v1.FarmPos
+	32, // 14: throw.v1.BuildInfo.mainPos:type_name -> throw.v1.FarmPos
+	77, // 15: throw.v1.CsTraderSale.products:type_name -> throw.v1.CsTraderSale.ProductsEntry
+	60, // 16: throw.v1.ScFertilizerAdd.info:type_name -> throw.v1.FertilizerInfo
+	60, // 17: throw.v1.ScFertilizerInfo.info:type_name -> throw.v1.FertilizerInfo
+	78, // 18: throw.v1.ScWareHouse.products:type_name -> throw.v1.ScWareHouse.ProductsEntry
+	30, // 19: throw.v1.ScCellInfo.seedFarmInfo:type_name -> throw.v1.SeedFarmInfo
+	31, // 20: throw.v1.ScCellInfo.buildInfo:type_name -> throw.v1.BuildInfo
 	0,  // 21: throw.v1.RemoveBatchReq.disType:type_name -> throw.v1.DisasterType
-	22, // [22:22] is the sub-list for method output_type
-	22, // [22:22] is the sub-list for method input_type
-	22, // [22:22] is the sub-list for extension type_name
-	22, // [22:22] is the sub-list for extension extendee
-	0,  // [0:22] is the sub-list for field type_name
+	1,  // 22: throw.v1.CsCropSpeedup.consumeType:type_name -> throw.v1.CropSpeedupConsumeType
+	23, // [23:23] is the sub-list for method output_type
+	23, // [23:23] is the sub-list for method input_type
+	23, // [23:23] is the sub-list for extension type_name
+	23, // [23:23] is the sub-list for extension extendee
+	0,  // [0:23] is the sub-list for field type_name
 }
 
 func init() { file_farm_proto_init() }
@@ -6047,14 +6310,50 @@ func file_farm_proto_init() {
 				return nil
 			}
 		}
+		file_farm_proto_msgTypes[71].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CsRefreshNormalTrader); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_farm_proto_msgTypes[72].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ScRefreshNormalTrader); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_farm_proto_msgTypes[73].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CsCropSpeedup); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_farm_proto_rawDesc,
-			NumEnums:      1,
-			NumMessages:   74,
+			NumEnums:      2,
+			NumMessages:   77,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
