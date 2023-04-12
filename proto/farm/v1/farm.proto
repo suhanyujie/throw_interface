@@ -80,31 +80,35 @@ message NormalSellers {
 message OneNormalSeller {
   // 商人出现的唯一标识，全局唯一，每一次都不一样 | @inject_tag: msgpack:"key" json:"key"
   string key = 1;
+  // 商人 id，对应配置文件 merchant 中的 id | @inject_tag: msgpack:"merchantId" json:"merchantId"
+  int32 merchantId = 2;
   // 商人需要的商品信息 | @inject_tag: msgpack:"needCrops" json:"needCrops"
-  repeated OneCropNeedle needCrops = 2;
+  repeated OneCropNeedle needCrops = 3;
   // 交易后的报酬 | @inject_tag: msgpack:"rewards" json:"rewards"
-  SellReward rewards = 3;
+  SellReward rewards = 4;
   // 下一辆车出现的间隔 | @inject_tag: msgpack:"interval" json:"interval"
-  int32 interval = 4;
+  int32 interval = 5;
   // 商人出现的时间戳 | @inject_tag: msgpack:"createTime" json:"createTime"
-  int32 createTime = 5;
+  int32 createTime = 6;
   // 订单停留的时间，秒 | @inject_tag: msgpack:"keepSec" json:"keepSec"
-  int32 keepSec = 6;
+  int32 keepSec = 7;
 }
 
 message MysterySeller {
   // 商人出现的唯一标识 | @inject_tag: msgpack:"key" json:"key"
   string key = 1;
+  // 商人 id，对应配置文件 merchant 中的 id | @inject_tag: msgpack:"merchantId" json:"merchantId"
+  int32 merchantId = 2;
   // 商人需要的商品信息 | @inject_tag: msgpack:"needCrops" json:"needCrops"
-  repeated OneCropNeedle needCrops = 2;
+  repeated OneCropNeedle needCrops = 3;
   // 交易后的报酬 | @inject_tag: msgpack:"reward" json:"reward"
-  SellReward reward = 3;
+  SellReward reward = 4;
   // 停留的秒数 | @inject_tag: msgpack:"interval" json:"interval"
-  int32 interval = 4;
+  int32 interval = 5;
   // 商人出现的时间戳 | @inject_tag: msgpack:"createTime" json:"createTime"
-  int32 createTime = 5;
+  int32 createTime = 6;
   // 订单停留的时间，秒 | @inject_tag: msgpack:"keepSec" json:"keepSec"
-  int32 keepSec = 6;
+  int32 keepSec = 7;
 }
 
 message OneCropNeedle {
@@ -295,7 +299,7 @@ message BuildInfo {
   int32 maxHarvestTimes = 12;
   // 已使用的收获次数 | @inject_tag: msgpack:"hasHarvestTimes" json:"hasHarvestTimes"
   int32 hasHarvestTimes = 13;
-  // 已成熟的果实数 | @inject_tag: msgpack:"proNum" json:"proNum"
+  // 果实数 | @inject_tag: msgpack:"proNum" json:"proNum"
   int32 proNum = 14;
   // 当前作物占用哪几个格子，这些格子的作物都是同一棵作物 | @inject_tag: msgpack:"same" json:"same"
   repeated FarmPos same = 15;
