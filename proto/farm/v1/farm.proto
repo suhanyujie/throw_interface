@@ -299,7 +299,7 @@ message BuildInfo {
   int32 maxHarvestTimes = 12;
   // 已使用的收获次数 | @inject_tag: msgpack:"hasHarvestTimes" json:"hasHarvestTimes"
   int32 hasHarvestTimes = 13;
-  // 果实数 | @inject_tag: msgpack:"proNum" json:"proNum"
+  // 成熟的果实数，为 0 表示未成熟，大于 0 表示成熟的果实数 | @inject_tag: msgpack:"proNum" json:"proNum"
   int32 proNum = 14;
   // 当前作物占用哪几个格子，这些格子的作物都是同一棵作物 | @inject_tag: msgpack:"same" json:"same"
   repeated FarmPos same = 15;
@@ -307,6 +307,8 @@ message BuildInfo {
   FarmPos mainPos = 16;
   // 已加速的时间，秒数 | @inject_tag: msgpack:"hasSpeedupSec" json:"hasSpeedupSec"
   int32 hasSpeedupSec = 17;
+  // 如果成熟，对应的果实数 | @inject_tag: msgpack:"proNumIfMature" json:"proNumIfMature"
+  int32 proNumIfMature = 18;
 }
 
 message FarmPos {
