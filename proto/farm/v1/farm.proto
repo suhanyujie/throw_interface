@@ -658,8 +658,11 @@ message CsCropSpeedup {
 
 enum CropSpeedupConsumeType {
     CropSpeedupConsumeTypeEmpty = 0;
+    // 免费
     Free = 1;
+    // 代币刷
     Token = 2;
+    // 广告刷
     Ad = 3;
 }
 

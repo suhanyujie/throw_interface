@@ -79,9 +79,12 @@ type CropSpeedupConsumeType int32
 
 const (
 	CropSpeedupConsumeType_CropSpeedupConsumeTypeEmpty CropSpeedupConsumeType = 0
-	CropSpeedupConsumeType_Free                        CropSpeedupConsumeType = 1
-	CropSpeedupConsumeType_Token                       CropSpeedupConsumeType = 2
-	CropSpeedupConsumeType_Ad                          CropSpeedupConsumeType = 3
+	// 免费
+	CropSpeedupConsumeType_Free CropSpeedupConsumeType = 1
+	// 代币刷
+	CropSpeedupConsumeType_Token CropSpeedupConsumeType = 2
+	// 广告刷
+	CropSpeedupConsumeType_Ad CropSpeedupConsumeType = 3
 )
 
 // Enum value maps for CropSpeedupConsumeType.
