@@ -658,6 +658,14 @@ message CsCropSpeedup {
   float speedupValue = 5;
 }
 
+// 作物充能
+message CsCropCharge {
+  //  | @inject_tag: msgpack:"gridX" json:"gridX"
+  int32 gridX = 1;
+  //  | @inject_tag: msgpack:"gridY" json:"gridY"
+  int32 gridY = 2;
+}
+
 enum CropSpeedupConsumeType {
     CropSpeedupConsumeTypeEmpty = 0;
     // 免费
@@ -666,10 +674,17 @@ enum CropSpeedupConsumeType {
     Token = 2;
     // 广告刷
     Ad = 3;
+    // 充能
+    Charge = 4;
 }
 
 // 手动刷新普通商人
 message ScRefreshNormalTraderManually {
   // 刷新后的商人列表 | @inject_tag: msgpack:"sellers" json:"sellers"
   repeated OneNormalSeller sellers = 1;
+}
+
+message ScCropCharge {
+  // 更新后的金币数 | @inject_tag: msgpack:"resGoldNum" json:"resGoldNum"
+  int32 resGoldNum = 1;
 }
