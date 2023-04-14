@@ -61,6 +61,11 @@ message FarmDisaster {
   string msg = 5;
 }
 
+message FarmDisasterBatch {
+  // 新产生的天灾列表 | @inject_tag: msgpack:"list" json:"list"
+  repeated FarmDisaster list = 1;
+}
+
 message MeetCrow {
   // 备注信息 | @inject_tag: msgpack:"msg" json:"msg"
   string msg = 1;
