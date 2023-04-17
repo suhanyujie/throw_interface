@@ -693,3 +693,9 @@ message ScCropCharge {
   // 更新后的金币数 | @inject_tag: msgpack:"resGoldNum" json:"resGoldNum"
   int32 resGoldNum = 1;
 }
+
+// 手动刷新普通商人
+message ScNormalTraderList {
+  // 最新的普通商人列表 | @inject_tag: msgpack:"sellers" json:"sellers"
+  repeated OneNormalSeller sellers = 1;
+}
