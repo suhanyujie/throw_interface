@@ -81,7 +81,7 @@ message GameOver {
 message PlayerSettleInfo {
   // 命中率 | @inject_tag: msgpack:"hitRate" json:"hitRate"
   float hitRate = 1;
-  // 攻击次数 | @inject_tag: msgpack:"atkCount" json:"atkCount"
+  // 攻击次数，投掷次数 | @inject_tag: msgpack:"atkCount" json:"atkCount"
   int32 atkCount = 2;
   // 命中次数 | @inject_tag: msgpack:"hitCount" json:"hitCount"
   int32 hitCount = 3;
@@ -103,16 +103,19 @@ message PlayerSettleInfo {
   int32 roleId = 11;
   // 玩家赢得的代币数，为负数时，表示损失的代币数 | @inject_tag: msgpack:"earnToken" json:"earnToken"
   int32 earnToken = 12;
+
   // nft 分值、战力 | @inject_tag: msgpack:"nftScore" json:"nftScore"
   int32 nftScore = 13;
+  // 奖励的宝箱类型 | @inject_tag: msgpack:"rewardType" json:"rewardType"
+  int32 rewardType = 14;
   // 推荐场次的游戏 id | @inject_tag: msgpack:"recGameId" json:"recGameId"
-  optional int32 recGameId = 14;
+  optional int32 recGameId = 30;
   // 推荐场次的门票 | @inject_tag: msgpack:"recTicket" json:"recTicket"
-  optional float recTicket = 15;
+  optional float recTicket = 31;
   // 推荐场次的奖励 | @inject_tag: msgpack:"recReward" json:"recReward"
-  optional float recReward = 16;
+  optional float recReward = 32;
   // 推荐场次的图片地址 | @inject_tag: msgpack:"recGameImg" json:"recGameImg"
-  optional string recGameImg = 17;
+  optional string recGameImg = 33;
 }
 
 // 玩家/角色移动
@@ -281,22 +284,45 @@ message RoomState {
 }
 
 message RoomDetail {
-  // @inject_tag: msgpack:"id"
+  // @inject_tag: msgpack:"id" json:"id"
   int32 id = 1;
-  // @inject_tag: msgpack:"name"
+  // @inject_tag: msgpack:"name" json:"name"
   string name = 2;
-  // @inject_tag: msgpack:"amount"
-  uint32 amount = 3;// 房间当前用户数量
-  // @inject_tag: msgpack:"max"
-  uint32 max = 4; // 房间最大用户数量
-  // @inject_tag: msgpack:"timeUpdate"
-  uint32 timeUpdate = 5;// 房间信息的最后更新时间
-  // @inject_tag: msgpack:"roles"
-  repeated RoleDetailed roles = 6;// 房间内的用户
-  // @inject_tag: msgpack:"npcs"
-  repeated RoleDetailed npcs = 7;// 房间内非玩家角色
-  // @inject_tag: msgpack:"messages"
-  repeated RoomMsgRecord messages = 8;// 房间历史聊天记录
+  // 房间当前用户数量 | @inject_tag: msgpack:"amount" json:"amount"
+  uint32 amount = 3;
+  // 房间最大用户数量 | @inject_tag: msgpack:"max" json:"max"
+  uint32 max = 4;
+  // 房间信息的最后更新时间 | @inject_tag: msgpack:"timeUpdate" json:"timeUpdate"
+  uint32 timeUpdate = 5;
+  // 房间内的玩家/用户 | @inject_tag: msgpack:"roles" json:"roles"
+  repeated RoleDetailed roles = 6;
+  // 房间内玩家列表 | @inject_tag: msgpack:"players" json:"players"
+  repeated Player players = 7;
+}
+
+// 游戏房间内，一名玩家信息
+message Player {
+  // 玩家的 uid | @inject_tag: msgpack:"uid" json:"uid"
+  int32 uid = 1;
+  // 玩家的 nft 列表 | @inject_tag: msgpack:"nftList" json:"nftList"
+  repeated NftDetail nftList = 2;
+}
+
+message NftDetail {
+  // nftId | @inject_tag: msgpack:"nftId" json:"nftId"
+  int32 nftId = 1;
+  // 角色/英雄信息 | @inject_tag: msgpack:"role" json:"role"
+  RoleInfo role = 2;
+  // nft 状态 | @inject_tag: msgpack:"nftStatus" json:"nftStatus"
+  NftStatus nftStatus = 3;
+}
+
+// nft 在场上的状态
+enum NftStatus {
+  NftFightStatusEmpty = 0;
+  Wait = 1;
+  Fighting = 2;
+  Die = 3;
 }
 
 message ResRoomJoin {
@@ -376,10 +402,10 @@ message RoomMsgRecord {
 message RoleInfo {
   // 角色 id | @inject_tag: msgpack:"id" json:"id"
   int32 id = 1;
+  // 角色对应的 nftId | @inject_tag: msgpack:"nftId" json:"nftId"
+  int32 nftId = 2;
   // @inject_tag: msgpack:"nickname" json:"nickname"
-  string nickname = 2;
-  // 角色相关资源 | @inject_tag: msgpack:"image" json:"image"
-  int32 image = 3;
+  string nickname = 3;
   // 品质 | @inject_tag: msgpack:"quality" json:"quality"
   int32 quality = 4;
   // 生命值 | @inject_tag: msgpack:"hp" json:"hp"
@@ -396,14 +422,16 @@ message RoleInfo {
 
 // 角色/英雄信息
 message RoleDetailed {
-  // 当前房间中，使用角色的玩家 uid | @inject_tag: msgpack:"uid"
+  // 当前房间中，使用角色的玩家 uid | @inject_tag: msgpack:"uid" json:"uid"
   int32 uid = 1;
-  // 玩家信息 | @inject_tag: msgpack:"roleInfo"
+  // 玩家信息 | @inject_tag: msgpack:"roleInfo" json:"roleInfo"
   RoleInfo roleInfo = 2;
-  // 角色状态 | @inject_tag: msgpack:"state"
+  // 角色状态 | @inject_tag: msgpack:"state" json:"state"
   RoleState state = 3;
-  // 角色的一些属性，用于扩展 | @inject_tag: msgpack:"attributes"
-  map<string, int32> attributes = 4;
+  // 角色的一些属性，用于扩展 | @inject_tag: msgpack:"nftList" json:"nftList"
+  repeated NftDetail nftList = 4;
+  // 角色的一些属性，用于扩展 | @inject_tag: msgpack:"attributes" json:"attributes"
+  map<string, int32> attributes = 5;
 }
 
 // 角色同步血量
@@ -592,6 +620,21 @@ enum EffectType {
     Effect11Shield = 11; // 护盾
     Effect12Thorns = 12; // 荆棘
     Effect13IncrDef = 13; // 防御提升
+}
+
+// 玩家的 nft 切换
+message BrChangeNft {
+  // 玩家 uid | @inject_tag: msgpack:"uid" json:"uid"
+  int32 uid = 1;
+  // 新的 nft 信息 | @inject_tag: msgpack:"newNft" json:"newNft"
+  RoleDetailed newNft = 2;
+  // 房间内的玩家信息 | @inject_tag: msgpack:"players" json:"players"
+  repeated Player players = 3;
+}
+
+message DebugSetPlayerWin {
+  // 玩家 uid | @inject_tag: msgpack:"uid" json:"uid"
+  int32 uid = 1;
 }
 
 // 告诉服务端，客户端倒计时完成

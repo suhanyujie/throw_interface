@@ -24,6 +24,8 @@ message DataOfJoin {
   int32 pvpType = 8;
   // 机器人的 ai 策略类型 | @inject_tag: msgpack:"aiPolicyType" json:"aiPolicyType"
   int32 aiPolicyType = 9;
+  // 游戏模式 0 pve，1pvp,2多 nft pvp | @inject_tag: msgpack:"gameMode" json:"gameMode"
+  int32 gameMode = 10;
 }
 
 message PveJoin {

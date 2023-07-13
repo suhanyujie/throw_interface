@@ -61,11 +61,18 @@ message FarmDisaster {
   string msg = 5;
 }
 
+message FarmDisasterBatch {
+  // 新产生的天灾列表 | @inject_tag: msgpack:"list" json:"list"
+  repeated FarmDisaster list = 1;
+}
+
 message MeetCrow {
   // 备注信息 | @inject_tag: msgpack:"msg" json:"msg"
   string msg = 1;
   // 稻草人是否生效，如果稻草人生效，则“乌鸦灾难”不减产 | @inject_tag: msgpack:"scareCrowIsEffect" json:"scareCrowIsEffect"
   bool scareCrowIsEffect = 2;
+  // 此次乌鸦来袭，每棵作物减产的果实数 | @inject_tag: msgpack:"misProNum" json:"misProNum"
+  int32 misProNum = 3;
 }
 
 // 普通商人
@@ -78,31 +85,35 @@ message NormalSellers {
 message OneNormalSeller {
   // 商人出现的唯一标识，全局唯一，每一次都不一样 | @inject_tag: msgpack:"key" json:"key"
   string key = 1;
+  // 商人 id，对应配置文件 merchant 中的 id | @inject_tag: msgpack:"merchantId" json:"merchantId"
+  int32 merchantId = 2;
   // 商人需要的商品信息 | @inject_tag: msgpack:"needCrops" json:"needCrops"
-  repeated OneCropNeedle needCrops = 2;
+  repeated OneCropNeedle needCrops = 3;
   // 交易后的报酬 | @inject_tag: msgpack:"rewards" json:"rewards"
-  SellReward rewards = 3;
+  SellReward rewards = 4;
   // 下一辆车出现的间隔 | @inject_tag: msgpack:"interval" json:"interval"
-  int32 interval = 4;
+  int32 interval = 5;
   // 商人出现的时间戳 | @inject_tag: msgpack:"createTime" json:"createTime"
-  int32 createTime = 5;
+  int32 createTime = 6;
   // 订单停留的时间，秒 | @inject_tag: msgpack:"keepSec" json:"keepSec"
-  int32 keepSec = 6;
+  int32 keepSec = 7;
 }
 
 message MysterySeller {
   // 商人出现的唯一标识 | @inject_tag: msgpack:"key" json:"key"
   string key = 1;
+  // 商人 id，对应配置文件 merchant 中的 id | @inject_tag: msgpack:"merchantId" json:"merchantId"
+  int32 merchantId = 2;
   // 商人需要的商品信息 | @inject_tag: msgpack:"needCrops" json:"needCrops"
-  repeated OneCropNeedle needCrops = 2;
+  repeated OneCropNeedle needCrops = 3;
   // 交易后的报酬 | @inject_tag: msgpack:"reward" json:"reward"
-  SellReward reward = 3;
+  SellReward reward = 4;
   // 停留的秒数 | @inject_tag: msgpack:"interval" json:"interval"
-  int32 interval = 4;
+  int32 interval = 5;
   // 商人出现的时间戳 | @inject_tag: msgpack:"createTime" json:"createTime"
-  int32 createTime = 5;
+  int32 createTime = 6;
   // 订单停留的时间，秒 | @inject_tag: msgpack:"keepSec" json:"keepSec"
-  int32 keepSec = 6;
+  int32 keepSec = 7;
 }
 
 message OneCropNeedle {
@@ -134,9 +145,6 @@ message MysteryLeaf {
   //如果是农作物，对应的农作物 id | @inject_tag: msgpack:"buildId" json:"buildId"
   int32 buildId = 6;
 }
-
-
-
 
 enum DisasterType {
   Empty0DisasterType = 0;
@@ -217,8 +225,8 @@ message CsUpdateMoney {
 }
 
 message CsWareHouseSale {
-  // | @inject_tag: msgpack:"saveProduct" json:"saveProduct"
-  repeated WareHouse saveProduct = 1;// 可能是之前写错的单词，先保持一样吧
+  // 售卖的商品及其数量 | @inject_tag: msgpack:"saveProduct" json:"saveProduct"
+  repeated WareHouse saveProduct = 1;// 可能是之前写错的单词（sale->save），先保持一样吧
   // 1表示神秘商人出售, 2表示这架出售普通仓库出售 | @inject_tag: msgpack:"saleType" json:"saleType"
   int32 saleType =2;
   // 对神秘商人出售时，携带对应的标识 | @inject_tag: msgpack:"uuid" json:"uuid"
@@ -296,6 +304,23 @@ message BuildInfo {
   int32 maxHarvestTimes = 12;
   // 已使用的收获次数 | @inject_tag: msgpack:"hasHarvestTimes" json:"hasHarvestTimes"
   int32 hasHarvestTimes = 13;
+  // 成熟的果实数，为 0 表示未成熟，大于 0 表示成熟的果实数 | @inject_tag: msgpack:"proNum" json:"proNum"
+  int32 proNum = 14;
+  // 当前作物占用哪几个格子，这些格子的作物都是同一棵作物 | @inject_tag: msgpack:"same" json:"same"
+  repeated FarmPos same = 15;
+  // 如果作物占多个格子，则这棵作物的主格是 mainPos。占1格的作物，该值为 null | @inject_tag: msgpack:"mainPos" json:"mainPos"
+  FarmPos mainPos = 16;
+  // 已加速的时间，秒数 | @inject_tag: msgpack:"hasSpeedupSec" json:"hasSpeedupSec"
+  int32 hasSpeedupSec = 17;
+  // 如果成熟，对应的果实数 | @inject_tag: msgpack:"proNumIfMature" json:"proNumIfMature"
+  int32 proNumIfMature = 18;
+}
+
+message FarmPos {
+  // 格子 x | @inject_tag: msgpack:"gridX" json:"gridX"
+  int32 gridX = 1;
+  // 格子 y | @inject_tag: msgpack:"gridY" json:"gridY"
+  int32 gridY = 2;
 }
 
 message CsBuyFarm {
@@ -458,6 +483,8 @@ message CsReceiveMysteryAward {
 message ScReceiveMysteryAward {
   // 赠送的金币奖励数量 | @inject_tag: msgpack:"gold" json:"gold"
   int32 gold = 1;
+  // 如果是作物，对应的作物 id | @inject_tag: msgpack:"buildId" json:"buildId"
+  int32 buildId = 2;
 }
 
 message CsScareCrowAdd {
@@ -472,6 +499,8 @@ message ScScareCrowAdd {
   int32 leftTime = 2;
   // 稻草人的购买时间 | @inject_tag: msgpack:"createTime" json:"createTime"
   int32 createTime = 3;
+  // 扣减的金币数 | @inject_tag: msgpack:"misGold" json:"misGold"
+  int32 misGold = 4;
 }
 
 message ScScareCrowInfo {
@@ -582,4 +611,91 @@ message ScCellInfo {
   BuildInfo buildInfo = 2;
   // 服务器时间，用于计算 dt | @inject_tag: msgpack:"serverTime" json:"serverTime"
   int32 serverTime = 3;
+}
+
+message RemoveBatchReq {
+  // 是否已观看完广告 | @inject_tag: msgpack:"hasWatchedAd" json:"hasWatchedAd"
+  bool hasWatchedAd = 1;
+  // 消除的天灾类型 | @inject_tag: msgpack:"disType" json:"disType"
+  DisasterType disType = 2;
+}
+
+message CsProtectCrop {
+  // 是否已观看完广告 | @inject_tag: msgpack:"hasWatchedAd" json:"hasWatchedAd"
+  bool hasWatchedAd = 1;
+}
+
+message CsReceiveLevelAward {
+  // 领取的奖励等级 | @inject_tag: msgpack:"level" json:"level"
+  int32 level = 1;
+  // 是否是加倍 | @inject_tag: msgpack:"isDouble" json:"isDouble"
+  bool isDouble = 2;
+  // 加倍时，观看的广告 id | @inject_tag: msgpack:"adFlag" json:"adFlag"
+  string adFlag = 3;
+}
+
+message ScReceiveLevelAward {
+  // 赠送的金币奖励数量 | @inject_tag: msgpack:"gold" json:"gold"
+  int32 gold = 1;
+}
+
+message CsRefreshNormalTrader {
+  // 消耗的金币数 | @inject_tag: msgpack:"misGold" json:"misGold"
+  int32 misGold = 1;
+}
+
+message ScRefreshNormalTrader {
+  // 更新后的金币数 | @inject_tag: msgpack:"resGoldNum" json:"resGoldNum"
+  int32 resGoldNum = 1;
+}
+
+// 作物加速
+message CsCropSpeedup {
+  //  | @inject_tag: msgpack:"gridX" json:"gridX"
+  int32 gridX = 1;
+  //  | @inject_tag: msgpack:"gridY" json:"gridY"
+  int32 gridY = 2;
+  // 消耗类型 | @inject_tag: msgpack:"consumeType" json:"consumeType"
+  CropSpeedupConsumeType consumeType = 3;
+  // 加速的值类型 | @inject_tag: msgpack:"speedupValType" json:"speedupValType"
+  int32 speedupValType = 4;
+  // 加速的具体时间信息值 | @inject_tag: msgpack:"speedupValue" json:"speedupValue"
+  float speedupValue = 5;
+}
+
+// 作物充能
+message CsCropCharge {
+  //  | @inject_tag: msgpack:"gridX" json:"gridX"
+  int32 gridX = 1;
+  //  | @inject_tag: msgpack:"gridY" json:"gridY"
+  int32 gridY = 2;
+}
+
+enum CropSpeedupConsumeType {
+    CropSpeedupConsumeTypeEmpty = 0;
+    // 免费
+    Free = 1;
+    // 代币刷
+    Token = 2;
+    // 广告刷
+    Ad = 3;
+    // 充能
+    Charge = 4;
+}
+
+// 手动刷新普通商人
+message ScRefreshNormalTraderManually {
+  // 刷新后的商人列表 | @inject_tag: msgpack:"sellers" json:"sellers"
+  repeated OneNormalSeller sellers = 1;
+}
+
+message ScCropCharge {
+  // 更新后的金币数 | @inject_tag: msgpack:"resGoldNum" json:"resGoldNum"
+  int32 resGoldNum = 1;
+}
+
+// 手动刷新普通商人
+message ScNormalTraderList {
+  // 最新的普通商人列表 | @inject_tag: msgpack:"sellers" json:"sellers"
+  repeated OneNormalSeller sellers = 1;
 }
