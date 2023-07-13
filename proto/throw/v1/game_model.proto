@@ -593,3 +593,8 @@ enum EffectType {
     Effect12Thorns = 12; // 荆棘
     Effect13IncrDef = 13; // 防御提升
 }
+
+// 告诉服务端，客户端倒计时完成
+message CsCountDownEnd {
+
+}
